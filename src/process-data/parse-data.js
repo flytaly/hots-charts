@@ -3,6 +3,7 @@ const path = require('path')
 const splitReplaysByVersion = require('./split-by-version')
 const saveWinsAndLoses = require('./save-wins-loses')
 const appendBans = require('./append-bans')
+const computeWinrates = require('./compute-winrates')
 const { statsOutputDir, versionsDir, dataFiles } = require('../configs')
 
 async function parseData () {
@@ -21,7 +22,7 @@ async function parseData () {
     console.log('parse versions')
     replayIdToVersion = versions.reduce((acc, version) => {
       const replayIds = fs.readFileSync(path.join(versionsDir, version)).toString().split('\n')
-      replayIds.forEach(id => { acc[id] = version })
+      replayIds.forEach(id => { if (id) acc[id] = version })
       return acc
     }, {})
   }
@@ -45,6 +46,8 @@ async function parseData () {
     console.log('parse heroes ban data')
     await appendBans(replayIdToVersion, winLoseData, dataFiles.bans, winLoseBanFile)
   }
+
+  computeWinrates()
 }
 
 module.exports = parseData
