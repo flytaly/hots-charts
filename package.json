@@ -1,0 +1,11 @@
+{
+    "name": "hots-historical",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "parse-data": "node src/process-data"
+    },
+    "author": "",
+    "license": "ISC"
+}
