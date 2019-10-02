@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "parse-data": "node src/process-data"
+        "parse-data": "node src/process-data",
+        "serve": "npx live-server"
     },
     "author": "",
     "license": "ISC",
