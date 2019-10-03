@@ -4,7 +4,7 @@ const minPopularity = 0
 const maxHeroes = 15
 const getColor = (n) => `hsl(${n * 3.6}, 30%, 90%)`
 const tDuration = 1000
-
+const tEase = d3.easeSinOut
 const svg = d3.select('svg')
 
 const width = +svg.attr('width')
@@ -22,7 +22,7 @@ const render = (data) => {
   const flatWinrates = data.flatMap((ver) => ver.data.map(xValue))
 
   const xScale = d3.scaleLinear()
-    .domain([d3.min(flatWinrates) - 2, d3.max(flatWinrates) + 2])
+    .domain([d3.min(flatWinrates) - 10, d3.max(flatWinrates) + 2])
     .range([0, innerWidth])
     .nice()
 
@@ -36,13 +36,14 @@ const render = (data) => {
 
   let count = 0
 
+  renderPatch(data[count])
   const interval = d3.interval(() => {
-    renderPatch(data[count])
     count += 1
-    if (count >= data.length) {
+    renderPatch(data[count])
+    if (count >= data.length - 1) {
       interval.stop()
     }
-  }, 3000)
+  }, 2700)
 
   function renderPatch (patchWinrates) {
     const heroData = patchWinrates.data
@@ -56,9 +57,10 @@ const render = (data) => {
     const barRect = g.selectAll('rect.bar').data(heroData, yValue)
     const heroName = g.selectAll('text.heroname').data(heroData, yValue)
     const heroWR = g.selectAll('text.herowr').data(heroData, yValue)
+    const images = g.selectAll('image.heroImg').data(heroData, yValue)
 
     const onExit = (exit) => exit
-      .transition().duration(tDuration / 2)
+      .transition().duration(tDuration / 2).ease(tEase)
       .attr('y', height)
       .attr('width', 0)
       .remove()
@@ -73,7 +75,7 @@ const render = (data) => {
       .attr('y', height)
       .merge(barRect)
       .attr('height', yScale.bandwidth())
-      .transition().duration(tDuration)
+      .transition().duration(tDuration).ease(tEase)
       .attr('y', (d) => yScale(yValue(d)))
       .attr('width', (d) => xScale(xValue(d)))
 
@@ -86,11 +88,11 @@ const render = (data) => {
       .attr('dominant-baseline', 'central')
       .style('fill', 'black')
       .attr('y', height)
-      .merge(heroName)
-      .transition().duration(tDuration)
-      .attr('x', (d) => xScale(xValue(d)) - 10)
-      .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() / 2)
       .text((d) => yValue(d))
+      .merge(heroName)
+      .transition().duration(tDuration).ease(tEase)
+      .attr('x', (d) => xScale(xValue(d)) - 5)
+      .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() / 2)
 
     heroWR.enter().append('text')
       .attr('class', 'herowr')
@@ -99,10 +101,26 @@ const render = (data) => {
       .style('fill', 'black')
       .attr('y', height)
       .merge(heroWR)
-      .transition().duration(tDuration)
+      .transition().duration(tDuration).ease(tEase)
       .attr('x', (d) => xScale(xValue(d)) + 5)
       .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() / 2)
-      .text((d) => d3.format('.1f')(d.winrate))
+      .text((d) => d3.format('.1f')(d.winrate) + ' (' + d.popularity + ')')
+
+    images.enter().append('image')
+      .attr('class', 'heroImg')
+      .attr('xlink:href', (d) => `/assets/images/${d.shortName}.png`)
+      .attr('y', height)
+      .merge(images)
+      .attr('width', yScale.bandwidth())
+      .attr('height', yScale.bandwidth())
+      .attr('x', -yScale.bandwidth())
+      .transition().duration(tDuration).ease(tEase)
+      .attr('y', (d) => yScale(yValue(d)))
+
+    images.exit()
+      .transition().duration(tDuration / 2).ease(tEase)
+      .attr('y', height)
+      .remove()
 
     g.select('text.patchNumber').remove()
     g
