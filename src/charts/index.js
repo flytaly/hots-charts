@@ -1,8 +1,9 @@
 /* global d3 */
 
-const minPopularity = 8
-const maxHeroes = 10
+const minPopularity = 0
+const maxHeroes = 15
 const getColor = (n) => `hsl(${n * 3.6}, 30%, 90%)`
+const tDuration = 1000
 
 const svg = d3.select('svg')
 
@@ -21,7 +22,7 @@ const render = (data) => {
   const flatWinrates = data.flatMap((ver) => ver.data.map(xValue))
 
   const xScale = d3.scaleLinear()
-    .domain([49, d3.max(flatWinrates)])
+    .domain([d3.min(flatWinrates) - 2, d3.max(flatWinrates) + 2])
     .range([0, innerWidth])
     .nice()
 
@@ -41,7 +42,7 @@ const render = (data) => {
     if (count >= data.length) {
       interval.stop()
     }
-  }, 1000)
+  }, 3000)
 
   function renderPatch (patchWinrates) {
     const heroData = patchWinrates.data
@@ -53,31 +54,40 @@ const render = (data) => {
       .padding(0.2)
 
     const barRect = g.selectAll('rect.bar').data(heroData, yValue)
+    const heroName = g.selectAll('text.heroname').data(heroData, yValue)
+    const heroWR = g.selectAll('text.herowr').data(heroData, yValue)
 
-    barRect.exit().remove()
+    const onExit = (exit) => exit
+      .transition().duration(tDuration / 2)
+      .attr('y', height)
+      .attr('width', 0)
+      .remove()
+
+    barRect.exit().call(onExit)
 
     barRect.enter()
       .append('rect')
       .attr('class', 'bar')
       .attr('stroke', 'black')
       .style('fill', (d) => `${getColor(d.id - 71)}`)
+      .attr('y', height)
       .merge(barRect)
+      .attr('height', yScale.bandwidth())
+      .transition().duration(tDuration)
       .attr('y', (d) => yScale(yValue(d)))
       .attr('width', (d) => xScale(xValue(d)))
-      .attr('height', yScale.bandwidth())
 
-    const heroName = g.selectAll('text.heroname').data(heroData, yValue)
-    const heroWR = g.selectAll('text.herowr').data(heroData, yValue)
-
-    heroName.exit().remove()
-    heroWR.exit().remove()
+    heroWR.exit().call(onExit)
+    heroName.exit().call(onExit)
 
     heroName.enter().append('text')
       .attr('class', 'heroname')
       .attr('text-anchor', 'end')
       .attr('dominant-baseline', 'central')
       .style('fill', 'black')
+      .attr('y', height)
       .merge(heroName)
+      .transition().duration(tDuration)
       .attr('x', (d) => xScale(xValue(d)) - 10)
       .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() / 2)
       .text((d) => yValue(d))
@@ -87,7 +97,9 @@ const render = (data) => {
       .attr('text-anchor', 'start')
       .attr('dominant-baseline', 'central')
       .style('fill', 'black')
+      .attr('y', height)
       .merge(heroWR)
+      .transition().duration(tDuration)
       .attr('x', (d) => xScale(xValue(d)) + 5)
       .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() / 2)
       .text((d) => d3.format('.1f')(d.winrate))
