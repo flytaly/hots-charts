@@ -18,11 +18,6 @@ const innerHeight = height - margin.top - margin.bottom
 const render = (data) => {
   const xValue = (d) => d.winrate
   const yValue = (d) => d.name
-
-  const currentHeroData = data[data.length - 1].data
-  const patchVer = data[data.length - 1].version.split('.').slice(0, 3).join('.')
-
-  /* Scales  */
   const flatWinrates = data.flatMap((ver) => ver.data.map(xValue))
 
   const xScale = d3.scaleLinear()
@@ -30,57 +25,82 @@ const render = (data) => {
     .range([0, innerWidth])
     .nice()
 
-  const yScale = d3.scaleBand()
-    .domain(currentHeroData.map(yValue))
-    .range([0, innerHeight])
-    .padding(0.2)
-
-  /* Axes */
   const xAxis = d3.axisBottom(xScale).tickFormat(n => `${n}%`)
 
-  // const yAxis = d3.axisLeft(yScale)
-
-  /* Groups */
   const g = svg.append('g')
     .attr('transform', `translate(${margin.left},${margin.top})`)
 
-  const xAxisG = g.append('g').call(xAxis)
+  g.append('g').call(xAxis)
     .attr('transform', `translate(0, ${innerHeight})`)
 
-  /* Selections */
-  var bar = g.selectAll('g.bar')
-    .data(currentHeroData)
-    .enter().append('g')
-    .attr('class', 'bar')
+  let count = 0
 
-  bar.append('rect')
-    .attr('y', (d) => yScale(yValue(d)))
-    .attr('width', (d) => xScale(xValue(d)))
-    .attr('height', yScale.bandwidth())
-    .attr('stroke', 'black')
-    .style('fill', (d) => `${getColor(d.id - 71)}`)
+  const interval = d3.interval(() => {
+    renderPatch(data[count])
+    count += 1
+    if (count >= data.length) {
+      interval.stop()
+    }
+  }, 1000)
 
-  bar.append('text')
-    .attr('x', (d) => xScale(xValue(d)) - 10)
-    .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() / 2)
-    .attr('text-anchor', 'end')
-    .attr('dominant-baseline', 'central')
-    .text((d) => yValue(d))
-    .style('fill', 'black')
+  function renderPatch (patchWinrates) {
+    const heroData = patchWinrates.data
+    const patchVer = patchWinrates.version.split('.').slice(0, 3).join('.')
 
-  bar.append('text')
-    .attr('x', (d) => xScale(xValue(d)) + 5)
-    .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() / 2)
-    .attr('text-anchor', 'start')
-    .attr('dominant-baseline', 'central')
-    .text((d) => d3.format('.1f')(d.winrate))
-    .style('fill', 'black')
+    const yScale = d3.scaleBand()
+      .domain(heroData.map(yValue))
+      .range([0, innerHeight])
+      .padding(0.2)
 
-  g.append('text')
-    .attr('x', innerWidth)
-    .attr('y', innerHeight - 10)
-    .attr('text-anchor', 'end')
-    .text(`Patch: ${patchVer}`)
+    const barRect = g.selectAll('rect.bar').data(heroData, yValue)
+
+    barRect.exit().remove()
+
+    barRect.enter()
+      .append('rect')
+      .attr('class', 'bar')
+      .attr('stroke', 'black')
+      .style('fill', (d) => `${getColor(d.id - 71)}`)
+      .merge(barRect)
+      .attr('y', (d) => yScale(yValue(d)))
+      .attr('width', (d) => xScale(xValue(d)))
+      .attr('height', yScale.bandwidth())
+
+    const heroName = g.selectAll('text.heroname').data(heroData, yValue)
+    const heroWR = g.selectAll('text.herowr').data(heroData, yValue)
+
+    heroName.exit().remove()
+    heroWR.exit().remove()
+
+    heroName.enter().append('text')
+      .attr('class', 'heroname')
+      .attr('text-anchor', 'end')
+      .attr('dominant-baseline', 'central')
+      .style('fill', 'black')
+      .merge(heroName)
+      .attr('x', (d) => xScale(xValue(d)) - 10)
+      .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() / 2)
+      .text((d) => yValue(d))
+
+    heroWR.enter().append('text')
+      .attr('class', 'herowr')
+      .attr('text-anchor', 'start')
+      .attr('dominant-baseline', 'central')
+      .style('fill', 'black')
+      .merge(heroWR)
+      .attr('x', (d) => xScale(xValue(d)) + 5)
+      .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() / 2)
+      .text((d) => d3.format('.1f')(d.winrate))
+
+    g.select('text.patchNumber').remove()
+    g
+      .append('text')
+      .attr('class', 'patchNumber')
+      .attr('x', innerWidth)
+      .attr('y', innerHeight - 10)
+      .attr('text-anchor', 'end')
+      .text(d => `Patch: ${patchVer}`)
+  }
 }
 
 fetch('stats/winrates-historical.json')
