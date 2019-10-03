@@ -1,7 +1,7 @@
 /* global d3 */
 
 const minPopularity = 0
-const maxHeroes = 15
+const maxHeroes = 13
 const getColor = (n) => `hsl(${n * 3.6}, 30%, 90%)`
 const tDuration = 1000
 const tEase = d3.easeSinOut
@@ -26,13 +26,21 @@ const render = (data) => {
     .range([0, innerWidth])
     .nice()
 
+  const xScale2 = d3.scaleLinear()
+    .domain([0, 100])
+    .range([0, innerWidth / 2])
+    .nice()
+
   const xAxis = d3.axisBottom(xScale).tickFormat(n => `${n}%`)
+  const xAxis2 = d3.axisBottom(xScale2).tickFormat(n => `${n}%`).ticks(2)
 
   const g = svg.append('g')
     .attr('transform', `translate(${margin.left},${margin.top})`)
 
   g.append('g').call(xAxis)
     .attr('transform', `translate(0, ${innerHeight})`)
+  g.append('g').call(xAxis2)
+    .attr('transform', `translate(0, ${innerHeight + 30})`)
 
   let count = 0
 
@@ -55,8 +63,10 @@ const render = (data) => {
       .padding(0.2)
 
     const barRect = g.selectAll('rect.bar').data(heroData, yValue)
+    const subBarRect = g.selectAll('rect.subbar').data(heroData, yValue)
     const heroName = g.selectAll('text.heroname').data(heroData, yValue)
     const heroWR = g.selectAll('text.herowr').data(heroData, yValue)
+    const heroPop = g.selectAll('text.heropop').data(heroData, yValue)
     const images = g.selectAll('image.heroImg').data(heroData, yValue)
 
     const onExit = (exit) => exit
@@ -66,6 +76,19 @@ const render = (data) => {
       .remove()
 
     barRect.exit().call(onExit)
+    subBarRect.exit().call(onExit)
+
+    subBarRect.enter()
+      .append('rect')
+      .attr('class', 'subbar')
+      .attr('stroke', 'grey')
+      .style('fill', (d) => 'white')
+      .attr('y', height)
+      .merge(subBarRect)
+      .attr('height', yScale.bandwidth() / 3)
+      .transition().duration(tDuration).ease(tEase)
+      .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() * 0.66)
+      .attr('width', (d) => xScale2(d.popularity))
 
     barRect.enter()
       .append('rect')
@@ -74,13 +97,14 @@ const render = (data) => {
       .style('fill', (d) => `${getColor(d.id - 71)}`)
       .attr('y', height)
       .merge(barRect)
-      .attr('height', yScale.bandwidth())
+      .attr('height', yScale.bandwidth() * 0.66)
       .transition().duration(tDuration).ease(tEase)
       .attr('y', (d) => yScale(yValue(d)))
       .attr('width', (d) => xScale(xValue(d)))
 
     heroWR.exit().call(onExit)
     heroName.exit().call(onExit)
+    heroPop.exit().call(onExit)
 
     heroName.enter().append('text')
       .attr('class', 'heroname')
@@ -90,9 +114,10 @@ const render = (data) => {
       .attr('y', height)
       .text((d) => yValue(d))
       .merge(heroName)
+      .attr('font-size', yScale.bandwidth() / 2)
       .transition().duration(tDuration).ease(tEase)
       .attr('x', (d) => xScale(xValue(d)) - 5)
-      .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() / 2)
+      .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() * 0.33)
 
     heroWR.enter().append('text')
       .attr('class', 'herowr')
@@ -101,10 +126,24 @@ const render = (data) => {
       .style('fill', 'black')
       .attr('y', height)
       .merge(heroWR)
+      .attr('font-size', yScale.bandwidth() / 2)
       .transition().duration(tDuration).ease(tEase)
       .attr('x', (d) => xScale(xValue(d)) + 5)
-      .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() / 2)
-      .text((d) => d3.format('.1f')(d.winrate) + ' (' + d.popularity + ')')
+      .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() * 0.33)
+      .text((d) => d3.format('.1f')(d.winrate))
+
+    heroPop.enter().append('text')
+      .attr('class', 'heropop')
+      .attr('text-anchor', 'end')
+      .attr('dominant-baseline', 'central')
+      .style('fill', 'black')
+      .attr('y', height)
+      .merge(heroPop)
+      .attr('font-size', yScale.bandwidth() / 3)
+      .transition().duration(tDuration).ease(tEase)
+      .attr('x', (d) => xScale2(d.popularity) - 3)
+      .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() * 0.825)
+      .text((d) => d.popularity)
 
     images.enter().append('image')
       .attr('class', 'heroImg')
