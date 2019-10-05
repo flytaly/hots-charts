@@ -12,7 +12,12 @@ async function parseData () {
   // split replays to files per version and filter out unwanted games
   if (!versions.length) {
     console.log('spit replays by versions')
-    await splitReplaysByVersion(dataFiles.replays, versionsDir)
+    const gameTypes = {
+      ranked: ['HeroLeague', 'StormLeague'],
+      qm: ['QuickMatch']
+    }
+
+    await splitReplaysByVersion(dataFiles.replays, versionsDir, gameTypes.ranked)
     versions = fs.readdirSync(versionsDir)
   }
   let replayIdToVersion = {}
