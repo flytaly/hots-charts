@@ -11,7 +11,8 @@ if (!fs.existsSync(statsOutputDir)) { fs.mkdirSync(statsOutputDir) }
 const dataFiles = {
   replays: path.join(dataDir, 'db-dumps/replays.csv.gz'),
   players: path.join(dataDir, 'db-dumps/players.csv.gz'),
-  bans: path.join(dataDir, 'db-dumps/bans.csv.gz')
+  bans: path.join(dataDir, 'db-dumps/bans.csv.gz'),
+  maxParsedId: path.join(dataDir, 'db-dumps/max_parsed_id')
 }
 
 module.exports = {
