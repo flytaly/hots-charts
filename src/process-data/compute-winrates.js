@@ -1,6 +1,6 @@
 const { statsOutputDir } = require('../configs')
 const path = require('path')
-const heroesInfo = require('./heroes')
+const { heroesNormalizedById: heroesInfo } = require('./heroes')
 const fs = require('fs')
 
 const defaultInPath = path.join(statsOutputDir, 'win-lose-ban.json')

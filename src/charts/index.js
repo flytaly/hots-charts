@@ -172,7 +172,7 @@ const render = (data) => {
   }
 }
 
-fetch('stats/winrates-historical.json')
+fetch('stats/ranked-stats.json')
   .then((resp) => resp.json())
   .then(data => {
     data = data.filter(d => d.totalGames > 1000)

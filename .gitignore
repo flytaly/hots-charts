@@ -3,5 +3,4 @@ node_modules/
 .vscode
 data/db-dumps/
 data/versions/
-stats/win-lose.json
-stats/win-lose-ban.json
+stats/archive
