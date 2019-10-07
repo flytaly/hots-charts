@@ -18,6 +18,7 @@ const innerHeight = height - margin.top - margin.bottom
 
 const render = (data) => {
   const xValue = (d) => d.winrate
+  const xValue2 = (d) => d.popularity
   const yValue = (d) => d.name
   const flatWinrates = data.flatMap((ver) => ver.data.map(xValue))
 
@@ -88,7 +89,7 @@ const render = (data) => {
       .attr('height', yScale.bandwidth() / 3)
       .transition().duration(tDuration).ease(tEase)
       .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() * 0.66)
-      .attr('width', (d) => xScale2(d.popularity))
+      .attr('width', (d) => xScale2(xValue2(d)))
 
     barRect.enter()
       .append('rect')
@@ -130,7 +131,11 @@ const render = (data) => {
       .transition().duration(tDuration).ease(tEase)
       .attr('x', (d) => xScale(xValue(d)) + 5)
       .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() * 0.33)
-      .text((d) => d3.format('.1f')(d.winrate))
+      // .text((d) => d3.format('.1f')(xValue(d)))
+      .tween('text', function (d) {
+        const i = d3.interpolate(this.textContent, xValue(d))
+        return function (t) { this.textContent = d3.format('.1f')(i(t)) }
+      })
 
     heroPop.enter().append('text')
       .attr('class', 'heropop')
@@ -141,9 +146,13 @@ const render = (data) => {
       .merge(heroPop)
       .attr('font-size', yScale.bandwidth() / 3)
       .transition().duration(tDuration).ease(tEase)
-      .attr('x', (d) => xScale2(d.popularity) - 3)
+      .attr('x', (d) => xScale2(xValue2(d)) - 3)
       .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() * 0.825)
-      .text((d) => d.popularity)
+      // .text(xValue2)
+      .tween('text', function (d) {
+        const i = d3.interpolateRound(this.textContent, xValue2(d))
+        return function (t) { this.textContent = i(t) }
+      })
 
     images.enter().append('image')
       .attr('class', 'heroImg')
