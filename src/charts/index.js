@@ -1,8 +1,8 @@
 import * as d3 from 'd3'
 
 export default () => {
-  const minPopularity = 0
-  const maxHeroes = 13
+  const minPopularity = 8
+  const maxHeroes = 10
   const getColor = (n) => `hsl(${n * 3.6}, 30%, 90%)`
   const tDuration = 1000
   const tEase = d3.easeSinOut
@@ -21,10 +21,10 @@ export default () => {
     const xValue = (d) => d.winrate
     const xValue2 = (d) => d.popularity
     const yValue = (d) => d.name
-    const flatWinrates = data.flatMap((ver) => ver.data.map(xValue))
+    const flatWinrates = data.flatMap((ver) => ver.data.filter(d => xValue2(d) >= minPopularity).map(xValue))
 
     const xScale = d3.scaleLinear()
-      .domain([d3.min(flatWinrates) - 10, d3.max(flatWinrates) + 2])
+      .domain([d3.min(flatWinrates) - 5, d3.max(flatWinrates) + 2])
       .range([0, innerWidth])
       .nice()
 
@@ -34,7 +34,7 @@ export default () => {
       .nice()
 
     const xAxis = d3.axisBottom(xScale).tickFormat(n => `${n}%`)
-    const xAxis2 = d3.axisBottom(xScale2).tickFormat(n => `${n}%`).ticks(2)
+    const xAxis2 = d3.axisTop(xScale2).tickFormat(n => `${n}%`).ticks(2)
 
     const g = svg.append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`)
@@ -42,7 +42,7 @@ export default () => {
     g.append('g').call(xAxis)
       .attr('transform', `translate(0, ${innerHeight})`)
     g.append('g').call(xAxis2)
-      .attr('transform', `translate(0, ${innerHeight + 30})`)
+    // .attr('transform', `translate(0, ${innerHeight + 30})`)
 
     let count = 0
 
@@ -72,7 +72,7 @@ export default () => {
       const images = g.selectAll('image.heroImg').data(heroData, yValue)
 
       const onExit = (exit) => exit
-        .transition().duration(tDuration / 2).ease(tEase)
+        .transition().duration(tDuration * 0.70).ease(tEase)
         .attr('y', height)
         .attr('width', 0)
         .remove()
@@ -104,9 +104,9 @@ export default () => {
         .attr('y', (d) => yScale(yValue(d)))
         .attr('width', (d) => xScale(xValue(d)))
 
-      heroWR.exit().call(onExit)
-      heroName.exit().call(onExit)
-      heroPop.exit().call(onExit)
+      heroWR.exit().remove()
+      heroName.exit().remove()
+      heroPop.exit().remove()
 
       heroName.enter().append('text')
         .attr('class', 'heroname')
@@ -116,7 +116,7 @@ export default () => {
         .attr('y', height)
         .text((d) => yValue(d))
         .merge(heroName)
-        .attr('font-size', yScale.bandwidth() / 2)
+        .attr('font-size', yScale.bandwidth() * 0.4)
         .transition().duration(tDuration).ease(tEase)
         .attr('x', (d) => xScale(xValue(d)) - 5)
         .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() * 0.33)
