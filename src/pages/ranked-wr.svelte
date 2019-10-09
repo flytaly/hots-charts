@@ -1,5 +1,5 @@
 <script>
-  import charts from "./charts";
+  import charts from "../charts";
   import { onMount } from "svelte";
   onMount(() => {
     charts();
