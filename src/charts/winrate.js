@@ -68,13 +68,12 @@ export default () => {
     function onDateSliderChange (ver) {
       const idx = data.findIndex(d => ver <= d.version)
       count = idx !== -1 ? idx : data.length - 1
-      if (count < data.length) { renderPatch(data[count]) } else { interval.stop() }
+      if (count < data.length) { renderPatch(data[count], false) } else { interval.stop() }
     }
 
-    function renderPatch (patchWinrates) {
+    function renderPatch (patchWinrates, withTransitions = true) {
       const heroData = patchWinrates.data
       const patchVer = patchWinrates.version
-
       const yScale = d3.scaleBand()
         .domain(heroData.map(yValue))
         .range([0, innerHeight])
@@ -87,11 +86,17 @@ export default () => {
       const heroPop = g.selectAll('text.heropop').data(heroData, yValue)
       const images = g.selectAll('image.heroImg').data(heroData, yValue)
 
-      const onExit = (exit) => exit
-        .transition().duration(tDuration * 0.70).ease(tEase)
-        .attr('y', innerHeight)
-        .attr('width', 0)
-        .remove()
+      const onExit = (exitSelection) => {
+        if (withTransitions) {
+          exitSelection
+            .transition().duration(tDuration * 0.70).ease(tEase)
+            .attr('y', innerHeight)
+            .attr('width', 0)
+            .remove()
+        } else {
+          exitSelection.remove()
+        }
+      }
 
       barRect.exit().call(onExit)
       subBarRect.exit().call(onExit)
@@ -104,9 +109,12 @@ export default () => {
         .attr('y', innerHeight)
         .merge(subBarRect)
         .attr('height', yScale.bandwidth() / 3)
-        .transition().duration(tDuration).ease(tEase)
-        .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() * 0.66)
-        .attr('width', (d) => xScale2(xValue2(d)))
+        .call((selection) => {
+          if (withTransitions) { selection = selection.transition().duration(tDuration).ease(tEase) } else { selection = selection.interrupt() }
+          selection
+            .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() * 0.66)
+            .attr('width', (d) => xScale2(xValue2(d)))
+        })
 
       barRect.enter()
         .append('rect')
@@ -116,9 +124,12 @@ export default () => {
         .attr('y', innerHeight)
         .merge(barRect)
         .attr('height', yScale.bandwidth() * 0.66)
-        .transition().duration(tDuration).ease(tEase)
-        .attr('y', (d) => yScale(yValue(d)))
-        .attr('width', (d) => xScale(xValue(d)))
+        .call((selection) => {
+          if (withTransitions) { selection = selection.transition().duration(tDuration).ease(tEase) } else { selection = selection.interrupt() }
+          selection
+            .attr('y', (d) => yScale(yValue(d)))
+            .attr('width', (d) => xScale(xValue(d)))
+        })
 
       heroWR.exit().remove()
       heroName.exit().remove()
@@ -133,9 +144,12 @@ export default () => {
         .text((d) => yValue(d))
         .merge(heroName)
         .attr('font-size', yScale.bandwidth() * 0.4)
-        .transition().duration(tDuration).ease(tEase)
-        .attr('x', (d) => xScale(xValue(d)) - 5)
-        .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() * 0.33)
+        .call((selection) => {
+          if (withTransitions) { selection = selection.transition().duration(tDuration).ease(tEase) } else { selection = selection.interrupt() }
+          selection
+            .attr('x', (d) => xScale(xValue(d)) - 5)
+            .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() * 0.33)
+        })
 
       heroWR.enter().append('text')
         .attr('class', 'herowr')
@@ -145,13 +159,17 @@ export default () => {
         .attr('y', innerHeight)
         .merge(heroWR)
         .attr('font-size', yScale.bandwidth() * 0.4)
-        .transition().duration(tDuration).ease(tEase)
-        .attr('x', (d) => xScale(xValue(d)) + 5)
-        .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() * 0.33)
-      // .text((d) => d3.format('.1f')(xValue(d)))
-        .tween('text', function (d) {
-          const i = d3.interpolate(this.textContent, xValue(d))
-          return function (t) { this.textContent = d3.format('.1f')(i(t)) }
+        .call((selection) => {
+          if (withTransitions) {
+            selection = selection.transition().duration(tDuration).ease(tEase).tween('text', function (d) {
+              const i = d3.interpolate(this.textContent, xValue(d))
+              return function (t) { this.textContent = d3.format('.1f')(i(t)) }
+            })
+          } else { selection = selection.interrupt().text(d => d3.format('.1f')(xValue(d))) }
+
+          selection
+            .attr('x', (d) => xScale(xValue(d)) + 5)
+            .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() * 0.33)
         })
 
       heroPop.enter().append('text')
@@ -162,13 +180,17 @@ export default () => {
         .attr('y', innerHeight)
         .merge(heroPop)
         .attr('font-size', yScale.bandwidth() * 0.3)
-        .transition().duration(tDuration).ease(tEase)
-        .attr('x', (d) => xScale2(xValue2(d)) - 3)
-        .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() * 0.825)
-      // .text(xValue2)
-        .tween('text', function (d) {
-          const i = d3.interpolateRound(this.textContent, xValue2(d))
-          return function (t) { this.textContent = i(t) }
+        .call((selection) => {
+          if (withTransitions) {
+            selection = selection.transition().duration(tDuration).ease(tEase).tween('text', function (d) {
+              const i = d3.interpolateRound(this.textContent, xValue2(d))
+              return function (t) { this.textContent = i(t) }
+            })
+          } else { selection = selection.interrupt().text(xValue2) }
+
+          selection
+            .attr('x', (d) => xScale2(xValue2(d)) - 3)
+            .attr('y', (d) => yScale(yValue(d)) + yScale.bandwidth() * 0.825)
         })
 
       images.enter().append('image')
@@ -179,14 +201,19 @@ export default () => {
         .attr('width', yScale.bandwidth())
         .attr('height', yScale.bandwidth())
         .attr('x', -yScale.bandwidth())
-        .transition().duration(tDuration).ease(tEase)
-        .attr('y', (d) => yScale(yValue(d)))
+        .call((selection) => {
+          if (withTransitions) { selection = selection.transition().duration(tDuration).ease(tEase) } else { selection = selection.interrupt() }
+          selection.attr('y', (d) => yScale(yValue(d)))
+        })
 
-      images.exit()
-        .transition().duration(tDuration / 2).ease(tEase)
-        .attr('y', innerHeight)
-        .remove()
-
+      if (withTransitions) {
+        images.exit()
+          .transition().duration(tDuration / 2).ease(tEase)
+          .attr('y', innerHeight)
+          .remove()
+      } else {
+        images.exit().remove()
+      }
       g.select('text.patchNumber').remove()
       g
         .append('text')

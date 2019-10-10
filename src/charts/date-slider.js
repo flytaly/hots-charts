@@ -73,9 +73,9 @@ const dateSlider = (g, width, tDuration, onChange) => {
     .attr('transform', 'translate(0, -18)')
 
   function update (h, withTransition = true) {
-    const _h = withTransition ? handle.transition().duration(tDuration) : handle
+    const _h = withTransition ? handle.transition().duration(tDuration) : handle.interrupt()
     _h.attr('cx', x(h))
-    const _l = withTransition ? label.transition().duration(tDuration) : label
+    const _l = withTransition ? label.transition().duration(tDuration) : label.interrupt()
     _l
       .attr('cx', x(h))
       .attr('x', x(h))
