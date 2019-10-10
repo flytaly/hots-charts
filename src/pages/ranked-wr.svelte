@@ -1,13 +1,9 @@
 <script>
-  import charts from "../charts";
-  import { onMount } from "svelte";
-  onMount(() => {
-    charts();
-  });
+  import Charts from "../charts/charts.svelte";
 </script>
 
 <style>
 
 </style>
 
-<svg width="700" height="600" />
+<Charts />
