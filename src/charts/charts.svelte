@@ -1,6 +1,8 @@
 <script>
   import charts from "./winrate";
+  import ChartContainer from "./chart-container.svelte";
   import { onMount } from "svelte";
+
   onMount(() => {
     charts();
   });
@@ -43,4 +45,4 @@
   }
 </style>
 
-<svg width="700" height="600" />
+<ChartContainer />

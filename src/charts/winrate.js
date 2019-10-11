@@ -10,8 +10,7 @@ export default () => {
   const tEase = d3.easeSinOut
   const svg = d3.select('svg')
 
-  const width = +svg.attr('width')
-  const height = +svg.attr('height')
+  const [width, height] = svg.attr('viewBox').split(' ').slice(2)
 
   const margin = {
     top: 50, right: 50, bottom: 100, left: 50
