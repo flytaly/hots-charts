@@ -38,9 +38,9 @@
     stroke-opacity: 0.5;
     stroke-width: 1.25px;
   }
-  svg {
+  .chartContainer {
     max-width: 100%;
   }
 </style>
 
-<svg {width} viewBox="0 0 {width} {height}" />
+<svg class="chartContainer" {width} viewBox="0 0 {width} {height}" />

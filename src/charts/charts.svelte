@@ -3,6 +3,7 @@
   import charts from "./winrate";
   import ChartContainer from "./chart-container.svelte";
   import { onMount, afterUpdate } from "svelte";
+  import Controls from "./controls.svelte";
 
   afterUpdate(() => {
     const { data } = $rankedData;
@@ -16,4 +17,5 @@
 
 </style>
 
+<Controls />
 <ChartContainer />

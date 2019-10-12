@@ -17,7 +17,7 @@ export default (data, minPopularity = 8, maxHeroes = 10) => {
   const getColor = (n) => `hsl(${n * 3.6}, 30%, 90%)`
   const tDuration = 1000
   const tEase = d3.easeSinOut
-  const svg = d3.select('svg')
+  const svg = d3.select('svg.chartContainer')
 
   const [width, height] = svg.attr('viewBox').split(' ').slice(2)
 
@@ -27,7 +27,7 @@ export default (data, minPopularity = 8, maxHeroes = 10) => {
   const innerWidth = width - margin.left - margin.right
   const innerHeight = height - margin.top - margin.bottom
 
-  if (interval) { console.log(1); interval.stop() }
+  if (interval) { interval.stop() }
   svg.selectAll('*').remove()
 
   const xValue = (d) => d.winrate
