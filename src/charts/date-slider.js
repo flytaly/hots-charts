@@ -19,7 +19,6 @@ const getPatchBeDate = (date) => {
 const dateSlider = (g, width, tDuration, onChange) => {
   const formatDate = d3.timeFormat('%b %Y')
   const formatDateYear = d3.timeFormat('%Y')
-  const parseDate = d3.timeParse('%m/%d/%y')
 
   let currentValue = 0
   const slider = g
