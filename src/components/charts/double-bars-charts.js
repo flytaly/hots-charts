@@ -3,7 +3,7 @@ import dateSlider from './date-slider'
 import patchInfo from '../../patches.json'
 
 const margin = {
-  top: 30, right: 30, bottom: 100, left: 50
+  top: 10, right: 30, bottom: 130, left: 50
 }
 const getHeroColor = (n) => `hsl(${(n - 71) * 3.6}, 30%, 90%)`
 
@@ -32,10 +32,10 @@ export default class DoubleBarsHeroesChart {
     this.g = this.svg.append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`)
     this.g.append('g').attr('class', 'xAxis').attr('transform', `translate(0, ${this.innerHeight})`)
-    this.g.append('g').attr('class', 'x2Axis')
+    this.g.append('g').attr('class', 'x2Axis').attr('transform', `translate(0, ${this.innerHeight + 30})`)
 
     const sliderG = this.g.append('g')
-      .attr('transform', `translate(0,${this.innerHeight + 60})`)
+      .attr('transform', `translate(0, ${this.innerHeight + 85})`)
     this.updateDateSlider = dateSlider(sliderG, this.innerWidth, this.tDuration, (v) => this.onDateSliderChange(v))
   }
 
@@ -55,7 +55,7 @@ export default class DoubleBarsHeroesChart {
     this.xScale = this.getXScale()
     this.x2Scale = this.getX2Scale()
     const xAxis = d3.axisBottom(this.xScale).tickFormat(n => `${n}%`)
-    const x2Axis = d3.axisTop(this.x2Scale).tickFormat(n => `${n}%`).ticks(2)
+    const x2Axis = d3.axisBottom(this.x2Scale).tickFormat(n => `${n}%`).ticks(2)
 
     this.g.select('.xAxis').transition().call(xAxis)
     this.g.select('.x2Axis').call(x2Axis)
