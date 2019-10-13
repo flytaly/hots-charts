@@ -3,12 +3,12 @@ import dateSlider from './date-slider'
 import patchInfo from '../../patches.json'
 
 const margin = {
-  top: 50, right: 50, bottom: 100, left: 50
+  top: 30, right: 50, bottom: 100, left: 50
 }
 const getHeroColor = (n) => `hsl(${(n - 71) * 3.6}, 30%, 90%)`
 
 export default class DoubleBarsHeroesChart {
-  constructor (data, xValue, x2Value, onPlayingEnd) {
+  constructor ({ data, xValue, x2Value, onPlayingEnd }) {
     this.data = data
 
     this.xValue = xValue
@@ -20,6 +20,7 @@ export default class DoubleBarsHeroesChart {
     this.tEase = d3.easeSinOut
     this.isPlaying = true
     this.onPlayingEnd = onPlayingEnd
+    this.isReversed = true
   }
 
   mount () {
@@ -38,7 +39,7 @@ export default class DoubleBarsHeroesChart {
     this.updateDateSlider = dateSlider(sliderG, this.innerWidth, this.tDuration, (v) => this.onDateSliderChange(v))
   }
 
-  update (data, xDomain, x2Domain, isPlaying = true) {
+  update ({ data, xDomain, x2Domain, isPlaying = true, isReversed = false }) {
     if (data) this.data = data
     if (xDomain) {
       this.xDomain = xDomain
@@ -49,6 +50,7 @@ export default class DoubleBarsHeroesChart {
       this.x2Scale = this.getX2Scale()
     }
     this.isPlaying = isPlaying
+    this.isReversed = isReversed
 
     this.xScale = this.getXScale()
     this.x2Scale = this.getX2Scale()
@@ -72,6 +74,7 @@ export default class DoubleBarsHeroesChart {
       this.dataOffset += 1
       if (this.dataOffset >= this.data.length) {
         this.clearInterval()
+        this.dataOffset = this.data.length - 1
         this.onPlayingEnd && this.onPlayingEnd()
       } else {
         this.render()
@@ -123,12 +126,14 @@ export default class DoubleBarsHeroesChart {
     const bar2Value = this.g.selectAll('text.bar2Value').data(heroData, this.yValue)
     const images = this.g.selectAll('image.barImg').data(heroData, this.yValue)
 
+    const yStart = this.isReversed ? -10 : this.innerHeight
+    const widthStart = this.isReversed ? this.innerWidth * 0.70 : 0
+
     const onExit = (exitSelection) => {
       if (withTransitions) {
         exitSelection
           .transition().duration(this.tDuration * 0.70).ease(this.tEase)
-          .attr('y', this.innerHeight)
-          .attr('width', 0)
+          .attr('y', yStart)
           .remove()
       } else {
         exitSelection.remove()
@@ -140,31 +145,13 @@ export default class DoubleBarsHeroesChart {
     barValue.exit().remove()
     bar2Value.exit().remove()
 
-    barRect.enter()
-      .append('rect')
-      .attr('class', 'bar')
-      .attr('stroke', 'black')
-      .style('fill', (d) => `${getHeroColor(d.id)}`)
-      .attr('y', this.innerHeight)
-      .merge(barRect)
-      .attr('height', this.yScale.bandwidth() * 0.66)
-      .call((selection) => {
-        if (withTransitions) {
-          selection = selection.transition().duration(this.tDuration).ease(this.tEase)
-        } else {
-          selection = selection.interrupt()
-        }
-        selection
-          .attr('y', (d) => this.yScale(this.yValue(d)))
-          .attr('width', (d) => this.xScale(this.xValue(d)))
-      })
-
     bar2Rect.enter()
       .append('rect')
       .attr('class', 'subbar')
       .attr('stroke', 'grey')
       .style('fill', (d) => 'white')
-      .attr('y', this.innerHeight)
+      .attr('y', yStart)
+      .attr('width', widthStart / 2)
       .merge(bar2Rect)
       .attr('height', this.yScale.bandwidth() / 3)
       .call((selection) => {
@@ -178,12 +165,33 @@ export default class DoubleBarsHeroesChart {
           .attr('width', (d) => this.x2Scale(this.x2Value(d)))
       })
 
+    barRect.enter()
+      .append('rect')
+      .attr('class', 'bar')
+      .attr('stroke', 'black')
+      .style('fill', (d) => `${getHeroColor(d.id)}`)
+      .attr('y', yStart)
+      .attr('width', widthStart)
+      .merge(barRect)
+      .attr('height', this.yScale.bandwidth() * 0.66)
+      .call((selection) => {
+        if (withTransitions) {
+          selection = selection.transition().duration(this.tDuration).ease(this.tEase)
+        } else {
+          selection = selection.interrupt()
+        }
+        selection
+          .attr('y', (d) => this.yScale(this.yValue(d)))
+          .attr('width', (d) => this.xScale(this.xValue(d)))
+      })
+
     barName.enter().append('text')
       .attr('class', 'barName')
       .attr('text-anchor', 'end')
       .attr('dominant-baseline', 'central')
       .style('fill', 'black')
-      .attr('y', this.innerHeight)
+      .attr('y', yStart)
+      .attr('x', widthStart - 5)
       .text((d) => this.yValue(d))
       .merge(barName)
       .attr('font-size', this.yScale.bandwidth() * 0.4)
@@ -203,15 +211,17 @@ export default class DoubleBarsHeroesChart {
       .attr('text-anchor', 'start')
       .attr('dominant-baseline', 'central')
       .style('fill', 'black')
-      .attr('y', this.innerHeight)
+      .attr('y', yStart)
+      .attr('x', widthStart + 5)
       .merge(barValue)
       .attr('font-size', this.yScale.bandwidth() * 0.4)
       .call((selection) => {
         if (withTransitions) {
-          const xValue = this.xValue
+          const { xValue, isReversed } = this
           selection = selection.transition().duration(this.tDuration).ease(this.tEase)
             .tween('text', function (d) {
-              const i = d3.interpolate(this.textContent, xValue(d))
+              const startValue = isReversed ? xValue(d) + 3 : xValue(d) - 3
+              const i = d3.interpolate(this.textContent || startValue, xValue(d))
               return function (t) { this.textContent = d3.format('.1f')(i(t)) }
             })
         } else { selection = selection.interrupt().text(d => d3.format('.1f')(this.xValue(d))) }
@@ -226,7 +236,8 @@ export default class DoubleBarsHeroesChart {
       .attr('text-anchor', 'start')
       .attr('dominant-baseline', 'central')
       .style('fill', 'black')
-      .attr('y', this.innerHeight)
+      .attr('y', yStart)
+      .attr('x', widthStart / 2 + 3)
       .merge(bar2Value)
       .attr('font-size', this.yScale.bandwidth() * 0.3)
       .call((selection) => {
@@ -234,7 +245,7 @@ export default class DoubleBarsHeroesChart {
           const { x2Value } = this
           selection = selection.transition().duration(this.tDuration).ease(this.tEase)
             .tween('text', function (d) {
-              const i = d3.interpolateRound(this.textContent, x2Value(d))
+              const i = d3.interpolateRound(this.textContent || x2Value(d), x2Value(d))
               return function (t) { this.textContent = i(t) }
             })
         } else {
@@ -249,7 +260,7 @@ export default class DoubleBarsHeroesChart {
     images.enter().append('image')
       .attr('class', 'barImg')
       .attr('xlink:href', (d) => `/assets/images/${d.shortName}.png`)
-      .attr('y', this.innerHeight)
+      .attr('y', yStart)
       .merge(images)
       .attr('width', this.yScale.bandwidth())
       .attr('height', this.yScale.bandwidth())
@@ -266,7 +277,7 @@ export default class DoubleBarsHeroesChart {
     if (withTransitions) {
       images.exit()
         .transition().duration(this.tDuration / 2).ease(this.tEase)
-        .attr('y', this.innerHeight)
+        .attr('y', yStart)
         .remove()
     } else {
       images.exit().remove()

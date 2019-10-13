@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 610px;
+    width: 900px;
     max-width: 100%;
   }
 </style>

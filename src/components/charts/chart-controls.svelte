@@ -1,6 +1,8 @@
 <script>
   import Slider from "@smui/slider";
-  import { minPopularity, maxHeroes } from "../../store";
+  import FormField from "@smui/form-field";
+  import Switch from "@smui/switch";
+  import { minPopularity, maxHeroes, isAtBottom } from "../../store";
 </script>
 
 <style>
@@ -19,8 +21,11 @@
     padding-right: 1em;
     white-space: nowrap;
   }
+  :global(.mdc-form-field),
   .name {
     font-weight: bold;
+    font-size: inherit;
+    font-family: inherit;
   }
   .slider {
     width: 5em;
@@ -46,5 +51,11 @@
     <div class="slider">
       <Slider bind:value={$maxHeroes} min={8} max={30} discrete />
     </div>
+  </article>
+  <article class="item">
+    <FormField>
+      <Switch bind:checked={$isAtBottom} />
+      <span slot="label">bottom</span>
+    </FormField>
   </article>
 </section>
