@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store'
 
-const initialRoute = window.location.hash
+const initialRoute = window.location.hash || '#ranked_wr'
 
 export const curRoute = writable(initialRoute)
 

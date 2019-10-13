@@ -3,7 +3,7 @@ import dateSlider from './date-slider'
 import patchInfo from '../../patches.json'
 
 const margin = {
-  top: 30, right: 50, bottom: 100, left: 50
+  top: 30, right: 30, bottom: 100, left: 50
 }
 const getHeroColor = (n) => `hsl(${(n - 71) * 3.6}, 30%, 90%)`
 

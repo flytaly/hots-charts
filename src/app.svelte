@@ -1,5 +1,6 @@
 <script>
   import Route from "./router/route.svelte";
+  import NavBar from "./components/navbar.svelte";
   import { rankedData } from "./store";
   import { json } from "d3";
   import { onMount } from "svelte";
@@ -25,6 +26,7 @@
   });
 </script>
 
+<NavBar />
 {#if $rankedData.isLoading}
   <p>Loading...</p>
 {:else}

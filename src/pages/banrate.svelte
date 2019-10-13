@@ -1,0 +1,1 @@
+<div>Banrate</div>

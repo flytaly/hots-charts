@@ -25,7 +25,6 @@
   .name {
     font-weight: bold;
     font-size: inherit;
-    font-family: inherit;
   }
   .slider {
     width: 5em;
