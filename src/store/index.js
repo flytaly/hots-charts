@@ -6,5 +6,6 @@ export const curRoute = writable(initialRoute)
 
 export const minPopularity = writable(8)
 export const maxHeroes = writable(13)
+export const isPlaying = writable(true)
 
 export const rankedData = writable({ data: null, isLoading: false })

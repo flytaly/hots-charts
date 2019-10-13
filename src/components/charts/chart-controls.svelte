@@ -1,21 +1,26 @@
 <script>
   import Slider from "@smui/slider";
-  import { minPopularity, maxHeroes } from "../store";
+  import { minPopularity, maxHeroes } from "../../store";
 </script>
 
 <style>
   .optionGroup {
     display: flex;
+    flex-wrap: wrap;
   }
   .item {
     display: flex;
     align-items: center;
-    margin-right: 2em;
+    margin-right: 1.5em;
   }
   .value,
   .name,
   .slider {
-    padding-right: 10px;
+    padding-right: 1em;
+    white-space: nowrap;
+  }
+  .name {
+    font-weight: bold;
   }
   .slider {
     width: 5em;
@@ -27,7 +32,12 @@
     <div class="name">popularity</div>
     <div class="value">≥ {$minPopularity}%</div>
     <div class="slider">
-      <Slider bind:value={$minPopularity} min={0} max={30} discrete />
+      <Slider
+        color="secondary"
+        bind:value={$minPopularity}
+        min={0}
+        max={30}
+        discrete />
     </div>
   </article>
   <article class="item">

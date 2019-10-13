@@ -1,9 +1,12 @@
 <script>
-  import Charts from "../charts/charts.svelte";
+  import WinrateCharts from "../components/charts/winrate-charts.svelte";
+  import Page from "../components/page.svelte";
 </script>
 
 <style>
 
 </style>
 
-<Charts />
+<Page>
+  <WinrateCharts />
+</Page>

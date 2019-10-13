@@ -1,6 +1,6 @@
 import * as d3 from 'd3'
 import dateSlider from './date-slider'
-import patchInfo from '../patches.json'
+import patchInfo from '../../patches.json'
 
 const margin = {
   top: 50, right: 50, bottom: 100, left: 50
@@ -8,7 +8,7 @@ const margin = {
 const getHeroColor = (n) => `hsl(${(n - 71) * 3.6}, 30%, 90%)`
 
 export default class DoubleBarsHeroesChart {
-  constructor (data, xValue, x2Value) {
+  constructor (data, xValue, x2Value, onPlayingEnd) {
     this.data = data
 
     this.xValue = xValue
@@ -19,6 +19,7 @@ export default class DoubleBarsHeroesChart {
     this.tDuration = 1000
     this.tEase = d3.easeSinOut
     this.isPlaying = true
+    this.onPlayingEnd = onPlayingEnd
   }
 
   mount () {
@@ -71,6 +72,7 @@ export default class DoubleBarsHeroesChart {
       this.dataOffset += 1
       if (this.dataOffset >= this.data.length) {
         this.clearInterval()
+        this.onPlayingEnd && this.onPlayingEnd()
       } else {
         this.render()
         const v = this.data[this.dataOffset].version
