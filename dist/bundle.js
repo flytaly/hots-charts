@@ -1,5 +1,6879 @@
-var app=function(){"use strict";function t(){}function e(t,e){for(const n in e)t[n]=e[n];return t}function n(t){return t()}function r(){return Object.create(null)}function i(t){t.forEach(n)}function a(t){return"function"==typeof t}function o(t,e){return t!=t?e==e:t!==e||t&&"object"==typeof t||"function"==typeof t}function s(t,e,n){t.$$.on_destroy.push(function(t,e){const n=t.subscribe(e);return n.unsubscribe?()=>n.unsubscribe():n}(e,n))}function c(t,e,n){if(t){const r=u(t,e,n);return t[0](r)}}function u(t,n,r){return t[1]?e({},e(n.$$scope.ctx,t[1](r?r(n):{}))):n.$$scope.ctx}function l(t,n,r,i){return t[1]?e({},e(n.$$scope.changed||{},t[1](i?i(r):{}))):n.$$scope.changed||{}}function d(t){const e={};for(const n in t)"$"!==n[0]&&(e[n]=t[n]);return e}function f(t,e,n=e){return t.set(n),e}function h(t,e){t.appendChild(e)}function p(t,e,n){t.insertBefore(e,n||null)}function m(t){t.parentNode.removeChild(t)}function _(t){return document.createElement(t)}function v(t){return document.createElementNS("http://www.w3.org/2000/svg",t)}function g(t){return document.createTextNode(t)}function y(){return g(" ")}function b(){return g("")}function $(t,e,n,r){return t.addEventListener(e,n,r),()=>t.removeEventListener(e,n,r)}function x(t,e,n){null==n?t.removeAttribute(e):t.setAttribute(e,n)}function w(t,e){for(const n in e)"style"===n?t.style.cssText=e[n]:n in t?t[n]=e[n]:x(t,n,e[n])}function A(t,e){e=""+e,t.data!==e&&(t.data=e)}function C(t,e,n){t.classList[n?"add":"remove"](e)}let T;function S(t){T=t}function E(){if(!T)throw new Error("Function called outside component initialization");return T}function I(t){E().$$.on_mount.push(t)}function k(t){E().$$.after_update.push(t)}function M(t){E().$$.on_destroy.push(t)}function R(t,e){E().$$.context.set(t,e)}function N(t){return E().$$.context.get(t)}function L(t,e){const n=t.$$.callbacks[e.type];n&&n.slice().forEach(t=>t(e))}const O=[],D=[],P=[],H=[],V=Promise.resolve();let F=!1;function U(t){P.push(t)}function B(t){H.push(t)}function j(){const t=new Set;do{for(;O.length;){const t=O.shift();S(t),z(t.$$)}for(;D.length;)D.pop()();for(let e=0;e<P.length;e+=1){const n=P[e];t.has(n)||(n(),t.add(n))}P.length=0}while(O.length);for(;H.length;)H.pop()();F=!1}function z(t){t.fragment&&(t.update(t.dirty),i(t.before_update),t.fragment.p(t.dirty,t.ctx),t.dirty=null,t.after_update.forEach(U))}const W=new Set;let Y;function K(){Y={r:0,c:[],p:Y}}function X(){Y.r||i(Y.c),Y=Y.p}function q(t,e){t&&t.i&&(W.delete(t),t.i(e))}function G(t,e,n,r){if(t&&t.o){if(W.has(t))return;W.add(t),Y.c.push(()=>{W.delete(t),r&&(n&&t.d(1),r())}),t.o(e)}}function Z(t,e){G(t,1,1,()=>{e.delete(t.key)})}function J(t,e){const n={},r={},i={$$scope:1};let a=t.length;for(;a--;){const o=t[a],s=e[a];if(s){for(const t in o)t in s||(r[t]=1);for(const t in s)i[t]||(n[t]=s[t],i[t]=1);t[a]=s}else for(const t in o)i[t]=1}for(const t in r)t in n||(n[t]=void 0);return n}function Q(t){return"object"==typeof t&&null!==t?t:{}}function tt(t,e,n){-1!==t.$$.props.indexOf(e)&&(t.$$.bound[e]=n,n(t.$$.ctx[e]))}function et(t,e,r){const{fragment:o,on_mount:s,on_destroy:c,after_update:u}=t.$$;o.m(e,r),U(()=>{const e=s.map(n).filter(a);c?c.push(...e):i(e),t.$$.on_mount=[]}),u.forEach(U)}function nt(t,e){t.$$.fragment&&(i(t.$$.on_destroy),t.$$.fragment.d(e),t.$$.on_destroy=t.$$.fragment=null,t.$$.ctx={})}function rt(t,e){t.$$.dirty||(O.push(t),F||(F=!0,V.then(j)),t.$$.dirty=r()),t.$$.dirty[e]=!0}function it(e,n,a,o,s,c){const u=T;S(e);const l=n.props||{},d=e.$$={fragment:null,ctx:null,props:c,update:t,not_equal:s,bound:r(),on_mount:[],on_destroy:[],before_update:[],after_update:[],context:new Map(u?u.$$.context:[]),callbacks:r(),dirty:null};let f=!1;d.ctx=a?a(e,l,(t,n,r=n)=>(d.ctx&&s(d.ctx[t],d.ctx[t]=r)&&(d.bound[t]&&d.bound[t](r),f&&rt(e,t)),n)):l,d.update(),f=!0,i(d.before_update),d.fragment=o(d.ctx),n.target&&(n.hydrate?d.fragment.l(function(t){return Array.from(t.childNodes)}(n.target)):d.fragment.c(),n.intro&&q(e.$$.fragment),et(e,n.target,n.anchor),j()),S(u)}class at{$destroy(){nt(this,1),this.$destroy=t}$on(t,e){const n=this.$$.callbacks[t]||(this.$$.callbacks[t]=[]);return n.push(e),()=>{const t=n.indexOf(e);-1!==t&&n.splice(t,1)}}$set(){}}const ot=[];function st(e,n=t){let r;const i=[];function a(t){if(o(e,t)&&(e=t,r)){const t=!ot.length;for(let t=0;t<i.length;t+=1){const n=i[t];n[1](),ot.push(n,e)}if(t){for(let t=0;t<ot.length;t+=2)ot[t][0](ot[t+1]);ot.length=0}}}return{set:a,update:function(t){a(t(e))},subscribe:function(o,s=t){const c=[o,s];return i.push(c),1===i.length&&(r=n(a)||t),o(e),()=>{const t=i.indexOf(c);-1!==t&&i.splice(t,1),0===i.length&&(r(),r=null)}}}}const ct=st(window.location.hash||"#ranked_wr"),ut=st(8),lt=st(13),dt=st(!0),ft=st(!1),ht=st(!1),pt=st({data:null,isLoading:!1});function mt(t,e){return t<e?-1:t>e?1:t>=e?0:NaN}function _t(t){var e;return 1===t.length&&(e=t,t=function(t,n){return mt(e(t),n)}),{left:function(e,n,r,i){for(null==r&&(r=0),null==i&&(i=e.length);r<i;){var a=r+i>>>1;t(e[a],n)<0?r=a+1:i=a}return r},right:function(e,n,r,i){for(null==r&&(r=0),null==i&&(i=e.length);r<i;){var a=r+i>>>1;t(e[a],n)>0?i=a:r=a+1}return r}}}var vt=_t(mt).right;var gt=Math.sqrt(50),yt=Math.sqrt(10),bt=Math.sqrt(2);function $t(t,e,n){var r=(e-t)/Math.max(0,n),i=Math.floor(Math.log(r)/Math.LN10),a=r/Math.pow(10,i);return i>=0?(a>=gt?10:a>=yt?5:a>=bt?2:1)*Math.pow(10,i):-Math.pow(10,-i)/(a>=gt?10:a>=yt?5:a>=bt?2:1)}function xt(t,e,n){var r=Math.abs(e-t)/Math.max(0,n),i=Math.pow(10,Math.floor(Math.log(r)/Math.LN10)),a=r/i;return a>=gt?i*=10:a>=yt?i*=5:a>=bt&&(i*=2),e<t?-i:i}function wt(t,e){var n,r,i=t.length,a=-1;if(null==e){for(;++a<i;)if(null!=(n=t[a])&&n>=n)for(r=n;++a<i;)null!=(n=t[a])&&n>r&&(r=n)}else for(;++a<i;)if(null!=(n=e(t[a],a,t))&&n>=n)for(r=n;++a<i;)null!=(n=e(t[a],a,t))&&n>r&&(r=n);return r}function At(t,e){var n,r,i=t.length,a=-1;if(null==e){for(;++a<i;)if(null!=(n=t[a])&&n>=n)for(r=n;++a<i;)null!=(n=t[a])&&r>n&&(r=n)}else for(;++a<i;)if(null!=(n=e(t[a],a,t))&&n>=n)for(r=n;++a<i;)null!=(n=e(t[a],a,t))&&r>n&&(r=n);return r}var Ct=Array.prototype.slice;function Tt(t){return t}var St=1,Et=2,It=3,kt=4,Mt=1e-6;function Rt(t){return"translate("+(t+.5)+",0)"}function Nt(t){return"translate(0,"+(t+.5)+")"}function Lt(t){return function(e){return+t(e)}}function Ot(t){var e=Math.max(0,t.bandwidth()-1)/2;return t.round()&&(e=Math.round(e)),function(n){return+t(n)+e}}function Dt(){return!this.__axis}function Pt(t,e){var n=[],r=null,i=null,a=6,o=6,s=3,c=t===St||t===kt?-1:1,u=t===kt||t===Et?"x":"y",l=t===St||t===It?Rt:Nt;function d(d){var f=null==r?e.ticks?e.ticks.apply(e,n):e.domain():r,h=null==i?e.tickFormat?e.tickFormat.apply(e,n):Tt:i,p=Math.max(a,0)+s,m=e.range(),_=+m[0]+.5,v=+m[m.length-1]+.5,g=(e.bandwidth?Ot:Lt)(e.copy()),y=d.selection?d.selection():d,b=y.selectAll(".domain").data([null]),$=y.selectAll(".tick").data(f,e).order(),x=$.exit(),w=$.enter().append("g").attr("class","tick"),A=$.select("line"),C=$.select("text");b=b.merge(b.enter().insert("path",".tick").attr("class","domain").attr("stroke","currentColor")),$=$.merge(w),A=A.merge(w.append("line").attr("stroke","currentColor").attr(u+"2",c*a)),C=C.merge(w.append("text").attr("fill","currentColor").attr(u,c*p).attr("dy",t===St?"0em":t===It?"0.71em":"0.32em")),d!==y&&(b=b.transition(d),$=$.transition(d),A=A.transition(d),C=C.transition(d),x=x.transition(d).attr("opacity",Mt).attr("transform",(function(t){return isFinite(t=g(t))?l(t):this.getAttribute("transform")})),w.attr("opacity",Mt).attr("transform",(function(t){var e=this.parentNode.__axis;return l(e&&isFinite(e=e(t))?e:g(t))}))),x.remove(),b.attr("d",t===kt||t==Et?o?"M"+c*o+","+_+"H0.5V"+v+"H"+c*o:"M0.5,"+_+"V"+v:o?"M"+_+","+c*o+"V0.5H"+v+"V"+c*o:"M"+_+",0.5H"+v),$.attr("opacity",1).attr("transform",(function(t){return l(g(t))})),A.attr(u+"2",c*a),C.attr(u,c*p).text(h),y.filter(Dt).attr("fill","none").attr("font-size",10).attr("font-family","sans-serif").attr("text-anchor",t===Et?"start":t===kt?"end":"middle"),y.each((function(){this.__axis=g}))}return d.scale=function(t){return arguments.length?(e=t,d):e},d.ticks=function(){return n=Ct.call(arguments),d},d.tickArguments=function(t){return arguments.length?(n=null==t?[]:Ct.call(t),d):n.slice()},d.tickValues=function(t){return arguments.length?(r=null==t?null:Ct.call(t),d):r&&r.slice()},d.tickFormat=function(t){return arguments.length?(i=t,d):i},d.tickSize=function(t){return arguments.length?(a=o=+t,d):a},d.tickSizeInner=function(t){return arguments.length?(a=+t,d):a},d.tickSizeOuter=function(t){return arguments.length?(o=+t,d):o},d.tickPadding=function(t){return arguments.length?(s=+t,d):s},d}function Ht(t){return Pt(It,t)}var Vt={value:function(){}};function Ft(){for(var t,e=0,n=arguments.length,r={};e<n;++e){if(!(t=arguments[e]+"")||t in r)throw new Error("illegal type: "+t);r[t]=[]}return new Ut(r)}function Ut(t){this._=t}function Bt(t,e){return t.trim().split(/^|\s+/).map((function(t){var n="",r=t.indexOf(".");if(r>=0&&(n=t.slice(r+1),t=t.slice(0,r)),t&&!e.hasOwnProperty(t))throw new Error("unknown type: "+t);return{type:t,name:n}}))}function jt(t,e){for(var n,r=0,i=t.length;r<i;++r)if((n=t[r]).name===e)return n.value}function zt(t,e,n){for(var r=0,i=t.length;r<i;++r)if(t[r].name===e){t[r]=Vt,t=t.slice(0,r).concat(t.slice(r+1));break}return null!=n&&t.push({name:e,value:n}),t}Ut.prototype=Ft.prototype={constructor:Ut,on:function(t,e){var n,r=this._,i=Bt(t+"",r),a=-1,o=i.length;if(!(arguments.length<2)){if(null!=e&&"function"!=typeof e)throw new Error("invalid callback: "+e);for(;++a<o;)if(n=(t=i[a]).type)r[n]=zt(r[n],t.name,e);else if(null==e)for(n in r)r[n]=zt(r[n],t.name,null);return this}for(;++a<o;)if((n=(t=i[a]).type)&&(n=jt(r[n],t.name)))return n},copy:function(){var t={},e=this._;for(var n in e)t[n]=e[n].slice();return new Ut(t)},call:function(t,e){if((n=arguments.length-2)>0)for(var n,r,i=new Array(n),a=0;a<n;++a)i[a]=arguments[a+2];if(!this._.hasOwnProperty(t))throw new Error("unknown type: "+t);for(a=0,n=(r=this._[t]).length;a<n;++a)r[a].value.apply(e,i)},apply:function(t,e,n){if(!this._.hasOwnProperty(t))throw new Error("unknown type: "+t);for(var r=this._[t],i=0,a=r.length;i<a;++i)r[i].value.apply(e,n)}};var Wt="http://www.w3.org/1999/xhtml",Yt={svg:"http://www.w3.org/2000/svg",xhtml:Wt,xlink:"http://www.w3.org/1999/xlink",xml:"http://www.w3.org/XML/1998/namespace",xmlns:"http://www.w3.org/2000/xmlns/"};function Kt(t){var e=t+="",n=e.indexOf(":");return n>=0&&"xmlns"!==(e=t.slice(0,n))&&(t=t.slice(n+1)),Yt.hasOwnProperty(e)?{space:Yt[e],local:t}:t}function Xt(t){return function(){var e=this.ownerDocument,n=this.namespaceURI;return n===Wt&&e.documentElement.namespaceURI===Wt?e.createElement(t):e.createElementNS(n,t)}}function qt(t){return function(){return this.ownerDocument.createElementNS(t.space,t.local)}}function Gt(t){var e=Kt(t);return(e.local?qt:Xt)(e)}function Zt(){}function Jt(t){return null==t?Zt:function(){return this.querySelector(t)}}function Qt(){return[]}function te(t){return null==t?Qt:function(){return this.querySelectorAll(t)}}function ee(t){return function(){return this.matches(t)}}function ne(t){return new Array(t.length)}function re(t,e){this.ownerDocument=t.ownerDocument,this.namespaceURI=t.namespaceURI,this._next=null,this._parent=t,this.__data__=e}re.prototype={constructor:re,appendChild:function(t){return this._parent.insertBefore(t,this._next)},insertBefore:function(t,e){return this._parent.insertBefore(t,e)},querySelector:function(t){return this._parent.querySelector(t)},querySelectorAll:function(t){return this._parent.querySelectorAll(t)}};var ie="$";function ae(t,e,n,r,i,a){for(var o,s=0,c=e.length,u=a.length;s<u;++s)(o=e[s])?(o.__data__=a[s],r[s]=o):n[s]=new re(t,a[s]);for(;s<c;++s)(o=e[s])&&(i[s]=o)}function oe(t,e,n,r,i,a,o){var s,c,u,l={},d=e.length,f=a.length,h=new Array(d);for(s=0;s<d;++s)(c=e[s])&&(h[s]=u=ie+o.call(c,c.__data__,s,e),u in l?i[s]=c:l[u]=c);for(s=0;s<f;++s)(c=l[u=ie+o.call(t,a[s],s,a)])?(r[s]=c,c.__data__=a[s],l[u]=null):n[s]=new re(t,a[s]);for(s=0;s<d;++s)(c=e[s])&&l[h[s]]===c&&(i[s]=c)}function se(t,e){return t<e?-1:t>e?1:t>=e?0:NaN}function ce(t){return function(){this.removeAttribute(t)}}function ue(t){return function(){this.removeAttributeNS(t.space,t.local)}}function le(t,e){return function(){this.setAttribute(t,e)}}function de(t,e){return function(){this.setAttributeNS(t.space,t.local,e)}}function fe(t,e){return function(){var n=e.apply(this,arguments);null==n?this.removeAttribute(t):this.setAttribute(t,n)}}function he(t,e){return function(){var n=e.apply(this,arguments);null==n?this.removeAttributeNS(t.space,t.local):this.setAttributeNS(t.space,t.local,n)}}function pe(t){return t.ownerDocument&&t.ownerDocument.defaultView||t.document&&t||t.defaultView}function me(t){return function(){this.style.removeProperty(t)}}function _e(t,e,n){return function(){this.style.setProperty(t,e,n)}}function ve(t,e,n){return function(){var r=e.apply(this,arguments);null==r?this.style.removeProperty(t):this.style.setProperty(t,r,n)}}function ge(t,e){return t.style.getPropertyValue(e)||pe(t).getComputedStyle(t,null).getPropertyValue(e)}function ye(t){return function(){delete this[t]}}function be(t,e){return function(){this[t]=e}}function $e(t,e){return function(){var n=e.apply(this,arguments);null==n?delete this[t]:this[t]=n}}function xe(t){return t.trim().split(/^|\s+/)}function we(t){return t.classList||new Ae(t)}function Ae(t){this._node=t,this._names=xe(t.getAttribute("class")||"")}function Ce(t,e){for(var n=we(t),r=-1,i=e.length;++r<i;)n.add(e[r])}function Te(t,e){for(var n=we(t),r=-1,i=e.length;++r<i;)n.remove(e[r])}function Se(t){return function(){Ce(this,t)}}function Ee(t){return function(){Te(this,t)}}function Ie(t,e){return function(){(e.apply(this,arguments)?Ce:Te)(this,t)}}function ke(){this.textContent=""}function Me(t){return function(){this.textContent=t}}function Re(t){return function(){var e=t.apply(this,arguments);this.textContent=null==e?"":e}}function Ne(){this.innerHTML=""}function Le(t){return function(){this.innerHTML=t}}function Oe(t){return function(){var e=t.apply(this,arguments);this.innerHTML=null==e?"":e}}function De(){this.nextSibling&&this.parentNode.appendChild(this)}function Pe(){this.previousSibling&&this.parentNode.insertBefore(this,this.parentNode.firstChild)}function He(){return null}function Ve(){var t=this.parentNode;t&&t.removeChild(this)}function Fe(){return this.parentNode.insertBefore(this.cloneNode(!1),this.nextSibling)}function Ue(){return this.parentNode.insertBefore(this.cloneNode(!0),this.nextSibling)}Ae.prototype={add:function(t){this._names.indexOf(t)<0&&(this._names.push(t),this._node.setAttribute("class",this._names.join(" ")))},remove:function(t){var e=this._names.indexOf(t);e>=0&&(this._names.splice(e,1),this._node.setAttribute("class",this._names.join(" ")))},contains:function(t){return this._names.indexOf(t)>=0}};var Be={},je=null;"undefined"!=typeof document&&("onmouseenter"in document.documentElement||(Be={mouseenter:"mouseover",mouseleave:"mouseout"}));function ze(t,e,n){return t=We(t,e,n),function(e){var n=e.relatedTarget;n&&(n===this||8&n.compareDocumentPosition(this))||t.call(this,e)}}function We(t,e,n){return function(r){var i=je;je=r;try{t.call(this,this.__data__,e,n)}finally{je=i}}}function Ye(t){return function(){var e=this.__on;if(e){for(var n,r=0,i=-1,a=e.length;r<a;++r)n=e[r],t.type&&n.type!==t.type||n.name!==t.name?e[++i]=n:this.removeEventListener(n.type,n.listener,n.capture);++i?e.length=i:delete this.__on}}}function Ke(t,e,n){var r=Be.hasOwnProperty(t.type)?ze:We;return function(i,a,o){var s,c=this.__on,u=r(e,a,o);if(c)for(var l=0,d=c.length;l<d;++l)if((s=c[l]).type===t.type&&s.name===t.name)return this.removeEventListener(s.type,s.listener,s.capture),this.addEventListener(s.type,s.listener=u,s.capture=n),void(s.value=e);this.addEventListener(t.type,u,n),s={type:t.type,name:t.name,value:e,listener:u,capture:n},c?c.push(s):this.__on=[s]}}function Xe(t,e,n,r){var i=je;t.sourceEvent=je,je=t;try{return e.apply(n,r)}finally{je=i}}function qe(t,e,n){var r=pe(t),i=r.CustomEvent;"function"==typeof i?i=new i(e,n):(i=r.document.createEvent("Event"),n?(i.initEvent(e,n.bubbles,n.cancelable),i.detail=n.detail):i.initEvent(e,!1,!1)),t.dispatchEvent(i)}function Ge(t,e){return function(){return qe(this,t,e)}}function Ze(t,e){return function(){return qe(this,t,e.apply(this,arguments))}}var Je=[null];function Qe(t,e){this._groups=t,this._parents=e}function tn(){return new Qe([[document.documentElement]],Je)}function en(t){return"string"==typeof t?new Qe([[document.querySelector(t)]],[document.documentElement]):new Qe([[t]],Je)}function nn(){for(var t,e=je;t=e.sourceEvent;)e=t;return e}function rn(t,e){var n=t.ownerSVGElement||t;if(n.createSVGPoint){var r=n.createSVGPoint();return r.x=e.clientX,r.y=e.clientY,[(r=r.matrixTransform(t.getScreenCTM().inverse())).x,r.y]}var i=t.getBoundingClientRect();return[e.clientX-i.left-t.clientLeft,e.clientY-i.top-t.clientTop]}function an(t){var e=nn();return e.changedTouches&&(e=e.changedTouches[0]),rn(t,e)}function on(t,e,n){arguments.length<3&&(n=e,e=nn().changedTouches);for(var r,i=0,a=e?e.length:0;i<a;++i)if((r=e[i]).identifier===n)return rn(t,r);return null}function sn(){je.stopImmediatePropagation()}function cn(){je.preventDefault(),je.stopImmediatePropagation()}function un(t){return function(){return t}}function ln(t,e,n,r,i,a,o,s,c,u){this.target=t,this.type=e,this.subject=n,this.identifier=r,this.active=i,this.x=a,this.y=o,this.dx=s,this.dy=c,this._=u}function dn(){return!je.ctrlKey&&!je.button}function fn(){return this.parentNode}function hn(t){return null==t?{x:je.x,y:je.y}:t}function pn(){return navigator.maxTouchPoints||"ontouchstart"in this}function mn(){var t,e,n,r,i=dn,a=fn,o=hn,s=pn,c={},u=Ft("start","drag","end"),l=0,d=0;function f(t){t.on("mousedown.drag",h).filter(s).on("touchstart.drag",_).on("touchmove.drag",v).on("touchend.drag touchcancel.drag",g).style("touch-action","none").style("-webkit-tap-highlight-color","rgba(0,0,0,0)")}function h(){if(!r&&i.apply(this,arguments)){var o=y("mouse",a.apply(this,arguments),an,this,arguments);o&&(en(je.view).on("mousemove.drag",p,!0).on("mouseup.drag",m,!0),function(t){var e=t.document.documentElement,n=en(t).on("dragstart.drag",cn,!0);"onselectstart"in e?n.on("selectstart.drag",cn,!0):(e.__noselect=e.style.MozUserSelect,e.style.MozUserSelect="none")}(je.view),sn(),n=!1,t=je.clientX,e=je.clientY,o("start"))}}function p(){if(cn(),!n){var r=je.clientX-t,i=je.clientY-e;n=r*r+i*i>d}c.mouse("drag")}function m(){en(je.view).on("mousemove.drag mouseup.drag",null),function(t,e){var n=t.document.documentElement,r=en(t).on("dragstart.drag",null);e&&(r.on("click.drag",cn,!0),setTimeout((function(){r.on("click.drag",null)}),0)),"onselectstart"in n?r.on("selectstart.drag",null):(n.style.MozUserSelect=n.__noselect,delete n.__noselect)}(je.view,n),cn(),c.mouse("end")}function _(){if(i.apply(this,arguments)){var t,e,n=je.changedTouches,r=a.apply(this,arguments),o=n.length;for(t=0;t<o;++t)(e=y(n[t].identifier,r,on,this,arguments))&&(sn(),e("start"))}}function v(){var t,e,n=je.changedTouches,r=n.length;for(t=0;t<r;++t)(e=c[n[t].identifier])&&(cn(),e("drag"))}function g(){var t,e,n=je.changedTouches,i=n.length;for(r&&clearTimeout(r),r=setTimeout((function(){r=null}),500),t=0;t<i;++t)(e=c[n[t].identifier])&&(sn(),e("end"))}function y(t,e,n,r,i){var a,s,d,h=n(e,t),p=u.copy();if(Xe(new ln(f,"beforestart",a,t,l,h[0],h[1],0,0,p),(function(){return null!=(je.subject=a=o.apply(r,i))&&(s=a.x-h[0]||0,d=a.y-h[1]||0,!0)})))return function o(u){var m,_=h;switch(u){case"start":c[t]=o,m=l++;break;case"end":delete c[t],--l;case"drag":h=n(e,t),m=l}Xe(new ln(f,u,a,t,m,h[0]+s,h[1]+d,h[0]-_[0],h[1]-_[1],p),p.apply,p,[u,r,i])}}return f.filter=function(t){return arguments.length?(i="function"==typeof t?t:un(!!t),f):i},f.container=function(t){return arguments.length?(a="function"==typeof t?t:un(t),f):a},f.subject=function(t){return arguments.length?(o="function"==typeof t?t:un(t),f):o},f.touchable=function(t){return arguments.length?(s="function"==typeof t?t:un(!!t),f):s},f.on=function(){var t=u.on.apply(u,arguments);return t===u?f:t},f.clickDistance=function(t){return arguments.length?(d=(t=+t)*t,f):Math.sqrt(d)},f}function _n(t,e,n){t.prototype=e.prototype=n,n.constructor=t}function vn(t,e){var n=Object.create(t.prototype);for(var r in e)n[r]=e[r];return n}function gn(){}Qe.prototype=tn.prototype={constructor:Qe,select:function(t){"function"!=typeof t&&(t=Jt(t));for(var e=this._groups,n=e.length,r=new Array(n),i=0;i<n;++i)for(var a,o,s=e[i],c=s.length,u=r[i]=new Array(c),l=0;l<c;++l)(a=s[l])&&(o=t.call(a,a.__data__,l,s))&&("__data__"in a&&(o.__data__=a.__data__),u[l]=o);return new Qe(r,this._parents)},selectAll:function(t){"function"!=typeof t&&(t=te(t));for(var e=this._groups,n=e.length,r=[],i=[],a=0;a<n;++a)for(var o,s=e[a],c=s.length,u=0;u<c;++u)(o=s[u])&&(r.push(t.call(o,o.__data__,u,s)),i.push(o));return new Qe(r,i)},filter:function(t){"function"!=typeof t&&(t=ee(t));for(var e=this._groups,n=e.length,r=new Array(n),i=0;i<n;++i)for(var a,o=e[i],s=o.length,c=r[i]=[],u=0;u<s;++u)(a=o[u])&&t.call(a,a.__data__,u,o)&&c.push(a);return new Qe(r,this._parents)},data:function(t,e){if(!t)return p=new Array(this.size()),l=-1,this.each((function(t){p[++l]=t})),p;var n,r=e?oe:ae,i=this._parents,a=this._groups;"function"!=typeof t&&(n=t,t=function(){return n});for(var o=a.length,s=new Array(o),c=new Array(o),u=new Array(o),l=0;l<o;++l){var d=i[l],f=a[l],h=f.length,p=t.call(d,d&&d.__data__,l,i),m=p.length,_=c[l]=new Array(m),v=s[l]=new Array(m);r(d,f,_,v,u[l]=new Array(h),p,e);for(var g,y,b=0,$=0;b<m;++b)if(g=_[b]){for(b>=$&&($=b+1);!(y=v[$])&&++$<m;);g._next=y||null}}return(s=new Qe(s,i))._enter=c,s._exit=u,s},enter:function(){return new Qe(this._enter||this._groups.map(ne),this._parents)},exit:function(){return new Qe(this._exit||this._groups.map(ne),this._parents)},join:function(t,e,n){var r=this.enter(),i=this,a=this.exit();return r="function"==typeof t?t(r):r.append(t+""),null!=e&&(i=e(i)),null==n?a.remove():n(a),r&&i?r.merge(i).order():i},merge:function(t){for(var e=this._groups,n=t._groups,r=e.length,i=n.length,a=Math.min(r,i),o=new Array(r),s=0;s<a;++s)for(var c,u=e[s],l=n[s],d=u.length,f=o[s]=new Array(d),h=0;h<d;++h)(c=u[h]||l[h])&&(f[h]=c);for(;s<r;++s)o[s]=e[s];return new Qe(o,this._parents)},order:function(){for(var t=this._groups,e=-1,n=t.length;++e<n;)for(var r,i=t[e],a=i.length-1,o=i[a];--a>=0;)(r=i[a])&&(o&&4^r.compareDocumentPosition(o)&&o.parentNode.insertBefore(r,o),o=r);return this},sort:function(t){function e(e,n){return e&&n?t(e.__data__,n.__data__):!e-!n}t||(t=se);for(var n=this._groups,r=n.length,i=new Array(r),a=0;a<r;++a){for(var o,s=n[a],c=s.length,u=i[a]=new Array(c),l=0;l<c;++l)(o=s[l])&&(u[l]=o);u.sort(e)}return new Qe(i,this._parents).order()},call:function(){var t=arguments[0];return arguments[0]=this,t.apply(null,arguments),this},nodes:function(){var t=new Array(this.size()),e=-1;return this.each((function(){t[++e]=this})),t},node:function(){for(var t=this._groups,e=0,n=t.length;e<n;++e)for(var r=t[e],i=0,a=r.length;i<a;++i){var o=r[i];if(o)return o}return null},size:function(){var t=0;return this.each((function(){++t})),t},empty:function(){return!this.node()},each:function(t){for(var e=this._groups,n=0,r=e.length;n<r;++n)for(var i,a=e[n],o=0,s=a.length;o<s;++o)(i=a[o])&&t.call(i,i.__data__,o,a);return this},attr:function(t,e){var n=Kt(t);if(arguments.length<2){var r=this.node();return n.local?r.getAttributeNS(n.space,n.local):r.getAttribute(n)}return this.each((null==e?n.local?ue:ce:"function"==typeof e?n.local?he:fe:n.local?de:le)(n,e))},style:function(t,e,n){return arguments.length>1?this.each((null==e?me:"function"==typeof e?ve:_e)(t,e,null==n?"":n)):ge(this.node(),t)},property:function(t,e){return arguments.length>1?this.each((null==e?ye:"function"==typeof e?$e:be)(t,e)):this.node()[t]},classed:function(t,e){var n=xe(t+"");if(arguments.length<2){for(var r=we(this.node()),i=-1,a=n.length;++i<a;)if(!r.contains(n[i]))return!1;return!0}return this.each(("function"==typeof e?Ie:e?Se:Ee)(n,e))},text:function(t){return arguments.length?this.each(null==t?ke:("function"==typeof t?Re:Me)(t)):this.node().textContent},html:function(t){return arguments.length?this.each(null==t?Ne:("function"==typeof t?Oe:Le)(t)):this.node().innerHTML},raise:function(){return this.each(De)},lower:function(){return this.each(Pe)},append:function(t){var e="function"==typeof t?t:Gt(t);return this.select((function(){return this.appendChild(e.apply(this,arguments))}))},insert:function(t,e){var n="function"==typeof t?t:Gt(t),r=null==e?He:"function"==typeof e?e:Jt(e);return this.select((function(){return this.insertBefore(n.apply(this,arguments),r.apply(this,arguments)||null)}))},remove:function(){return this.each(Ve)},clone:function(t){return this.select(t?Ue:Fe)},datum:function(t){return arguments.length?this.property("__data__",t):this.node().__data__},on:function(t,e,n){var r,i,a=function(t){return t.trim().split(/^|\s+/).map((function(t){var e="",n=t.indexOf(".");return n>=0&&(e=t.slice(n+1),t=t.slice(0,n)),{type:t,name:e}}))}(t+""),o=a.length;if(!(arguments.length<2)){for(s=e?Ke:Ye,null==n&&(n=!1),r=0;r<o;++r)this.each(s(a[r],e,n));return this}var s=this.node().__on;if(s)for(var c,u=0,l=s.length;u<l;++u)for(r=0,c=s[u];r<o;++r)if((i=a[r]).type===c.type&&i.name===c.name)return c.value},dispatch:function(t,e){return this.each(("function"==typeof e?Ze:Ge)(t,e))}},ln.prototype.on=function(){var t=this._.on.apply(this._,arguments);return t===this._?this:t};var yn="\\s*([+-]?\\d+)\\s*",bn="\\s*([+-]?\\d*\\.?\\d+(?:[eE][+-]?\\d+)?)\\s*",$n="\\s*([+-]?\\d*\\.?\\d+(?:[eE][+-]?\\d+)?)%\\s*",xn=/^#([0-9a-f]{3,8})$/,wn=new RegExp("^rgb\\("+[yn,yn,yn]+"\\)$"),An=new RegExp("^rgb\\("+[$n,$n,$n]+"\\)$"),Cn=new RegExp("^rgba\\("+[yn,yn,yn,bn]+"\\)$"),Tn=new RegExp("^rgba\\("+[$n,$n,$n,bn]+"\\)$"),Sn=new RegExp("^hsl\\("+[bn,$n,$n]+"\\)$"),En=new RegExp("^hsla\\("+[bn,$n,$n,bn]+"\\)$"),In={aliceblue:15792383,antiquewhite:16444375,aqua:65535,aquamarine:8388564,azure:15794175,beige:16119260,bisque:16770244,black:0,blanchedalmond:16772045,blue:255,blueviolet:9055202,brown:10824234,burlywood:14596231,cadetblue:6266528,chartreuse:8388352,chocolate:13789470,coral:16744272,cornflowerblue:6591981,cornsilk:16775388,crimson:14423100,cyan:65535,darkblue:139,darkcyan:35723,darkgoldenrod:12092939,darkgray:11119017,darkgreen:25600,darkgrey:11119017,darkkhaki:12433259,darkmagenta:9109643,darkolivegreen:5597999,darkorange:16747520,darkorchid:10040012,darkred:9109504,darksalmon:15308410,darkseagreen:9419919,darkslateblue:4734347,darkslategray:3100495,darkslategrey:3100495,darkturquoise:52945,darkviolet:9699539,deeppink:16716947,deepskyblue:49151,dimgray:6908265,dimgrey:6908265,dodgerblue:2003199,firebrick:11674146,floralwhite:16775920,forestgreen:2263842,fuchsia:16711935,gainsboro:14474460,ghostwhite:16316671,gold:16766720,goldenrod:14329120,gray:8421504,green:32768,greenyellow:11403055,grey:8421504,honeydew:15794160,hotpink:16738740,indianred:13458524,indigo:4915330,ivory:16777200,khaki:15787660,lavender:15132410,lavenderblush:16773365,lawngreen:8190976,lemonchiffon:16775885,lightblue:11393254,lightcoral:15761536,lightcyan:14745599,lightgoldenrodyellow:16448210,lightgray:13882323,lightgreen:9498256,lightgrey:13882323,lightpink:16758465,lightsalmon:16752762,lightseagreen:2142890,lightskyblue:8900346,lightslategray:7833753,lightslategrey:7833753,lightsteelblue:11584734,lightyellow:16777184,lime:65280,limegreen:3329330,linen:16445670,magenta:16711935,maroon:8388608,mediumaquamarine:6737322,mediumblue:205,mediumorchid:12211667,mediumpurple:9662683,mediumseagreen:3978097,mediumslateblue:8087790,mediumspringgreen:64154,mediumturquoise:4772300,mediumvioletred:13047173,midnightblue:1644912,mintcream:16121850,mistyrose:16770273,moccasin:16770229,navajowhite:16768685,navy:128,oldlace:16643558,olive:8421376,olivedrab:7048739,orange:16753920,orangered:16729344,orchid:14315734,palegoldenrod:15657130,palegreen:10025880,paleturquoise:11529966,palevioletred:14381203,papayawhip:16773077,peachpuff:16767673,peru:13468991,pink:16761035,plum:14524637,powderblue:11591910,purple:8388736,rebeccapurple:6697881,red:16711680,rosybrown:12357519,royalblue:4286945,saddlebrown:9127187,salmon:16416882,sandybrown:16032864,seagreen:3050327,seashell:16774638,sienna:10506797,silver:12632256,skyblue:8900331,slateblue:6970061,slategray:7372944,slategrey:7372944,snow:16775930,springgreen:65407,steelblue:4620980,tan:13808780,teal:32896,thistle:14204888,tomato:16737095,turquoise:4251856,violet:15631086,wheat:16113331,white:16777215,whitesmoke:16119285,yellow:16776960,yellowgreen:10145074};function kn(){return this.rgb().formatHex()}function Mn(){return this.rgb().formatRgb()}function Rn(t){var e,n;return t=(t+"").trim().toLowerCase(),(e=xn.exec(t))?(n=e[1].length,e=parseInt(e[1],16),6===n?Nn(e):3===n?new Dn(e>>8&15|e>>4&240,e>>4&15|240&e,(15&e)<<4|15&e,1):8===n?new Dn(e>>24&255,e>>16&255,e>>8&255,(255&e)/255):4===n?new Dn(e>>12&15|e>>8&240,e>>8&15|e>>4&240,e>>4&15|240&e,((15&e)<<4|15&e)/255):null):(e=wn.exec(t))?new Dn(e[1],e[2],e[3],1):(e=An.exec(t))?new Dn(255*e[1]/100,255*e[2]/100,255*e[3]/100,1):(e=Cn.exec(t))?Ln(e[1],e[2],e[3],e[4]):(e=Tn.exec(t))?Ln(255*e[1]/100,255*e[2]/100,255*e[3]/100,e[4]):(e=Sn.exec(t))?Fn(e[1],e[2]/100,e[3]/100,1):(e=En.exec(t))?Fn(e[1],e[2]/100,e[3]/100,e[4]):In.hasOwnProperty(t)?Nn(In[t]):"transparent"===t?new Dn(NaN,NaN,NaN,0):null}function Nn(t){return new Dn(t>>16&255,t>>8&255,255&t,1)}function Ln(t,e,n,r){return r<=0&&(t=e=n=NaN),new Dn(t,e,n,r)}function On(t,e,n,r){return 1===arguments.length?((i=t)instanceof gn||(i=Rn(i)),i?new Dn((i=i.rgb()).r,i.g,i.b,i.opacity):new Dn):new Dn(t,e,n,null==r?1:r);var i}function Dn(t,e,n,r){this.r=+t,this.g=+e,this.b=+n,this.opacity=+r}function Pn(){return"#"+Vn(this.r)+Vn(this.g)+Vn(this.b)}function Hn(){var t=this.opacity;return(1===(t=isNaN(t)?1:Math.max(0,Math.min(1,t)))?"rgb(":"rgba(")+Math.max(0,Math.min(255,Math.round(this.r)||0))+", "+Math.max(0,Math.min(255,Math.round(this.g)||0))+", "+Math.max(0,Math.min(255,Math.round(this.b)||0))+(1===t?")":", "+t+")")}function Vn(t){return((t=Math.max(0,Math.min(255,Math.round(t)||0)))<16?"0":"")+t.toString(16)}function Fn(t,e,n,r){return r<=0?t=e=n=NaN:n<=0||n>=1?t=e=NaN:e<=0&&(t=NaN),new Bn(t,e,n,r)}function Un(t){if(t instanceof Bn)return new Bn(t.h,t.s,t.l,t.opacity);if(t instanceof gn||(t=Rn(t)),!t)return new Bn;if(t instanceof Bn)return t;var e=(t=t.rgb()).r/255,n=t.g/255,r=t.b/255,i=Math.min(e,n,r),a=Math.max(e,n,r),o=NaN,s=a-i,c=(a+i)/2;return s?(o=e===a?(n-r)/s+6*(n<r):n===a?(r-e)/s+2:(e-n)/s+4,s/=c<.5?a+i:2-a-i,o*=60):s=c>0&&c<1?0:o,new Bn(o,s,c,t.opacity)}function Bn(t,e,n,r){this.h=+t,this.s=+e,this.l=+n,this.opacity=+r}function jn(t,e,n){return 255*(t<60?e+(n-e)*t/60:t<180?n:t<240?e+(n-e)*(240-t)/60:e)}function zn(t){return function(){return t}}function Wn(t){return 1==(t=+t)?Yn:function(e,n){return n-e?function(t,e,n){return t=Math.pow(t,n),e=Math.pow(e,n)-t,n=1/n,function(r){return Math.pow(t+r*e,n)}}(e,n,t):zn(isNaN(e)?n:e)}}function Yn(t,e){var n=e-t;return n?function(t,e){return function(n){return t+n*e}}(t,n):zn(isNaN(t)?e:t)}_n(gn,Rn,{copy:function(t){return Object.assign(new this.constructor,this,t)},displayable:function(){return this.rgb().displayable()},hex:kn,formatHex:kn,formatHsl:function(){return Un(this).formatHsl()},formatRgb:Mn,toString:Mn}),_n(Dn,On,vn(gn,{brighter:function(t){return t=null==t?1/.7:Math.pow(1/.7,t),new Dn(this.r*t,this.g*t,this.b*t,this.opacity)},darker:function(t){return t=null==t?.7:Math.pow(.7,t),new Dn(this.r*t,this.g*t,this.b*t,this.opacity)},rgb:function(){return this},displayable:function(){return-.5<=this.r&&this.r<255.5&&-.5<=this.g&&this.g<255.5&&-.5<=this.b&&this.b<255.5&&0<=this.opacity&&this.opacity<=1},hex:Pn,formatHex:Pn,formatRgb:Hn,toString:Hn})),_n(Bn,(function(t,e,n,r){return 1===arguments.length?Un(t):new Bn(t,e,n,null==r?1:r)}),vn(gn,{brighter:function(t){return t=null==t?1/.7:Math.pow(1/.7,t),new Bn(this.h,this.s,this.l*t,this.opacity)},darker:function(t){return t=null==t?.7:Math.pow(.7,t),new Bn(this.h,this.s,this.l*t,this.opacity)},rgb:function(){var t=this.h%360+360*(this.h<0),e=isNaN(t)||isNaN(this.s)?0:this.s,n=this.l,r=n+(n<.5?n:1-n)*e,i=2*n-r;return new Dn(jn(t>=240?t-240:t+120,i,r),jn(t,i,r),jn(t<120?t+240:t-120,i,r),this.opacity)},displayable:function(){return(0<=this.s&&this.s<=1||isNaN(this.s))&&0<=this.l&&this.l<=1&&0<=this.opacity&&this.opacity<=1},formatHsl:function(){var t=this.opacity;return(1===(t=isNaN(t)?1:Math.max(0,Math.min(1,t)))?"hsl(":"hsla(")+(this.h||0)+", "+100*(this.s||0)+"%, "+100*(this.l||0)+"%"+(1===t?")":", "+t+")")}}));var Kn=function t(e){var n=Wn(e);function r(t,e){var r=n((t=On(t)).r,(e=On(e)).r),i=n(t.g,e.g),a=n(t.b,e.b),o=Yn(t.opacity,e.opacity);return function(e){return t.r=r(e),t.g=i(e),t.b=a(e),t.opacity=o(e),t+""}}return r.gamma=t,r}(1);function Xn(t,e){var n,r=e?e.length:0,i=t?Math.min(r,t.length):0,a=new Array(i),o=new Array(r);for(n=0;n<i;++n)a[n]=er(t[n],e[n]);for(;n<r;++n)o[n]=e[n];return function(t){for(n=0;n<i;++n)o[n]=a[n](t);return o}}function qn(t,e){var n=new Date;return e-=t=+t,function(r){return n.setTime(t+e*r),n}}function Gn(t,e){return e-=t=+t,function(n){return t+e*n}}function Zn(t,e){var n,r={},i={};for(n in null!==t&&"object"==typeof t||(t={}),null!==e&&"object"==typeof e||(e={}),e)n in t?r[n]=er(t[n],e[n]):i[n]=e[n];return function(t){for(n in r)i[n]=r[n](t);return i}}var Jn=/[-+]?(?:\d+\.?\d*|\.?\d+)(?:[eE][-+]?\d+)?/g,Qn=new RegExp(Jn.source,"g");function tr(t,e){var n,r,i,a=Jn.lastIndex=Qn.lastIndex=0,o=-1,s=[],c=[];for(t+="",e+="";(n=Jn.exec(t))&&(r=Qn.exec(e));)(i=r.index)>a&&(i=e.slice(a,i),s[o]?s[o]+=i:s[++o]=i),(n=n[0])===(r=r[0])?s[o]?s[o]+=r:s[++o]=r:(s[++o]=null,c.push({i:o,x:Gn(n,r)})),a=Qn.lastIndex;return a<e.length&&(i=e.slice(a),s[o]?s[o]+=i:s[++o]=i),s.length<2?c[0]?function(t){return function(e){return t(e)+""}}(c[0].x):function(t){return function(){return t}}(e):(e=c.length,function(t){for(var n,r=0;r<e;++r)s[(n=c[r]).i]=n.x(t);return s.join("")})}function er(t,e){var n,r=typeof e;return null==e||"boolean"===r?zn(e):("number"===r?Gn:"string"===r?(n=Rn(e))?(e=n,Kn):tr:e instanceof Rn?Kn:e instanceof Date?qn:Array.isArray(e)?Xn:"function"!=typeof e.valueOf&&"function"!=typeof e.toString||isNaN(e)?Zn:Gn)(t,e)}function nr(t,e){return e-=t=+t,function(n){return Math.round(t+e*n)}}var rr,ir,ar,or,sr=180/Math.PI,cr={translateX:0,translateY:0,rotate:0,skewX:0,scaleX:1,scaleY:1};function ur(t,e,n,r,i,a){var o,s,c;return(o=Math.sqrt(t*t+e*e))&&(t/=o,e/=o),(c=t*n+e*r)&&(n-=t*c,r-=e*c),(s=Math.sqrt(n*n+r*r))&&(n/=s,r/=s,c/=s),t*r<e*n&&(t=-t,e=-e,c=-c,o=-o),{translateX:i,translateY:a,rotate:Math.atan2(e,t)*sr,skewX:Math.atan(c)*sr,scaleX:o,scaleY:s}}function lr(t,e,n,r){function i(t){return t.length?t.pop()+" ":""}return function(a,o){var s=[],c=[];return a=t(a),o=t(o),function(t,r,i,a,o,s){if(t!==i||r!==a){var c=o.push("translate(",null,e,null,n);s.push({i:c-4,x:Gn(t,i)},{i:c-2,x:Gn(r,a)})}else(i||a)&&o.push("translate("+i+e+a+n)}(a.translateX,a.translateY,o.translateX,o.translateY,s,c),function(t,e,n,a){t!==e?(t-e>180?e+=360:e-t>180&&(t+=360),a.push({i:n.push(i(n)+"rotate(",null,r)-2,x:Gn(t,e)})):e&&n.push(i(n)+"rotate("+e+r)}(a.rotate,o.rotate,s,c),function(t,e,n,a){t!==e?a.push({i:n.push(i(n)+"skewX(",null,r)-2,x:Gn(t,e)}):e&&n.push(i(n)+"skewX("+e+r)}(a.skewX,o.skewX,s,c),function(t,e,n,r,a,o){if(t!==n||e!==r){var s=a.push(i(a)+"scale(",null,",",null,")");o.push({i:s-4,x:Gn(t,n)},{i:s-2,x:Gn(e,r)})}else 1===n&&1===r||a.push(i(a)+"scale("+n+","+r+")")}(a.scaleX,a.scaleY,o.scaleX,o.scaleY,s,c),a=o=null,function(t){for(var e,n=-1,r=c.length;++n<r;)s[(e=c[n]).i]=e.x(t);return s.join("")}}}var dr,fr,hr=lr((function(t){return"none"===t?cr:(rr||(rr=document.createElement("DIV"),ir=document.documentElement,ar=document.defaultView),rr.style.transform=t,t=ar.getComputedStyle(ir.appendChild(rr),null).getPropertyValue("transform"),ir.removeChild(rr),ur(+(t=t.slice(7,-1).split(","))[0],+t[1],+t[2],+t[3],+t[4],+t[5]))}),"px, ","px)","deg)"),pr=lr((function(t){return null==t?cr:(or||(or=document.createElementNS("http://www.w3.org/2000/svg","g")),or.setAttribute("transform",t),(t=or.transform.baseVal.consolidate())?ur((t=t.matrix).a,t.b,t.c,t.d,t.e,t.f):cr)}),", ",")",")"),mr=0,_r=0,vr=0,gr=1e3,yr=0,br=0,$r=0,xr="object"==typeof performance&&performance.now?performance:Date,wr="object"==typeof window&&window.requestAnimationFrame?window.requestAnimationFrame.bind(window):function(t){setTimeout(t,17)};function Ar(){return br||(wr(Cr),br=xr.now()+$r)}function Cr(){br=0}function Tr(){this._call=this._time=this._next=null}function Sr(t,e,n){var r=new Tr;return r.restart(t,e,n),r}function Er(){br=(yr=xr.now())+$r,mr=_r=0;try{!function(){Ar(),++mr;for(var t,e=dr;e;)(t=br-e._time)>=0&&e._call.call(null,t),e=e._next;--mr}()}finally{mr=0,function(){var t,e,n=dr,r=1/0;for(;n;)n._call?(r>n._time&&(r=n._time),t=n,n=n._next):(e=n._next,n._next=null,n=t?t._next=e:dr=e);fr=t,kr(r)}(),br=0}}function Ir(){var t=xr.now(),e=t-yr;e>gr&&($r-=e,yr=t)}function kr(t){mr||(_r&&(_r=clearTimeout(_r)),t-br>24?(t<1/0&&(_r=setTimeout(Er,t-xr.now()-$r)),vr&&(vr=clearInterval(vr))):(vr||(yr=xr.now(),vr=setInterval(Ir,gr)),mr=1,wr(Er)))}function Mr(t,e,n){var r=new Tr;return e=null==e?0:+e,r.restart((function(n){r.stop(),t(n+e)}),e,n),r}Tr.prototype=Sr.prototype={constructor:Tr,restart:function(t,e,n){if("function"!=typeof t)throw new TypeError("callback is not a function");n=(null==n?Ar():+n)+(null==e?0:+e),this._next||fr===this||(fr?fr._next=this:dr=this,fr=this),this._call=t,this._time=n,kr()},stop:function(){this._call&&(this._call=null,this._time=1/0,kr())}};var Rr=Ft("start","end","cancel","interrupt"),Nr=[],Lr=0,Or=1,Dr=2,Pr=3,Hr=4,Vr=5,Fr=6;function Ur(t,e,n,r,i,a){var o=t.__transition;if(o){if(n in o)return}else t.__transition={};!function(t,e,n){var r,i=t.__transition;function a(c){var u,l,d,f;if(n.state!==Or)return s();for(u in i)if((f=i[u]).name===n.name){if(f.state===Pr)return Mr(a);f.state===Hr?(f.state=Fr,f.timer.stop(),f.on.call("interrupt",t,t.__data__,f.index,f.group),delete i[u]):+u<e&&(f.state=Fr,f.timer.stop(),f.on.call("cancel",t,t.__data__,f.index,f.group),delete i[u])}if(Mr((function(){n.state===Pr&&(n.state=Hr,n.timer.restart(o,n.delay,n.time),o(c))})),n.state=Dr,n.on.call("start",t,t.__data__,n.index,n.group),n.state===Dr){for(n.state=Pr,r=new Array(d=n.tween.length),u=0,l=-1;u<d;++u)(f=n.tween[u].value.call(t,t.__data__,n.index,n.group))&&(r[++l]=f);r.length=l+1}}function o(e){for(var i=e<n.duration?n.ease.call(null,e/n.duration):(n.timer.restart(s),n.state=Vr,1),a=-1,o=r.length;++a<o;)r[a].call(t,i);n.state===Vr&&(n.on.call("end",t,t.__data__,n.index,n.group),s())}function s(){for(var r in n.state=Fr,n.timer.stop(),delete i[e],i)return;delete t.__transition}i[e]=n,n.timer=Sr((function(t){n.state=Or,n.timer.restart(a,n.delay,n.time),n.delay<=t&&a(t-n.delay)}),0,n.time)}(t,n,{name:e,index:r,group:i,on:Rr,tween:Nr,time:a.time,delay:a.delay,duration:a.duration,ease:a.ease,timer:null,state:Lr})}function Br(t,e){var n=zr(t,e);if(n.state>Lr)throw new Error("too late; already scheduled");return n}function jr(t,e){var n=zr(t,e);if(n.state>Pr)throw new Error("too late; already running");return n}function zr(t,e){var n=t.__transition;if(!n||!(n=n[e]))throw new Error("transition not found");return n}function Wr(t,e){var n,r;return function(){var i=jr(this,t),a=i.tween;if(a!==n)for(var o=0,s=(r=n=a).length;o<s;++o)if(r[o].name===e){(r=r.slice()).splice(o,1);break}i.tween=r}}function Yr(t,e,n){var r,i;if("function"!=typeof n)throw new Error;return function(){var a=jr(this,t),o=a.tween;if(o!==r){i=(r=o).slice();for(var s={name:e,value:n},c=0,u=i.length;c<u;++c)if(i[c].name===e){i[c]=s;break}c===u&&i.push(s)}a.tween=i}}function Kr(t,e,n){var r=t._id;return t.each((function(){var t=jr(this,r);(t.value||(t.value={}))[e]=n.apply(this,arguments)})),function(t){return zr(t,r).value[e]}}function Xr(t,e){var n;return("number"==typeof e?Gn:e instanceof Rn?Kn:(n=Rn(e))?(e=n,Kn):tr)(t,e)}function qr(t){return function(){this.removeAttribute(t)}}function Gr(t){return function(){this.removeAttributeNS(t.space,t.local)}}function Zr(t,e,n){var r,i,a=n+"";return function(){var o=this.getAttribute(t);return o===a?null:o===r?i:i=e(r=o,n)}}function Jr(t,e,n){var r,i,a=n+"";return function(){var o=this.getAttributeNS(t.space,t.local);return o===a?null:o===r?i:i=e(r=o,n)}}function Qr(t,e,n){var r,i,a;return function(){var o,s,c=n(this);if(null!=c)return(o=this.getAttribute(t))===(s=c+"")?null:o===r&&s===i?a:(i=s,a=e(r=o,c));this.removeAttribute(t)}}function ti(t,e,n){var r,i,a;return function(){var o,s,c=n(this);if(null!=c)return(o=this.getAttributeNS(t.space,t.local))===(s=c+"")?null:o===r&&s===i?a:(i=s,a=e(r=o,c));this.removeAttributeNS(t.space,t.local)}}function ei(t,e){var n,r;function i(){var i=e.apply(this,arguments);return i!==r&&(n=(r=i)&&function(t,e){return function(n){this.setAttributeNS(t.space,t.local,e(n))}}(t,i)),n}return i._value=e,i}function ni(t,e){var n,r;function i(){var i=e.apply(this,arguments);return i!==r&&(n=(r=i)&&function(t,e){return function(n){this.setAttribute(t,e(n))}}(t,i)),n}return i._value=e,i}function ri(t,e){return function(){Br(this,t).delay=+e.apply(this,arguments)}}function ii(t,e){return e=+e,function(){Br(this,t).delay=e}}function ai(t,e){return function(){jr(this,t).duration=+e.apply(this,arguments)}}function oi(t,e){return e=+e,function(){jr(this,t).duration=e}}var si=tn.prototype.constructor;function ci(t){return function(){this.style.removeProperty(t)}}var ui=0;function li(t,e,n,r){this._groups=t,this._parents=e,this._name=n,this._id=r}function di(){return++ui}var fi=tn.prototype;li.prototype=function(t){return tn().transition(t)}.prototype={constructor:li,select:function(t){var e=this._name,n=this._id;"function"!=typeof t&&(t=Jt(t));for(var r=this._groups,i=r.length,a=new Array(i),o=0;o<i;++o)for(var s,c,u=r[o],l=u.length,d=a[o]=new Array(l),f=0;f<l;++f)(s=u[f])&&(c=t.call(s,s.__data__,f,u))&&("__data__"in s&&(c.__data__=s.__data__),d[f]=c,Ur(d[f],e,n,f,d,zr(s,n)));return new li(a,this._parents,e,n)},selectAll:function(t){var e=this._name,n=this._id;"function"!=typeof t&&(t=te(t));for(var r=this._groups,i=r.length,a=[],o=[],s=0;s<i;++s)for(var c,u=r[s],l=u.length,d=0;d<l;++d)if(c=u[d]){for(var f,h=t.call(c,c.__data__,d,u),p=zr(c,n),m=0,_=h.length;m<_;++m)(f=h[m])&&Ur(f,e,n,m,h,p);a.push(h),o.push(c)}return new li(a,o,e,n)},filter:function(t){"function"!=typeof t&&(t=ee(t));for(var e=this._groups,n=e.length,r=new Array(n),i=0;i<n;++i)for(var a,o=e[i],s=o.length,c=r[i]=[],u=0;u<s;++u)(a=o[u])&&t.call(a,a.__data__,u,o)&&c.push(a);return new li(r,this._parents,this._name,this._id)},merge:function(t){if(t._id!==this._id)throw new Error;for(var e=this._groups,n=t._groups,r=e.length,i=n.length,a=Math.min(r,i),o=new Array(r),s=0;s<a;++s)for(var c,u=e[s],l=n[s],d=u.length,f=o[s]=new Array(d),h=0;h<d;++h)(c=u[h]||l[h])&&(f[h]=c);for(;s<r;++s)o[s]=e[s];return new li(o,this._parents,this._name,this._id)},selection:function(){return new si(this._groups,this._parents)},transition:function(){for(var t=this._name,e=this._id,n=di(),r=this._groups,i=r.length,a=0;a<i;++a)for(var o,s=r[a],c=s.length,u=0;u<c;++u)if(o=s[u]){var l=zr(o,e);Ur(o,t,n,u,s,{time:l.time+l.delay+l.duration,delay:0,duration:l.duration,ease:l.ease})}return new li(r,this._parents,t,n)},call:fi.call,nodes:fi.nodes,node:fi.node,size:fi.size,empty:fi.empty,each:fi.each,on:function(t,e){var n=this._id;return arguments.length<2?zr(this.node(),n).on.on(t):this.each(function(t,e,n){var r,i,a=function(t){return(t+"").trim().split(/^|\s+/).every((function(t){var e=t.indexOf(".");return e>=0&&(t=t.slice(0,e)),!t||"start"===t}))}(e)?Br:jr;return function(){var o=a(this,t),s=o.on;s!==r&&(i=(r=s).copy()).on(e,n),o.on=i}}(n,t,e))},attr:function(t,e){var n=Kt(t),r="transform"===n?pr:Xr;return this.attrTween(t,"function"==typeof e?(n.local?ti:Qr)(n,r,Kr(this,"attr."+t,e)):null==e?(n.local?Gr:qr)(n):(n.local?Jr:Zr)(n,r,e))},attrTween:function(t,e){var n="attr."+t;if(arguments.length<2)return(n=this.tween(n))&&n._value;if(null==e)return this.tween(n,null);if("function"!=typeof e)throw new Error;var r=Kt(t);return this.tween(n,(r.local?ei:ni)(r,e))},style:function(t,e,n){var r="transform"==(t+="")?hr:Xr;return null==e?this.styleTween(t,function(t,e){var n,r,i;return function(){var a=ge(this,t),o=(this.style.removeProperty(t),ge(this,t));return a===o?null:a===n&&o===r?i:i=e(n=a,r=o)}}(t,r)).on("end.style."+t,ci(t)):"function"==typeof e?this.styleTween(t,function(t,e,n){var r,i,a;return function(){var o=ge(this,t),s=n(this),c=s+"";return null==s&&(this.style.removeProperty(t),c=s=ge(this,t)),o===c?null:o===r&&c===i?a:(i=c,a=e(r=o,s))}}(t,r,Kr(this,"style."+t,e))).each(function(t,e){var n,r,i,a,o="style."+e,s="end."+o;return function(){var c=jr(this,t),u=c.on,l=null==c.value[o]?a||(a=ci(e)):void 0;u===n&&i===l||(r=(n=u).copy()).on(s,i=l),c.on=r}}(this._id,t)):this.styleTween(t,function(t,e,n){var r,i,a=n+"";return function(){var o=ge(this,t);return o===a?null:o===r?i:i=e(r=o,n)}}(t,r,e),n).on("end.style."+t,null)},styleTween:function(t,e,n){var r="style."+(t+="");if(arguments.length<2)return(r=this.tween(r))&&r._value;if(null==e)return this.tween(r,null);if("function"!=typeof e)throw new Error;return this.tween(r,function(t,e,n){var r,i;function a(){var a=e.apply(this,arguments);return a!==i&&(r=(i=a)&&function(t,e,n){return function(r){this.style.setProperty(t,e(r),n)}}(t,a,n)),r}return a._value=e,a}(t,e,null==n?"":n))},text:function(t){return this.tween("text","function"==typeof t?function(t){return function(){var e=t(this);this.textContent=null==e?"":e}}(Kr(this,"text",t)):function(t){return function(){this.textContent=t}}(null==t?"":t+""))},remove:function(){return this.on("end.remove",function(t){return function(){var e=this.parentNode;for(var n in this.__transition)if(+n!==t)return;e&&e.removeChild(this)}}(this._id))},tween:function(t,e){var n=this._id;if(t+="",arguments.length<2){for(var r,i=zr(this.node(),n).tween,a=0,o=i.length;a<o;++a)if((r=i[a]).name===t)return r.value;return null}return this.each((null==e?Wr:Yr)(n,t,e))},delay:function(t){var e=this._id;return arguments.length?this.each(("function"==typeof t?ri:ii)(e,t)):zr(this.node(),e).delay},duration:function(t){var e=this._id;return arguments.length?this.each(("function"==typeof t?ai:oi)(e,t)):zr(this.node(),e).duration},ease:function(t){var e=this._id;return arguments.length?this.each(function(t,e){if("function"!=typeof e)throw new Error;return function(){jr(this,t).ease=e}}(e,t)):zr(this.node(),e).ease},end:function(){var t,e,n=this,r=n._id,i=n.size();return new Promise((function(a,o){var s={value:o},c={value:function(){0==--i&&a()}};n.each((function(){var n=jr(this,r),i=n.on;i!==t&&((e=(t=i).copy())._.cancel.push(s),e._.interrupt.push(s),e._.end.push(c)),n.on=e}))}))}};var hi=Math.PI/2;function pi(t){return Math.sin(t*hi)}var mi={time:null,delay:0,duration:250,ease:function(t){return((t*=2)<=1?t*t*t:(t-=2)*t*t+2)/2}};function _i(t,e){for(var n;!(n=t.__transition)||!(n=n[e]);)if(!(t=t.parentNode))return mi.time=Ar(),mi;return n}tn.prototype.interrupt=function(t){return this.each((function(){!function(t,e){var n,r,i,a=t.__transition,o=!0;if(a){for(i in e=null==e?null:e+"",a)(n=a[i]).name===e?(r=n.state>Dr&&n.state<Vr,n.state=Fr,n.timer.stop(),n.on.call(r?"interrupt":"cancel",t,t.__data__,n.index,n.group),delete a[i]):o=!1;o&&delete t.__transition}}(this,t)}))},tn.prototype.transition=function(t){var e,n;t instanceof li?(e=t._id,t=t._name):(e=di(),(n=mi).time=Ar(),t=null==t?null:t+"");for(var r=this._groups,i=r.length,a=0;a<i;++a)for(var o,s=r[a],c=s.length,u=0;u<c;++u)(o=s[u])&&Ur(o,t,e,u,s,n||_i(o,e));return new li(r,this._parents,t,e)};function vi(){}function gi(t,e){var n=new vi;if(t instanceof vi)t.each((function(t,e){n.set(e,t)}));else if(Array.isArray(t)){var r,i=-1,a=t.length;if(null==e)for(;++i<a;)n.set(i,t[i]);else for(;++i<a;)n.set(e(r=t[i],i,t),r)}else if(t)for(var o in t)n.set(o,t[o]);return n}function yi(){}vi.prototype=gi.prototype={constructor:vi,has:function(t){return"$"+t in this},get:function(t){return this["$"+t]},set:function(t,e){return this["$"+t]=e,this},remove:function(t){var e="$"+t;return e in this&&delete this[e]},clear:function(){for(var t in this)"$"===t[0]&&delete this[t]},keys:function(){var t=[];for(var e in this)"$"===e[0]&&t.push(e.slice(1));return t},values:function(){var t=[];for(var e in this)"$"===e[0]&&t.push(this[e]);return t},entries:function(){var t=[];for(var e in this)"$"===e[0]&&t.push({key:e.slice(1),value:this[e]});return t},size:function(){var t=0;for(var e in this)"$"===e[0]&&++t;return t},empty:function(){for(var t in this)if("$"===t[0])return!1;return!0},each:function(t){for(var e in this)"$"===e[0]&&t(this[e],e.slice(1),this)}};var bi=gi.prototype;yi.prototype=function(t,e){var n=new yi;if(t instanceof yi)t.each((function(t){n.add(t)}));else if(t){var r=-1,i=t.length;if(null==e)for(;++r<i;)n.add(t[r]);else for(;++r<i;)n.add(e(t[r],r,t))}return n}.prototype={constructor:yi,has:bi.has,add:function(t){return this["$"+(t+="")]=t,this},remove:bi.remove,clear:bi.clear,values:bi.keys,size:bi.size,empty:bi.empty,each:bi.each};var $i={},xi={},wi=34,Ai=10,Ci=13;function Ti(t){return new Function("d","return {"+t.map((function(t,e){return JSON.stringify(t)+": d["+e+"]"})).join(",")+"}")}function Si(t){var e=Object.create(null),n=[];return t.forEach((function(t){for(var r in t)r in e||n.push(e[r]=r)})),n}function Ei(t,e){var n=t+"",r=n.length;return r<e?new Array(e-r+1).join(0)+n:n}function Ii(t){var e=t.getUTCHours(),n=t.getUTCMinutes(),r=t.getUTCSeconds(),i=t.getUTCMilliseconds();return isNaN(t)?"Invalid Date":function(t){return t<0?"-"+Ei(-t,6):t>9999?"+"+Ei(t,6):Ei(t,4)}(t.getUTCFullYear())+"-"+Ei(t.getUTCMonth()+1,2)+"-"+Ei(t.getUTCDate(),2)+(i?"T"+Ei(e,2)+":"+Ei(n,2)+":"+Ei(r,2)+"."+Ei(i,3)+"Z":r?"T"+Ei(e,2)+":"+Ei(n,2)+":"+Ei(r,2)+"Z":n||e?"T"+Ei(e,2)+":"+Ei(n,2)+"Z":"")}function ki(t){var e=new RegExp('["'+t+"\n\r]"),n=t.charCodeAt(0);function r(t,e){var r,i=[],a=t.length,o=0,s=0,c=a<=0,u=!1;function l(){if(c)return xi;if(u)return u=!1,$i;var e,r,i=o;if(t.charCodeAt(i)===wi){for(;o++<a&&t.charCodeAt(o)!==wi||t.charCodeAt(++o)===wi;);return(e=o)>=a?c=!0:(r=t.charCodeAt(o++))===Ai?u=!0:r===Ci&&(u=!0,t.charCodeAt(o)===Ai&&++o),t.slice(i+1,e-1).replace(/""/g,'"')}for(;o<a;){if((r=t.charCodeAt(e=o++))===Ai)u=!0;else if(r===Ci)u=!0,t.charCodeAt(o)===Ai&&++o;else if(r!==n)continue;return t.slice(i,e)}return c=!0,t.slice(i,a)}for(t.charCodeAt(a-1)===Ai&&--a,t.charCodeAt(a-1)===Ci&&--a;(r=l())!==xi;){for(var d=[];r!==$i&&r!==xi;)d.push(r),r=l();e&&null==(d=e(d,s++))||i.push(d)}return i}function i(e,n){return e.map((function(e){return n.map((function(t){return o(e[t])})).join(t)}))}function a(e){return e.map(o).join(t)}function o(t){return null==t?"":t instanceof Date?Ii(t):e.test(t+="")?'"'+t.replace(/"/g,'""')+'"':t}return{parse:function(t,e){var n,i,a=r(t,(function(t,r){if(n)return n(t,r-1);i=t,n=e?function(t,e){var n=Ti(t);return function(r,i){return e(n(r),i,t)}}(t,e):Ti(t)}));return a.columns=i||[],a},parseRows:r,format:function(e,n){return null==n&&(n=Si(e)),[n.map(o).join(t)].concat(i(e,n)).join("\n")},formatBody:function(t,e){return null==e&&(e=Si(t)),i(t,e).join("\n")},formatRows:function(t){return t.map(a).join("\n")}}}ki(","),ki("\t");function Mi(t){if(!t.ok)throw new Error(t.status+" "+t.statusText);return t.json()}function Ri(t,e,n,r){if(isNaN(e)||isNaN(n))return t;var i,a,o,s,c,u,l,d,f,h=t._root,p={data:r},m=t._x0,_=t._y0,v=t._x1,g=t._y1;if(!h)return t._root=p,t;for(;h.length;)if((u=e>=(a=(m+v)/2))?m=a:v=a,(l=n>=(o=(_+g)/2))?_=o:g=o,i=h,!(h=h[d=l<<1|u]))return i[d]=p,t;if(s=+t._x.call(null,h.data),c=+t._y.call(null,h.data),e===s&&n===c)return p.next=h,i?i[d]=p:t._root=p,t;do{i=i?i[d]=new Array(4):t._root=new Array(4),(u=e>=(a=(m+v)/2))?m=a:v=a,(l=n>=(o=(_+g)/2))?_=o:g=o}while((d=l<<1|u)==(f=(c>=o)<<1|s>=a));return i[f]=h,i[d]=p,t}function Ni(t,e,n,r,i){this.node=t,this.x0=e,this.y0=n,this.x1=r,this.y1=i}function Li(t){return t[0]}function Oi(t){return t[1]}function Di(t,e,n,r,i,a){this._x=t,this._y=e,this._x0=n,this._y0=r,this._x1=i,this._y1=a,this._root=void 0}function Pi(t){for(var e={data:t.data},n=e;t=t.next;)n=n.next={data:t.data};return e}var Hi=function(t,e,n){var r=new Di(null==e?Li:e,null==n?Oi:n,NaN,NaN,NaN,NaN);return null==t?r:r.addAll(t)}.prototype=Di.prototype;function Vi(t,e){if((n=(t=e?t.toExponential(e-1):t.toExponential()).indexOf("e"))<0)return null;var n,r=t.slice(0,n);return[r.length>1?r[0]+r.slice(2):r,+t.slice(n+1)]}function Fi(t){return(t=Vi(Math.abs(t)))?t[1]:NaN}Hi.copy=function(){var t,e,n=new Di(this._x,this._y,this._x0,this._y0,this._x1,this._y1),r=this._root;if(!r)return n;if(!r.length)return n._root=Pi(r),n;for(t=[{source:r,target:n._root=new Array(4)}];r=t.pop();)for(var i=0;i<4;++i)(e=r.source[i])&&(e.length?t.push({source:e,target:r.target[i]=new Array(4)}):r.target[i]=Pi(e));return n},Hi.add=function(t){var e=+this._x.call(null,t),n=+this._y.call(null,t);return Ri(this.cover(e,n),e,n,t)},Hi.addAll=function(t){var e,n,r,i,a=t.length,o=new Array(a),s=new Array(a),c=1/0,u=1/0,l=-1/0,d=-1/0;for(n=0;n<a;++n)isNaN(r=+this._x.call(null,e=t[n]))||isNaN(i=+this._y.call(null,e))||(o[n]=r,s[n]=i,r<c&&(c=r),r>l&&(l=r),i<u&&(u=i),i>d&&(d=i));if(c>l||u>d)return this;for(this.cover(c,u).cover(l,d),n=0;n<a;++n)Ri(this,o[n],s[n],t[n]);return this},Hi.cover=function(t,e){if(isNaN(t=+t)||isNaN(e=+e))return this;var n=this._x0,r=this._y0,i=this._x1,a=this._y1;if(isNaN(n))i=(n=Math.floor(t))+1,a=(r=Math.floor(e))+1;else{for(var o,s,c=i-n,u=this._root;n>t||t>=i||r>e||e>=a;)switch(s=(e<r)<<1|t<n,(o=new Array(4))[s]=u,u=o,c*=2,s){case 0:i=n+c,a=r+c;break;case 1:n=i-c,a=r+c;break;case 2:i=n+c,r=a-c;break;case 3:n=i-c,r=a-c}this._root&&this._root.length&&(this._root=u)}return this._x0=n,this._y0=r,this._x1=i,this._y1=a,this},Hi.data=function(){var t=[];return this.visit((function(e){if(!e.length)do{t.push(e.data)}while(e=e.next)})),t},Hi.extent=function(t){return arguments.length?this.cover(+t[0][0],+t[0][1]).cover(+t[1][0],+t[1][1]):isNaN(this._x0)?void 0:[[this._x0,this._y0],[this._x1,this._y1]]},Hi.find=function(t,e,n){var r,i,a,o,s,c,u,l=this._x0,d=this._y0,f=this._x1,h=this._y1,p=[],m=this._root;for(m&&p.push(new Ni(m,l,d,f,h)),null==n?n=1/0:(l=t-n,d=e-n,f=t+n,h=e+n,n*=n);c=p.pop();)if(!(!(m=c.node)||(i=c.x0)>f||(a=c.y0)>h||(o=c.x1)<l||(s=c.y1)<d))if(m.length){var _=(i+o)/2,v=(a+s)/2;p.push(new Ni(m[3],_,v,o,s),new Ni(m[2],i,v,_,s),new Ni(m[1],_,a,o,v),new Ni(m[0],i,a,_,v)),(u=(e>=v)<<1|t>=_)&&(c=p[p.length-1],p[p.length-1]=p[p.length-1-u],p[p.length-1-u]=c)}else{var g=t-+this._x.call(null,m.data),y=e-+this._y.call(null,m.data),b=g*g+y*y;if(b<n){var $=Math.sqrt(n=b);l=t-$,d=e-$,f=t+$,h=e+$,r=m.data}}return r},Hi.remove=function(t){if(isNaN(a=+this._x.call(null,t))||isNaN(o=+this._y.call(null,t)))return this;var e,n,r,i,a,o,s,c,u,l,d,f,h=this._root,p=this._x0,m=this._y0,_=this._x1,v=this._y1;if(!h)return this;if(h.length)for(;;){if((u=a>=(s=(p+_)/2))?p=s:_=s,(l=o>=(c=(m+v)/2))?m=c:v=c,e=h,!(h=h[d=l<<1|u]))return this;if(!h.length)break;(e[d+1&3]||e[d+2&3]||e[d+3&3])&&(n=e,f=d)}for(;h.data!==t;)if(r=h,!(h=h.next))return this;return(i=h.next)&&delete h.next,r?(i?r.next=i:delete r.next,this):e?(i?e[d]=i:delete e[d],(h=e[0]||e[1]||e[2]||e[3])&&h===(e[3]||e[2]||e[1]||e[0])&&!h.length&&(n?n[f]=h:this._root=h),this):(this._root=i,this)},Hi.removeAll=function(t){for(var e=0,n=t.length;e<n;++e)this.remove(t[e]);return this},Hi.root=function(){return this._root},Hi.size=function(){var t=0;return this.visit((function(e){if(!e.length)do{++t}while(e=e.next)})),t},Hi.visit=function(t){var e,n,r,i,a,o,s=[],c=this._root;for(c&&s.push(new Ni(c,this._x0,this._y0,this._x1,this._y1));e=s.pop();)if(!t(c=e.node,r=e.x0,i=e.y0,a=e.x1,o=e.y1)&&c.length){var u=(r+a)/2,l=(i+o)/2;(n=c[3])&&s.push(new Ni(n,u,l,a,o)),(n=c[2])&&s.push(new Ni(n,r,l,u,o)),(n=c[1])&&s.push(new Ni(n,u,i,a,l)),(n=c[0])&&s.push(new Ni(n,r,i,u,l))}return this},Hi.visitAfter=function(t){var e,n=[],r=[];for(this._root&&n.push(new Ni(this._root,this._x0,this._y0,this._x1,this._y1));e=n.pop();){var i=e.node;if(i.length){var a,o=e.x0,s=e.y0,c=e.x1,u=e.y1,l=(o+c)/2,d=(s+u)/2;(a=i[0])&&n.push(new Ni(a,o,s,l,d)),(a=i[1])&&n.push(new Ni(a,l,s,c,d)),(a=i[2])&&n.push(new Ni(a,o,d,l,u)),(a=i[3])&&n.push(new Ni(a,l,d,c,u))}r.push(e)}for(;e=r.pop();)t(e.node,e.x0,e.y0,e.x1,e.y1);return this},Hi.x=function(t){return arguments.length?(this._x=t,this):this._x},Hi.y=function(t){return arguments.length?(this._y=t,this):this._y};var Ui,Bi=/^(?:(.)?([<>=^]))?([+\-( ])?([$#])?(0)?(\d+)?(,)?(\.\d+)?(~)?([a-z%])?$/i;function ji(t){if(!(e=Bi.exec(t)))throw new Error("invalid format: "+t);var e;return new zi({fill:e[1],align:e[2],sign:e[3],symbol:e[4],zero:e[5],width:e[6],comma:e[7],precision:e[8]&&e[8].slice(1),trim:e[9],type:e[10]})}function zi(t){this.fill=void 0===t.fill?" ":t.fill+"",this.align=void 0===t.align?">":t.align+"",this.sign=void 0===t.sign?"-":t.sign+"",this.symbol=void 0===t.symbol?"":t.symbol+"",this.zero=!!t.zero,this.width=void 0===t.width?void 0:+t.width,this.comma=!!t.comma,this.precision=void 0===t.precision?void 0:+t.precision,this.trim=!!t.trim,this.type=void 0===t.type?"":t.type+""}function Wi(t,e){var n=Vi(t,e);if(!n)return t+"";var r=n[0],i=n[1];return i<0?"0."+new Array(-i).join("0")+r:r.length>i+1?r.slice(0,i+1)+"."+r.slice(i+1):r+new Array(i-r.length+2).join("0")}ji.prototype=zi.prototype,zi.prototype.toString=function(){return this.fill+this.align+this.sign+this.symbol+(this.zero?"0":"")+(void 0===this.width?"":Math.max(1,0|this.width))+(this.comma?",":"")+(void 0===this.precision?"":"."+Math.max(0,0|this.precision))+(this.trim?"~":"")+this.type};var Yi={"%":function(t,e){return(100*t).toFixed(e)},b:function(t){return Math.round(t).toString(2)},c:function(t){return t+""},d:function(t){return Math.round(t).toString(10)},e:function(t,e){return t.toExponential(e)},f:function(t,e){return t.toFixed(e)},g:function(t,e){return t.toPrecision(e)},o:function(t){return Math.round(t).toString(8)},p:function(t,e){return Wi(100*t,e)},r:Wi,s:function(t,e){var n=Vi(t,e);if(!n)return t+"";var r=n[0],i=n[1],a=i-(Ui=3*Math.max(-8,Math.min(8,Math.floor(i/3))))+1,o=r.length;return a===o?r:a>o?r+new Array(a-o+1).join("0"):a>0?r.slice(0,a)+"."+r.slice(a):"0."+new Array(1-a).join("0")+Vi(t,Math.max(0,e+a-1))[0]},X:function(t){return Math.round(t).toString(16).toUpperCase()},x:function(t){return Math.round(t).toString(16)}};function Ki(t){return t}var Xi,qi,Gi,Zi=Array.prototype.map,Ji=["y","z","a","f","p","n","µ","m","","k","M","G","T","P","E","Z","Y"];function Qi(t){var e,n,r=void 0===t.grouping||void 0===t.thousands?Ki:(e=Zi.call(t.grouping,Number),n=t.thousands+"",function(t,r){for(var i=t.length,a=[],o=0,s=e[0],c=0;i>0&&s>0&&(c+s+1>r&&(s=Math.max(1,r-c)),a.push(t.substring(i-=s,i+s)),!((c+=s+1)>r));)s=e[o=(o+1)%e.length];return a.reverse().join(n)}),i=void 0===t.currency?"":t.currency[0]+"",a=void 0===t.currency?"":t.currency[1]+"",o=void 0===t.decimal?".":t.decimal+"",s=void 0===t.numerals?Ki:function(t){return function(e){return e.replace(/[0-9]/g,(function(e){return t[+e]}))}}(Zi.call(t.numerals,String)),c=void 0===t.percent?"%":t.percent+"",u=void 0===t.minus?"-":t.minus+"",l=void 0===t.nan?"NaN":t.nan+"";function d(t){var e=(t=ji(t)).fill,n=t.align,d=t.sign,f=t.symbol,h=t.zero,p=t.width,m=t.comma,_=t.precision,v=t.trim,g=t.type;"n"===g?(m=!0,g="g"):Yi[g]||(void 0===_&&(_=12),v=!0,g="g"),(h||"0"===e&&"="===n)&&(h=!0,e="0",n="=");var y="$"===f?i:"#"===f&&/[boxX]/.test(g)?"0"+g.toLowerCase():"",b="$"===f?a:/[%p]/.test(g)?c:"",$=Yi[g],x=/[defgprs%]/.test(g);function w(t){var i,a,c,f=y,w=b;if("c"===g)w=$(t)+w,t="";else{var A=(t=+t)<0;if(t=isNaN(t)?l:$(Math.abs(t),_),v&&(t=function(t){t:for(var e,n=t.length,r=1,i=-1;r<n;++r)switch(t[r]){case".":i=e=r;break;case"0":0===i&&(i=r),e=r;break;default:if(i>0){if(!+t[r])break t;i=0}}return i>0?t.slice(0,i)+t.slice(e+1):t}(t)),A&&0==+t&&(A=!1),f=(A?"("===d?d:u:"-"===d||"("===d?"":d)+f,w=("s"===g?Ji[8+Ui/3]:"")+w+(A&&"("===d?")":""),x)for(i=-1,a=t.length;++i<a;)if(48>(c=t.charCodeAt(i))||c>57){w=(46===c?o+t.slice(i+1):t.slice(i))+w,t=t.slice(0,i);break}}m&&!h&&(t=r(t,1/0));var C=f.length+t.length+w.length,T=C<p?new Array(p-C+1).join(e):"";switch(m&&h&&(t=r(T+t,T.length?p-w.length:1/0),T=""),n){case"<":t=f+t+w+T;break;case"=":t=f+T+t+w;break;case"^":t=T.slice(0,C=T.length>>1)+f+t+w+T.slice(C);break;default:t=T+f+t+w}return s(t)}return _=void 0===_?6:/[gprs]/.test(g)?Math.max(1,Math.min(21,_)):Math.max(0,Math.min(20,_)),w.toString=function(){return t+""},w}return{format:d,formatPrefix:function(t,e){var n=d(((t=ji(t)).type="f",t)),r=3*Math.max(-8,Math.min(8,Math.floor(Fi(e)/3))),i=Math.pow(10,-r),a=Ji[8+r/3];return function(t){return n(i*t)+a}}}}function ta(){return new ea}function ea(){this.reset()}Xi=Qi({decimal:".",thousands:",",grouping:[3],currency:["$",""],minus:"-"}),qi=Xi.format,Gi=Xi.formatPrefix,ea.prototype={constructor:ea,reset:function(){this.s=this.t=0},add:function(t){ra(na,t,this.t),ra(this,na.s,this.s),this.s?this.t+=na.t:this.s=na.t},valueOf:function(){return this.s}};var na=new ea;function ra(t,e,n){var r=t.s=e+n,i=r-e,a=r-i;t.t=e-a+(n-i)}ta(),ta(),ta(),ta(),ta(),ta(),ta(),ta();function ia(t,e){switch(arguments.length){case 0:break;case 1:this.range(t);break;default:this.range(e).domain(t)}return this}var aa=Array.prototype,oa=aa.map,sa=aa.slice,ca={name:"implicit"};function ua(){var t,e,n=function t(){var e=gi(),n=[],r=[],i=ca;function a(t){var a=t+"",o=e.get(a);if(!o){if(i!==ca)return i;e.set(a,o=n.push(t))}return r[(o-1)%r.length]}return a.domain=function(t){if(!arguments.length)return n.slice();n=[],e=gi();for(var r,i,o=-1,s=t.length;++o<s;)e.has(i=(r=t[o])+"")||e.set(i,n.push(r));return a},a.range=function(t){return arguments.length?(r=sa.call(t),a):r.slice()},a.unknown=function(t){return arguments.length?(i=t,a):i},a.copy=function(){return t(n,r).unknown(i)},ia.apply(a,arguments),a}().unknown(void 0),r=n.domain,i=n.range,a=[0,1],o=!1,s=0,c=0,u=.5;function l(){var n=r().length,l=a[1]<a[0],d=a[l-0],f=a[1-l];t=(f-d)/Math.max(1,n-s+2*c),o&&(t=Math.floor(t)),d+=(f-d-t*(n-s))*u,e=t*(1-s),o&&(d=Math.round(d),e=Math.round(e));var h=function(t,e,n){t=+t,e=+e,n=(i=arguments.length)<2?(e=t,t=0,1):i<3?1:+n;for(var r=-1,i=0|Math.max(0,Math.ceil((e-t)/n)),a=new Array(i);++r<i;)a[r]=t+r*n;return a}(n).map((function(e){return d+t*e}));return i(l?h.reverse():h)}return delete n.unknown,n.domain=function(t){return arguments.length?(r(t),l()):r()},n.range=function(t){return arguments.length?(a=[+t[0],+t[1]],l()):a.slice()},n.rangeRound=function(t){return a=[+t[0],+t[1]],o=!0,l()},n.bandwidth=function(){return e},n.step=function(){return t},n.round=function(t){return arguments.length?(o=!!t,l()):o},n.padding=function(t){return arguments.length?(s=Math.min(1,c=+t),l()):s},n.paddingInner=function(t){return arguments.length?(s=Math.min(1,t),l()):s},n.paddingOuter=function(t){return arguments.length?(c=+t,l()):c},n.align=function(t){return arguments.length?(u=Math.max(0,Math.min(1,t)),l()):u},n.copy=function(){return ua(r(),a).round(o).paddingInner(s).paddingOuter(c).align(u)},ia.apply(l(),arguments)}function la(t){return+t}var da=[0,1];function fa(t){return t}function ha(t,e){return(e-=t=+t)?function(n){return(n-t)/e}:(n=isNaN(e)?NaN:.5,function(){return n});var n}function pa(t){var e,n=t[0],r=t[t.length-1];return n>r&&(e=n,n=r,r=e),function(t){return Math.max(n,Math.min(r,t))}}function ma(t,e,n){var r=t[0],i=t[1],a=e[0],o=e[1];return i<r?(r=ha(i,r),a=n(o,a)):(r=ha(r,i),a=n(a,o)),function(t){return a(r(t))}}function _a(t,e,n){var r=Math.min(t.length,e.length)-1,i=new Array(r),a=new Array(r),o=-1;for(t[r]<t[0]&&(t=t.slice().reverse(),e=e.slice().reverse());++o<r;)i[o]=ha(t[o],t[o+1]),a[o]=n(e[o],e[o+1]);return function(e){var n=vt(t,e,1,r)-1;return a[n](i[n](e))}}function va(t,e){return e.domain(t.domain()).range(t.range()).interpolate(t.interpolate()).clamp(t.clamp()).unknown(t.unknown())}function ga(t,e){return function(){var t,e,n,r,i,a,o=da,s=da,c=er,u=fa;function l(){return r=Math.min(o.length,s.length)>2?_a:ma,i=a=null,d}function d(e){return isNaN(e=+e)?n:(i||(i=r(o.map(t),s,c)))(t(u(e)))}return d.invert=function(n){return u(e((a||(a=r(s,o.map(t),Gn)))(n)))},d.domain=function(t){return arguments.length?(o=oa.call(t,la),u===fa||(u=pa(o)),l()):o.slice()},d.range=function(t){return arguments.length?(s=sa.call(t),l()):s.slice()},d.rangeRound=function(t){return s=sa.call(t),c=nr,l()},d.clamp=function(t){return arguments.length?(u=t?pa(o):fa,d):u!==fa},d.interpolate=function(t){return arguments.length?(c=t,l()):c},d.unknown=function(t){return arguments.length?(n=t,d):n},function(n,r){return t=n,e=r,l()}}()(t,e)}function ya(t,e,n,r){var i,a=xt(t,e,n);switch((r=ji(null==r?",f":r)).type){case"s":var o=Math.max(Math.abs(t),Math.abs(e));return null!=r.precision||isNaN(i=function(t,e){return Math.max(0,3*Math.max(-8,Math.min(8,Math.floor(Fi(e)/3)))-Fi(Math.abs(t)))}(a,o))||(r.precision=i),Gi(r,o);case"":case"e":case"g":case"p":case"r":null!=r.precision||isNaN(i=function(t,e){return t=Math.abs(t),e=Math.abs(e)-t,Math.max(0,Fi(e)-Fi(t))+1}(a,Math.max(Math.abs(t),Math.abs(e))))||(r.precision=i-("e"===r.type));break;case"f":case"%":null!=r.precision||isNaN(i=function(t){return Math.max(0,-Fi(Math.abs(t)))}(a))||(r.precision=i-2*("%"===r.type))}return qi(r)}function ba(t){var e=t.domain;return t.ticks=function(t){var n=e();return function(t,e,n){var r,i,a,o,s=-1;if(n=+n,(t=+t)===(e=+e)&&n>0)return[t];if((r=e<t)&&(i=t,t=e,e=i),0===(o=$t(t,e,n))||!isFinite(o))return[];if(o>0)for(t=Math.ceil(t/o),e=Math.floor(e/o),a=new Array(i=Math.ceil(e-t+1));++s<i;)a[s]=(t+s)*o;else for(t=Math.floor(t*o),e=Math.ceil(e*o),a=new Array(i=Math.ceil(t-e+1));++s<i;)a[s]=(t-s)/o;return r&&a.reverse(),a}(n[0],n[n.length-1],null==t?10:t)},t.tickFormat=function(t,n){var r=e();return ya(r[0],r[r.length-1],null==t?10:t,n)},t.nice=function(n){null==n&&(n=10);var r,i=e(),a=0,o=i.length-1,s=i[a],c=i[o];return c<s&&(r=s,s=c,c=r,r=a,a=o,o=r),(r=$t(s,c,n))>0?r=$t(s=Math.floor(s/r)*r,c=Math.ceil(c/r)*r,n):r<0&&(r=$t(s=Math.ceil(s*r)/r,c=Math.floor(c*r)/r,n)),r>0?(i[a]=Math.floor(s/r)*r,i[o]=Math.ceil(c/r)*r,e(i)):r<0&&(i[a]=Math.ceil(s*r)/r,i[o]=Math.floor(c*r)/r,e(i)),t},t}function $a(){var t=ga(fa,fa);return t.copy=function(){return va(t,$a())},ia.apply(t,arguments),ba(t)}var xa=new Date,wa=new Date;function Aa(t,e,n,r){function i(e){return t(e=0===arguments.length?new Date:new Date(+e)),e}return i.floor=function(e){return t(e=new Date(+e)),e},i.ceil=function(n){return t(n=new Date(n-1)),e(n,1),t(n),n},i.round=function(t){var e=i(t),n=i.ceil(t);return t-e<n-t?e:n},i.offset=function(t,n){return e(t=new Date(+t),null==n?1:Math.floor(n)),t},i.range=function(n,r,a){var o,s=[];if(n=i.ceil(n),a=null==a?1:Math.floor(a),!(n<r&&a>0))return s;do{s.push(o=new Date(+n)),e(n,a),t(n)}while(o<n&&n<r);return s},i.filter=function(n){return Aa((function(e){if(e>=e)for(;t(e),!n(e);)e.setTime(e-1)}),(function(t,r){if(t>=t)if(r<0)for(;++r<=0;)for(;e(t,-1),!n(t););else for(;--r>=0;)for(;e(t,1),!n(t););}))},n&&(i.count=function(e,r){return xa.setTime(+e),wa.setTime(+r),t(xa),t(wa),Math.floor(n(xa,wa))},i.every=function(t){return t=Math.floor(t),isFinite(t)&&t>0?t>1?i.filter(r?function(e){return r(e)%t==0}:function(e){return i.count(0,e)%t==0}):i:null}),i}var Ca=Aa((function(){}),(function(t,e){t.setTime(+t+e)}),(function(t,e){return e-t}));Ca.every=function(t){return t=Math.floor(t),isFinite(t)&&t>0?t>1?Aa((function(e){e.setTime(Math.floor(e/t)*t)}),(function(e,n){e.setTime(+e+n*t)}),(function(e,n){return(n-e)/t})):Ca:null};var Ta=6e4,Sa=6048e5,Ea=Aa((function(t){t.setTime(t-t.getMilliseconds())}),(function(t,e){t.setTime(+t+1e3*e)}),(function(t,e){return(e-t)/1e3}),(function(t){return t.getUTCSeconds()})),Ia=Aa((function(t){t.setTime(t-t.getMilliseconds()-1e3*t.getSeconds())}),(function(t,e){t.setTime(+t+e*Ta)}),(function(t,e){return(e-t)/Ta}),(function(t){return t.getMinutes()})),ka=Aa((function(t){t.setTime(t-t.getMilliseconds()-1e3*t.getSeconds()-t.getMinutes()*Ta)}),(function(t,e){t.setTime(+t+36e5*e)}),(function(t,e){return(e-t)/36e5}),(function(t){return t.getHours()})),Ma=Aa((function(t){t.setHours(0,0,0,0)}),(function(t,e){t.setDate(t.getDate()+e)}),(function(t,e){return(e-t-(e.getTimezoneOffset()-t.getTimezoneOffset())*Ta)/864e5}),(function(t){return t.getDate()-1}));function Ra(t){return Aa((function(e){e.setDate(e.getDate()-(e.getDay()+7-t)%7),e.setHours(0,0,0,0)}),(function(t,e){t.setDate(t.getDate()+7*e)}),(function(t,e){return(e-t-(e.getTimezoneOffset()-t.getTimezoneOffset())*Ta)/Sa}))}var Na=Ra(0),La=Ra(1),Oa=(Ra(2),Ra(3),Ra(4)),Da=(Ra(5),Ra(6),Aa((function(t){t.setDate(1),t.setHours(0,0,0,0)}),(function(t,e){t.setMonth(t.getMonth()+e)}),(function(t,e){return e.getMonth()-t.getMonth()+12*(e.getFullYear()-t.getFullYear())}),(function(t){return t.getMonth()}))),Pa=Aa((function(t){t.setMonth(0,1),t.setHours(0,0,0,0)}),(function(t,e){t.setFullYear(t.getFullYear()+e)}),(function(t,e){return e.getFullYear()-t.getFullYear()}),(function(t){return t.getFullYear()}));Pa.every=function(t){return isFinite(t=Math.floor(t))&&t>0?Aa((function(e){e.setFullYear(Math.floor(e.getFullYear()/t)*t),e.setMonth(0,1),e.setHours(0,0,0,0)}),(function(e,n){e.setFullYear(e.getFullYear()+n*t)})):null};var Ha=Aa((function(t){t.setUTCHours(0,0,0,0)}),(function(t,e){t.setUTCDate(t.getUTCDate()+e)}),(function(t,e){return(e-t)/864e5}),(function(t){return t.getUTCDate()-1}));function Va(t){return Aa((function(e){e.setUTCDate(e.getUTCDate()-(e.getUTCDay()+7-t)%7),e.setUTCHours(0,0,0,0)}),(function(t,e){t.setUTCDate(t.getUTCDate()+7*e)}),(function(t,e){return(e-t)/Sa}))}var Fa=Va(0),Ua=Va(1),Ba=(Va(2),Va(3),Va(4)),ja=(Va(5),Va(6),Aa((function(t){t.setUTCMonth(0,1),t.setUTCHours(0,0,0,0)}),(function(t,e){t.setUTCFullYear(t.getUTCFullYear()+e)}),(function(t,e){return e.getUTCFullYear()-t.getUTCFullYear()}),(function(t){return t.getUTCFullYear()})));function za(t){if(0<=t.y&&t.y<100){var e=new Date(-1,t.m,t.d,t.H,t.M,t.S,t.L);return e.setFullYear(t.y),e}return new Date(t.y,t.m,t.d,t.H,t.M,t.S,t.L)}function Wa(t){if(0<=t.y&&t.y<100){var e=new Date(Date.UTC(-1,t.m,t.d,t.H,t.M,t.S,t.L));return e.setUTCFullYear(t.y),e}return new Date(Date.UTC(t.y,t.m,t.d,t.H,t.M,t.S,t.L))}function Ya(t){return{y:t,m:0,d:1,H:0,M:0,S:0,L:0}}ja.every=function(t){return isFinite(t=Math.floor(t))&&t>0?Aa((function(e){e.setUTCFullYear(Math.floor(e.getUTCFullYear()/t)*t),e.setUTCMonth(0,1),e.setUTCHours(0,0,0,0)}),(function(e,n){e.setUTCFullYear(e.getUTCFullYear()+n*t)})):null};var Ka,Xa,qa,Ga,Za={"-":"",_:" ",0:"0"},Ja=/^\s*\d+/,Qa=/^%/,to=/[\\^$*+?|[\]().{}]/g;function eo(t,e,n){var r=t<0?"-":"",i=(r?-t:t)+"",a=i.length;return r+(a<n?new Array(n-a+1).join(e)+i:i)}function no(t){return t.replace(to,"\\$&")}function ro(t){return new RegExp("^(?:"+t.map(no).join("|")+")","i")}function io(t){for(var e={},n=-1,r=t.length;++n<r;)e[t[n].toLowerCase()]=n;return e}function ao(t,e,n){var r=Ja.exec(e.slice(n,n+1));return r?(t.w=+r[0],n+r[0].length):-1}function oo(t,e,n){var r=Ja.exec(e.slice(n,n+1));return r?(t.u=+r[0],n+r[0].length):-1}function so(t,e,n){var r=Ja.exec(e.slice(n,n+2));return r?(t.U=+r[0],n+r[0].length):-1}function co(t,e,n){var r=Ja.exec(e.slice(n,n+2));return r?(t.V=+r[0],n+r[0].length):-1}function uo(t,e,n){var r=Ja.exec(e.slice(n,n+2));return r?(t.W=+r[0],n+r[0].length):-1}function lo(t,e,n){var r=Ja.exec(e.slice(n,n+4));return r?(t.y=+r[0],n+r[0].length):-1}function fo(t,e,n){var r=Ja.exec(e.slice(n,n+2));return r?(t.y=+r[0]+(+r[0]>68?1900:2e3),n+r[0].length):-1}function ho(t,e,n){var r=/^(Z)|([+-]\d\d)(?::?(\d\d))?/.exec(e.slice(n,n+6));return r?(t.Z=r[1]?0:-(r[2]+(r[3]||"00")),n+r[0].length):-1}function po(t,e,n){var r=Ja.exec(e.slice(n,n+2));return r?(t.m=r[0]-1,n+r[0].length):-1}function mo(t,e,n){var r=Ja.exec(e.slice(n,n+2));return r?(t.d=+r[0],n+r[0].length):-1}function _o(t,e,n){var r=Ja.exec(e.slice(n,n+3));return r?(t.m=0,t.d=+r[0],n+r[0].length):-1}function vo(t,e,n){var r=Ja.exec(e.slice(n,n+2));return r?(t.H=+r[0],n+r[0].length):-1}function go(t,e,n){var r=Ja.exec(e.slice(n,n+2));return r?(t.M=+r[0],n+r[0].length):-1}function yo(t,e,n){var r=Ja.exec(e.slice(n,n+2));return r?(t.S=+r[0],n+r[0].length):-1}function bo(t,e,n){var r=Ja.exec(e.slice(n,n+3));return r?(t.L=+r[0],n+r[0].length):-1}function $o(t,e,n){var r=Ja.exec(e.slice(n,n+6));return r?(t.L=Math.floor(r[0]/1e3),n+r[0].length):-1}function xo(t,e,n){var r=Qa.exec(e.slice(n,n+1));return r?n+r[0].length:-1}function wo(t,e,n){var r=Ja.exec(e.slice(n));return r?(t.Q=+r[0],n+r[0].length):-1}function Ao(t,e,n){var r=Ja.exec(e.slice(n));return r?(t.Q=1e3*+r[0],n+r[0].length):-1}function Co(t,e){return eo(t.getDate(),e,2)}function To(t,e){return eo(t.getHours(),e,2)}function So(t,e){return eo(t.getHours()%12||12,e,2)}function Eo(t,e){return eo(1+Ma.count(Pa(t),t),e,3)}function Io(t,e){return eo(t.getMilliseconds(),e,3)}function ko(t,e){return Io(t,e)+"000"}function Mo(t,e){return eo(t.getMonth()+1,e,2)}function Ro(t,e){return eo(t.getMinutes(),e,2)}function No(t,e){return eo(t.getSeconds(),e,2)}function Lo(t){var e=t.getDay();return 0===e?7:e}function Oo(t,e){return eo(Na.count(Pa(t),t),e,2)}function Do(t,e){var n=t.getDay();return t=n>=4||0===n?Oa(t):Oa.ceil(t),eo(Oa.count(Pa(t),t)+(4===Pa(t).getDay()),e,2)}function Po(t){return t.getDay()}function Ho(t,e){return eo(La.count(Pa(t),t),e,2)}function Vo(t,e){return eo(t.getFullYear()%100,e,2)}function Fo(t,e){return eo(t.getFullYear()%1e4,e,4)}function Uo(t){var e=t.getTimezoneOffset();return(e>0?"-":(e*=-1,"+"))+eo(e/60|0,"0",2)+eo(e%60,"0",2)}function Bo(t,e){return eo(t.getUTCDate(),e,2)}function jo(t,e){return eo(t.getUTCHours(),e,2)}function zo(t,e){return eo(t.getUTCHours()%12||12,e,2)}function Wo(t,e){return eo(1+Ha.count(ja(t),t),e,3)}function Yo(t,e){return eo(t.getUTCMilliseconds(),e,3)}function Ko(t,e){return Yo(t,e)+"000"}function Xo(t,e){return eo(t.getUTCMonth()+1,e,2)}function qo(t,e){return eo(t.getUTCMinutes(),e,2)}function Go(t,e){return eo(t.getUTCSeconds(),e,2)}function Zo(t){var e=t.getUTCDay();return 0===e?7:e}function Jo(t,e){return eo(Fa.count(ja(t),t),e,2)}function Qo(t,e){var n=t.getUTCDay();return t=n>=4||0===n?Ba(t):Ba.ceil(t),eo(Ba.count(ja(t),t)+(4===ja(t).getUTCDay()),e,2)}function ts(t){return t.getUTCDay()}function es(t,e){return eo(Ua.count(ja(t),t),e,2)}function ns(t,e){return eo(t.getUTCFullYear()%100,e,2)}function rs(t,e){return eo(t.getUTCFullYear()%1e4,e,4)}function is(){return"+0000"}function as(){return"%"}function os(t){return+t}function ss(t){return Math.floor(+t/1e3)}!function(t){Ka=function(t){var e=t.dateTime,n=t.date,r=t.time,i=t.periods,a=t.days,o=t.shortDays,s=t.months,c=t.shortMonths,u=ro(i),l=io(i),d=ro(a),f=io(a),h=ro(o),p=io(o),m=ro(s),_=io(s),v=ro(c),g=io(c),y={a:function(t){return o[t.getDay()]},A:function(t){return a[t.getDay()]},b:function(t){return c[t.getMonth()]},B:function(t){return s[t.getMonth()]},c:null,d:Co,e:Co,f:ko,H:To,I:So,j:Eo,L:Io,m:Mo,M:Ro,p:function(t){return i[+(t.getHours()>=12)]},Q:os,s:ss,S:No,u:Lo,U:Oo,V:Do,w:Po,W:Ho,x:null,X:null,y:Vo,Y:Fo,Z:Uo,"%":as},b={a:function(t){return o[t.getUTCDay()]},A:function(t){return a[t.getUTCDay()]},b:function(t){return c[t.getUTCMonth()]},B:function(t){return s[t.getUTCMonth()]},c:null,d:Bo,e:Bo,f:Ko,H:jo,I:zo,j:Wo,L:Yo,m:Xo,M:qo,p:function(t){return i[+(t.getUTCHours()>=12)]},Q:os,s:ss,S:Go,u:Zo,U:Jo,V:Qo,w:ts,W:es,x:null,X:null,y:ns,Y:rs,Z:is,"%":as},$={a:function(t,e,n){var r=h.exec(e.slice(n));return r?(t.w=p[r[0].toLowerCase()],n+r[0].length):-1},A:function(t,e,n){var r=d.exec(e.slice(n));return r?(t.w=f[r[0].toLowerCase()],n+r[0].length):-1},b:function(t,e,n){var r=v.exec(e.slice(n));return r?(t.m=g[r[0].toLowerCase()],n+r[0].length):-1},B:function(t,e,n){var r=m.exec(e.slice(n));return r?(t.m=_[r[0].toLowerCase()],n+r[0].length):-1},c:function(t,n,r){return A(t,e,n,r)},d:mo,e:mo,f:$o,H:vo,I:vo,j:_o,L:bo,m:po,M:go,p:function(t,e,n){var r=u.exec(e.slice(n));return r?(t.p=l[r[0].toLowerCase()],n+r[0].length):-1},Q:wo,s:Ao,S:yo,u:oo,U:so,V:co,w:ao,W:uo,x:function(t,e,r){return A(t,n,e,r)},X:function(t,e,n){return A(t,r,e,n)},y:fo,Y:lo,Z:ho,"%":xo};function x(t,e){return function(n){var r,i,a,o=[],s=-1,c=0,u=t.length;for(n instanceof Date||(n=new Date(+n));++s<u;)37===t.charCodeAt(s)&&(o.push(t.slice(c,s)),null!=(i=Za[r=t.charAt(++s)])?r=t.charAt(++s):i="e"===r?" ":"0",(a=e[r])&&(r=a(n,i)),o.push(r),c=s+1);return o.push(t.slice(c,s)),o.join("")}}function w(t,e){return function(n){var r,i,a=Ya(1900);if(A(a,t,n+="",0)!=n.length)return null;if("Q"in a)return new Date(a.Q);if("p"in a&&(a.H=a.H%12+12*a.p),"V"in a){if(a.V<1||a.V>53)return null;"w"in a||(a.w=1),"Z"in a?(i=(r=Wa(Ya(a.y))).getUTCDay(),r=i>4||0===i?Ua.ceil(r):Ua(r),r=Ha.offset(r,7*(a.V-1)),a.y=r.getUTCFullYear(),a.m=r.getUTCMonth(),a.d=r.getUTCDate()+(a.w+6)%7):(i=(r=e(Ya(a.y))).getDay(),r=i>4||0===i?La.ceil(r):La(r),r=Ma.offset(r,7*(a.V-1)),a.y=r.getFullYear(),a.m=r.getMonth(),a.d=r.getDate()+(a.w+6)%7)}else("W"in a||"U"in a)&&("w"in a||(a.w="u"in a?a.u%7:"W"in a?1:0),i="Z"in a?Wa(Ya(a.y)).getUTCDay():e(Ya(a.y)).getDay(),a.m=0,a.d="W"in a?(a.w+6)%7+7*a.W-(i+5)%7:a.w+7*a.U-(i+6)%7);return"Z"in a?(a.H+=a.Z/100|0,a.M+=a.Z%100,Wa(a)):e(a)}}function A(t,e,n,r){for(var i,a,o=0,s=e.length,c=n.length;o<s;){if(r>=c)return-1;if(37===(i=e.charCodeAt(o++))){if(i=e.charAt(o++),!(a=$[i in Za?e.charAt(o++):i])||(r=a(t,n,r))<0)return-1}else if(i!=n.charCodeAt(r++))return-1}return r}return(y.x=x(n,y),y.X=x(r,y),y.c=x(e,y),b.x=x(n,b),b.X=x(r,b),b.c=x(e,b),{format:function(t){var e=x(t+="",y);return e.toString=function(){return t},e},parse:function(t){var e=w(t+="",za);return e.toString=function(){return t},e},utcFormat:function(t){var e=x(t+="",b);return e.toString=function(){return t},e},utcParse:function(t){var e=w(t,Wa);return e.toString=function(){return t},e}})}(t),Xa=Ka.format,Ka.parse,qa=Ka.utcFormat,Ga=Ka.utcParse}({dateTime:"%x, %X",date:"%-m/%-d/%Y",time:"%-I:%M:%S %p",periods:["AM","PM"],days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],shortDays:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],months:["January","February","March","April","May","June","July","August","September","October","November","December"],shortMonths:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]});Date.prototype.toISOString||qa("%Y-%m-%dT%H:%M:%S.%LZ");+new Date("2000-01-01T00:00:00.000Z")||Ga("%Y-%m-%dT%H:%M:%S.%LZ");var cs=1e3,us=60*cs,ls=60*us,ds=24*ls,fs=7*ds,hs=30*ds,ps=365*ds;function ms(t){return new Date(t)}function _s(t){return t instanceof Date?+t:+new Date(+t)}function vs(){return ia.apply(function t(e,n,r,i,a,o,s,c,u){var l=ga(fa,fa),d=l.invert,f=l.domain,h=u(".%L"),p=u(":%S"),m=u("%I:%M"),_=u("%I %p"),v=u("%a %d"),g=u("%b %d"),y=u("%B"),b=u("%Y"),$=[[s,1,cs],[s,5,5*cs],[s,15,15*cs],[s,30,30*cs],[o,1,us],[o,5,5*us],[o,15,15*us],[o,30,30*us],[a,1,ls],[a,3,3*ls],[a,6,6*ls],[a,12,12*ls],[i,1,ds],[i,2,2*ds],[r,1,fs],[n,1,hs],[n,3,3*hs],[e,1,ps]];function x(t){return(s(t)<t?h:o(t)<t?p:a(t)<t?m:i(t)<t?_:n(t)<t?r(t)<t?v:g:e(t)<t?y:b)(t)}function w(t,n,r,i){if(null==t&&(t=10),"number"==typeof t){var a=Math.abs(r-n)/t,o=_t((function(t){return t[2]})).right($,a);o===$.length?(i=xt(n/ps,r/ps,t),t=e):o?(i=(o=$[a/$[o-1][2]<$[o][2]/a?o-1:o])[1],t=o[0]):(i=Math.max(xt(n,r,t),1),t=c)}return null==i?t:t.every(i)}return l.invert=function(t){return new Date(d(t))},l.domain=function(t){return arguments.length?f(oa.call(t,_s)):f().map(ms)},l.ticks=function(t,e){var n,r=f(),i=r[0],a=r[r.length-1],o=a<i;return o&&(n=i,i=a,a=n),n=(n=w(t,i,a,e))?n.range(i,a+1):[],o?n.reverse():n},l.tickFormat=function(t,e){return null==e?x:u(e)},l.nice=function(t,e){var n=f();return(t=w(t,n[0],n[n.length-1],e))?f(function(t,e){var n,r=0,i=(t=t.slice()).length-1,a=t[r],o=t[i];return o<a&&(n=r,r=i,i=n,n=a,a=o,o=n),t[r]=e.floor(a),t[i]=e.ceil(o),t}(n,t)):l},l.copy=function(){return va(l,t(e,n,r,i,a,o,s,c,u))},l}(Pa,Da,Na,Ma,ka,Ia,Ea,Ca,Xa).domain([new Date(2e3,0,1),new Date(2e3,0,2)]),arguments)}function gs(t){return t<0?-1:1}function ys(t,e,n){var r=t._x1-t._x0,i=e-t._x1,a=(t._y1-t._y0)/(r||i<0&&-0),o=(n-t._y1)/(i||r<0&&-0),s=(a*i+o*r)/(r+i);return(gs(a)+gs(o))*Math.min(Math.abs(a),Math.abs(o),.5*Math.abs(s))||0}function bs(t,e){var n=t._x1-t._x0;return n?(3*(t._y1-t._y0)/n-e)/2:e}function $s(t,e,n){var r=t._x0,i=t._y0,a=t._x1,o=t._y1,s=(a-r)/3;t._context.bezierCurveTo(r+s,i+s*e,a-s,o-s*n,a,o)}function xs(t){this._context=t}function ws(t){this._context=t}xs.prototype={areaStart:function(){this._line=0},areaEnd:function(){this._line=NaN},lineStart:function(){this._x0=this._x1=this._y0=this._y1=this._t0=NaN,this._point=0},lineEnd:function(){switch(this._point){case 2:this._context.lineTo(this._x1,this._y1);break;case 3:$s(this,this._t0,bs(this,this._t0))}(this._line||0!==this._line&&1===this._point)&&this._context.closePath(),this._line=1-this._line},point:function(t,e){var n=NaN;if(e=+e,(t=+t)!==this._x1||e!==this._y1){switch(this._point){case 0:this._point=1,this._line?this._context.lineTo(t,e):this._context.moveTo(t,e);break;case 1:this._point=2;break;case 2:this._point=3,$s(this,bs(this,n=ys(this,t,e)),n);break;default:$s(this,this._t0,n=ys(this,t,e))}this._x0=this._x1,this._x1=t,this._y0=this._y1,this._y1=e,this._t0=n}}},(function(t){this._context=new ws(t)}.prototype=Object.create(xs.prototype)).point=function(t,e){xs.prototype.point.call(this,e,t)},ws.prototype={moveTo:function(t,e){this._context.moveTo(e,t)},closePath:function(){this._context.closePath()},lineTo:function(t,e){this._context.lineTo(e,t)},bezierCurveTo:function(t,e,n,r,i,a){this._context.bezierCurveTo(e,t,r,n,a,i)}};var As={"2.48.1":{date:"2019-09-25",type:"hotfix"},"2.48.0":{date:"2019-09-24",type:"patch"},"2.47.3":{date:"2019-09-05",type:"hotfix"},"2.47.2":{date:"2019-08-28",type:"balance"},"2.47.1":{date:"2019-08-14",type:"hotfix"},"2.47.0":{date:"2019-08-06",type:"hero",hero:"qhira"},"2.46.1":{date:"2019-07-10",type:"balance"},"2.46.0":{date:"2019-06-18",type:"patch"},"2.45.1":{date:"2019-05-22",type:"balance"},"2.45.0":{date:"2019-04-30",type:"hero",hero:"anduin"},"2.44.1":{date:"2019-04-17",type:"balance"},"2.44.0":{date:"2019-03-26",type:"patch"},"2.43.3":{date:"2019-03-07",type:"hotfix"},"2.43.2":{date:"2019-02-27",type:"balance"},"2.43.1":{date:"2019-02-15",type:"hotfix"},"2.43.0":{date:"2019-02-12",type:"patch"},"2.42.2":{date:"2019-01-31",type:"hotfix"},"2.42.1":{date:"2019-01-23",type:"balance"},"2.42.0":{date:"2019-01-08",type:"hero",hero:"imperius"},"2.41.2":{date:"2018-12-19",type:"balance"},"2.41.1":{date:"2018-12-13",type:"hotfix"},"2.41.0":{date:"2018-12-11",type:"patch"},"2.40.1":{date:"2018-11-28",type:"balance"},"2.40.0":{date:"2018-11-13",type:"hero",hero:"orphea"},"2.39.2":{date:"2018-10-31",type:"balance"},"2.39.1":{date:"2018-10-26",type:"hotfix"},"2.39.0":{date:"2018-10-16",type:"hero",hero:"malganis"},"2.38.3":{date:"2018-10-11",type:"hotfix"},"2.38.2":{date:"2018-10-10",type:"balance"},"2.38.1":{date:"2018-09-26",type:"hotfix"},"2.38.0":{date:"2018-09-25",type:"patch"},"2.37.1":{date:"2018-09-19",type:"balance"},"2.37.0":{date:"2018-09-04",type:"hero",hero:"mephisto"},"2.36.2":{date:"2018-08-22",type:"balance"},"2.36.1":{date:"2018-08-16",type:"hotfix"},"2.36.0":{date:"2018-08-07",type:"hero",hero:"whitemane"},"2.35.2":{date:"2018-07-27",type:"hotfix"},"2.35.1":{date:"2018-07-25",type:"balance"},"2.35.0":{date:"2018-07-10",type:"patch"},"2.34.3":{date:"2018-06-27",type:"balance"},"2.34.2":{date:"2018-06-15",type:"hotfix"},"2.34.1":{date:"2018-06-12",type:"hotfix"},"2.34.0":{date:"2018-06-12",type:"hero",hero:"yrel"},"2.33.1":{date:"2018-06-06",type:"balance"},"2.33.0":{date:"2018-05-22",type:"patch"},"2.32.3":{date:"2018-05-10",type:"hotfix"},"2.32.2":{date:"2018-05-09",type:"balance"},"2.32.1":{date:"2018-05-01",type:"hotfix"},"2.32.0":{date:"2018-04-24",type:"hero",hero:"deckard"},"2.31.3":{date:"2018-04-12",type:"hotfix"},"2.31.2":{date:"2018-04-11",type:"balance"},"2.31.1":{date:"2018-03-30",type:"hotfix"},"2.31.0":{date:"2018-03-27",type:"hero",hero:"fenix"},"2.30.6":{date:"2018-03-21",type:"balance"},"2.30.5":{date:"2018-03-09",type:"hotfix"},"2.30.4":{date:"2018-03-06",type:"patch"},"2.30.3":{date:"2018-02-21",type:"balance"},"2.30.2":{date:"2018-02-14",type:"hotfix"},"2.30.1":{date:"2018-02-09",type:"balance"},"2.30.0":{date:"2018-02-06",type:"hero",hero:"maiev"},"2.29.9":{date:"2018-01-24",type:"balance"},"2.29.8":{date:"2018-01-16",type:"patch"},"2.29.7":{date:"2018-01-09",type:"hero",hero:"blaze"},"2.29.6":{date:"2017-12-22",type:"hotfix"},"2.29.5":{date:"2017-12-20",type:"balance"},"2.29.4":{date:"2017-12-13",type:"hotfix"},"2.29.3":{date:"2017-12-12",type:"hero",hero:"hanzo"},"2.29.2":{date:"2017-11-29",type:"balance"},"2.29.1":{date:"2017-11-22",type:"hotfix"},"2.29.0":{date:"2017-11-14",type:"hero",hero:"alexstrasza"},"2.28.5":{date:"2017-11-01",type:"balance"},"2.28.4":{date:"2017-10-25",type:"hotfix"},"2.28.3":{date:"2017-10-17",type:"hero",hero:"junkrat"},"2.28.2":{date:"2017-10-11",type:"balance"},"2.28.1":{date:"2017-10-02",type:"hotfix"},"2.28.0":{date:"2017-09-26",type:"hero",hero:"ana"},"2.27.5":{date:"2017-09-20",type:"balance"},"2.27.4":{date:"2017-09-08",type:"hotfix"},"2.27.3":{date:"2017-09-05",type:"hero",hero:"kelthuzad"},"2.27.2":{date:"2017-08-23",type:"balance"},"2.27.1":{date:"2017-08-11",type:"hotfix"},"2.27.0":{date:"2017-08-08",type:"hero",hero:"garrosh"},"2.26.4":{date:"2017-07-26",type:"balance"},"2.26.3":{date:"2017-07-11",type:"hero",hero:"stukov"},"2.26.2":{date:"2017-06-28",type:"hotfix"},"2.26.1":{date:"2017-06-28",type:"balance"},"2.26.0":{date:"2017-06-13",type:"hero",hero:"malthael"},"2.25.5":{date:"2017-05-31",type:"balance"},"2.25.4":{date:"2017-05-16",type:"hero",hero:"dva"},"2.25.3":{date:"2017-05-10",type:"balance"},"2.25.2":{date:"2017-05-04",type:"hotfix"},"2.25.1":{date:"2017-04-28",type:"hotfix"},"2.25.0":{date:"2017-04-25",type:"hero",hero:"genji"},"0.24.6":{date:"2017-04-20",type:"balance"},"0.24.5":{date:"2017-04-12",type:"hotfix"},"0.24.4":{date:"2017-04-04",type:"hero",hero:"cassia"},"0.24.3":{date:"2017-03-30",type:"hotfix"},"0.24.2":{date:"2017-03-28",type:"balance"},"0.24.1":{date:"2017-03-22",type:"hotfix"},"0.24.0":{date:"2017-03-14",type:"hero",hero:"probius"},"0.23.5":{date:"2017-02-27",type:"balance"},"0.23.4":{date:"2017-02-17",type:"hotfix"},"0.23.3":{date:"2017-02-14",type:"hero",hero:"lucio"},"0.23.2":{date:"2017-02-08",type:"hotfix"},"0.23.1":{date:"2017-01-27",type:"balance"},"0.23.0":{date:"2017-01-24",type:"hero",hero:"valeera"},"0.22.7":{date:"2017-01-12",type:"hotfix"},"0.22.6":{date:"2017-01-06",type:"balance"},"0.22.5":{date:"2017-01-04",type:"hero",hero:"zuljin"},"0.22.4":{date:"2016-12-20",type:"balance"},"0.22.3":{date:"2016-12-14",type:"hero",hero:"ragnaros"},"0.22.2":{date:"2016-12-06",type:"balance"},"0.22.1":{date:"2016-11-22",type:"hotfix"},"0.22.0":{date:"2016-11-15",type:"hero",hero:"varian"},"0.21.2":{date:"2016-11-10",type:"balance"},"0.21.1":{date:"2016-10-25",type:"balance"},"0.21.0":{date:"2016-10-18",type:"hero",hero:"samuro"},"0.20.6":{date:"2016-10-12",type:"balance"},"0.20.4":{date:"2016-09-30",type:"hotfix"},"0.20.3":{date:"2016-09-29",type:"hotfix"},"0.20.2":{date:"2016-09-27",type:"hero",hero:"zarya"},"0.20.1":{date:"2016-09-20",type:"hotfix"},"0.20.0":{date:"2016-09-13",type:"hero",hero:"alarak"},"0.19.5":{date:"2016-08-24",type:"balance"},"0.19.4":{date:"2016-08-09",type:"hero",hero:"auriel"},"0.19.3":{date:"2016-07-27",type:"balance"},"0.19.2":{date:"2016-07-21",type:"hotfix"},"0.19.1":{date:"2016-07-20",type:"hotfix"},"0.19.0":{date:"2016-07-12",type:"hero","hero:":"guldan"},"0.18.6":{date:"2016-06-29",type:"balance"},"0.18.5":{date:"2016-06-21",type:"balance"}};const Cs=Object.keys(As).sort((t,e)=>new Date(As[e].date)-new Date(As[t].date)),Ts=Cs.map(t=>new Date(As[t].date)),Ss=(t,e,n,r)=>{const i=Xa("%b %Y"),a=Xa("%Y");let o=0;const s=t.attr("class","slider"),c=At(Ts),u=wt(Ts),l=vs().domain([c,u]).range([0,e]).clamp(!0);s.append("line").attr("class","track").attr("x1",l.range()[0]).attr("x2",l.range()[1]).select((function(){return this.parentNode.appendChild(this.cloneNode(!0))})).attr("class","track-inset").select((function(){return this.parentNode.appendChild(this.cloneNode(!0))})).attr("class","track-overlay").call(mn().on("start.interrupt",(function(){s.interrupt()})).on("start drag",(function(){o=je.x,h(l.invert(o),!1),r&&r((t=>{return Cs.find(e=>{const n=new Date(As[e].date);if(t>=n)return!0})||Cs[Cs.length-1]})(l.invert(o)))}))),s.insert("g",".track-overlay").attr("class","ticks").attr("transform","translate(0,18)").selectAll("text").data(l.ticks(5)).enter().append("text").attr("x",l).attr("y",10).attr("text-anchor","middle").text(t=>a(t));const d=s.insert("circle",".track-overlay").attr("class","handle").attr("r",9),f=s.append("text").attr("class","label").attr("text-anchor","middle").text(i(c)).attr("transform","translate(0, -18)");function h(t,e=!0){(e?d.transition().duration(n):d.interrupt()).attr("cx",l(t)),(e?f.transition().duration(n):f.interrupt()).attr("cx",l(t)).attr("x",l(t)).text(i(t))}return h},Es={top:10,right:30,bottom:130,left:50},Is=t=>`hsl(${3.6*(t-71)}, 30%, 90%)`;class ks{constructor({data:t,xValue:e,x2Value:n,onPlayingEnd:r,xInterpolate:i,xFormat:a}){this.data=t,this.xValue=e,this.x2Value=n,this.yValue=t=>t.name,this.format=a||qi(".3"),this.interpolate=i||nr,this.dataOffset=0,this.tDuration=1e3,this.tEase=pi,this.isPlaying=!0,this.onPlayingEnd=r,this.isReversed=!0}mount(){this.svg=en("svg.chartContainer");const[t,e]=this.svg.attr("viewBox").split(" ").slice(2);this.innerWidth=t-Es.left-Es.right,this.innerHeight=e-Es.top-Es.bottom,this.g=this.svg.append("g").attr("transform",`translate(${Es.left},${Es.top})`),this.g.append("g").attr("class","xAxis").attr("transform",`translate(0, ${this.innerHeight})`),this.g.append("g").attr("class","x2Axis").attr("transform",`translate(0, ${this.innerHeight+30})`);const n=this.g.append("g").attr("transform",`translate(0, ${this.innerHeight+85})`);this.updateDateSlider=Ss(n,this.innerWidth,this.tDuration,t=>this.onDateSliderChange(t))}update({data:t,xDomain:e,x2Domain:n,isPlaying:r=!0,isReversed:i=!1}){t&&(this.data=t),e&&(this.xDomain=e,this.xScale=this.getXScale()),n&&(this.x2Domain=n,this.x2Scale=this.getX2Scale()),this.isPlaying=r,this.isReversed=i,this.xScale=this.getXScale(),this.x2Scale=this.getX2Scale();const a=Ht(this.xScale).tickFormat(t=>`${t}%`),o=Ht(this.x2Scale).tickFormat(t=>`${t}%`).ticks(2);this.g.select(".xAxis").transition().call(a),this.g.select(".x2Axis").call(o),this.render(),this.runInterval()}runInterval(){this.clearInterval(),this.interval=function(t,e,n){var r=new Tr,i=e;return null==e?(r.restart(t,e,n),r):(e=+e,n=null==n?Ar():+n,r.restart((function a(o){o+=i,r.restart(a,i+=e,n),t(o)}),e,n),r)}(()=>{if(this.isPlaying)if(this.dataOffset+=1,this.dataOffset>=this.data.length)this.clearInterval(),this.dataOffset=this.data.length-1,this.onPlayingEnd&&this.onPlayingEnd();else{this.render();const t=this.data[this.dataOffset].version,e=As[t]&&As[t].date&&new Date(As[t].date);e&&this.updateDateSlider(e)}else this.clearInterval()},2700)}clearInterval(){this.interval&&this.interval.stop()}onDateSliderChange(t){if(!this.data)return;const e=this.data.findIndex(e=>t<=e.version);this.dataOffset=-1!==e?e:this.data.length-1,this.dataOffset<this.data.length?this.render(!1):this.clearInterval()}getXScale(){return $a().domain(this.xDomain).range([0,this.innerWidth]).nice()}getX2Scale(){return $a().domain(this.x2Domain).range([0,this.innerWidth/2]).nice()}render(t=!0){const e=this.data&&this.data[this.dataOffset];if(!e)return;const{version:n,data:r}=e;this.yScale=ua().domain(r.map(this.yValue)).range([0,this.innerHeight]).padding(.2);const i=this.g.selectAll("rect.bar").data(r,this.yValue),a=this.g.selectAll("rect.subbar").data(r,this.yValue),o=this.g.selectAll("text.barName").data(r,this.yValue),s=this.g.selectAll("text.barValue").data(r,this.yValue),c=this.g.selectAll("text.bar2Value").data(r,this.yValue),u=this.g.selectAll("image.barImg").data(r,this.yValue),l=this.isReversed?-10:this.innerHeight,d=this.isReversed?.7*this.innerWidth:0,f=e=>{t?e.transition().duration(.7*this.tDuration).ease(this.tEase).attr("y",l).remove():e.remove()};i.exit().call(f),a.exit().call(f),o.exit().remove(),s.exit().remove(),c.exit().remove(),a.enter().append("rect").attr("class","subbar").attr("stroke","grey").style("fill",t=>"white").attr("y",l).attr("width",d/2).merge(a).attr("height",this.yScale.bandwidth()/3).call(e=>{(e=t?e.transition().duration(this.tDuration).ease(this.tEase):e.interrupt()).attr("y",t=>this.yScale(this.yValue(t))+.66*this.yScale.bandwidth()).attr("width",t=>this.x2Scale(this.x2Value(t)))}),i.enter().append("rect").attr("class","bar").attr("stroke","black").style("fill",t=>`${Is(t.id)}`).attr("y",l).attr("width",d).merge(i).attr("height",.66*this.yScale.bandwidth()).call(e=>{(e=t?e.transition().duration(this.tDuration).ease(this.tEase):e.interrupt()).attr("y",t=>this.yScale(this.yValue(t))).attr("width",t=>this.xScale(this.xValue(t)))}),o.enter().append("text").attr("class","barName").attr("text-anchor","end").attr("dominant-baseline","central").style("fill","black").attr("y",l).attr("x",d-5).text(t=>this.yValue(t)).merge(o).attr("font-size",.4*this.yScale.bandwidth()).call(e=>{(e=t?e.transition().duration(this.tDuration).ease(this.tEase):e.interrupt()).attr("x",t=>this.xScale(this.xValue(t))-5).attr("y",t=>this.yScale(this.yValue(t))+.33*this.yScale.bandwidth())}),s.enter().append("text").attr("class","barValue").attr("text-anchor","start").attr("dominant-baseline","central").style("fill","black").attr("y",l).attr("x",d+5).merge(s).attr("font-size",.4*this.yScale.bandwidth()).call(e=>{if(t){const{xValue:t,format:n,interpolate:r,isReversed:i}=this;e=e.transition().duration(this.tDuration).ease(this.tEase).tween("text",(function(e){const a=i?t(e)+3:t(e)-3,o=r(this.textContent||a,t(e));return function(t){this.textContent=n(o(t))}}))}else e=e.interrupt().text(t=>this.format(this.xValue(t)));e.attr("x",t=>this.xScale(this.xValue(t))+5).attr("y",t=>this.yScale(this.yValue(t))+.33*this.yScale.bandwidth())}),c.enter().append("text").attr("class","bar2Value").attr("text-anchor","start").attr("dominant-baseline","central").style("fill","black").attr("y",l).attr("x",d/2+3).merge(c).attr("font-size",.3*this.yScale.bandwidth()).call(e=>{if(t){const{x2Value:t}=this;e=e.transition().duration(this.tDuration).ease(this.tEase).tween("text",(function(e){const n=nr(this.textContent||t(e),t(e));return function(t){this.textContent=qi("d")(n(t))}}))}else e=e.interrupt().text(t=>qi("d")(this.x2Value(t)));e.attr("x",t=>this.x2Scale(this.x2Value(t))+3).attr("y",t=>this.yScale(this.yValue(t))+.825*this.yScale.bandwidth())}),u.enter().append("image").attr("class","barImg").attr("xlink:href",t=>`assets/images/${t.shortName}.png`).attr("y",l).merge(u).attr("width",this.yScale.bandwidth()).attr("height",this.yScale.bandwidth()).attr("x",-this.yScale.bandwidth()).call(e=>{(e=t?e.transition().duration(this.tDuration).ease(this.tEase):e.interrupt()).attr("y",t=>this.yScale(this.yValue(t)))}),t?u.exit().transition().duration(this.tDuration/2).ease(this.tEase).attr("y",l).remove():u.exit().remove(),this.g.select("text.patchNumber").remove(),this.g.append("text").attr("class","patchNumber").attr("x",this.innerWidth).attr("y",this.innerHeight-10).attr("text-anchor","end").text(t=>`Patch: ${n}`)}}function Ms(e){var n,r;return{c(){x(n=v("svg"),"class","chartContainer svelte-n05gy9"),x(n,"width",e.width),x(n,"viewBox",r="0 0 "+e.width+" "+e.height)},m(t,e){p(t,n,e)},p(t,e){t.width&&x(n,"width",e.width),(t.width||t.height)&&r!==(r="0 0 "+e.width+" "+e.height)&&x(n,"viewBox",r)},i:t,o:t,d(t){t&&m(n)}}}function Rs(t,e,n){let{width:r=600,height:i=700}=e;return t.$set=t=>{"width"in t&&n("width",r=t.width),"height"in t&&n("height",i=t.height)},{width:r,height:i}}class Ns extends at{constructor(t){super(),it(this,t,Rs,Ms,o,["width","height"])}}
-/*! *****************************************************************************
+
+(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.head.appendChild(r) })(window.document);
+var app = (function () {
+    'use strict';
+
+    function noop() { }
+    function assign(tar, src) {
+        // @ts-ignore
+        for (const k in src)
+            tar[k] = src[k];
+        return tar;
+    }
+    function add_location(element, file, line, column, char) {
+        element.__svelte_meta = {
+            loc: { file, line, column, char }
+        };
+    }
+    function run(fn) {
+        return fn();
+    }
+    function blank_object() {
+        return Object.create(null);
+    }
+    function run_all(fns) {
+        fns.forEach(run);
+    }
+    function is_function(thing) {
+        return typeof thing === 'function';
+    }
+    function safe_not_equal(a, b) {
+        return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+    }
+    function validate_store(store, name) {
+        if (!store || typeof store.subscribe !== 'function') {
+            throw new Error(`'${name}' is not a store with a 'subscribe' method`);
+        }
+    }
+    function subscribe(store, callback) {
+        const unsub = store.subscribe(callback);
+        return unsub.unsubscribe ? () => unsub.unsubscribe() : unsub;
+    }
+    function component_subscribe(component, store, callback) {
+        component.$$.on_destroy.push(subscribe(store, callback));
+    }
+    function create_slot(definition, ctx, fn) {
+        if (definition) {
+            const slot_ctx = get_slot_context(definition, ctx, fn);
+            return definition[0](slot_ctx);
+        }
+    }
+    function get_slot_context(definition, ctx, fn) {
+        return definition[1]
+            ? assign({}, assign(ctx.$$scope.ctx, definition[1](fn ? fn(ctx) : {})))
+            : ctx.$$scope.ctx;
+    }
+    function get_slot_changes(definition, ctx, changed, fn) {
+        return definition[1]
+            ? assign({}, assign(ctx.$$scope.changed || {}, definition[1](fn ? fn(changed) : {})))
+            : ctx.$$scope.changed || {};
+    }
+    function exclude_internal_props(props) {
+        const result = {};
+        for (const k in props)
+            if (k[0] !== '$')
+                result[k] = props[k];
+        return result;
+    }
+    function set_store_value(store, ret, value = ret) {
+        store.set(value);
+        return ret;
+    }
+
+    function append(target, node) {
+        target.appendChild(node);
+    }
+    function insert(target, node, anchor) {
+        target.insertBefore(node, anchor || null);
+    }
+    function detach(node) {
+        node.parentNode.removeChild(node);
+    }
+    function element(name) {
+        return document.createElement(name);
+    }
+    function svg_element(name) {
+        return document.createElementNS('http://www.w3.org/2000/svg', name);
+    }
+    function text(data) {
+        return document.createTextNode(data);
+    }
+    function space() {
+        return text(' ');
+    }
+    function empty() {
+        return text('');
+    }
+    function listen(node, event, handler, options) {
+        node.addEventListener(event, handler, options);
+        return () => node.removeEventListener(event, handler, options);
+    }
+    function attr(node, attribute, value) {
+        if (value == null)
+            node.removeAttribute(attribute);
+        else
+            node.setAttribute(attribute, value);
+    }
+    function set_attributes(node, attributes) {
+        for (const key in attributes) {
+            if (key === 'style') {
+                node.style.cssText = attributes[key];
+            }
+            else if (key in node) {
+                node[key] = attributes[key];
+            }
+            else {
+                attr(node, key, attributes[key]);
+            }
+        }
+    }
+    function children(element) {
+        return Array.from(element.childNodes);
+    }
+    function toggle_class(element, name, toggle) {
+        element.classList[toggle ? 'add' : 'remove'](name);
+    }
+    function custom_event(type, detail) {
+        const e = document.createEvent('CustomEvent');
+        e.initCustomEvent(type, false, false, detail);
+        return e;
+    }
+
+    let current_component;
+    function set_current_component(component) {
+        current_component = component;
+    }
+    function get_current_component() {
+        if (!current_component)
+            throw new Error(`Function called outside component initialization`);
+        return current_component;
+    }
+    function onMount(fn) {
+        get_current_component().$$.on_mount.push(fn);
+    }
+    function afterUpdate(fn) {
+        get_current_component().$$.after_update.push(fn);
+    }
+    function onDestroy(fn) {
+        get_current_component().$$.on_destroy.push(fn);
+    }
+    function setContext(key, context) {
+        get_current_component().$$.context.set(key, context);
+    }
+    function getContext(key) {
+        return get_current_component().$$.context.get(key);
+    }
+    // TODO figure out if we still want to support
+    // shorthand events, or if we want to implement
+    // a real bubbling mechanism
+    function bubble(component, event) {
+        const callbacks = component.$$.callbacks[event.type];
+        if (callbacks) {
+            callbacks.slice().forEach(fn => fn(event));
+        }
+    }
+
+    const dirty_components = [];
+    const binding_callbacks = [];
+    const render_callbacks = [];
+    const flush_callbacks = [];
+    const resolved_promise = Promise.resolve();
+    let update_scheduled = false;
+    function schedule_update() {
+        if (!update_scheduled) {
+            update_scheduled = true;
+            resolved_promise.then(flush);
+        }
+    }
+    function add_render_callback(fn) {
+        render_callbacks.push(fn);
+    }
+    function add_flush_callback(fn) {
+        flush_callbacks.push(fn);
+    }
+    function flush() {
+        const seen_callbacks = new Set();
+        do {
+            // first, call beforeUpdate functions
+            // and update components
+            while (dirty_components.length) {
+                const component = dirty_components.shift();
+                set_current_component(component);
+                update(component.$$);
+            }
+            while (binding_callbacks.length)
+                binding_callbacks.pop()();
+            // then, once components are updated, call
+            // afterUpdate functions. This may cause
+            // subsequent updates...
+            for (let i = 0; i < render_callbacks.length; i += 1) {
+                const callback = render_callbacks[i];
+                if (!seen_callbacks.has(callback)) {
+                    callback();
+                    // ...so guard against infinite loops
+                    seen_callbacks.add(callback);
+                }
+            }
+            render_callbacks.length = 0;
+        } while (dirty_components.length);
+        while (flush_callbacks.length) {
+            flush_callbacks.pop()();
+        }
+        update_scheduled = false;
+    }
+    function update($$) {
+        if ($$.fragment) {
+            $$.update($$.dirty);
+            run_all($$.before_update);
+            $$.fragment.p($$.dirty, $$.ctx);
+            $$.dirty = null;
+            $$.after_update.forEach(add_render_callback);
+        }
+    }
+    const outroing = new Set();
+    let outros;
+    function group_outros() {
+        outros = {
+            r: 0,
+            c: [],
+            p: outros // parent group
+        };
+    }
+    function check_outros() {
+        if (!outros.r) {
+            run_all(outros.c);
+        }
+        outros = outros.p;
+    }
+    function transition_in(block, local) {
+        if (block && block.i) {
+            outroing.delete(block);
+            block.i(local);
+        }
+    }
+    function transition_out(block, local, detach, callback) {
+        if (block && block.o) {
+            if (outroing.has(block))
+                return;
+            outroing.add(block);
+            outros.c.push(() => {
+                outroing.delete(block);
+                if (callback) {
+                    if (detach)
+                        block.d(1);
+                    callback();
+                }
+            });
+            block.o(local);
+        }
+    }
+
+    const globals = (typeof window !== 'undefined' ? window : global);
+    function outro_and_destroy_block(block, lookup) {
+        transition_out(block, 1, 1, () => {
+            lookup.delete(block.key);
+        });
+    }
+    function update_keyed_each(old_blocks, changed, get_key, dynamic, ctx, list, lookup, node, destroy, create_each_block, next, get_context) {
+        let o = old_blocks.length;
+        let n = list.length;
+        let i = o;
+        const old_indexes = {};
+        while (i--)
+            old_indexes[old_blocks[i].key] = i;
+        const new_blocks = [];
+        const new_lookup = new Map();
+        const deltas = new Map();
+        i = n;
+        while (i--) {
+            const child_ctx = get_context(ctx, list, i);
+            const key = get_key(child_ctx);
+            let block = lookup.get(key);
+            if (!block) {
+                block = create_each_block(key, child_ctx);
+                block.c();
+            }
+            else if (dynamic) {
+                block.p(changed, child_ctx);
+            }
+            new_lookup.set(key, new_blocks[i] = block);
+            if (key in old_indexes)
+                deltas.set(key, Math.abs(i - old_indexes[key]));
+        }
+        const will_move = new Set();
+        const did_move = new Set();
+        function insert(block) {
+            transition_in(block, 1);
+            block.m(node, next);
+            lookup.set(block.key, block);
+            next = block.first;
+            n--;
+        }
+        while (o && n) {
+            const new_block = new_blocks[n - 1];
+            const old_block = old_blocks[o - 1];
+            const new_key = new_block.key;
+            const old_key = old_block.key;
+            if (new_block === old_block) {
+                // do nothing
+                next = new_block.first;
+                o--;
+                n--;
+            }
+            else if (!new_lookup.has(old_key)) {
+                // remove old block
+                destroy(old_block, lookup);
+                o--;
+            }
+            else if (!lookup.has(new_key) || will_move.has(new_key)) {
+                insert(new_block);
+            }
+            else if (did_move.has(old_key)) {
+                o--;
+            }
+            else if (deltas.get(new_key) > deltas.get(old_key)) {
+                did_move.add(new_key);
+                insert(new_block);
+            }
+            else {
+                will_move.add(old_key);
+                o--;
+            }
+        }
+        while (o--) {
+            const old_block = old_blocks[o];
+            if (!new_lookup.has(old_block.key))
+                destroy(old_block, lookup);
+        }
+        while (n)
+            insert(new_blocks[n - 1]);
+        return new_blocks;
+    }
+
+    function get_spread_update(levels, updates) {
+        const update = {};
+        const to_null_out = {};
+        const accounted_for = { $$scope: 1 };
+        let i = levels.length;
+        while (i--) {
+            const o = levels[i];
+            const n = updates[i];
+            if (n) {
+                for (const key in o) {
+                    if (!(key in n))
+                        to_null_out[key] = 1;
+                }
+                for (const key in n) {
+                    if (!accounted_for[key]) {
+                        update[key] = n[key];
+                        accounted_for[key] = 1;
+                    }
+                }
+                levels[i] = n;
+            }
+            else {
+                for (const key in o) {
+                    accounted_for[key] = 1;
+                }
+            }
+        }
+        for (const key in to_null_out) {
+            if (!(key in update))
+                update[key] = undefined;
+        }
+        return update;
+    }
+    function get_spread_object(spread_props) {
+        return typeof spread_props === 'object' && spread_props !== null ? spread_props : {};
+    }
+
+    function bind(component, name, callback) {
+        if (component.$$.props.indexOf(name) === -1)
+            return;
+        component.$$.bound[name] = callback;
+        callback(component.$$.ctx[name]);
+    }
+    function mount_component(component, target, anchor) {
+        const { fragment, on_mount, on_destroy, after_update } = component.$$;
+        fragment.m(target, anchor);
+        // onMount happens before the initial afterUpdate
+        add_render_callback(() => {
+            const new_on_destroy = on_mount.map(run).filter(is_function);
+            if (on_destroy) {
+                on_destroy.push(...new_on_destroy);
+            }
+            else {
+                // Edge case - component was destroyed immediately,
+                // most likely as a result of a binding initialising
+                run_all(new_on_destroy);
+            }
+            component.$$.on_mount = [];
+        });
+        after_update.forEach(add_render_callback);
+    }
+    function destroy_component(component, detaching) {
+        if (component.$$.fragment) {
+            run_all(component.$$.on_destroy);
+            component.$$.fragment.d(detaching);
+            // TODO null out other refs, including component.$$ (but need to
+            // preserve final state?)
+            component.$$.on_destroy = component.$$.fragment = null;
+            component.$$.ctx = {};
+        }
+    }
+    function make_dirty(component, key) {
+        if (!component.$$.dirty) {
+            dirty_components.push(component);
+            schedule_update();
+            component.$$.dirty = blank_object();
+        }
+        component.$$.dirty[key] = true;
+    }
+    function init(component, options, instance, create_fragment, not_equal, prop_names) {
+        const parent_component = current_component;
+        set_current_component(component);
+        const props = options.props || {};
+        const $$ = component.$$ = {
+            fragment: null,
+            ctx: null,
+            // state
+            props: prop_names,
+            update: noop,
+            not_equal,
+            bound: blank_object(),
+            // lifecycle
+            on_mount: [],
+            on_destroy: [],
+            before_update: [],
+            after_update: [],
+            context: new Map(parent_component ? parent_component.$$.context : []),
+            // everything else
+            callbacks: blank_object(),
+            dirty: null
+        };
+        let ready = false;
+        $$.ctx = instance
+            ? instance(component, props, (key, ret, value = ret) => {
+                if ($$.ctx && not_equal($$.ctx[key], $$.ctx[key] = value)) {
+                    if ($$.bound[key])
+                        $$.bound[key](value);
+                    if (ready)
+                        make_dirty(component, key);
+                }
+                return ret;
+            })
+            : props;
+        $$.update();
+        ready = true;
+        run_all($$.before_update);
+        $$.fragment = create_fragment($$.ctx);
+        if (options.target) {
+            if (options.hydrate) {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment.l(children(options.target));
+            }
+            else {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment.c();
+            }
+            if (options.intro)
+                transition_in(component.$$.fragment);
+            mount_component(component, options.target, options.anchor);
+            flush();
+        }
+        set_current_component(parent_component);
+    }
+    class SvelteComponent {
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set() {
+            // overridden by instance, if it has props
+        }
+    }
+
+    function dispatch_dev(type, detail) {
+        document.dispatchEvent(custom_event(type, detail));
+    }
+    function append_dev(target, node) {
+        dispatch_dev("SvelteDOMInsert", { target, node });
+        append(target, node);
+    }
+    function insert_dev(target, node, anchor) {
+        dispatch_dev("SvelteDOMInsert", { target, node, anchor });
+        insert(target, node, anchor);
+    }
+    function detach_dev(node) {
+        dispatch_dev("SvelteDOMRemove", { node });
+        detach(node);
+    }
+    function listen_dev(node, event, handler, options, has_prevent_default, has_stop_propagation) {
+        const modifiers = options === true ? ["capture"] : options ? Array.from(Object.keys(options)) : [];
+        if (has_prevent_default)
+            modifiers.push('preventDefault');
+        if (has_stop_propagation)
+            modifiers.push('stopPropagation');
+        dispatch_dev("SvelteDOMAddEventListener", { node, event, handler, modifiers });
+        const dispose = listen(node, event, handler, options);
+        return () => {
+            dispatch_dev("SvelteDOMRemoveEventListener", { node, event, handler, modifiers });
+            dispose();
+        };
+    }
+    function attr_dev(node, attribute, value) {
+        attr(node, attribute, value);
+        if (value == null)
+            dispatch_dev("SvelteDOMRemoveAttribute", { node, attribute });
+        else
+            dispatch_dev("SvelteDOMSetAttribute", { node, attribute, value });
+    }
+    function set_data_dev(text, data) {
+        data = '' + data;
+        if (text.data === data)
+            return;
+        dispatch_dev("SvelteDOMSetData", { node: text, data });
+        text.data = data;
+    }
+    class SvelteComponentDev extends SvelteComponent {
+        constructor(options) {
+            if (!options || (!options.target && !options.$$inline)) {
+                throw new Error(`'target' is a required option`);
+            }
+            super();
+        }
+        $destroy() {
+            super.$destroy();
+            this.$destroy = () => {
+                console.warn(`Component was already destroyed`); // eslint-disable-line no-console
+            };
+        }
+    }
+
+    const subscriber_queue = [];
+    /**
+     * Create a `Writable` store that allows both updating and reading by subscription.
+     * @param {*=}value initial value
+     * @param {StartStopNotifier=}start start and stop notifications for subscriptions
+     */
+    function writable(value, start = noop) {
+        let stop;
+        const subscribers = [];
+        function set(new_value) {
+            if (safe_not_equal(value, new_value)) {
+                value = new_value;
+                if (stop) { // store is ready
+                    const run_queue = !subscriber_queue.length;
+                    for (let i = 0; i < subscribers.length; i += 1) {
+                        const s = subscribers[i];
+                        s[1]();
+                        subscriber_queue.push(s, value);
+                    }
+                    if (run_queue) {
+                        for (let i = 0; i < subscriber_queue.length; i += 2) {
+                            subscriber_queue[i][0](subscriber_queue[i + 1]);
+                        }
+                        subscriber_queue.length = 0;
+                    }
+                }
+            }
+        }
+        function update(fn) {
+            set(fn(value));
+        }
+        function subscribe(run, invalidate = noop) {
+            const subscriber = [run, invalidate];
+            subscribers.push(subscriber);
+            if (subscribers.length === 1) {
+                stop = start(set) || noop;
+            }
+            run(value);
+            return () => {
+                const index = subscribers.indexOf(subscriber);
+                if (index !== -1) {
+                    subscribers.splice(index, 1);
+                }
+                if (subscribers.length === 0) {
+                    stop();
+                    stop = null;
+                }
+            };
+        }
+        return { set, update, subscribe };
+    }
+
+    const initialRoute = window.location.hash || '#ranked_wr';
+
+    const curRoute = writable(initialRoute);
+
+    const minPopularity = writable(8);
+    const maxHeroes = writable(13);
+    const isPlaying = writable(true);
+    const isAtBottom = writable(false);
+    const withoutBans = writable(false);
+
+    const rankedData = writable({ data: null, isLoading: false });
+
+    function ascending(a, b) {
+      return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
+    }
+
+    function bisector(compare) {
+      if (compare.length === 1) compare = ascendingComparator(compare);
+      return {
+        left: function(a, x, lo, hi) {
+          if (lo == null) lo = 0;
+          if (hi == null) hi = a.length;
+          while (lo < hi) {
+            var mid = lo + hi >>> 1;
+            if (compare(a[mid], x) < 0) lo = mid + 1;
+            else hi = mid;
+          }
+          return lo;
+        },
+        right: function(a, x, lo, hi) {
+          if (lo == null) lo = 0;
+          if (hi == null) hi = a.length;
+          while (lo < hi) {
+            var mid = lo + hi >>> 1;
+            if (compare(a[mid], x) > 0) hi = mid;
+            else lo = mid + 1;
+          }
+          return lo;
+        }
+      };
+    }
+
+    function ascendingComparator(f) {
+      return function(d, x) {
+        return ascending(f(d), x);
+      };
+    }
+
+    var ascendingBisect = bisector(ascending);
+    var bisectRight = ascendingBisect.right;
+
+    function sequence(start, stop, step) {
+      start = +start, stop = +stop, step = (n = arguments.length) < 2 ? (stop = start, start = 0, 1) : n < 3 ? 1 : +step;
+
+      var i = -1,
+          n = Math.max(0, Math.ceil((stop - start) / step)) | 0,
+          range = new Array(n);
+
+      while (++i < n) {
+        range[i] = start + i * step;
+      }
+
+      return range;
+    }
+
+    var e10 = Math.sqrt(50),
+        e5 = Math.sqrt(10),
+        e2 = Math.sqrt(2);
+
+    function ticks(start, stop, count) {
+      var reverse,
+          i = -1,
+          n,
+          ticks,
+          step;
+
+      stop = +stop, start = +start, count = +count;
+      if (start === stop && count > 0) return [start];
+      if (reverse = stop < start) n = start, start = stop, stop = n;
+      if ((step = tickIncrement(start, stop, count)) === 0 || !isFinite(step)) return [];
+
+      if (step > 0) {
+        start = Math.ceil(start / step);
+        stop = Math.floor(stop / step);
+        ticks = new Array(n = Math.ceil(stop - start + 1));
+        while (++i < n) ticks[i] = (start + i) * step;
+      } else {
+        start = Math.floor(start * step);
+        stop = Math.ceil(stop * step);
+        ticks = new Array(n = Math.ceil(start - stop + 1));
+        while (++i < n) ticks[i] = (start - i) / step;
+      }
+
+      if (reverse) ticks.reverse();
+
+      return ticks;
+    }
+
+    function tickIncrement(start, stop, count) {
+      var step = (stop - start) / Math.max(0, count),
+          power = Math.floor(Math.log(step) / Math.LN10),
+          error = step / Math.pow(10, power);
+      return power >= 0
+          ? (error >= e10 ? 10 : error >= e5 ? 5 : error >= e2 ? 2 : 1) * Math.pow(10, power)
+          : -Math.pow(10, -power) / (error >= e10 ? 10 : error >= e5 ? 5 : error >= e2 ? 2 : 1);
+    }
+
+    function tickStep(start, stop, count) {
+      var step0 = Math.abs(stop - start) / Math.max(0, count),
+          step1 = Math.pow(10, Math.floor(Math.log(step0) / Math.LN10)),
+          error = step0 / step1;
+      if (error >= e10) step1 *= 10;
+      else if (error >= e5) step1 *= 5;
+      else if (error >= e2) step1 *= 2;
+      return stop < start ? -step1 : step1;
+    }
+
+    function max(values, valueof) {
+      var n = values.length,
+          i = -1,
+          value,
+          max;
+
+      if (valueof == null) {
+        while (++i < n) { // Find the first comparable value.
+          if ((value = values[i]) != null && value >= value) {
+            max = value;
+            while (++i < n) { // Compare the remaining values.
+              if ((value = values[i]) != null && value > max) {
+                max = value;
+              }
+            }
+          }
+        }
+      }
+
+      else {
+        while (++i < n) { // Find the first comparable value.
+          if ((value = valueof(values[i], i, values)) != null && value >= value) {
+            max = value;
+            while (++i < n) { // Compare the remaining values.
+              if ((value = valueof(values[i], i, values)) != null && value > max) {
+                max = value;
+              }
+            }
+          }
+        }
+      }
+
+      return max;
+    }
+
+    function min(values, valueof) {
+      var n = values.length,
+          i = -1,
+          value,
+          min;
+
+      if (valueof == null) {
+        while (++i < n) { // Find the first comparable value.
+          if ((value = values[i]) != null && value >= value) {
+            min = value;
+            while (++i < n) { // Compare the remaining values.
+              if ((value = values[i]) != null && min > value) {
+                min = value;
+              }
+            }
+          }
+        }
+      }
+
+      else {
+        while (++i < n) { // Find the first comparable value.
+          if ((value = valueof(values[i], i, values)) != null && value >= value) {
+            min = value;
+            while (++i < n) { // Compare the remaining values.
+              if ((value = valueof(values[i], i, values)) != null && min > value) {
+                min = value;
+              }
+            }
+          }
+        }
+      }
+
+      return min;
+    }
+
+    var slice = Array.prototype.slice;
+
+    function identity(x) {
+      return x;
+    }
+
+    var top = 1,
+        right = 2,
+        bottom = 3,
+        left = 4,
+        epsilon = 1e-6;
+
+    function translateX(x) {
+      return "translate(" + (x + 0.5) + ",0)";
+    }
+
+    function translateY(y) {
+      return "translate(0," + (y + 0.5) + ")";
+    }
+
+    function number(scale) {
+      return function(d) {
+        return +scale(d);
+      };
+    }
+
+    function center(scale) {
+      var offset = Math.max(0, scale.bandwidth() - 1) / 2; // Adjust for 0.5px offset.
+      if (scale.round()) offset = Math.round(offset);
+      return function(d) {
+        return +scale(d) + offset;
+      };
+    }
+
+    function entering() {
+      return !this.__axis;
+    }
+
+    function axis(orient, scale) {
+      var tickArguments = [],
+          tickValues = null,
+          tickFormat = null,
+          tickSizeInner = 6,
+          tickSizeOuter = 6,
+          tickPadding = 3,
+          k = orient === top || orient === left ? -1 : 1,
+          x = orient === left || orient === right ? "x" : "y",
+          transform = orient === top || orient === bottom ? translateX : translateY;
+
+      function axis(context) {
+        var values = tickValues == null ? (scale.ticks ? scale.ticks.apply(scale, tickArguments) : scale.domain()) : tickValues,
+            format = tickFormat == null ? (scale.tickFormat ? scale.tickFormat.apply(scale, tickArguments) : identity) : tickFormat,
+            spacing = Math.max(tickSizeInner, 0) + tickPadding,
+            range = scale.range(),
+            range0 = +range[0] + 0.5,
+            range1 = +range[range.length - 1] + 0.5,
+            position = (scale.bandwidth ? center : number)(scale.copy()),
+            selection = context.selection ? context.selection() : context,
+            path = selection.selectAll(".domain").data([null]),
+            tick = selection.selectAll(".tick").data(values, scale).order(),
+            tickExit = tick.exit(),
+            tickEnter = tick.enter().append("g").attr("class", "tick"),
+            line = tick.select("line"),
+            text = tick.select("text");
+
+        path = path.merge(path.enter().insert("path", ".tick")
+            .attr("class", "domain")
+            .attr("stroke", "currentColor"));
+
+        tick = tick.merge(tickEnter);
+
+        line = line.merge(tickEnter.append("line")
+            .attr("stroke", "currentColor")
+            .attr(x + "2", k * tickSizeInner));
+
+        text = text.merge(tickEnter.append("text")
+            .attr("fill", "currentColor")
+            .attr(x, k * spacing)
+            .attr("dy", orient === top ? "0em" : orient === bottom ? "0.71em" : "0.32em"));
+
+        if (context !== selection) {
+          path = path.transition(context);
+          tick = tick.transition(context);
+          line = line.transition(context);
+          text = text.transition(context);
+
+          tickExit = tickExit.transition(context)
+              .attr("opacity", epsilon)
+              .attr("transform", function(d) { return isFinite(d = position(d)) ? transform(d) : this.getAttribute("transform"); });
+
+          tickEnter
+              .attr("opacity", epsilon)
+              .attr("transform", function(d) { var p = this.parentNode.__axis; return transform(p && isFinite(p = p(d)) ? p : position(d)); });
+        }
+
+        tickExit.remove();
+
+        path
+            .attr("d", orient === left || orient == right
+                ? (tickSizeOuter ? "M" + k * tickSizeOuter + "," + range0 + "H0.5V" + range1 + "H" + k * tickSizeOuter : "M0.5," + range0 + "V" + range1)
+                : (tickSizeOuter ? "M" + range0 + "," + k * tickSizeOuter + "V0.5H" + range1 + "V" + k * tickSizeOuter : "M" + range0 + ",0.5H" + range1));
+
+        tick
+            .attr("opacity", 1)
+            .attr("transform", function(d) { return transform(position(d)); });
+
+        line
+            .attr(x + "2", k * tickSizeInner);
+
+        text
+            .attr(x, k * spacing)
+            .text(format);
+
+        selection.filter(entering)
+            .attr("fill", "none")
+            .attr("font-size", 10)
+            .attr("font-family", "sans-serif")
+            .attr("text-anchor", orient === right ? "start" : orient === left ? "end" : "middle");
+
+        selection
+            .each(function() { this.__axis = position; });
+      }
+
+      axis.scale = function(_) {
+        return arguments.length ? (scale = _, axis) : scale;
+      };
+
+      axis.ticks = function() {
+        return tickArguments = slice.call(arguments), axis;
+      };
+
+      axis.tickArguments = function(_) {
+        return arguments.length ? (tickArguments = _ == null ? [] : slice.call(_), axis) : tickArguments.slice();
+      };
+
+      axis.tickValues = function(_) {
+        return arguments.length ? (tickValues = _ == null ? null : slice.call(_), axis) : tickValues && tickValues.slice();
+      };
+
+      axis.tickFormat = function(_) {
+        return arguments.length ? (tickFormat = _, axis) : tickFormat;
+      };
+
+      axis.tickSize = function(_) {
+        return arguments.length ? (tickSizeInner = tickSizeOuter = +_, axis) : tickSizeInner;
+      };
+
+      axis.tickSizeInner = function(_) {
+        return arguments.length ? (tickSizeInner = +_, axis) : tickSizeInner;
+      };
+
+      axis.tickSizeOuter = function(_) {
+        return arguments.length ? (tickSizeOuter = +_, axis) : tickSizeOuter;
+      };
+
+      axis.tickPadding = function(_) {
+        return arguments.length ? (tickPadding = +_, axis) : tickPadding;
+      };
+
+      return axis;
+    }
+
+    function axisBottom(scale) {
+      return axis(bottom, scale);
+    }
+
+    var noop$1 = {value: function() {}};
+
+    function dispatch() {
+      for (var i = 0, n = arguments.length, _ = {}, t; i < n; ++i) {
+        if (!(t = arguments[i] + "") || (t in _)) throw new Error("illegal type: " + t);
+        _[t] = [];
+      }
+      return new Dispatch(_);
+    }
+
+    function Dispatch(_) {
+      this._ = _;
+    }
+
+    function parseTypenames(typenames, types) {
+      return typenames.trim().split(/^|\s+/).map(function(t) {
+        var name = "", i = t.indexOf(".");
+        if (i >= 0) name = t.slice(i + 1), t = t.slice(0, i);
+        if (t && !types.hasOwnProperty(t)) throw new Error("unknown type: " + t);
+        return {type: t, name: name};
+      });
+    }
+
+    Dispatch.prototype = dispatch.prototype = {
+      constructor: Dispatch,
+      on: function(typename, callback) {
+        var _ = this._,
+            T = parseTypenames(typename + "", _),
+            t,
+            i = -1,
+            n = T.length;
+
+        // If no callback was specified, return the callback of the given type and name.
+        if (arguments.length < 2) {
+          while (++i < n) if ((t = (typename = T[i]).type) && (t = get(_[t], typename.name))) return t;
+          return;
+        }
+
+        // If a type was specified, set the callback for the given type and name.
+        // Otherwise, if a null callback was specified, remove callbacks of the given name.
+        if (callback != null && typeof callback !== "function") throw new Error("invalid callback: " + callback);
+        while (++i < n) {
+          if (t = (typename = T[i]).type) _[t] = set(_[t], typename.name, callback);
+          else if (callback == null) for (t in _) _[t] = set(_[t], typename.name, null);
+        }
+
+        return this;
+      },
+      copy: function() {
+        var copy = {}, _ = this._;
+        for (var t in _) copy[t] = _[t].slice();
+        return new Dispatch(copy);
+      },
+      call: function(type, that) {
+        if ((n = arguments.length - 2) > 0) for (var args = new Array(n), i = 0, n, t; i < n; ++i) args[i] = arguments[i + 2];
+        if (!this._.hasOwnProperty(type)) throw new Error("unknown type: " + type);
+        for (t = this._[type], i = 0, n = t.length; i < n; ++i) t[i].value.apply(that, args);
+      },
+      apply: function(type, that, args) {
+        if (!this._.hasOwnProperty(type)) throw new Error("unknown type: " + type);
+        for (var t = this._[type], i = 0, n = t.length; i < n; ++i) t[i].value.apply(that, args);
+      }
+    };
+
+    function get(type, name) {
+      for (var i = 0, n = type.length, c; i < n; ++i) {
+        if ((c = type[i]).name === name) {
+          return c.value;
+        }
+      }
+    }
+
+    function set(type, name, callback) {
+      for (var i = 0, n = type.length; i < n; ++i) {
+        if (type[i].name === name) {
+          type[i] = noop$1, type = type.slice(0, i).concat(type.slice(i + 1));
+          break;
+        }
+      }
+      if (callback != null) type.push({name: name, value: callback});
+      return type;
+    }
+
+    var xhtml = "http://www.w3.org/1999/xhtml";
+
+    var namespaces = {
+      svg: "http://www.w3.org/2000/svg",
+      xhtml: xhtml,
+      xlink: "http://www.w3.org/1999/xlink",
+      xml: "http://www.w3.org/XML/1998/namespace",
+      xmlns: "http://www.w3.org/2000/xmlns/"
+    };
+
+    function namespace(name) {
+      var prefix = name += "", i = prefix.indexOf(":");
+      if (i >= 0 && (prefix = name.slice(0, i)) !== "xmlns") name = name.slice(i + 1);
+      return namespaces.hasOwnProperty(prefix) ? {space: namespaces[prefix], local: name} : name;
+    }
+
+    function creatorInherit(name) {
+      return function() {
+        var document = this.ownerDocument,
+            uri = this.namespaceURI;
+        return uri === xhtml && document.documentElement.namespaceURI === xhtml
+            ? document.createElement(name)
+            : document.createElementNS(uri, name);
+      };
+    }
+
+    function creatorFixed(fullname) {
+      return function() {
+        return this.ownerDocument.createElementNS(fullname.space, fullname.local);
+      };
+    }
+
+    function creator(name) {
+      var fullname = namespace(name);
+      return (fullname.local
+          ? creatorFixed
+          : creatorInherit)(fullname);
+    }
+
+    function none() {}
+
+    function selector(selector) {
+      return selector == null ? none : function() {
+        return this.querySelector(selector);
+      };
+    }
+
+    function selection_select(select) {
+      if (typeof select !== "function") select = selector(select);
+
+      for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) {
+        for (var group = groups[j], n = group.length, subgroup = subgroups[j] = new Array(n), node, subnode, i = 0; i < n; ++i) {
+          if ((node = group[i]) && (subnode = select.call(node, node.__data__, i, group))) {
+            if ("__data__" in node) subnode.__data__ = node.__data__;
+            subgroup[i] = subnode;
+          }
+        }
+      }
+
+      return new Selection(subgroups, this._parents);
+    }
+
+    function empty$1() {
+      return [];
+    }
+
+    function selectorAll(selector) {
+      return selector == null ? empty$1 : function() {
+        return this.querySelectorAll(selector);
+      };
+    }
+
+    function selection_selectAll(select) {
+      if (typeof select !== "function") select = selectorAll(select);
+
+      for (var groups = this._groups, m = groups.length, subgroups = [], parents = [], j = 0; j < m; ++j) {
+        for (var group = groups[j], n = group.length, node, i = 0; i < n; ++i) {
+          if (node = group[i]) {
+            subgroups.push(select.call(node, node.__data__, i, group));
+            parents.push(node);
+          }
+        }
+      }
+
+      return new Selection(subgroups, parents);
+    }
+
+    function matcher(selector) {
+      return function() {
+        return this.matches(selector);
+      };
+    }
+
+    function selection_filter(match) {
+      if (typeof match !== "function") match = matcher(match);
+
+      for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) {
+        for (var group = groups[j], n = group.length, subgroup = subgroups[j] = [], node, i = 0; i < n; ++i) {
+          if ((node = group[i]) && match.call(node, node.__data__, i, group)) {
+            subgroup.push(node);
+          }
+        }
+      }
+
+      return new Selection(subgroups, this._parents);
+    }
+
+    function sparse(update) {
+      return new Array(update.length);
+    }
+
+    function selection_enter() {
+      return new Selection(this._enter || this._groups.map(sparse), this._parents);
+    }
+
+    function EnterNode(parent, datum) {
+      this.ownerDocument = parent.ownerDocument;
+      this.namespaceURI = parent.namespaceURI;
+      this._next = null;
+      this._parent = parent;
+      this.__data__ = datum;
+    }
+
+    EnterNode.prototype = {
+      constructor: EnterNode,
+      appendChild: function(child) { return this._parent.insertBefore(child, this._next); },
+      insertBefore: function(child, next) { return this._parent.insertBefore(child, next); },
+      querySelector: function(selector) { return this._parent.querySelector(selector); },
+      querySelectorAll: function(selector) { return this._parent.querySelectorAll(selector); }
+    };
+
+    function constant(x) {
+      return function() {
+        return x;
+      };
+    }
+
+    var keyPrefix = "$"; // Protect against keys like “__proto__”.
+
+    function bindIndex(parent, group, enter, update, exit, data) {
+      var i = 0,
+          node,
+          groupLength = group.length,
+          dataLength = data.length;
+
+      // Put any non-null nodes that fit into update.
+      // Put any null nodes into enter.
+      // Put any remaining data into enter.
+      for (; i < dataLength; ++i) {
+        if (node = group[i]) {
+          node.__data__ = data[i];
+          update[i] = node;
+        } else {
+          enter[i] = new EnterNode(parent, data[i]);
+        }
+      }
+
+      // Put any non-null nodes that don’t fit into exit.
+      for (; i < groupLength; ++i) {
+        if (node = group[i]) {
+          exit[i] = node;
+        }
+      }
+    }
+
+    function bindKey(parent, group, enter, update, exit, data, key) {
+      var i,
+          node,
+          nodeByKeyValue = {},
+          groupLength = group.length,
+          dataLength = data.length,
+          keyValues = new Array(groupLength),
+          keyValue;
+
+      // Compute the key for each node.
+      // If multiple nodes have the same key, the duplicates are added to exit.
+      for (i = 0; i < groupLength; ++i) {
+        if (node = group[i]) {
+          keyValues[i] = keyValue = keyPrefix + key.call(node, node.__data__, i, group);
+          if (keyValue in nodeByKeyValue) {
+            exit[i] = node;
+          } else {
+            nodeByKeyValue[keyValue] = node;
+          }
+        }
+      }
+
+      // Compute the key for each datum.
+      // If there a node associated with this key, join and add it to update.
+      // If there is not (or the key is a duplicate), add it to enter.
+      for (i = 0; i < dataLength; ++i) {
+        keyValue = keyPrefix + key.call(parent, data[i], i, data);
+        if (node = nodeByKeyValue[keyValue]) {
+          update[i] = node;
+          node.__data__ = data[i];
+          nodeByKeyValue[keyValue] = null;
+        } else {
+          enter[i] = new EnterNode(parent, data[i]);
+        }
+      }
+
+      // Add any remaining nodes that were not bound to data to exit.
+      for (i = 0; i < groupLength; ++i) {
+        if ((node = group[i]) && (nodeByKeyValue[keyValues[i]] === node)) {
+          exit[i] = node;
+        }
+      }
+    }
+
+    function selection_data(value, key) {
+      if (!value) {
+        data = new Array(this.size()), j = -1;
+        this.each(function(d) { data[++j] = d; });
+        return data;
+      }
+
+      var bind = key ? bindKey : bindIndex,
+          parents = this._parents,
+          groups = this._groups;
+
+      if (typeof value !== "function") value = constant(value);
+
+      for (var m = groups.length, update = new Array(m), enter = new Array(m), exit = new Array(m), j = 0; j < m; ++j) {
+        var parent = parents[j],
+            group = groups[j],
+            groupLength = group.length,
+            data = value.call(parent, parent && parent.__data__, j, parents),
+            dataLength = data.length,
+            enterGroup = enter[j] = new Array(dataLength),
+            updateGroup = update[j] = new Array(dataLength),
+            exitGroup = exit[j] = new Array(groupLength);
+
+        bind(parent, group, enterGroup, updateGroup, exitGroup, data, key);
+
+        // Now connect the enter nodes to their following update node, such that
+        // appendChild can insert the materialized enter node before this node,
+        // rather than at the end of the parent node.
+        for (var i0 = 0, i1 = 0, previous, next; i0 < dataLength; ++i0) {
+          if (previous = enterGroup[i0]) {
+            if (i0 >= i1) i1 = i0 + 1;
+            while (!(next = updateGroup[i1]) && ++i1 < dataLength);
+            previous._next = next || null;
+          }
+        }
+      }
+
+      update = new Selection(update, parents);
+      update._enter = enter;
+      update._exit = exit;
+      return update;
+    }
+
+    function selection_exit() {
+      return new Selection(this._exit || this._groups.map(sparse), this._parents);
+    }
+
+    function selection_join(onenter, onupdate, onexit) {
+      var enter = this.enter(), update = this, exit = this.exit();
+      enter = typeof onenter === "function" ? onenter(enter) : enter.append(onenter + "");
+      if (onupdate != null) update = onupdate(update);
+      if (onexit == null) exit.remove(); else onexit(exit);
+      return enter && update ? enter.merge(update).order() : update;
+    }
+
+    function selection_merge(selection) {
+
+      for (var groups0 = this._groups, groups1 = selection._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) {
+        for (var group0 = groups0[j], group1 = groups1[j], n = group0.length, merge = merges[j] = new Array(n), node, i = 0; i < n; ++i) {
+          if (node = group0[i] || group1[i]) {
+            merge[i] = node;
+          }
+        }
+      }
+
+      for (; j < m0; ++j) {
+        merges[j] = groups0[j];
+      }
+
+      return new Selection(merges, this._parents);
+    }
+
+    function selection_order() {
+
+      for (var groups = this._groups, j = -1, m = groups.length; ++j < m;) {
+        for (var group = groups[j], i = group.length - 1, next = group[i], node; --i >= 0;) {
+          if (node = group[i]) {
+            if (next && node.compareDocumentPosition(next) ^ 4) next.parentNode.insertBefore(node, next);
+            next = node;
+          }
+        }
+      }
+
+      return this;
+    }
+
+    function selection_sort(compare) {
+      if (!compare) compare = ascending$1;
+
+      function compareNode(a, b) {
+        return a && b ? compare(a.__data__, b.__data__) : !a - !b;
+      }
+
+      for (var groups = this._groups, m = groups.length, sortgroups = new Array(m), j = 0; j < m; ++j) {
+        for (var group = groups[j], n = group.length, sortgroup = sortgroups[j] = new Array(n), node, i = 0; i < n; ++i) {
+          if (node = group[i]) {
+            sortgroup[i] = node;
+          }
+        }
+        sortgroup.sort(compareNode);
+      }
+
+      return new Selection(sortgroups, this._parents).order();
+    }
+
+    function ascending$1(a, b) {
+      return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
+    }
+
+    function selection_call() {
+      var callback = arguments[0];
+      arguments[0] = this;
+      callback.apply(null, arguments);
+      return this;
+    }
+
+    function selection_nodes() {
+      var nodes = new Array(this.size()), i = -1;
+      this.each(function() { nodes[++i] = this; });
+      return nodes;
+    }
+
+    function selection_node() {
+
+      for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) {
+        for (var group = groups[j], i = 0, n = group.length; i < n; ++i) {
+          var node = group[i];
+          if (node) return node;
+        }
+      }
+
+      return null;
+    }
+
+    function selection_size() {
+      var size = 0;
+      this.each(function() { ++size; });
+      return size;
+    }
+
+    function selection_empty() {
+      return !this.node();
+    }
+
+    function selection_each(callback) {
+
+      for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) {
+        for (var group = groups[j], i = 0, n = group.length, node; i < n; ++i) {
+          if (node = group[i]) callback.call(node, node.__data__, i, group);
+        }
+      }
+
+      return this;
+    }
+
+    function attrRemove(name) {
+      return function() {
+        this.removeAttribute(name);
+      };
+    }
+
+    function attrRemoveNS(fullname) {
+      return function() {
+        this.removeAttributeNS(fullname.space, fullname.local);
+      };
+    }
+
+    function attrConstant(name, value) {
+      return function() {
+        this.setAttribute(name, value);
+      };
+    }
+
+    function attrConstantNS(fullname, value) {
+      return function() {
+        this.setAttributeNS(fullname.space, fullname.local, value);
+      };
+    }
+
+    function attrFunction(name, value) {
+      return function() {
+        var v = value.apply(this, arguments);
+        if (v == null) this.removeAttribute(name);
+        else this.setAttribute(name, v);
+      };
+    }
+
+    function attrFunctionNS(fullname, value) {
+      return function() {
+        var v = value.apply(this, arguments);
+        if (v == null) this.removeAttributeNS(fullname.space, fullname.local);
+        else this.setAttributeNS(fullname.space, fullname.local, v);
+      };
+    }
+
+    function selection_attr(name, value) {
+      var fullname = namespace(name);
+
+      if (arguments.length < 2) {
+        var node = this.node();
+        return fullname.local
+            ? node.getAttributeNS(fullname.space, fullname.local)
+            : node.getAttribute(fullname);
+      }
+
+      return this.each((value == null
+          ? (fullname.local ? attrRemoveNS : attrRemove) : (typeof value === "function"
+          ? (fullname.local ? attrFunctionNS : attrFunction)
+          : (fullname.local ? attrConstantNS : attrConstant)))(fullname, value));
+    }
+
+    function defaultView(node) {
+      return (node.ownerDocument && node.ownerDocument.defaultView) // node is a Node
+          || (node.document && node) // node is a Window
+          || node.defaultView; // node is a Document
+    }
+
+    function styleRemove(name) {
+      return function() {
+        this.style.removeProperty(name);
+      };
+    }
+
+    function styleConstant(name, value, priority) {
+      return function() {
+        this.style.setProperty(name, value, priority);
+      };
+    }
+
+    function styleFunction(name, value, priority) {
+      return function() {
+        var v = value.apply(this, arguments);
+        if (v == null) this.style.removeProperty(name);
+        else this.style.setProperty(name, v, priority);
+      };
+    }
+
+    function selection_style(name, value, priority) {
+      return arguments.length > 1
+          ? this.each((value == null
+                ? styleRemove : typeof value === "function"
+                ? styleFunction
+                : styleConstant)(name, value, priority == null ? "" : priority))
+          : styleValue(this.node(), name);
+    }
+
+    function styleValue(node, name) {
+      return node.style.getPropertyValue(name)
+          || defaultView(node).getComputedStyle(node, null).getPropertyValue(name);
+    }
+
+    function propertyRemove(name) {
+      return function() {
+        delete this[name];
+      };
+    }
+
+    function propertyConstant(name, value) {
+      return function() {
+        this[name] = value;
+      };
+    }
+
+    function propertyFunction(name, value) {
+      return function() {
+        var v = value.apply(this, arguments);
+        if (v == null) delete this[name];
+        else this[name] = v;
+      };
+    }
+
+    function selection_property(name, value) {
+      return arguments.length > 1
+          ? this.each((value == null
+              ? propertyRemove : typeof value === "function"
+              ? propertyFunction
+              : propertyConstant)(name, value))
+          : this.node()[name];
+    }
+
+    function classArray(string) {
+      return string.trim().split(/^|\s+/);
+    }
+
+    function classList(node) {
+      return node.classList || new ClassList(node);
+    }
+
+    function ClassList(node) {
+      this._node = node;
+      this._names = classArray(node.getAttribute("class") || "");
+    }
+
+    ClassList.prototype = {
+      add: function(name) {
+        var i = this._names.indexOf(name);
+        if (i < 0) {
+          this._names.push(name);
+          this._node.setAttribute("class", this._names.join(" "));
+        }
+      },
+      remove: function(name) {
+        var i = this._names.indexOf(name);
+        if (i >= 0) {
+          this._names.splice(i, 1);
+          this._node.setAttribute("class", this._names.join(" "));
+        }
+      },
+      contains: function(name) {
+        return this._names.indexOf(name) >= 0;
+      }
+    };
+
+    function classedAdd(node, names) {
+      var list = classList(node), i = -1, n = names.length;
+      while (++i < n) list.add(names[i]);
+    }
+
+    function classedRemove(node, names) {
+      var list = classList(node), i = -1, n = names.length;
+      while (++i < n) list.remove(names[i]);
+    }
+
+    function classedTrue(names) {
+      return function() {
+        classedAdd(this, names);
+      };
+    }
+
+    function classedFalse(names) {
+      return function() {
+        classedRemove(this, names);
+      };
+    }
+
+    function classedFunction(names, value) {
+      return function() {
+        (value.apply(this, arguments) ? classedAdd : classedRemove)(this, names);
+      };
+    }
+
+    function selection_classed(name, value) {
+      var names = classArray(name + "");
+
+      if (arguments.length < 2) {
+        var list = classList(this.node()), i = -1, n = names.length;
+        while (++i < n) if (!list.contains(names[i])) return false;
+        return true;
+      }
+
+      return this.each((typeof value === "function"
+          ? classedFunction : value
+          ? classedTrue
+          : classedFalse)(names, value));
+    }
+
+    function textRemove() {
+      this.textContent = "";
+    }
+
+    function textConstant(value) {
+      return function() {
+        this.textContent = value;
+      };
+    }
+
+    function textFunction(value) {
+      return function() {
+        var v = value.apply(this, arguments);
+        this.textContent = v == null ? "" : v;
+      };
+    }
+
+    function selection_text(value) {
+      return arguments.length
+          ? this.each(value == null
+              ? textRemove : (typeof value === "function"
+              ? textFunction
+              : textConstant)(value))
+          : this.node().textContent;
+    }
+
+    function htmlRemove() {
+      this.innerHTML = "";
+    }
+
+    function htmlConstant(value) {
+      return function() {
+        this.innerHTML = value;
+      };
+    }
+
+    function htmlFunction(value) {
+      return function() {
+        var v = value.apply(this, arguments);
+        this.innerHTML = v == null ? "" : v;
+      };
+    }
+
+    function selection_html(value) {
+      return arguments.length
+          ? this.each(value == null
+              ? htmlRemove : (typeof value === "function"
+              ? htmlFunction
+              : htmlConstant)(value))
+          : this.node().innerHTML;
+    }
+
+    function raise() {
+      if (this.nextSibling) this.parentNode.appendChild(this);
+    }
+
+    function selection_raise() {
+      return this.each(raise);
+    }
+
+    function lower() {
+      if (this.previousSibling) this.parentNode.insertBefore(this, this.parentNode.firstChild);
+    }
+
+    function selection_lower() {
+      return this.each(lower);
+    }
+
+    function selection_append(name) {
+      var create = typeof name === "function" ? name : creator(name);
+      return this.select(function() {
+        return this.appendChild(create.apply(this, arguments));
+      });
+    }
+
+    function constantNull() {
+      return null;
+    }
+
+    function selection_insert(name, before) {
+      var create = typeof name === "function" ? name : creator(name),
+          select = before == null ? constantNull : typeof before === "function" ? before : selector(before);
+      return this.select(function() {
+        return this.insertBefore(create.apply(this, arguments), select.apply(this, arguments) || null);
+      });
+    }
+
+    function remove() {
+      var parent = this.parentNode;
+      if (parent) parent.removeChild(this);
+    }
+
+    function selection_remove() {
+      return this.each(remove);
+    }
+
+    function selection_cloneShallow() {
+      return this.parentNode.insertBefore(this.cloneNode(false), this.nextSibling);
+    }
+
+    function selection_cloneDeep() {
+      return this.parentNode.insertBefore(this.cloneNode(true), this.nextSibling);
+    }
+
+    function selection_clone(deep) {
+      return this.select(deep ? selection_cloneDeep : selection_cloneShallow);
+    }
+
+    function selection_datum(value) {
+      return arguments.length
+          ? this.property("__data__", value)
+          : this.node().__data__;
+    }
+
+    var filterEvents = {};
+
+    var event = null;
+
+    if (typeof document !== "undefined") {
+      var element$1 = document.documentElement;
+      if (!("onmouseenter" in element$1)) {
+        filterEvents = {mouseenter: "mouseover", mouseleave: "mouseout"};
+      }
+    }
+
+    function filterContextListener(listener, index, group) {
+      listener = contextListener(listener, index, group);
+      return function(event) {
+        var related = event.relatedTarget;
+        if (!related || (related !== this && !(related.compareDocumentPosition(this) & 8))) {
+          listener.call(this, event);
+        }
+      };
+    }
+
+    function contextListener(listener, index, group) {
+      return function(event1) {
+        var event0 = event; // Events can be reentrant (e.g., focus).
+        event = event1;
+        try {
+          listener.call(this, this.__data__, index, group);
+        } finally {
+          event = event0;
+        }
+      };
+    }
+
+    function parseTypenames$1(typenames) {
+      return typenames.trim().split(/^|\s+/).map(function(t) {
+        var name = "", i = t.indexOf(".");
+        if (i >= 0) name = t.slice(i + 1), t = t.slice(0, i);
+        return {type: t, name: name};
+      });
+    }
+
+    function onRemove(typename) {
+      return function() {
+        var on = this.__on;
+        if (!on) return;
+        for (var j = 0, i = -1, m = on.length, o; j < m; ++j) {
+          if (o = on[j], (!typename.type || o.type === typename.type) && o.name === typename.name) {
+            this.removeEventListener(o.type, o.listener, o.capture);
+          } else {
+            on[++i] = o;
+          }
+        }
+        if (++i) on.length = i;
+        else delete this.__on;
+      };
+    }
+
+    function onAdd(typename, value, capture) {
+      var wrap = filterEvents.hasOwnProperty(typename.type) ? filterContextListener : contextListener;
+      return function(d, i, group) {
+        var on = this.__on, o, listener = wrap(value, i, group);
+        if (on) for (var j = 0, m = on.length; j < m; ++j) {
+          if ((o = on[j]).type === typename.type && o.name === typename.name) {
+            this.removeEventListener(o.type, o.listener, o.capture);
+            this.addEventListener(o.type, o.listener = listener, o.capture = capture);
+            o.value = value;
+            return;
+          }
+        }
+        this.addEventListener(typename.type, listener, capture);
+        o = {type: typename.type, name: typename.name, value: value, listener: listener, capture: capture};
+        if (!on) this.__on = [o];
+        else on.push(o);
+      };
+    }
+
+    function selection_on(typename, value, capture) {
+      var typenames = parseTypenames$1(typename + ""), i, n = typenames.length, t;
+
+      if (arguments.length < 2) {
+        var on = this.node().__on;
+        if (on) for (var j = 0, m = on.length, o; j < m; ++j) {
+          for (i = 0, o = on[j]; i < n; ++i) {
+            if ((t = typenames[i]).type === o.type && t.name === o.name) {
+              return o.value;
+            }
+          }
+        }
+        return;
+      }
+
+      on = value ? onAdd : onRemove;
+      if (capture == null) capture = false;
+      for (i = 0; i < n; ++i) this.each(on(typenames[i], value, capture));
+      return this;
+    }
+
+    function customEvent(event1, listener, that, args) {
+      var event0 = event;
+      event1.sourceEvent = event;
+      event = event1;
+      try {
+        return listener.apply(that, args);
+      } finally {
+        event = event0;
+      }
+    }
+
+    function dispatchEvent(node, type, params) {
+      var window = defaultView(node),
+          event = window.CustomEvent;
+
+      if (typeof event === "function") {
+        event = new event(type, params);
+      } else {
+        event = window.document.createEvent("Event");
+        if (params) event.initEvent(type, params.bubbles, params.cancelable), event.detail = params.detail;
+        else event.initEvent(type, false, false);
+      }
+
+      node.dispatchEvent(event);
+    }
+
+    function dispatchConstant(type, params) {
+      return function() {
+        return dispatchEvent(this, type, params);
+      };
+    }
+
+    function dispatchFunction(type, params) {
+      return function() {
+        return dispatchEvent(this, type, params.apply(this, arguments));
+      };
+    }
+
+    function selection_dispatch(type, params) {
+      return this.each((typeof params === "function"
+          ? dispatchFunction
+          : dispatchConstant)(type, params));
+    }
+
+    var root = [null];
+
+    function Selection(groups, parents) {
+      this._groups = groups;
+      this._parents = parents;
+    }
+
+    function selection() {
+      return new Selection([[document.documentElement]], root);
+    }
+
+    Selection.prototype = selection.prototype = {
+      constructor: Selection,
+      select: selection_select,
+      selectAll: selection_selectAll,
+      filter: selection_filter,
+      data: selection_data,
+      enter: selection_enter,
+      exit: selection_exit,
+      join: selection_join,
+      merge: selection_merge,
+      order: selection_order,
+      sort: selection_sort,
+      call: selection_call,
+      nodes: selection_nodes,
+      node: selection_node,
+      size: selection_size,
+      empty: selection_empty,
+      each: selection_each,
+      attr: selection_attr,
+      style: selection_style,
+      property: selection_property,
+      classed: selection_classed,
+      text: selection_text,
+      html: selection_html,
+      raise: selection_raise,
+      lower: selection_lower,
+      append: selection_append,
+      insert: selection_insert,
+      remove: selection_remove,
+      clone: selection_clone,
+      datum: selection_datum,
+      on: selection_on,
+      dispatch: selection_dispatch
+    };
+
+    function select(selector) {
+      return typeof selector === "string"
+          ? new Selection([[document.querySelector(selector)]], [document.documentElement])
+          : new Selection([[selector]], root);
+    }
+
+    function sourceEvent() {
+      var current = event, source;
+      while (source = current.sourceEvent) current = source;
+      return current;
+    }
+
+    function point(node, event) {
+      var svg = node.ownerSVGElement || node;
+
+      if (svg.createSVGPoint) {
+        var point = svg.createSVGPoint();
+        point.x = event.clientX, point.y = event.clientY;
+        point = point.matrixTransform(node.getScreenCTM().inverse());
+        return [point.x, point.y];
+      }
+
+      var rect = node.getBoundingClientRect();
+      return [event.clientX - rect.left - node.clientLeft, event.clientY - rect.top - node.clientTop];
+    }
+
+    function mouse(node) {
+      var event = sourceEvent();
+      if (event.changedTouches) event = event.changedTouches[0];
+      return point(node, event);
+    }
+
+    function touch(node, touches, identifier) {
+      if (arguments.length < 3) identifier = touches, touches = sourceEvent().changedTouches;
+
+      for (var i = 0, n = touches ? touches.length : 0, touch; i < n; ++i) {
+        if ((touch = touches[i]).identifier === identifier) {
+          return point(node, touch);
+        }
+      }
+
+      return null;
+    }
+
+    function nopropagation() {
+      event.stopImmediatePropagation();
+    }
+
+    function noevent() {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
+
+    function dragDisable(view) {
+      var root = view.document.documentElement,
+          selection = select(view).on("dragstart.drag", noevent, true);
+      if ("onselectstart" in root) {
+        selection.on("selectstart.drag", noevent, true);
+      } else {
+        root.__noselect = root.style.MozUserSelect;
+        root.style.MozUserSelect = "none";
+      }
+    }
+
+    function yesdrag(view, noclick) {
+      var root = view.document.documentElement,
+          selection = select(view).on("dragstart.drag", null);
+      if (noclick) {
+        selection.on("click.drag", noevent, true);
+        setTimeout(function() { selection.on("click.drag", null); }, 0);
+      }
+      if ("onselectstart" in root) {
+        selection.on("selectstart.drag", null);
+      } else {
+        root.style.MozUserSelect = root.__noselect;
+        delete root.__noselect;
+      }
+    }
+
+    function constant$1(x) {
+      return function() {
+        return x;
+      };
+    }
+
+    function DragEvent(target, type, subject, id, active, x, y, dx, dy, dispatch) {
+      this.target = target;
+      this.type = type;
+      this.subject = subject;
+      this.identifier = id;
+      this.active = active;
+      this.x = x;
+      this.y = y;
+      this.dx = dx;
+      this.dy = dy;
+      this._ = dispatch;
+    }
+
+    DragEvent.prototype.on = function() {
+      var value = this._.on.apply(this._, arguments);
+      return value === this._ ? this : value;
+    };
+
+    // Ignore right-click, since that should open the context menu.
+    function defaultFilter() {
+      return !event.ctrlKey && !event.button;
+    }
+
+    function defaultContainer() {
+      return this.parentNode;
+    }
+
+    function defaultSubject(d) {
+      return d == null ? {x: event.x, y: event.y} : d;
+    }
+
+    function defaultTouchable() {
+      return navigator.maxTouchPoints || ("ontouchstart" in this);
+    }
+
+    function drag() {
+      var filter = defaultFilter,
+          container = defaultContainer,
+          subject = defaultSubject,
+          touchable = defaultTouchable,
+          gestures = {},
+          listeners = dispatch("start", "drag", "end"),
+          active = 0,
+          mousedownx,
+          mousedowny,
+          mousemoving,
+          touchending,
+          clickDistance2 = 0;
+
+      function drag(selection) {
+        selection
+            .on("mousedown.drag", mousedowned)
+          .filter(touchable)
+            .on("touchstart.drag", touchstarted)
+            .on("touchmove.drag", touchmoved)
+            .on("touchend.drag touchcancel.drag", touchended)
+            .style("touch-action", "none")
+            .style("-webkit-tap-highlight-color", "rgba(0,0,0,0)");
+      }
+
+      function mousedowned() {
+        if (touchending || !filter.apply(this, arguments)) return;
+        var gesture = beforestart("mouse", container.apply(this, arguments), mouse, this, arguments);
+        if (!gesture) return;
+        select(event.view).on("mousemove.drag", mousemoved, true).on("mouseup.drag", mouseupped, true);
+        dragDisable(event.view);
+        nopropagation();
+        mousemoving = false;
+        mousedownx = event.clientX;
+        mousedowny = event.clientY;
+        gesture("start");
+      }
+
+      function mousemoved() {
+        noevent();
+        if (!mousemoving) {
+          var dx = event.clientX - mousedownx, dy = event.clientY - mousedowny;
+          mousemoving = dx * dx + dy * dy > clickDistance2;
+        }
+        gestures.mouse("drag");
+      }
+
+      function mouseupped() {
+        select(event.view).on("mousemove.drag mouseup.drag", null);
+        yesdrag(event.view, mousemoving);
+        noevent();
+        gestures.mouse("end");
+      }
+
+      function touchstarted() {
+        if (!filter.apply(this, arguments)) return;
+        var touches = event.changedTouches,
+            c = container.apply(this, arguments),
+            n = touches.length, i, gesture;
+
+        for (i = 0; i < n; ++i) {
+          if (gesture = beforestart(touches[i].identifier, c, touch, this, arguments)) {
+            nopropagation();
+            gesture("start");
+          }
+        }
+      }
+
+      function touchmoved() {
+        var touches = event.changedTouches,
+            n = touches.length, i, gesture;
+
+        for (i = 0; i < n; ++i) {
+          if (gesture = gestures[touches[i].identifier]) {
+            noevent();
+            gesture("drag");
+          }
+        }
+      }
+
+      function touchended() {
+        var touches = event.changedTouches,
+            n = touches.length, i, gesture;
+
+        if (touchending) clearTimeout(touchending);
+        touchending = setTimeout(function() { touchending = null; }, 500); // Ghost clicks are delayed!
+        for (i = 0; i < n; ++i) {
+          if (gesture = gestures[touches[i].identifier]) {
+            nopropagation();
+            gesture("end");
+          }
+        }
+      }
+
+      function beforestart(id, container, point, that, args) {
+        var p = point(container, id), s, dx, dy,
+            sublisteners = listeners.copy();
+
+        if (!customEvent(new DragEvent(drag, "beforestart", s, id, active, p[0], p[1], 0, 0, sublisteners), function() {
+          if ((event.subject = s = subject.apply(that, args)) == null) return false;
+          dx = s.x - p[0] || 0;
+          dy = s.y - p[1] || 0;
+          return true;
+        })) return;
+
+        return function gesture(type) {
+          var p0 = p, n;
+          switch (type) {
+            case "start": gestures[id] = gesture, n = active++; break;
+            case "end": delete gestures[id], --active; // nobreak
+            case "drag": p = point(container, id), n = active; break;
+          }
+          customEvent(new DragEvent(drag, type, s, id, n, p[0] + dx, p[1] + dy, p[0] - p0[0], p[1] - p0[1], sublisteners), sublisteners.apply, sublisteners, [type, that, args]);
+        };
+      }
+
+      drag.filter = function(_) {
+        return arguments.length ? (filter = typeof _ === "function" ? _ : constant$1(!!_), drag) : filter;
+      };
+
+      drag.container = function(_) {
+        return arguments.length ? (container = typeof _ === "function" ? _ : constant$1(_), drag) : container;
+      };
+
+      drag.subject = function(_) {
+        return arguments.length ? (subject = typeof _ === "function" ? _ : constant$1(_), drag) : subject;
+      };
+
+      drag.touchable = function(_) {
+        return arguments.length ? (touchable = typeof _ === "function" ? _ : constant$1(!!_), drag) : touchable;
+      };
+
+      drag.on = function() {
+        var value = listeners.on.apply(listeners, arguments);
+        return value === listeners ? drag : value;
+      };
+
+      drag.clickDistance = function(_) {
+        return arguments.length ? (clickDistance2 = (_ = +_) * _, drag) : Math.sqrt(clickDistance2);
+      };
+
+      return drag;
+    }
+
+    function define(constructor, factory, prototype) {
+      constructor.prototype = factory.prototype = prototype;
+      prototype.constructor = constructor;
+    }
+
+    function extend(parent, definition) {
+      var prototype = Object.create(parent.prototype);
+      for (var key in definition) prototype[key] = definition[key];
+      return prototype;
+    }
+
+    function Color() {}
+
+    var darker = 0.7;
+    var brighter = 1 / darker;
+
+    var reI = "\\s*([+-]?\\d+)\\s*",
+        reN = "\\s*([+-]?\\d*\\.?\\d+(?:[eE][+-]?\\d+)?)\\s*",
+        reP = "\\s*([+-]?\\d*\\.?\\d+(?:[eE][+-]?\\d+)?)%\\s*",
+        reHex = /^#([0-9a-f]{3,8})$/,
+        reRgbInteger = new RegExp("^rgb\\(" + [reI, reI, reI] + "\\)$"),
+        reRgbPercent = new RegExp("^rgb\\(" + [reP, reP, reP] + "\\)$"),
+        reRgbaInteger = new RegExp("^rgba\\(" + [reI, reI, reI, reN] + "\\)$"),
+        reRgbaPercent = new RegExp("^rgba\\(" + [reP, reP, reP, reN] + "\\)$"),
+        reHslPercent = new RegExp("^hsl\\(" + [reN, reP, reP] + "\\)$"),
+        reHslaPercent = new RegExp("^hsla\\(" + [reN, reP, reP, reN] + "\\)$");
+
+    var named = {
+      aliceblue: 0xf0f8ff,
+      antiquewhite: 0xfaebd7,
+      aqua: 0x00ffff,
+      aquamarine: 0x7fffd4,
+      azure: 0xf0ffff,
+      beige: 0xf5f5dc,
+      bisque: 0xffe4c4,
+      black: 0x000000,
+      blanchedalmond: 0xffebcd,
+      blue: 0x0000ff,
+      blueviolet: 0x8a2be2,
+      brown: 0xa52a2a,
+      burlywood: 0xdeb887,
+      cadetblue: 0x5f9ea0,
+      chartreuse: 0x7fff00,
+      chocolate: 0xd2691e,
+      coral: 0xff7f50,
+      cornflowerblue: 0x6495ed,
+      cornsilk: 0xfff8dc,
+      crimson: 0xdc143c,
+      cyan: 0x00ffff,
+      darkblue: 0x00008b,
+      darkcyan: 0x008b8b,
+      darkgoldenrod: 0xb8860b,
+      darkgray: 0xa9a9a9,
+      darkgreen: 0x006400,
+      darkgrey: 0xa9a9a9,
+      darkkhaki: 0xbdb76b,
+      darkmagenta: 0x8b008b,
+      darkolivegreen: 0x556b2f,
+      darkorange: 0xff8c00,
+      darkorchid: 0x9932cc,
+      darkred: 0x8b0000,
+      darksalmon: 0xe9967a,
+      darkseagreen: 0x8fbc8f,
+      darkslateblue: 0x483d8b,
+      darkslategray: 0x2f4f4f,
+      darkslategrey: 0x2f4f4f,
+      darkturquoise: 0x00ced1,
+      darkviolet: 0x9400d3,
+      deeppink: 0xff1493,
+      deepskyblue: 0x00bfff,
+      dimgray: 0x696969,
+      dimgrey: 0x696969,
+      dodgerblue: 0x1e90ff,
+      firebrick: 0xb22222,
+      floralwhite: 0xfffaf0,
+      forestgreen: 0x228b22,
+      fuchsia: 0xff00ff,
+      gainsboro: 0xdcdcdc,
+      ghostwhite: 0xf8f8ff,
+      gold: 0xffd700,
+      goldenrod: 0xdaa520,
+      gray: 0x808080,
+      green: 0x008000,
+      greenyellow: 0xadff2f,
+      grey: 0x808080,
+      honeydew: 0xf0fff0,
+      hotpink: 0xff69b4,
+      indianred: 0xcd5c5c,
+      indigo: 0x4b0082,
+      ivory: 0xfffff0,
+      khaki: 0xf0e68c,
+      lavender: 0xe6e6fa,
+      lavenderblush: 0xfff0f5,
+      lawngreen: 0x7cfc00,
+      lemonchiffon: 0xfffacd,
+      lightblue: 0xadd8e6,
+      lightcoral: 0xf08080,
+      lightcyan: 0xe0ffff,
+      lightgoldenrodyellow: 0xfafad2,
+      lightgray: 0xd3d3d3,
+      lightgreen: 0x90ee90,
+      lightgrey: 0xd3d3d3,
+      lightpink: 0xffb6c1,
+      lightsalmon: 0xffa07a,
+      lightseagreen: 0x20b2aa,
+      lightskyblue: 0x87cefa,
+      lightslategray: 0x778899,
+      lightslategrey: 0x778899,
+      lightsteelblue: 0xb0c4de,
+      lightyellow: 0xffffe0,
+      lime: 0x00ff00,
+      limegreen: 0x32cd32,
+      linen: 0xfaf0e6,
+      magenta: 0xff00ff,
+      maroon: 0x800000,
+      mediumaquamarine: 0x66cdaa,
+      mediumblue: 0x0000cd,
+      mediumorchid: 0xba55d3,
+      mediumpurple: 0x9370db,
+      mediumseagreen: 0x3cb371,
+      mediumslateblue: 0x7b68ee,
+      mediumspringgreen: 0x00fa9a,
+      mediumturquoise: 0x48d1cc,
+      mediumvioletred: 0xc71585,
+      midnightblue: 0x191970,
+      mintcream: 0xf5fffa,
+      mistyrose: 0xffe4e1,
+      moccasin: 0xffe4b5,
+      navajowhite: 0xffdead,
+      navy: 0x000080,
+      oldlace: 0xfdf5e6,
+      olive: 0x808000,
+      olivedrab: 0x6b8e23,
+      orange: 0xffa500,
+      orangered: 0xff4500,
+      orchid: 0xda70d6,
+      palegoldenrod: 0xeee8aa,
+      palegreen: 0x98fb98,
+      paleturquoise: 0xafeeee,
+      palevioletred: 0xdb7093,
+      papayawhip: 0xffefd5,
+      peachpuff: 0xffdab9,
+      peru: 0xcd853f,
+      pink: 0xffc0cb,
+      plum: 0xdda0dd,
+      powderblue: 0xb0e0e6,
+      purple: 0x800080,
+      rebeccapurple: 0x663399,
+      red: 0xff0000,
+      rosybrown: 0xbc8f8f,
+      royalblue: 0x4169e1,
+      saddlebrown: 0x8b4513,
+      salmon: 0xfa8072,
+      sandybrown: 0xf4a460,
+      seagreen: 0x2e8b57,
+      seashell: 0xfff5ee,
+      sienna: 0xa0522d,
+      silver: 0xc0c0c0,
+      skyblue: 0x87ceeb,
+      slateblue: 0x6a5acd,
+      slategray: 0x708090,
+      slategrey: 0x708090,
+      snow: 0xfffafa,
+      springgreen: 0x00ff7f,
+      steelblue: 0x4682b4,
+      tan: 0xd2b48c,
+      teal: 0x008080,
+      thistle: 0xd8bfd8,
+      tomato: 0xff6347,
+      turquoise: 0x40e0d0,
+      violet: 0xee82ee,
+      wheat: 0xf5deb3,
+      white: 0xffffff,
+      whitesmoke: 0xf5f5f5,
+      yellow: 0xffff00,
+      yellowgreen: 0x9acd32
+    };
+
+    define(Color, color, {
+      copy: function(channels) {
+        return Object.assign(new this.constructor, this, channels);
+      },
+      displayable: function() {
+        return this.rgb().displayable();
+      },
+      hex: color_formatHex, // Deprecated! Use color.formatHex.
+      formatHex: color_formatHex,
+      formatHsl: color_formatHsl,
+      formatRgb: color_formatRgb,
+      toString: color_formatRgb
+    });
+
+    function color_formatHex() {
+      return this.rgb().formatHex();
+    }
+
+    function color_formatHsl() {
+      return hslConvert(this).formatHsl();
+    }
+
+    function color_formatRgb() {
+      return this.rgb().formatRgb();
+    }
+
+    function color(format) {
+      var m, l;
+      format = (format + "").trim().toLowerCase();
+      return (m = reHex.exec(format)) ? (l = m[1].length, m = parseInt(m[1], 16), l === 6 ? rgbn(m) // #ff0000
+          : l === 3 ? new Rgb((m >> 8 & 0xf) | (m >> 4 & 0xf0), (m >> 4 & 0xf) | (m & 0xf0), ((m & 0xf) << 4) | (m & 0xf), 1) // #f00
+          : l === 8 ? new Rgb(m >> 24 & 0xff, m >> 16 & 0xff, m >> 8 & 0xff, (m & 0xff) / 0xff) // #ff000000
+          : l === 4 ? new Rgb((m >> 12 & 0xf) | (m >> 8 & 0xf0), (m >> 8 & 0xf) | (m >> 4 & 0xf0), (m >> 4 & 0xf) | (m & 0xf0), (((m & 0xf) << 4) | (m & 0xf)) / 0xff) // #f000
+          : null) // invalid hex
+          : (m = reRgbInteger.exec(format)) ? new Rgb(m[1], m[2], m[3], 1) // rgb(255, 0, 0)
+          : (m = reRgbPercent.exec(format)) ? new Rgb(m[1] * 255 / 100, m[2] * 255 / 100, m[3] * 255 / 100, 1) // rgb(100%, 0%, 0%)
+          : (m = reRgbaInteger.exec(format)) ? rgba(m[1], m[2], m[3], m[4]) // rgba(255, 0, 0, 1)
+          : (m = reRgbaPercent.exec(format)) ? rgba(m[1] * 255 / 100, m[2] * 255 / 100, m[3] * 255 / 100, m[4]) // rgb(100%, 0%, 0%, 1)
+          : (m = reHslPercent.exec(format)) ? hsla(m[1], m[2] / 100, m[3] / 100, 1) // hsl(120, 50%, 50%)
+          : (m = reHslaPercent.exec(format)) ? hsla(m[1], m[2] / 100, m[3] / 100, m[4]) // hsla(120, 50%, 50%, 1)
+          : named.hasOwnProperty(format) ? rgbn(named[format]) // eslint-disable-line no-prototype-builtins
+          : format === "transparent" ? new Rgb(NaN, NaN, NaN, 0)
+          : null;
+    }
+
+    function rgbn(n) {
+      return new Rgb(n >> 16 & 0xff, n >> 8 & 0xff, n & 0xff, 1);
+    }
+
+    function rgba(r, g, b, a) {
+      if (a <= 0) r = g = b = NaN;
+      return new Rgb(r, g, b, a);
+    }
+
+    function rgbConvert(o) {
+      if (!(o instanceof Color)) o = color(o);
+      if (!o) return new Rgb;
+      o = o.rgb();
+      return new Rgb(o.r, o.g, o.b, o.opacity);
+    }
+
+    function rgb(r, g, b, opacity) {
+      return arguments.length === 1 ? rgbConvert(r) : new Rgb(r, g, b, opacity == null ? 1 : opacity);
+    }
+
+    function Rgb(r, g, b, opacity) {
+      this.r = +r;
+      this.g = +g;
+      this.b = +b;
+      this.opacity = +opacity;
+    }
+
+    define(Rgb, rgb, extend(Color, {
+      brighter: function(k) {
+        k = k == null ? brighter : Math.pow(brighter, k);
+        return new Rgb(this.r * k, this.g * k, this.b * k, this.opacity);
+      },
+      darker: function(k) {
+        k = k == null ? darker : Math.pow(darker, k);
+        return new Rgb(this.r * k, this.g * k, this.b * k, this.opacity);
+      },
+      rgb: function() {
+        return this;
+      },
+      displayable: function() {
+        return (-0.5 <= this.r && this.r < 255.5)
+            && (-0.5 <= this.g && this.g < 255.5)
+            && (-0.5 <= this.b && this.b < 255.5)
+            && (0 <= this.opacity && this.opacity <= 1);
+      },
+      hex: rgb_formatHex, // Deprecated! Use color.formatHex.
+      formatHex: rgb_formatHex,
+      formatRgb: rgb_formatRgb,
+      toString: rgb_formatRgb
+    }));
+
+    function rgb_formatHex() {
+      return "#" + hex(this.r) + hex(this.g) + hex(this.b);
+    }
+
+    function rgb_formatRgb() {
+      var a = this.opacity; a = isNaN(a) ? 1 : Math.max(0, Math.min(1, a));
+      return (a === 1 ? "rgb(" : "rgba(")
+          + Math.max(0, Math.min(255, Math.round(this.r) || 0)) + ", "
+          + Math.max(0, Math.min(255, Math.round(this.g) || 0)) + ", "
+          + Math.max(0, Math.min(255, Math.round(this.b) || 0))
+          + (a === 1 ? ")" : ", " + a + ")");
+    }
+
+    function hex(value) {
+      value = Math.max(0, Math.min(255, Math.round(value) || 0));
+      return (value < 16 ? "0" : "") + value.toString(16);
+    }
+
+    function hsla(h, s, l, a) {
+      if (a <= 0) h = s = l = NaN;
+      else if (l <= 0 || l >= 1) h = s = NaN;
+      else if (s <= 0) h = NaN;
+      return new Hsl(h, s, l, a);
+    }
+
+    function hslConvert(o) {
+      if (o instanceof Hsl) return new Hsl(o.h, o.s, o.l, o.opacity);
+      if (!(o instanceof Color)) o = color(o);
+      if (!o) return new Hsl;
+      if (o instanceof Hsl) return o;
+      o = o.rgb();
+      var r = o.r / 255,
+          g = o.g / 255,
+          b = o.b / 255,
+          min = Math.min(r, g, b),
+          max = Math.max(r, g, b),
+          h = NaN,
+          s = max - min,
+          l = (max + min) / 2;
+      if (s) {
+        if (r === max) h = (g - b) / s + (g < b) * 6;
+        else if (g === max) h = (b - r) / s + 2;
+        else h = (r - g) / s + 4;
+        s /= l < 0.5 ? max + min : 2 - max - min;
+        h *= 60;
+      } else {
+        s = l > 0 && l < 1 ? 0 : h;
+      }
+      return new Hsl(h, s, l, o.opacity);
+    }
+
+    function hsl(h, s, l, opacity) {
+      return arguments.length === 1 ? hslConvert(h) : new Hsl(h, s, l, opacity == null ? 1 : opacity);
+    }
+
+    function Hsl(h, s, l, opacity) {
+      this.h = +h;
+      this.s = +s;
+      this.l = +l;
+      this.opacity = +opacity;
+    }
+
+    define(Hsl, hsl, extend(Color, {
+      brighter: function(k) {
+        k = k == null ? brighter : Math.pow(brighter, k);
+        return new Hsl(this.h, this.s, this.l * k, this.opacity);
+      },
+      darker: function(k) {
+        k = k == null ? darker : Math.pow(darker, k);
+        return new Hsl(this.h, this.s, this.l * k, this.opacity);
+      },
+      rgb: function() {
+        var h = this.h % 360 + (this.h < 0) * 360,
+            s = isNaN(h) || isNaN(this.s) ? 0 : this.s,
+            l = this.l,
+            m2 = l + (l < 0.5 ? l : 1 - l) * s,
+            m1 = 2 * l - m2;
+        return new Rgb(
+          hsl2rgb(h >= 240 ? h - 240 : h + 120, m1, m2),
+          hsl2rgb(h, m1, m2),
+          hsl2rgb(h < 120 ? h + 240 : h - 120, m1, m2),
+          this.opacity
+        );
+      },
+      displayable: function() {
+        return (0 <= this.s && this.s <= 1 || isNaN(this.s))
+            && (0 <= this.l && this.l <= 1)
+            && (0 <= this.opacity && this.opacity <= 1);
+      },
+      formatHsl: function() {
+        var a = this.opacity; a = isNaN(a) ? 1 : Math.max(0, Math.min(1, a));
+        return (a === 1 ? "hsl(" : "hsla(")
+            + (this.h || 0) + ", "
+            + (this.s || 0) * 100 + "%, "
+            + (this.l || 0) * 100 + "%"
+            + (a === 1 ? ")" : ", " + a + ")");
+      }
+    }));
+
+    /* From FvD 13.37, CSS Color Module Level 3 */
+    function hsl2rgb(h, m1, m2) {
+      return (h < 60 ? m1 + (m2 - m1) * h / 60
+          : h < 180 ? m2
+          : h < 240 ? m1 + (m2 - m1) * (240 - h) / 60
+          : m1) * 255;
+    }
+
+    function constant$2(x) {
+      return function() {
+        return x;
+      };
+    }
+
+    function linear(a, d) {
+      return function(t) {
+        return a + t * d;
+      };
+    }
+
+    function exponential(a, b, y) {
+      return a = Math.pow(a, y), b = Math.pow(b, y) - a, y = 1 / y, function(t) {
+        return Math.pow(a + t * b, y);
+      };
+    }
+
+    function gamma(y) {
+      return (y = +y) === 1 ? nogamma : function(a, b) {
+        return b - a ? exponential(a, b, y) : constant$2(isNaN(a) ? b : a);
+      };
+    }
+
+    function nogamma(a, b) {
+      var d = b - a;
+      return d ? linear(a, d) : constant$2(isNaN(a) ? b : a);
+    }
+
+    var interpolateRgb = (function rgbGamma(y) {
+      var color = gamma(y);
+
+      function rgb$1(start, end) {
+        var r = color((start = rgb(start)).r, (end = rgb(end)).r),
+            g = color(start.g, end.g),
+            b = color(start.b, end.b),
+            opacity = nogamma(start.opacity, end.opacity);
+        return function(t) {
+          start.r = r(t);
+          start.g = g(t);
+          start.b = b(t);
+          start.opacity = opacity(t);
+          return start + "";
+        };
+      }
+
+      rgb$1.gamma = rgbGamma;
+
+      return rgb$1;
+    })(1);
+
+    function array(a, b) {
+      var nb = b ? b.length : 0,
+          na = a ? Math.min(nb, a.length) : 0,
+          x = new Array(na),
+          c = new Array(nb),
+          i;
+
+      for (i = 0; i < na; ++i) x[i] = interpolate(a[i], b[i]);
+      for (; i < nb; ++i) c[i] = b[i];
+
+      return function(t) {
+        for (i = 0; i < na; ++i) c[i] = x[i](t);
+        return c;
+      };
+    }
+
+    function date(a, b) {
+      var d = new Date;
+      return a = +a, b -= a, function(t) {
+        return d.setTime(a + b * t), d;
+      };
+    }
+
+    function interpolateNumber(a, b) {
+      return a = +a, b -= a, function(t) {
+        return a + b * t;
+      };
+    }
+
+    function object(a, b) {
+      var i = {},
+          c = {},
+          k;
+
+      if (a === null || typeof a !== "object") a = {};
+      if (b === null || typeof b !== "object") b = {};
+
+      for (k in b) {
+        if (k in a) {
+          i[k] = interpolate(a[k], b[k]);
+        } else {
+          c[k] = b[k];
+        }
+      }
+
+      return function(t) {
+        for (k in i) c[k] = i[k](t);
+        return c;
+      };
+    }
+
+    var reA = /[-+]?(?:\d+\.?\d*|\.?\d+)(?:[eE][-+]?\d+)?/g,
+        reB = new RegExp(reA.source, "g");
+
+    function zero(b) {
+      return function() {
+        return b;
+      };
+    }
+
+    function one(b) {
+      return function(t) {
+        return b(t) + "";
+      };
+    }
+
+    function interpolateString(a, b) {
+      var bi = reA.lastIndex = reB.lastIndex = 0, // scan index for next number in b
+          am, // current match in a
+          bm, // current match in b
+          bs, // string preceding current number in b, if any
+          i = -1, // index in s
+          s = [], // string constants and placeholders
+          q = []; // number interpolators
+
+      // Coerce inputs to strings.
+      a = a + "", b = b + "";
+
+      // Interpolate pairs of numbers in a & b.
+      while ((am = reA.exec(a))
+          && (bm = reB.exec(b))) {
+        if ((bs = bm.index) > bi) { // a string precedes the next number in b
+          bs = b.slice(bi, bs);
+          if (s[i]) s[i] += bs; // coalesce with previous string
+          else s[++i] = bs;
+        }
+        if ((am = am[0]) === (bm = bm[0])) { // numbers in a & b match
+          if (s[i]) s[i] += bm; // coalesce with previous string
+          else s[++i] = bm;
+        } else { // interpolate non-matching numbers
+          s[++i] = null;
+          q.push({i: i, x: interpolateNumber(am, bm)});
+        }
+        bi = reB.lastIndex;
+      }
+
+      // Add remains of b.
+      if (bi < b.length) {
+        bs = b.slice(bi);
+        if (s[i]) s[i] += bs; // coalesce with previous string
+        else s[++i] = bs;
+      }
+
+      // Special optimization for only a single match.
+      // Otherwise, interpolate each of the numbers and rejoin the string.
+      return s.length < 2 ? (q[0]
+          ? one(q[0].x)
+          : zero(b))
+          : (b = q.length, function(t) {
+              for (var i = 0, o; i < b; ++i) s[(o = q[i]).i] = o.x(t);
+              return s.join("");
+            });
+    }
+
+    function interpolate(a, b) {
+      var t = typeof b, c;
+      return b == null || t === "boolean" ? constant$2(b)
+          : (t === "number" ? interpolateNumber
+          : t === "string" ? ((c = color(b)) ? (b = c, interpolateRgb) : interpolateString)
+          : b instanceof color ? interpolateRgb
+          : b instanceof Date ? date
+          : Array.isArray(b) ? array
+          : typeof b.valueOf !== "function" && typeof b.toString !== "function" || isNaN(b) ? object
+          : interpolateNumber)(a, b);
+    }
+
+    function interpolateRound(a, b) {
+      return a = +a, b -= a, function(t) {
+        return Math.round(a + b * t);
+      };
+    }
+
+    var degrees = 180 / Math.PI;
+
+    var identity$1 = {
+      translateX: 0,
+      translateY: 0,
+      rotate: 0,
+      skewX: 0,
+      scaleX: 1,
+      scaleY: 1
+    };
+
+    function decompose(a, b, c, d, e, f) {
+      var scaleX, scaleY, skewX;
+      if (scaleX = Math.sqrt(a * a + b * b)) a /= scaleX, b /= scaleX;
+      if (skewX = a * c + b * d) c -= a * skewX, d -= b * skewX;
+      if (scaleY = Math.sqrt(c * c + d * d)) c /= scaleY, d /= scaleY, skewX /= scaleY;
+      if (a * d < b * c) a = -a, b = -b, skewX = -skewX, scaleX = -scaleX;
+      return {
+        translateX: e,
+        translateY: f,
+        rotate: Math.atan2(b, a) * degrees,
+        skewX: Math.atan(skewX) * degrees,
+        scaleX: scaleX,
+        scaleY: scaleY
+      };
+    }
+
+    var cssNode,
+        cssRoot,
+        cssView,
+        svgNode;
+
+    function parseCss(value) {
+      if (value === "none") return identity$1;
+      if (!cssNode) cssNode = document.createElement("DIV"), cssRoot = document.documentElement, cssView = document.defaultView;
+      cssNode.style.transform = value;
+      value = cssView.getComputedStyle(cssRoot.appendChild(cssNode), null).getPropertyValue("transform");
+      cssRoot.removeChild(cssNode);
+      value = value.slice(7, -1).split(",");
+      return decompose(+value[0], +value[1], +value[2], +value[3], +value[4], +value[5]);
+    }
+
+    function parseSvg(value) {
+      if (value == null) return identity$1;
+      if (!svgNode) svgNode = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      svgNode.setAttribute("transform", value);
+      if (!(value = svgNode.transform.baseVal.consolidate())) return identity$1;
+      value = value.matrix;
+      return decompose(value.a, value.b, value.c, value.d, value.e, value.f);
+    }
+
+    function interpolateTransform(parse, pxComma, pxParen, degParen) {
+
+      function pop(s) {
+        return s.length ? s.pop() + " " : "";
+      }
+
+      function translate(xa, ya, xb, yb, s, q) {
+        if (xa !== xb || ya !== yb) {
+          var i = s.push("translate(", null, pxComma, null, pxParen);
+          q.push({i: i - 4, x: interpolateNumber(xa, xb)}, {i: i - 2, x: interpolateNumber(ya, yb)});
+        } else if (xb || yb) {
+          s.push("translate(" + xb + pxComma + yb + pxParen);
+        }
+      }
+
+      function rotate(a, b, s, q) {
+        if (a !== b) {
+          if (a - b > 180) b += 360; else if (b - a > 180) a += 360; // shortest path
+          q.push({i: s.push(pop(s) + "rotate(", null, degParen) - 2, x: interpolateNumber(a, b)});
+        } else if (b) {
+          s.push(pop(s) + "rotate(" + b + degParen);
+        }
+      }
+
+      function skewX(a, b, s, q) {
+        if (a !== b) {
+          q.push({i: s.push(pop(s) + "skewX(", null, degParen) - 2, x: interpolateNumber(a, b)});
+        } else if (b) {
+          s.push(pop(s) + "skewX(" + b + degParen);
+        }
+      }
+
+      function scale(xa, ya, xb, yb, s, q) {
+        if (xa !== xb || ya !== yb) {
+          var i = s.push(pop(s) + "scale(", null, ",", null, ")");
+          q.push({i: i - 4, x: interpolateNumber(xa, xb)}, {i: i - 2, x: interpolateNumber(ya, yb)});
+        } else if (xb !== 1 || yb !== 1) {
+          s.push(pop(s) + "scale(" + xb + "," + yb + ")");
+        }
+      }
+
+      return function(a, b) {
+        var s = [], // string constants and placeholders
+            q = []; // number interpolators
+        a = parse(a), b = parse(b);
+        translate(a.translateX, a.translateY, b.translateX, b.translateY, s, q);
+        rotate(a.rotate, b.rotate, s, q);
+        skewX(a.skewX, b.skewX, s, q);
+        scale(a.scaleX, a.scaleY, b.scaleX, b.scaleY, s, q);
+        a = b = null; // gc
+        return function(t) {
+          var i = -1, n = q.length, o;
+          while (++i < n) s[(o = q[i]).i] = o.x(t);
+          return s.join("");
+        };
+      };
+    }
+
+    var interpolateTransformCss = interpolateTransform(parseCss, "px, ", "px)", "deg)");
+    var interpolateTransformSvg = interpolateTransform(parseSvg, ", ", ")", ")");
+
+    var frame = 0, // is an animation frame pending?
+        timeout = 0, // is a timeout pending?
+        interval = 0, // are any timers active?
+        pokeDelay = 1000, // how frequently we check for clock skew
+        taskHead,
+        taskTail,
+        clockLast = 0,
+        clockNow = 0,
+        clockSkew = 0,
+        clock = typeof performance === "object" && performance.now ? performance : Date,
+        setFrame = typeof window === "object" && window.requestAnimationFrame ? window.requestAnimationFrame.bind(window) : function(f) { setTimeout(f, 17); };
+
+    function now() {
+      return clockNow || (setFrame(clearNow), clockNow = clock.now() + clockSkew);
+    }
+
+    function clearNow() {
+      clockNow = 0;
+    }
+
+    function Timer() {
+      this._call =
+      this._time =
+      this._next = null;
+    }
+
+    Timer.prototype = timer.prototype = {
+      constructor: Timer,
+      restart: function(callback, delay, time) {
+        if (typeof callback !== "function") throw new TypeError("callback is not a function");
+        time = (time == null ? now() : +time) + (delay == null ? 0 : +delay);
+        if (!this._next && taskTail !== this) {
+          if (taskTail) taskTail._next = this;
+          else taskHead = this;
+          taskTail = this;
+        }
+        this._call = callback;
+        this._time = time;
+        sleep();
+      },
+      stop: function() {
+        if (this._call) {
+          this._call = null;
+          this._time = Infinity;
+          sleep();
+        }
+      }
+    };
+
+    function timer(callback, delay, time) {
+      var t = new Timer;
+      t.restart(callback, delay, time);
+      return t;
+    }
+
+    function timerFlush() {
+      now(); // Get the current time, if not already set.
+      ++frame; // Pretend we’ve set an alarm, if we haven’t already.
+      var t = taskHead, e;
+      while (t) {
+        if ((e = clockNow - t._time) >= 0) t._call.call(null, e);
+        t = t._next;
+      }
+      --frame;
+    }
+
+    function wake() {
+      clockNow = (clockLast = clock.now()) + clockSkew;
+      frame = timeout = 0;
+      try {
+        timerFlush();
+      } finally {
+        frame = 0;
+        nap();
+        clockNow = 0;
+      }
+    }
+
+    function poke() {
+      var now = clock.now(), delay = now - clockLast;
+      if (delay > pokeDelay) clockSkew -= delay, clockLast = now;
+    }
+
+    function nap() {
+      var t0, t1 = taskHead, t2, time = Infinity;
+      while (t1) {
+        if (t1._call) {
+          if (time > t1._time) time = t1._time;
+          t0 = t1, t1 = t1._next;
+        } else {
+          t2 = t1._next, t1._next = null;
+          t1 = t0 ? t0._next = t2 : taskHead = t2;
+        }
+      }
+      taskTail = t0;
+      sleep(time);
+    }
+
+    function sleep(time) {
+      if (frame) return; // Soonest alarm already set, or will be.
+      if (timeout) timeout = clearTimeout(timeout);
+      var delay = time - clockNow; // Strictly less than if we recomputed clockNow.
+      if (delay > 24) {
+        if (time < Infinity) timeout = setTimeout(wake, time - clock.now() - clockSkew);
+        if (interval) interval = clearInterval(interval);
+      } else {
+        if (!interval) clockLast = clock.now(), interval = setInterval(poke, pokeDelay);
+        frame = 1, setFrame(wake);
+      }
+    }
+
+    function timeout$1(callback, delay, time) {
+      var t = new Timer;
+      delay = delay == null ? 0 : +delay;
+      t.restart(function(elapsed) {
+        t.stop();
+        callback(elapsed + delay);
+      }, delay, time);
+      return t;
+    }
+
+    function interval$1(callback, delay, time) {
+      var t = new Timer, total = delay;
+      if (delay == null) return t.restart(callback, delay, time), t;
+      delay = +delay, time = time == null ? now() : +time;
+      t.restart(function tick(elapsed) {
+        elapsed += total;
+        t.restart(tick, total += delay, time);
+        callback(elapsed);
+      }, delay, time);
+      return t;
+    }
+
+    var emptyOn = dispatch("start", "end", "cancel", "interrupt");
+    var emptyTween = [];
+
+    var CREATED = 0;
+    var SCHEDULED = 1;
+    var STARTING = 2;
+    var STARTED = 3;
+    var RUNNING = 4;
+    var ENDING = 5;
+    var ENDED = 6;
+
+    function schedule(node, name, id, index, group, timing) {
+      var schedules = node.__transition;
+      if (!schedules) node.__transition = {};
+      else if (id in schedules) return;
+      create(node, id, {
+        name: name,
+        index: index, // For context during callback.
+        group: group, // For context during callback.
+        on: emptyOn,
+        tween: emptyTween,
+        time: timing.time,
+        delay: timing.delay,
+        duration: timing.duration,
+        ease: timing.ease,
+        timer: null,
+        state: CREATED
+      });
+    }
+
+    function init$1(node, id) {
+      var schedule = get$1(node, id);
+      if (schedule.state > CREATED) throw new Error("too late; already scheduled");
+      return schedule;
+    }
+
+    function set$1(node, id) {
+      var schedule = get$1(node, id);
+      if (schedule.state > STARTED) throw new Error("too late; already running");
+      return schedule;
+    }
+
+    function get$1(node, id) {
+      var schedule = node.__transition;
+      if (!schedule || !(schedule = schedule[id])) throw new Error("transition not found");
+      return schedule;
+    }
+
+    function create(node, id, self) {
+      var schedules = node.__transition,
+          tween;
+
+      // Initialize the self timer when the transition is created.
+      // Note the actual delay is not known until the first callback!
+      schedules[id] = self;
+      self.timer = timer(schedule, 0, self.time);
+
+      function schedule(elapsed) {
+        self.state = SCHEDULED;
+        self.timer.restart(start, self.delay, self.time);
+
+        // If the elapsed delay is less than our first sleep, start immediately.
+        if (self.delay <= elapsed) start(elapsed - self.delay);
+      }
+
+      function start(elapsed) {
+        var i, j, n, o;
+
+        // If the state is not SCHEDULED, then we previously errored on start.
+        if (self.state !== SCHEDULED) return stop();
+
+        for (i in schedules) {
+          o = schedules[i];
+          if (o.name !== self.name) continue;
+
+          // While this element already has a starting transition during this frame,
+          // defer starting an interrupting transition until that transition has a
+          // chance to tick (and possibly end); see d3/d3-transition#54!
+          if (o.state === STARTED) return timeout$1(start);
+
+          // Interrupt the active transition, if any.
+          if (o.state === RUNNING) {
+            o.state = ENDED;
+            o.timer.stop();
+            o.on.call("interrupt", node, node.__data__, o.index, o.group);
+            delete schedules[i];
+          }
+
+          // Cancel any pre-empted transitions.
+          else if (+i < id) {
+            o.state = ENDED;
+            o.timer.stop();
+            o.on.call("cancel", node, node.__data__, o.index, o.group);
+            delete schedules[i];
+          }
+        }
+
+        // Defer the first tick to end of the current frame; see d3/d3#1576.
+        // Note the transition may be canceled after start and before the first tick!
+        // Note this must be scheduled before the start event; see d3/d3-transition#16!
+        // Assuming this is successful, subsequent callbacks go straight to tick.
+        timeout$1(function() {
+          if (self.state === STARTED) {
+            self.state = RUNNING;
+            self.timer.restart(tick, self.delay, self.time);
+            tick(elapsed);
+          }
+        });
+
+        // Dispatch the start event.
+        // Note this must be done before the tween are initialized.
+        self.state = STARTING;
+        self.on.call("start", node, node.__data__, self.index, self.group);
+        if (self.state !== STARTING) return; // interrupted
+        self.state = STARTED;
+
+        // Initialize the tween, deleting null tween.
+        tween = new Array(n = self.tween.length);
+        for (i = 0, j = -1; i < n; ++i) {
+          if (o = self.tween[i].value.call(node, node.__data__, self.index, self.group)) {
+            tween[++j] = o;
+          }
+        }
+        tween.length = j + 1;
+      }
+
+      function tick(elapsed) {
+        var t = elapsed < self.duration ? self.ease.call(null, elapsed / self.duration) : (self.timer.restart(stop), self.state = ENDING, 1),
+            i = -1,
+            n = tween.length;
+
+        while (++i < n) {
+          tween[i].call(node, t);
+        }
+
+        // Dispatch the end event.
+        if (self.state === ENDING) {
+          self.on.call("end", node, node.__data__, self.index, self.group);
+          stop();
+        }
+      }
+
+      function stop() {
+        self.state = ENDED;
+        self.timer.stop();
+        delete schedules[id];
+        for (var i in schedules) return; // eslint-disable-line no-unused-vars
+        delete node.__transition;
+      }
+    }
+
+    function interrupt(node, name) {
+      var schedules = node.__transition,
+          schedule,
+          active,
+          empty = true,
+          i;
+
+      if (!schedules) return;
+
+      name = name == null ? null : name + "";
+
+      for (i in schedules) {
+        if ((schedule = schedules[i]).name !== name) { empty = false; continue; }
+        active = schedule.state > STARTING && schedule.state < ENDING;
+        schedule.state = ENDED;
+        schedule.timer.stop();
+        schedule.on.call(active ? "interrupt" : "cancel", node, node.__data__, schedule.index, schedule.group);
+        delete schedules[i];
+      }
+
+      if (empty) delete node.__transition;
+    }
+
+    function selection_interrupt(name) {
+      return this.each(function() {
+        interrupt(this, name);
+      });
+    }
+
+    function tweenRemove(id, name) {
+      var tween0, tween1;
+      return function() {
+        var schedule = set$1(this, id),
+            tween = schedule.tween;
+
+        // If this node shared tween with the previous node,
+        // just assign the updated shared tween and we’re done!
+        // Otherwise, copy-on-write.
+        if (tween !== tween0) {
+          tween1 = tween0 = tween;
+          for (var i = 0, n = tween1.length; i < n; ++i) {
+            if (tween1[i].name === name) {
+              tween1 = tween1.slice();
+              tween1.splice(i, 1);
+              break;
+            }
+          }
+        }
+
+        schedule.tween = tween1;
+      };
+    }
+
+    function tweenFunction(id, name, value) {
+      var tween0, tween1;
+      if (typeof value !== "function") throw new Error;
+      return function() {
+        var schedule = set$1(this, id),
+            tween = schedule.tween;
+
+        // If this node shared tween with the previous node,
+        // just assign the updated shared tween and we’re done!
+        // Otherwise, copy-on-write.
+        if (tween !== tween0) {
+          tween1 = (tween0 = tween).slice();
+          for (var t = {name: name, value: value}, i = 0, n = tween1.length; i < n; ++i) {
+            if (tween1[i].name === name) {
+              tween1[i] = t;
+              break;
+            }
+          }
+          if (i === n) tween1.push(t);
+        }
+
+        schedule.tween = tween1;
+      };
+    }
+
+    function transition_tween(name, value) {
+      var id = this._id;
+
+      name += "";
+
+      if (arguments.length < 2) {
+        var tween = get$1(this.node(), id).tween;
+        for (var i = 0, n = tween.length, t; i < n; ++i) {
+          if ((t = tween[i]).name === name) {
+            return t.value;
+          }
+        }
+        return null;
+      }
+
+      return this.each((value == null ? tweenRemove : tweenFunction)(id, name, value));
+    }
+
+    function tweenValue(transition, name, value) {
+      var id = transition._id;
+
+      transition.each(function() {
+        var schedule = set$1(this, id);
+        (schedule.value || (schedule.value = {}))[name] = value.apply(this, arguments);
+      });
+
+      return function(node) {
+        return get$1(node, id).value[name];
+      };
+    }
+
+    function interpolate$1(a, b) {
+      var c;
+      return (typeof b === "number" ? interpolateNumber
+          : b instanceof color ? interpolateRgb
+          : (c = color(b)) ? (b = c, interpolateRgb)
+          : interpolateString)(a, b);
+    }
+
+    function attrRemove$1(name) {
+      return function() {
+        this.removeAttribute(name);
+      };
+    }
+
+    function attrRemoveNS$1(fullname) {
+      return function() {
+        this.removeAttributeNS(fullname.space, fullname.local);
+      };
+    }
+
+    function attrConstant$1(name, interpolate, value1) {
+      var string00,
+          string1 = value1 + "",
+          interpolate0;
+      return function() {
+        var string0 = this.getAttribute(name);
+        return string0 === string1 ? null
+            : string0 === string00 ? interpolate0
+            : interpolate0 = interpolate(string00 = string0, value1);
+      };
+    }
+
+    function attrConstantNS$1(fullname, interpolate, value1) {
+      var string00,
+          string1 = value1 + "",
+          interpolate0;
+      return function() {
+        var string0 = this.getAttributeNS(fullname.space, fullname.local);
+        return string0 === string1 ? null
+            : string0 === string00 ? interpolate0
+            : interpolate0 = interpolate(string00 = string0, value1);
+      };
+    }
+
+    function attrFunction$1(name, interpolate, value) {
+      var string00,
+          string10,
+          interpolate0;
+      return function() {
+        var string0, value1 = value(this), string1;
+        if (value1 == null) return void this.removeAttribute(name);
+        string0 = this.getAttribute(name);
+        string1 = value1 + "";
+        return string0 === string1 ? null
+            : string0 === string00 && string1 === string10 ? interpolate0
+            : (string10 = string1, interpolate0 = interpolate(string00 = string0, value1));
+      };
+    }
+
+    function attrFunctionNS$1(fullname, interpolate, value) {
+      var string00,
+          string10,
+          interpolate0;
+      return function() {
+        var string0, value1 = value(this), string1;
+        if (value1 == null) return void this.removeAttributeNS(fullname.space, fullname.local);
+        string0 = this.getAttributeNS(fullname.space, fullname.local);
+        string1 = value1 + "";
+        return string0 === string1 ? null
+            : string0 === string00 && string1 === string10 ? interpolate0
+            : (string10 = string1, interpolate0 = interpolate(string00 = string0, value1));
+      };
+    }
+
+    function transition_attr(name, value) {
+      var fullname = namespace(name), i = fullname === "transform" ? interpolateTransformSvg : interpolate$1;
+      return this.attrTween(name, typeof value === "function"
+          ? (fullname.local ? attrFunctionNS$1 : attrFunction$1)(fullname, i, tweenValue(this, "attr." + name, value))
+          : value == null ? (fullname.local ? attrRemoveNS$1 : attrRemove$1)(fullname)
+          : (fullname.local ? attrConstantNS$1 : attrConstant$1)(fullname, i, value));
+    }
+
+    function attrInterpolate(name, i) {
+      return function(t) {
+        this.setAttribute(name, i(t));
+      };
+    }
+
+    function attrInterpolateNS(fullname, i) {
+      return function(t) {
+        this.setAttributeNS(fullname.space, fullname.local, i(t));
+      };
+    }
+
+    function attrTweenNS(fullname, value) {
+      var t0, i0;
+      function tween() {
+        var i = value.apply(this, arguments);
+        if (i !== i0) t0 = (i0 = i) && attrInterpolateNS(fullname, i);
+        return t0;
+      }
+      tween._value = value;
+      return tween;
+    }
+
+    function attrTween(name, value) {
+      var t0, i0;
+      function tween() {
+        var i = value.apply(this, arguments);
+        if (i !== i0) t0 = (i0 = i) && attrInterpolate(name, i);
+        return t0;
+      }
+      tween._value = value;
+      return tween;
+    }
+
+    function transition_attrTween(name, value) {
+      var key = "attr." + name;
+      if (arguments.length < 2) return (key = this.tween(key)) && key._value;
+      if (value == null) return this.tween(key, null);
+      if (typeof value !== "function") throw new Error;
+      var fullname = namespace(name);
+      return this.tween(key, (fullname.local ? attrTweenNS : attrTween)(fullname, value));
+    }
+
+    function delayFunction(id, value) {
+      return function() {
+        init$1(this, id).delay = +value.apply(this, arguments);
+      };
+    }
+
+    function delayConstant(id, value) {
+      return value = +value, function() {
+        init$1(this, id).delay = value;
+      };
+    }
+
+    function transition_delay(value) {
+      var id = this._id;
+
+      return arguments.length
+          ? this.each((typeof value === "function"
+              ? delayFunction
+              : delayConstant)(id, value))
+          : get$1(this.node(), id).delay;
+    }
+
+    function durationFunction(id, value) {
+      return function() {
+        set$1(this, id).duration = +value.apply(this, arguments);
+      };
+    }
+
+    function durationConstant(id, value) {
+      return value = +value, function() {
+        set$1(this, id).duration = value;
+      };
+    }
+
+    function transition_duration(value) {
+      var id = this._id;
+
+      return arguments.length
+          ? this.each((typeof value === "function"
+              ? durationFunction
+              : durationConstant)(id, value))
+          : get$1(this.node(), id).duration;
+    }
+
+    function easeConstant(id, value) {
+      if (typeof value !== "function") throw new Error;
+      return function() {
+        set$1(this, id).ease = value;
+      };
+    }
+
+    function transition_ease(value) {
+      var id = this._id;
+
+      return arguments.length
+          ? this.each(easeConstant(id, value))
+          : get$1(this.node(), id).ease;
+    }
+
+    function transition_filter(match) {
+      if (typeof match !== "function") match = matcher(match);
+
+      for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) {
+        for (var group = groups[j], n = group.length, subgroup = subgroups[j] = [], node, i = 0; i < n; ++i) {
+          if ((node = group[i]) && match.call(node, node.__data__, i, group)) {
+            subgroup.push(node);
+          }
+        }
+      }
+
+      return new Transition(subgroups, this._parents, this._name, this._id);
+    }
+
+    function transition_merge(transition) {
+      if (transition._id !== this._id) throw new Error;
+
+      for (var groups0 = this._groups, groups1 = transition._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) {
+        for (var group0 = groups0[j], group1 = groups1[j], n = group0.length, merge = merges[j] = new Array(n), node, i = 0; i < n; ++i) {
+          if (node = group0[i] || group1[i]) {
+            merge[i] = node;
+          }
+        }
+      }
+
+      for (; j < m0; ++j) {
+        merges[j] = groups0[j];
+      }
+
+      return new Transition(merges, this._parents, this._name, this._id);
+    }
+
+    function start(name) {
+      return (name + "").trim().split(/^|\s+/).every(function(t) {
+        var i = t.indexOf(".");
+        if (i >= 0) t = t.slice(0, i);
+        return !t || t === "start";
+      });
+    }
+
+    function onFunction(id, name, listener) {
+      var on0, on1, sit = start(name) ? init$1 : set$1;
+      return function() {
+        var schedule = sit(this, id),
+            on = schedule.on;
+
+        // If this node shared a dispatch with the previous node,
+        // just assign the updated shared dispatch and we’re done!
+        // Otherwise, copy-on-write.
+        if (on !== on0) (on1 = (on0 = on).copy()).on(name, listener);
+
+        schedule.on = on1;
+      };
+    }
+
+    function transition_on(name, listener) {
+      var id = this._id;
+
+      return arguments.length < 2
+          ? get$1(this.node(), id).on.on(name)
+          : this.each(onFunction(id, name, listener));
+    }
+
+    function removeFunction(id) {
+      return function() {
+        var parent = this.parentNode;
+        for (var i in this.__transition) if (+i !== id) return;
+        if (parent) parent.removeChild(this);
+      };
+    }
+
+    function transition_remove() {
+      return this.on("end.remove", removeFunction(this._id));
+    }
+
+    function transition_select(select) {
+      var name = this._name,
+          id = this._id;
+
+      if (typeof select !== "function") select = selector(select);
+
+      for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) {
+        for (var group = groups[j], n = group.length, subgroup = subgroups[j] = new Array(n), node, subnode, i = 0; i < n; ++i) {
+          if ((node = group[i]) && (subnode = select.call(node, node.__data__, i, group))) {
+            if ("__data__" in node) subnode.__data__ = node.__data__;
+            subgroup[i] = subnode;
+            schedule(subgroup[i], name, id, i, subgroup, get$1(node, id));
+          }
+        }
+      }
+
+      return new Transition(subgroups, this._parents, name, id);
+    }
+
+    function transition_selectAll(select) {
+      var name = this._name,
+          id = this._id;
+
+      if (typeof select !== "function") select = selectorAll(select);
+
+      for (var groups = this._groups, m = groups.length, subgroups = [], parents = [], j = 0; j < m; ++j) {
+        for (var group = groups[j], n = group.length, node, i = 0; i < n; ++i) {
+          if (node = group[i]) {
+            for (var children = select.call(node, node.__data__, i, group), child, inherit = get$1(node, id), k = 0, l = children.length; k < l; ++k) {
+              if (child = children[k]) {
+                schedule(child, name, id, k, children, inherit);
+              }
+            }
+            subgroups.push(children);
+            parents.push(node);
+          }
+        }
+      }
+
+      return new Transition(subgroups, parents, name, id);
+    }
+
+    var Selection$1 = selection.prototype.constructor;
+
+    function transition_selection() {
+      return new Selection$1(this._groups, this._parents);
+    }
+
+    function styleNull(name, interpolate) {
+      var string00,
+          string10,
+          interpolate0;
+      return function() {
+        var string0 = styleValue(this, name),
+            string1 = (this.style.removeProperty(name), styleValue(this, name));
+        return string0 === string1 ? null
+            : string0 === string00 && string1 === string10 ? interpolate0
+            : interpolate0 = interpolate(string00 = string0, string10 = string1);
+      };
+    }
+
+    function styleRemove$1(name) {
+      return function() {
+        this.style.removeProperty(name);
+      };
+    }
+
+    function styleConstant$1(name, interpolate, value1) {
+      var string00,
+          string1 = value1 + "",
+          interpolate0;
+      return function() {
+        var string0 = styleValue(this, name);
+        return string0 === string1 ? null
+            : string0 === string00 ? interpolate0
+            : interpolate0 = interpolate(string00 = string0, value1);
+      };
+    }
+
+    function styleFunction$1(name, interpolate, value) {
+      var string00,
+          string10,
+          interpolate0;
+      return function() {
+        var string0 = styleValue(this, name),
+            value1 = value(this),
+            string1 = value1 + "";
+        if (value1 == null) string1 = value1 = (this.style.removeProperty(name), styleValue(this, name));
+        return string0 === string1 ? null
+            : string0 === string00 && string1 === string10 ? interpolate0
+            : (string10 = string1, interpolate0 = interpolate(string00 = string0, value1));
+      };
+    }
+
+    function styleMaybeRemove(id, name) {
+      var on0, on1, listener0, key = "style." + name, event = "end." + key, remove;
+      return function() {
+        var schedule = set$1(this, id),
+            on = schedule.on,
+            listener = schedule.value[key] == null ? remove || (remove = styleRemove$1(name)) : undefined;
+
+        // If this node shared a dispatch with the previous node,
+        // just assign the updated shared dispatch and we’re done!
+        // Otherwise, copy-on-write.
+        if (on !== on0 || listener0 !== listener) (on1 = (on0 = on).copy()).on(event, listener0 = listener);
+
+        schedule.on = on1;
+      };
+    }
+
+    function transition_style(name, value, priority) {
+      var i = (name += "") === "transform" ? interpolateTransformCss : interpolate$1;
+      return value == null ? this
+          .styleTween(name, styleNull(name, i))
+          .on("end.style." + name, styleRemove$1(name))
+        : typeof value === "function" ? this
+          .styleTween(name, styleFunction$1(name, i, tweenValue(this, "style." + name, value)))
+          .each(styleMaybeRemove(this._id, name))
+        : this
+          .styleTween(name, styleConstant$1(name, i, value), priority)
+          .on("end.style." + name, null);
+    }
+
+    function styleInterpolate(name, i, priority) {
+      return function(t) {
+        this.style.setProperty(name, i(t), priority);
+      };
+    }
+
+    function styleTween(name, value, priority) {
+      var t, i0;
+      function tween() {
+        var i = value.apply(this, arguments);
+        if (i !== i0) t = (i0 = i) && styleInterpolate(name, i, priority);
+        return t;
+      }
+      tween._value = value;
+      return tween;
+    }
+
+    function transition_styleTween(name, value, priority) {
+      var key = "style." + (name += "");
+      if (arguments.length < 2) return (key = this.tween(key)) && key._value;
+      if (value == null) return this.tween(key, null);
+      if (typeof value !== "function") throw new Error;
+      return this.tween(key, styleTween(name, value, priority == null ? "" : priority));
+    }
+
+    function textConstant$1(value) {
+      return function() {
+        this.textContent = value;
+      };
+    }
+
+    function textFunction$1(value) {
+      return function() {
+        var value1 = value(this);
+        this.textContent = value1 == null ? "" : value1;
+      };
+    }
+
+    function transition_text(value) {
+      return this.tween("text", typeof value === "function"
+          ? textFunction$1(tweenValue(this, "text", value))
+          : textConstant$1(value == null ? "" : value + ""));
+    }
+
+    function transition_transition() {
+      var name = this._name,
+          id0 = this._id,
+          id1 = newId();
+
+      for (var groups = this._groups, m = groups.length, j = 0; j < m; ++j) {
+        for (var group = groups[j], n = group.length, node, i = 0; i < n; ++i) {
+          if (node = group[i]) {
+            var inherit = get$1(node, id0);
+            schedule(node, name, id1, i, group, {
+              time: inherit.time + inherit.delay + inherit.duration,
+              delay: 0,
+              duration: inherit.duration,
+              ease: inherit.ease
+            });
+          }
+        }
+      }
+
+      return new Transition(groups, this._parents, name, id1);
+    }
+
+    function transition_end() {
+      var on0, on1, that = this, id = that._id, size = that.size();
+      return new Promise(function(resolve, reject) {
+        var cancel = {value: reject},
+            end = {value: function() { if (--size === 0) resolve(); }};
+
+        that.each(function() {
+          var schedule = set$1(this, id),
+              on = schedule.on;
+
+          // If this node shared a dispatch with the previous node,
+          // just assign the updated shared dispatch and we’re done!
+          // Otherwise, copy-on-write.
+          if (on !== on0) {
+            on1 = (on0 = on).copy();
+            on1._.cancel.push(cancel);
+            on1._.interrupt.push(cancel);
+            on1._.end.push(end);
+          }
+
+          schedule.on = on1;
+        });
+      });
+    }
+
+    var id = 0;
+
+    function Transition(groups, parents, name, id) {
+      this._groups = groups;
+      this._parents = parents;
+      this._name = name;
+      this._id = id;
+    }
+
+    function transition(name) {
+      return selection().transition(name);
+    }
+
+    function newId() {
+      return ++id;
+    }
+
+    var selection_prototype = selection.prototype;
+
+    Transition.prototype = transition.prototype = {
+      constructor: Transition,
+      select: transition_select,
+      selectAll: transition_selectAll,
+      filter: transition_filter,
+      merge: transition_merge,
+      selection: transition_selection,
+      transition: transition_transition,
+      call: selection_prototype.call,
+      nodes: selection_prototype.nodes,
+      node: selection_prototype.node,
+      size: selection_prototype.size,
+      empty: selection_prototype.empty,
+      each: selection_prototype.each,
+      on: transition_on,
+      attr: transition_attr,
+      attrTween: transition_attrTween,
+      style: transition_style,
+      styleTween: transition_styleTween,
+      text: transition_text,
+      remove: transition_remove,
+      tween: transition_tween,
+      delay: transition_delay,
+      duration: transition_duration,
+      ease: transition_ease,
+      end: transition_end
+    };
+
+    function cubicInOut(t) {
+      return ((t *= 2) <= 1 ? t * t * t : (t -= 2) * t * t + 2) / 2;
+    }
+
+    var pi = Math.PI,
+        halfPi = pi / 2;
+
+    function sinOut(t) {
+      return Math.sin(t * halfPi);
+    }
+
+    var defaultTiming = {
+      time: null, // Set on use.
+      delay: 0,
+      duration: 250,
+      ease: cubicInOut
+    };
+
+    function inherit(node, id) {
+      var timing;
+      while (!(timing = node.__transition) || !(timing = timing[id])) {
+        if (!(node = node.parentNode)) {
+          return defaultTiming.time = now(), defaultTiming;
+        }
+      }
+      return timing;
+    }
+
+    function selection_transition(name) {
+      var id,
+          timing;
+
+      if (name instanceof Transition) {
+        id = name._id, name = name._name;
+      } else {
+        id = newId(), (timing = defaultTiming).time = now(), name = name == null ? null : name + "";
+      }
+
+      for (var groups = this._groups, m = groups.length, j = 0; j < m; ++j) {
+        for (var group = groups[j], n = group.length, node, i = 0; i < n; ++i) {
+          if (node = group[i]) {
+            schedule(node, name, id, i, group, timing || inherit(node, id));
+          }
+        }
+      }
+
+      return new Transition(groups, this._parents, name, id);
+    }
+
+    selection.prototype.interrupt = selection_interrupt;
+    selection.prototype.transition = selection_transition;
+
+    var prefix = "$";
+
+    function Map$1() {}
+
+    Map$1.prototype = map.prototype = {
+      constructor: Map$1,
+      has: function(key) {
+        return (prefix + key) in this;
+      },
+      get: function(key) {
+        return this[prefix + key];
+      },
+      set: function(key, value) {
+        this[prefix + key] = value;
+        return this;
+      },
+      remove: function(key) {
+        var property = prefix + key;
+        return property in this && delete this[property];
+      },
+      clear: function() {
+        for (var property in this) if (property[0] === prefix) delete this[property];
+      },
+      keys: function() {
+        var keys = [];
+        for (var property in this) if (property[0] === prefix) keys.push(property.slice(1));
+        return keys;
+      },
+      values: function() {
+        var values = [];
+        for (var property in this) if (property[0] === prefix) values.push(this[property]);
+        return values;
+      },
+      entries: function() {
+        var entries = [];
+        for (var property in this) if (property[0] === prefix) entries.push({key: property.slice(1), value: this[property]});
+        return entries;
+      },
+      size: function() {
+        var size = 0;
+        for (var property in this) if (property[0] === prefix) ++size;
+        return size;
+      },
+      empty: function() {
+        for (var property in this) if (property[0] === prefix) return false;
+        return true;
+      },
+      each: function(f) {
+        for (var property in this) if (property[0] === prefix) f(this[property], property.slice(1), this);
+      }
+    };
+
+    function map(object, f) {
+      var map = new Map$1;
+
+      // Copy constructor.
+      if (object instanceof Map$1) object.each(function(value, key) { map.set(key, value); });
+
+      // Index array by numeric index or specified key function.
+      else if (Array.isArray(object)) {
+        var i = -1,
+            n = object.length,
+            o;
+
+        if (f == null) while (++i < n) map.set(i, object[i]);
+        else while (++i < n) map.set(f(o = object[i], i, object), o);
+      }
+
+      // Convert object to map.
+      else if (object) for (var key in object) map.set(key, object[key]);
+
+      return map;
+    }
+
+    function Set$1() {}
+
+    var proto = map.prototype;
+
+    Set$1.prototype = set$2.prototype = {
+      constructor: Set$1,
+      has: proto.has,
+      add: function(value) {
+        value += "";
+        this[prefix + value] = value;
+        return this;
+      },
+      remove: proto.remove,
+      clear: proto.clear,
+      values: proto.keys,
+      size: proto.size,
+      empty: proto.empty,
+      each: proto.each
+    };
+
+    function set$2(object, f) {
+      var set = new Set$1;
+
+      // Copy constructor.
+      if (object instanceof Set$1) object.each(function(value) { set.add(value); });
+
+      // Otherwise, assume it’s an array.
+      else if (object) {
+        var i = -1, n = object.length;
+        if (f == null) while (++i < n) set.add(object[i]);
+        else while (++i < n) set.add(f(object[i], i, object));
+      }
+
+      return set;
+    }
+
+    var EOL = {},
+        EOF = {},
+        QUOTE = 34,
+        NEWLINE = 10,
+        RETURN = 13;
+
+    function objectConverter(columns) {
+      return new Function("d", "return {" + columns.map(function(name, i) {
+        return JSON.stringify(name) + ": d[" + i + "]";
+      }).join(",") + "}");
+    }
+
+    function customConverter(columns, f) {
+      var object = objectConverter(columns);
+      return function(row, i) {
+        return f(object(row), i, columns);
+      };
+    }
+
+    // Compute unique columns in order of discovery.
+    function inferColumns(rows) {
+      var columnSet = Object.create(null),
+          columns = [];
+
+      rows.forEach(function(row) {
+        for (var column in row) {
+          if (!(column in columnSet)) {
+            columns.push(columnSet[column] = column);
+          }
+        }
+      });
+
+      return columns;
+    }
+
+    function pad(value, width) {
+      var s = value + "", length = s.length;
+      return length < width ? new Array(width - length + 1).join(0) + s : s;
+    }
+
+    function formatYear(year) {
+      return year < 0 ? "-" + pad(-year, 6)
+        : year > 9999 ? "+" + pad(year, 6)
+        : pad(year, 4);
+    }
+
+    function formatDate(date) {
+      var hours = date.getUTCHours(),
+          minutes = date.getUTCMinutes(),
+          seconds = date.getUTCSeconds(),
+          milliseconds = date.getUTCMilliseconds();
+      return isNaN(date) ? "Invalid Date"
+          : formatYear(date.getUTCFullYear()) + "-" + pad(date.getUTCMonth() + 1, 2) + "-" + pad(date.getUTCDate(), 2)
+          + (milliseconds ? "T" + pad(hours, 2) + ":" + pad(minutes, 2) + ":" + pad(seconds, 2) + "." + pad(milliseconds, 3) + "Z"
+          : seconds ? "T" + pad(hours, 2) + ":" + pad(minutes, 2) + ":" + pad(seconds, 2) + "Z"
+          : minutes || hours ? "T" + pad(hours, 2) + ":" + pad(minutes, 2) + "Z"
+          : "");
+    }
+
+    function dsvFormat(delimiter) {
+      var reFormat = new RegExp("[\"" + delimiter + "\n\r]"),
+          DELIMITER = delimiter.charCodeAt(0);
+
+      function parse(text, f) {
+        var convert, columns, rows = parseRows(text, function(row, i) {
+          if (convert) return convert(row, i - 1);
+          columns = row, convert = f ? customConverter(row, f) : objectConverter(row);
+        });
+        rows.columns = columns || [];
+        return rows;
+      }
+
+      function parseRows(text, f) {
+        var rows = [], // output rows
+            N = text.length,
+            I = 0, // current character index
+            n = 0, // current line number
+            t, // current token
+            eof = N <= 0, // current token followed by EOF?
+            eol = false; // current token followed by EOL?
+
+        // Strip the trailing newline.
+        if (text.charCodeAt(N - 1) === NEWLINE) --N;
+        if (text.charCodeAt(N - 1) === RETURN) --N;
+
+        function token() {
+          if (eof) return EOF;
+          if (eol) return eol = false, EOL;
+
+          // Unescape quotes.
+          var i, j = I, c;
+          if (text.charCodeAt(j) === QUOTE) {
+            while (I++ < N && text.charCodeAt(I) !== QUOTE || text.charCodeAt(++I) === QUOTE);
+            if ((i = I) >= N) eof = true;
+            else if ((c = text.charCodeAt(I++)) === NEWLINE) eol = true;
+            else if (c === RETURN) { eol = true; if (text.charCodeAt(I) === NEWLINE) ++I; }
+            return text.slice(j + 1, i - 1).replace(/""/g, "\"");
+          }
+
+          // Find next delimiter or newline.
+          while (I < N) {
+            if ((c = text.charCodeAt(i = I++)) === NEWLINE) eol = true;
+            else if (c === RETURN) { eol = true; if (text.charCodeAt(I) === NEWLINE) ++I; }
+            else if (c !== DELIMITER) continue;
+            return text.slice(j, i);
+          }
+
+          // Return last token before EOF.
+          return eof = true, text.slice(j, N);
+        }
+
+        while ((t = token()) !== EOF) {
+          var row = [];
+          while (t !== EOL && t !== EOF) row.push(t), t = token();
+          if (f && (row = f(row, n++)) == null) continue;
+          rows.push(row);
+        }
+
+        return rows;
+      }
+
+      function preformatBody(rows, columns) {
+        return rows.map(function(row) {
+          return columns.map(function(column) {
+            return formatValue(row[column]);
+          }).join(delimiter);
+        });
+      }
+
+      function format(rows, columns) {
+        if (columns == null) columns = inferColumns(rows);
+        return [columns.map(formatValue).join(delimiter)].concat(preformatBody(rows, columns)).join("\n");
+      }
+
+      function formatBody(rows, columns) {
+        if (columns == null) columns = inferColumns(rows);
+        return preformatBody(rows, columns).join("\n");
+      }
+
+      function formatRows(rows) {
+        return rows.map(formatRow).join("\n");
+      }
+
+      function formatRow(row) {
+        return row.map(formatValue).join(delimiter);
+      }
+
+      function formatValue(value) {
+        return value == null ? ""
+            : value instanceof Date ? formatDate(value)
+            : reFormat.test(value += "") ? "\"" + value.replace(/"/g, "\"\"") + "\""
+            : value;
+      }
+
+      return {
+        parse: parse,
+        parseRows: parseRows,
+        format: format,
+        formatBody: formatBody,
+        formatRows: formatRows
+      };
+    }
+
+    var csv = dsvFormat(",");
+
+    var tsv = dsvFormat("\t");
+
+    function responseJson(response) {
+      if (!response.ok) throw new Error(response.status + " " + response.statusText);
+      return response.json();
+    }
+
+    function json(input, init) {
+      return fetch(input, init).then(responseJson);
+    }
+
+    function tree_add(d) {
+      var x = +this._x.call(null, d),
+          y = +this._y.call(null, d);
+      return add(this.cover(x, y), x, y, d);
+    }
+
+    function add(tree, x, y, d) {
+      if (isNaN(x) || isNaN(y)) return tree; // ignore invalid points
+
+      var parent,
+          node = tree._root,
+          leaf = {data: d},
+          x0 = tree._x0,
+          y0 = tree._y0,
+          x1 = tree._x1,
+          y1 = tree._y1,
+          xm,
+          ym,
+          xp,
+          yp,
+          right,
+          bottom,
+          i,
+          j;
+
+      // If the tree is empty, initialize the root as a leaf.
+      if (!node) return tree._root = leaf, tree;
+
+      // Find the existing leaf for the new point, or add it.
+      while (node.length) {
+        if (right = x >= (xm = (x0 + x1) / 2)) x0 = xm; else x1 = xm;
+        if (bottom = y >= (ym = (y0 + y1) / 2)) y0 = ym; else y1 = ym;
+        if (parent = node, !(node = node[i = bottom << 1 | right])) return parent[i] = leaf, tree;
+      }
+
+      // Is the new point is exactly coincident with the existing point?
+      xp = +tree._x.call(null, node.data);
+      yp = +tree._y.call(null, node.data);
+      if (x === xp && y === yp) return leaf.next = node, parent ? parent[i] = leaf : tree._root = leaf, tree;
+
+      // Otherwise, split the leaf node until the old and new point are separated.
+      do {
+        parent = parent ? parent[i] = new Array(4) : tree._root = new Array(4);
+        if (right = x >= (xm = (x0 + x1) / 2)) x0 = xm; else x1 = xm;
+        if (bottom = y >= (ym = (y0 + y1) / 2)) y0 = ym; else y1 = ym;
+      } while ((i = bottom << 1 | right) === (j = (yp >= ym) << 1 | (xp >= xm)));
+      return parent[j] = node, parent[i] = leaf, tree;
+    }
+
+    function addAll(data) {
+      var d, i, n = data.length,
+          x,
+          y,
+          xz = new Array(n),
+          yz = new Array(n),
+          x0 = Infinity,
+          y0 = Infinity,
+          x1 = -Infinity,
+          y1 = -Infinity;
+
+      // Compute the points and their extent.
+      for (i = 0; i < n; ++i) {
+        if (isNaN(x = +this._x.call(null, d = data[i])) || isNaN(y = +this._y.call(null, d))) continue;
+        xz[i] = x;
+        yz[i] = y;
+        if (x < x0) x0 = x;
+        if (x > x1) x1 = x;
+        if (y < y0) y0 = y;
+        if (y > y1) y1 = y;
+      }
+
+      // If there were no (valid) points, abort.
+      if (x0 > x1 || y0 > y1) return this;
+
+      // Expand the tree to cover the new points.
+      this.cover(x0, y0).cover(x1, y1);
+
+      // Add the new points.
+      for (i = 0; i < n; ++i) {
+        add(this, xz[i], yz[i], data[i]);
+      }
+
+      return this;
+    }
+
+    function tree_cover(x, y) {
+      if (isNaN(x = +x) || isNaN(y = +y)) return this; // ignore invalid points
+
+      var x0 = this._x0,
+          y0 = this._y0,
+          x1 = this._x1,
+          y1 = this._y1;
+
+      // If the quadtree has no extent, initialize them.
+      // Integer extent are necessary so that if we later double the extent,
+      // the existing quadrant boundaries don’t change due to floating point error!
+      if (isNaN(x0)) {
+        x1 = (x0 = Math.floor(x)) + 1;
+        y1 = (y0 = Math.floor(y)) + 1;
+      }
+
+      // Otherwise, double repeatedly to cover.
+      else {
+        var z = x1 - x0,
+            node = this._root,
+            parent,
+            i;
+
+        while (x0 > x || x >= x1 || y0 > y || y >= y1) {
+          i = (y < y0) << 1 | (x < x0);
+          parent = new Array(4), parent[i] = node, node = parent, z *= 2;
+          switch (i) {
+            case 0: x1 = x0 + z, y1 = y0 + z; break;
+            case 1: x0 = x1 - z, y1 = y0 + z; break;
+            case 2: x1 = x0 + z, y0 = y1 - z; break;
+            case 3: x0 = x1 - z, y0 = y1 - z; break;
+          }
+        }
+
+        if (this._root && this._root.length) this._root = node;
+      }
+
+      this._x0 = x0;
+      this._y0 = y0;
+      this._x1 = x1;
+      this._y1 = y1;
+      return this;
+    }
+
+    function tree_data() {
+      var data = [];
+      this.visit(function(node) {
+        if (!node.length) do data.push(node.data); while (node = node.next)
+      });
+      return data;
+    }
+
+    function tree_extent(_) {
+      return arguments.length
+          ? this.cover(+_[0][0], +_[0][1]).cover(+_[1][0], +_[1][1])
+          : isNaN(this._x0) ? undefined : [[this._x0, this._y0], [this._x1, this._y1]];
+    }
+
+    function Quad(node, x0, y0, x1, y1) {
+      this.node = node;
+      this.x0 = x0;
+      this.y0 = y0;
+      this.x1 = x1;
+      this.y1 = y1;
+    }
+
+    function tree_find(x, y, radius) {
+      var data,
+          x0 = this._x0,
+          y0 = this._y0,
+          x1,
+          y1,
+          x2,
+          y2,
+          x3 = this._x1,
+          y3 = this._y1,
+          quads = [],
+          node = this._root,
+          q,
+          i;
+
+      if (node) quads.push(new Quad(node, x0, y0, x3, y3));
+      if (radius == null) radius = Infinity;
+      else {
+        x0 = x - radius, y0 = y - radius;
+        x3 = x + radius, y3 = y + radius;
+        radius *= radius;
+      }
+
+      while (q = quads.pop()) {
+
+        // Stop searching if this quadrant can’t contain a closer node.
+        if (!(node = q.node)
+            || (x1 = q.x0) > x3
+            || (y1 = q.y0) > y3
+            || (x2 = q.x1) < x0
+            || (y2 = q.y1) < y0) continue;
+
+        // Bisect the current quadrant.
+        if (node.length) {
+          var xm = (x1 + x2) / 2,
+              ym = (y1 + y2) / 2;
+
+          quads.push(
+            new Quad(node[3], xm, ym, x2, y2),
+            new Quad(node[2], x1, ym, xm, y2),
+            new Quad(node[1], xm, y1, x2, ym),
+            new Quad(node[0], x1, y1, xm, ym)
+          );
+
+          // Visit the closest quadrant first.
+          if (i = (y >= ym) << 1 | (x >= xm)) {
+            q = quads[quads.length - 1];
+            quads[quads.length - 1] = quads[quads.length - 1 - i];
+            quads[quads.length - 1 - i] = q;
+          }
+        }
+
+        // Visit this point. (Visiting coincident points isn’t necessary!)
+        else {
+          var dx = x - +this._x.call(null, node.data),
+              dy = y - +this._y.call(null, node.data),
+              d2 = dx * dx + dy * dy;
+          if (d2 < radius) {
+            var d = Math.sqrt(radius = d2);
+            x0 = x - d, y0 = y - d;
+            x3 = x + d, y3 = y + d;
+            data = node.data;
+          }
+        }
+      }
+
+      return data;
+    }
+
+    function tree_remove(d) {
+      if (isNaN(x = +this._x.call(null, d)) || isNaN(y = +this._y.call(null, d))) return this; // ignore invalid points
+
+      var parent,
+          node = this._root,
+          retainer,
+          previous,
+          next,
+          x0 = this._x0,
+          y0 = this._y0,
+          x1 = this._x1,
+          y1 = this._y1,
+          x,
+          y,
+          xm,
+          ym,
+          right,
+          bottom,
+          i,
+          j;
+
+      // If the tree is empty, initialize the root as a leaf.
+      if (!node) return this;
+
+      // Find the leaf node for the point.
+      // While descending, also retain the deepest parent with a non-removed sibling.
+      if (node.length) while (true) {
+        if (right = x >= (xm = (x0 + x1) / 2)) x0 = xm; else x1 = xm;
+        if (bottom = y >= (ym = (y0 + y1) / 2)) y0 = ym; else y1 = ym;
+        if (!(parent = node, node = node[i = bottom << 1 | right])) return this;
+        if (!node.length) break;
+        if (parent[(i + 1) & 3] || parent[(i + 2) & 3] || parent[(i + 3) & 3]) retainer = parent, j = i;
+      }
+
+      // Find the point to remove.
+      while (node.data !== d) if (!(previous = node, node = node.next)) return this;
+      if (next = node.next) delete node.next;
+
+      // If there are multiple coincident points, remove just the point.
+      if (previous) return (next ? previous.next = next : delete previous.next), this;
+
+      // If this is the root point, remove it.
+      if (!parent) return this._root = next, this;
+
+      // Remove this leaf.
+      next ? parent[i] = next : delete parent[i];
+
+      // If the parent now contains exactly one leaf, collapse superfluous parents.
+      if ((node = parent[0] || parent[1] || parent[2] || parent[3])
+          && node === (parent[3] || parent[2] || parent[1] || parent[0])
+          && !node.length) {
+        if (retainer) retainer[j] = node;
+        else this._root = node;
+      }
+
+      return this;
+    }
+
+    function removeAll(data) {
+      for (var i = 0, n = data.length; i < n; ++i) this.remove(data[i]);
+      return this;
+    }
+
+    function tree_root() {
+      return this._root;
+    }
+
+    function tree_size() {
+      var size = 0;
+      this.visit(function(node) {
+        if (!node.length) do ++size; while (node = node.next)
+      });
+      return size;
+    }
+
+    function tree_visit(callback) {
+      var quads = [], q, node = this._root, child, x0, y0, x1, y1;
+      if (node) quads.push(new Quad(node, this._x0, this._y0, this._x1, this._y1));
+      while (q = quads.pop()) {
+        if (!callback(node = q.node, x0 = q.x0, y0 = q.y0, x1 = q.x1, y1 = q.y1) && node.length) {
+          var xm = (x0 + x1) / 2, ym = (y0 + y1) / 2;
+          if (child = node[3]) quads.push(new Quad(child, xm, ym, x1, y1));
+          if (child = node[2]) quads.push(new Quad(child, x0, ym, xm, y1));
+          if (child = node[1]) quads.push(new Quad(child, xm, y0, x1, ym));
+          if (child = node[0]) quads.push(new Quad(child, x0, y0, xm, ym));
+        }
+      }
+      return this;
+    }
+
+    function tree_visitAfter(callback) {
+      var quads = [], next = [], q;
+      if (this._root) quads.push(new Quad(this._root, this._x0, this._y0, this._x1, this._y1));
+      while (q = quads.pop()) {
+        var node = q.node;
+        if (node.length) {
+          var child, x0 = q.x0, y0 = q.y0, x1 = q.x1, y1 = q.y1, xm = (x0 + x1) / 2, ym = (y0 + y1) / 2;
+          if (child = node[0]) quads.push(new Quad(child, x0, y0, xm, ym));
+          if (child = node[1]) quads.push(new Quad(child, xm, y0, x1, ym));
+          if (child = node[2]) quads.push(new Quad(child, x0, ym, xm, y1));
+          if (child = node[3]) quads.push(new Quad(child, xm, ym, x1, y1));
+        }
+        next.push(q);
+      }
+      while (q = next.pop()) {
+        callback(q.node, q.x0, q.y0, q.x1, q.y1);
+      }
+      return this;
+    }
+
+    function defaultX(d) {
+      return d[0];
+    }
+
+    function tree_x(_) {
+      return arguments.length ? (this._x = _, this) : this._x;
+    }
+
+    function defaultY(d) {
+      return d[1];
+    }
+
+    function tree_y(_) {
+      return arguments.length ? (this._y = _, this) : this._y;
+    }
+
+    function quadtree(nodes, x, y) {
+      var tree = new Quadtree(x == null ? defaultX : x, y == null ? defaultY : y, NaN, NaN, NaN, NaN);
+      return nodes == null ? tree : tree.addAll(nodes);
+    }
+
+    function Quadtree(x, y, x0, y0, x1, y1) {
+      this._x = x;
+      this._y = y;
+      this._x0 = x0;
+      this._y0 = y0;
+      this._x1 = x1;
+      this._y1 = y1;
+      this._root = undefined;
+    }
+
+    function leaf_copy(leaf) {
+      var copy = {data: leaf.data}, next = copy;
+      while (leaf = leaf.next) next = next.next = {data: leaf.data};
+      return copy;
+    }
+
+    var treeProto = quadtree.prototype = Quadtree.prototype;
+
+    treeProto.copy = function() {
+      var copy = new Quadtree(this._x, this._y, this._x0, this._y0, this._x1, this._y1),
+          node = this._root,
+          nodes,
+          child;
+
+      if (!node) return copy;
+
+      if (!node.length) return copy._root = leaf_copy(node), copy;
+
+      nodes = [{source: node, target: copy._root = new Array(4)}];
+      while (node = nodes.pop()) {
+        for (var i = 0; i < 4; ++i) {
+          if (child = node.source[i]) {
+            if (child.length) nodes.push({source: child, target: node.target[i] = new Array(4)});
+            else node.target[i] = leaf_copy(child);
+          }
+        }
+      }
+
+      return copy;
+    };
+
+    treeProto.add = tree_add;
+    treeProto.addAll = addAll;
+    treeProto.cover = tree_cover;
+    treeProto.data = tree_data;
+    treeProto.extent = tree_extent;
+    treeProto.find = tree_find;
+    treeProto.remove = tree_remove;
+    treeProto.removeAll = removeAll;
+    treeProto.root = tree_root;
+    treeProto.size = tree_size;
+    treeProto.visit = tree_visit;
+    treeProto.visitAfter = tree_visitAfter;
+    treeProto.x = tree_x;
+    treeProto.y = tree_y;
+
+    // Computes the decimal coefficient and exponent of the specified number x with
+    // significant digits p, where x is positive and p is in [1, 21] or undefined.
+    // For example, formatDecimal(1.23) returns ["123", 0].
+    function formatDecimal(x, p) {
+      if ((i = (x = p ? x.toExponential(p - 1) : x.toExponential()).indexOf("e")) < 0) return null; // NaN, ±Infinity
+      var i, coefficient = x.slice(0, i);
+
+      // The string returned by toExponential either has the form \d\.\d+e[-+]\d+
+      // (e.g., 1.2e+3) or the form \de[-+]\d+ (e.g., 1e+3).
+      return [
+        coefficient.length > 1 ? coefficient[0] + coefficient.slice(2) : coefficient,
+        +x.slice(i + 1)
+      ];
+    }
+
+    function exponent(x) {
+      return x = formatDecimal(Math.abs(x)), x ? x[1] : NaN;
+    }
+
+    function formatGroup(grouping, thousands) {
+      return function(value, width) {
+        var i = value.length,
+            t = [],
+            j = 0,
+            g = grouping[0],
+            length = 0;
+
+        while (i > 0 && g > 0) {
+          if (length + g + 1 > width) g = Math.max(1, width - length);
+          t.push(value.substring(i -= g, i + g));
+          if ((length += g + 1) > width) break;
+          g = grouping[j = (j + 1) % grouping.length];
+        }
+
+        return t.reverse().join(thousands);
+      };
+    }
+
+    function formatNumerals(numerals) {
+      return function(value) {
+        return value.replace(/[0-9]/g, function(i) {
+          return numerals[+i];
+        });
+      };
+    }
+
+    // [[fill]align][sign][symbol][0][width][,][.precision][~][type]
+    var re = /^(?:(.)?([<>=^]))?([+\-( ])?([$#])?(0)?(\d+)?(,)?(\.\d+)?(~)?([a-z%])?$/i;
+
+    function formatSpecifier(specifier) {
+      if (!(match = re.exec(specifier))) throw new Error("invalid format: " + specifier);
+      var match;
+      return new FormatSpecifier({
+        fill: match[1],
+        align: match[2],
+        sign: match[3],
+        symbol: match[4],
+        zero: match[5],
+        width: match[6],
+        comma: match[7],
+        precision: match[8] && match[8].slice(1),
+        trim: match[9],
+        type: match[10]
+      });
+    }
+
+    formatSpecifier.prototype = FormatSpecifier.prototype; // instanceof
+
+    function FormatSpecifier(specifier) {
+      this.fill = specifier.fill === undefined ? " " : specifier.fill + "";
+      this.align = specifier.align === undefined ? ">" : specifier.align + "";
+      this.sign = specifier.sign === undefined ? "-" : specifier.sign + "";
+      this.symbol = specifier.symbol === undefined ? "" : specifier.symbol + "";
+      this.zero = !!specifier.zero;
+      this.width = specifier.width === undefined ? undefined : +specifier.width;
+      this.comma = !!specifier.comma;
+      this.precision = specifier.precision === undefined ? undefined : +specifier.precision;
+      this.trim = !!specifier.trim;
+      this.type = specifier.type === undefined ? "" : specifier.type + "";
+    }
+
+    FormatSpecifier.prototype.toString = function() {
+      return this.fill
+          + this.align
+          + this.sign
+          + this.symbol
+          + (this.zero ? "0" : "")
+          + (this.width === undefined ? "" : Math.max(1, this.width | 0))
+          + (this.comma ? "," : "")
+          + (this.precision === undefined ? "" : "." + Math.max(0, this.precision | 0))
+          + (this.trim ? "~" : "")
+          + this.type;
+    };
+
+    // Trims insignificant zeros, e.g., replaces 1.2000k with 1.2k.
+    function formatTrim(s) {
+      out: for (var n = s.length, i = 1, i0 = -1, i1; i < n; ++i) {
+        switch (s[i]) {
+          case ".": i0 = i1 = i; break;
+          case "0": if (i0 === 0) i0 = i; i1 = i; break;
+          default: if (i0 > 0) { if (!+s[i]) break out; i0 = 0; } break;
+        }
+      }
+      return i0 > 0 ? s.slice(0, i0) + s.slice(i1 + 1) : s;
+    }
+
+    var prefixExponent;
+
+    function formatPrefixAuto(x, p) {
+      var d = formatDecimal(x, p);
+      if (!d) return x + "";
+      var coefficient = d[0],
+          exponent = d[1],
+          i = exponent - (prefixExponent = Math.max(-8, Math.min(8, Math.floor(exponent / 3))) * 3) + 1,
+          n = coefficient.length;
+      return i === n ? coefficient
+          : i > n ? coefficient + new Array(i - n + 1).join("0")
+          : i > 0 ? coefficient.slice(0, i) + "." + coefficient.slice(i)
+          : "0." + new Array(1 - i).join("0") + formatDecimal(x, Math.max(0, p + i - 1))[0]; // less than 1y!
+    }
+
+    function formatRounded(x, p) {
+      var d = formatDecimal(x, p);
+      if (!d) return x + "";
+      var coefficient = d[0],
+          exponent = d[1];
+      return exponent < 0 ? "0." + new Array(-exponent).join("0") + coefficient
+          : coefficient.length > exponent + 1 ? coefficient.slice(0, exponent + 1) + "." + coefficient.slice(exponent + 1)
+          : coefficient + new Array(exponent - coefficient.length + 2).join("0");
+    }
+
+    var formatTypes = {
+      "%": function(x, p) { return (x * 100).toFixed(p); },
+      "b": function(x) { return Math.round(x).toString(2); },
+      "c": function(x) { return x + ""; },
+      "d": function(x) { return Math.round(x).toString(10); },
+      "e": function(x, p) { return x.toExponential(p); },
+      "f": function(x, p) { return x.toFixed(p); },
+      "g": function(x, p) { return x.toPrecision(p); },
+      "o": function(x) { return Math.round(x).toString(8); },
+      "p": function(x, p) { return formatRounded(x * 100, p); },
+      "r": formatRounded,
+      "s": formatPrefixAuto,
+      "X": function(x) { return Math.round(x).toString(16).toUpperCase(); },
+      "x": function(x) { return Math.round(x).toString(16); }
+    };
+
+    function identity$2(x) {
+      return x;
+    }
+
+    var map$1 = Array.prototype.map,
+        prefixes = ["y","z","a","f","p","n","µ","m","","k","M","G","T","P","E","Z","Y"];
+
+    function formatLocale(locale) {
+      var group = locale.grouping === undefined || locale.thousands === undefined ? identity$2 : formatGroup(map$1.call(locale.grouping, Number), locale.thousands + ""),
+          currencyPrefix = locale.currency === undefined ? "" : locale.currency[0] + "",
+          currencySuffix = locale.currency === undefined ? "" : locale.currency[1] + "",
+          decimal = locale.decimal === undefined ? "." : locale.decimal + "",
+          numerals = locale.numerals === undefined ? identity$2 : formatNumerals(map$1.call(locale.numerals, String)),
+          percent = locale.percent === undefined ? "%" : locale.percent + "",
+          minus = locale.minus === undefined ? "-" : locale.minus + "",
+          nan = locale.nan === undefined ? "NaN" : locale.nan + "";
+
+      function newFormat(specifier) {
+        specifier = formatSpecifier(specifier);
+
+        var fill = specifier.fill,
+            align = specifier.align,
+            sign = specifier.sign,
+            symbol = specifier.symbol,
+            zero = specifier.zero,
+            width = specifier.width,
+            comma = specifier.comma,
+            precision = specifier.precision,
+            trim = specifier.trim,
+            type = specifier.type;
+
+        // The "n" type is an alias for ",g".
+        if (type === "n") comma = true, type = "g";
+
+        // The "" type, and any invalid type, is an alias for ".12~g".
+        else if (!formatTypes[type]) precision === undefined && (precision = 12), trim = true, type = "g";
+
+        // If zero fill is specified, padding goes after sign and before digits.
+        if (zero || (fill === "0" && align === "=")) zero = true, fill = "0", align = "=";
+
+        // Compute the prefix and suffix.
+        // For SI-prefix, the suffix is lazily computed.
+        var prefix = symbol === "$" ? currencyPrefix : symbol === "#" && /[boxX]/.test(type) ? "0" + type.toLowerCase() : "",
+            suffix = symbol === "$" ? currencySuffix : /[%p]/.test(type) ? percent : "";
+
+        // What format function should we use?
+        // Is this an integer type?
+        // Can this type generate exponential notation?
+        var formatType = formatTypes[type],
+            maybeSuffix = /[defgprs%]/.test(type);
+
+        // Set the default precision if not specified,
+        // or clamp the specified precision to the supported range.
+        // For significant precision, it must be in [1, 21].
+        // For fixed precision, it must be in [0, 20].
+        precision = precision === undefined ? 6
+            : /[gprs]/.test(type) ? Math.max(1, Math.min(21, precision))
+            : Math.max(0, Math.min(20, precision));
+
+        function format(value) {
+          var valuePrefix = prefix,
+              valueSuffix = suffix,
+              i, n, c;
+
+          if (type === "c") {
+            valueSuffix = formatType(value) + valueSuffix;
+            value = "";
+          } else {
+            value = +value;
+
+            // Perform the initial formatting.
+            var valueNegative = value < 0;
+            value = isNaN(value) ? nan : formatType(Math.abs(value), precision);
+
+            // Trim insignificant zeros.
+            if (trim) value = formatTrim(value);
+
+            // If a negative value rounds to zero during formatting, treat as positive.
+            if (valueNegative && +value === 0) valueNegative = false;
+
+            // Compute the prefix and suffix.
+            valuePrefix = (valueNegative ? (sign === "(" ? sign : minus) : sign === "-" || sign === "(" ? "" : sign) + valuePrefix;
+
+            valueSuffix = (type === "s" ? prefixes[8 + prefixExponent / 3] : "") + valueSuffix + (valueNegative && sign === "(" ? ")" : "");
+
+            // Break the formatted value into the integer “value” part that can be
+            // grouped, and fractional or exponential “suffix” part that is not.
+            if (maybeSuffix) {
+              i = -1, n = value.length;
+              while (++i < n) {
+                if (c = value.charCodeAt(i), 48 > c || c > 57) {
+                  valueSuffix = (c === 46 ? decimal + value.slice(i + 1) : value.slice(i)) + valueSuffix;
+                  value = value.slice(0, i);
+                  break;
+                }
+              }
+            }
+          }
+
+          // If the fill character is not "0", grouping is applied before padding.
+          if (comma && !zero) value = group(value, Infinity);
+
+          // Compute the padding.
+          var length = valuePrefix.length + value.length + valueSuffix.length,
+              padding = length < width ? new Array(width - length + 1).join(fill) : "";
+
+          // If the fill character is "0", grouping is applied after padding.
+          if (comma && zero) value = group(padding + value, padding.length ? width - valueSuffix.length : Infinity), padding = "";
+
+          // Reconstruct the final output based on the desired alignment.
+          switch (align) {
+            case "<": value = valuePrefix + value + valueSuffix + padding; break;
+            case "=": value = valuePrefix + padding + value + valueSuffix; break;
+            case "^": value = padding.slice(0, length = padding.length >> 1) + valuePrefix + value + valueSuffix + padding.slice(length); break;
+            default: value = padding + valuePrefix + value + valueSuffix; break;
+          }
+
+          return numerals(value);
+        }
+
+        format.toString = function() {
+          return specifier + "";
+        };
+
+        return format;
+      }
+
+      function formatPrefix(specifier, value) {
+        var f = newFormat((specifier = formatSpecifier(specifier), specifier.type = "f", specifier)),
+            e = Math.max(-8, Math.min(8, Math.floor(exponent(value) / 3))) * 3,
+            k = Math.pow(10, -e),
+            prefix = prefixes[8 + e / 3];
+        return function(value) {
+          return f(k * value) + prefix;
+        };
+      }
+
+      return {
+        format: newFormat,
+        formatPrefix: formatPrefix
+      };
+    }
+
+    var locale;
+    var format;
+    var formatPrefix;
+
+    defaultLocale({
+      decimal: ".",
+      thousands: ",",
+      grouping: [3],
+      currency: ["$", ""],
+      minus: "-"
+    });
+
+    function defaultLocale(definition) {
+      locale = formatLocale(definition);
+      format = locale.format;
+      formatPrefix = locale.formatPrefix;
+      return locale;
+    }
+
+    function precisionFixed(step) {
+      return Math.max(0, -exponent(Math.abs(step)));
+    }
+
+    function precisionPrefix(step, value) {
+      return Math.max(0, Math.max(-8, Math.min(8, Math.floor(exponent(value) / 3))) * 3 - exponent(Math.abs(step)));
+    }
+
+    function precisionRound(step, max) {
+      step = Math.abs(step), max = Math.abs(max) - step;
+      return Math.max(0, exponent(max) - exponent(step)) + 1;
+    }
+
+    // Adds floating point numbers with twice the normal precision.
+    // Reference: J. R. Shewchuk, Adaptive Precision Floating-Point Arithmetic and
+    // Fast Robust Geometric Predicates, Discrete & Computational Geometry 18(3)
+    // 305–363 (1997).
+    // Code adapted from GeographicLib by Charles F. F. Karney,
+    // http://geographiclib.sourceforge.net/
+
+    function adder() {
+      return new Adder;
+    }
+
+    function Adder() {
+      this.reset();
+    }
+
+    Adder.prototype = {
+      constructor: Adder,
+      reset: function() {
+        this.s = // rounded value
+        this.t = 0; // exact error
+      },
+      add: function(y) {
+        add$1(temp, y, this.t);
+        add$1(this, temp.s, this.s);
+        if (this.s) this.t += temp.t;
+        else this.s = temp.t;
+      },
+      valueOf: function() {
+        return this.s;
+      }
+    };
+
+    var temp = new Adder;
+
+    function add$1(adder, a, b) {
+      var x = adder.s = a + b,
+          bv = x - a,
+          av = x - bv;
+      adder.t = (a - av) + (b - bv);
+    }
+
+    var areaRingSum = adder();
+
+    var areaSum = adder();
+
+    var deltaSum = adder();
+
+    var sum = adder();
+
+    var lengthSum = adder();
+
+    var areaSum$1 = adder(),
+        areaRingSum$1 = adder();
+
+    var lengthSum$1 = adder();
+
+    function initRange(domain, range) {
+      switch (arguments.length) {
+        case 0: break;
+        case 1: this.range(domain); break;
+        default: this.range(range).domain(domain); break;
+      }
+      return this;
+    }
+
+    var array$1 = Array.prototype;
+
+    var map$2 = array$1.map;
+    var slice$1 = array$1.slice;
+
+    var implicit = {name: "implicit"};
+
+    function ordinal() {
+      var index = map(),
+          domain = [],
+          range = [],
+          unknown = implicit;
+
+      function scale(d) {
+        var key = d + "", i = index.get(key);
+        if (!i) {
+          if (unknown !== implicit) return unknown;
+          index.set(key, i = domain.push(d));
+        }
+        return range[(i - 1) % range.length];
+      }
+
+      scale.domain = function(_) {
+        if (!arguments.length) return domain.slice();
+        domain = [], index = map();
+        var i = -1, n = _.length, d, key;
+        while (++i < n) if (!index.has(key = (d = _[i]) + "")) index.set(key, domain.push(d));
+        return scale;
+      };
+
+      scale.range = function(_) {
+        return arguments.length ? (range = slice$1.call(_), scale) : range.slice();
+      };
+
+      scale.unknown = function(_) {
+        return arguments.length ? (unknown = _, scale) : unknown;
+      };
+
+      scale.copy = function() {
+        return ordinal(domain, range).unknown(unknown);
+      };
+
+      initRange.apply(scale, arguments);
+
+      return scale;
+    }
+
+    function band() {
+      var scale = ordinal().unknown(undefined),
+          domain = scale.domain,
+          ordinalRange = scale.range,
+          range = [0, 1],
+          step,
+          bandwidth,
+          round = false,
+          paddingInner = 0,
+          paddingOuter = 0,
+          align = 0.5;
+
+      delete scale.unknown;
+
+      function rescale() {
+        var n = domain().length,
+            reverse = range[1] < range[0],
+            start = range[reverse - 0],
+            stop = range[1 - reverse];
+        step = (stop - start) / Math.max(1, n - paddingInner + paddingOuter * 2);
+        if (round) step = Math.floor(step);
+        start += (stop - start - step * (n - paddingInner)) * align;
+        bandwidth = step * (1 - paddingInner);
+        if (round) start = Math.round(start), bandwidth = Math.round(bandwidth);
+        var values = sequence(n).map(function(i) { return start + step * i; });
+        return ordinalRange(reverse ? values.reverse() : values);
+      }
+
+      scale.domain = function(_) {
+        return arguments.length ? (domain(_), rescale()) : domain();
+      };
+
+      scale.range = function(_) {
+        return arguments.length ? (range = [+_[0], +_[1]], rescale()) : range.slice();
+      };
+
+      scale.rangeRound = function(_) {
+        return range = [+_[0], +_[1]], round = true, rescale();
+      };
+
+      scale.bandwidth = function() {
+        return bandwidth;
+      };
+
+      scale.step = function() {
+        return step;
+      };
+
+      scale.round = function(_) {
+        return arguments.length ? (round = !!_, rescale()) : round;
+      };
+
+      scale.padding = function(_) {
+        return arguments.length ? (paddingInner = Math.min(1, paddingOuter = +_), rescale()) : paddingInner;
+      };
+
+      scale.paddingInner = function(_) {
+        return arguments.length ? (paddingInner = Math.min(1, _), rescale()) : paddingInner;
+      };
+
+      scale.paddingOuter = function(_) {
+        return arguments.length ? (paddingOuter = +_, rescale()) : paddingOuter;
+      };
+
+      scale.align = function(_) {
+        return arguments.length ? (align = Math.max(0, Math.min(1, _)), rescale()) : align;
+      };
+
+      scale.copy = function() {
+        return band(domain(), range)
+            .round(round)
+            .paddingInner(paddingInner)
+            .paddingOuter(paddingOuter)
+            .align(align);
+      };
+
+      return initRange.apply(rescale(), arguments);
+    }
+
+    function constant$3(x) {
+      return function() {
+        return x;
+      };
+    }
+
+    function number$1(x) {
+      return +x;
+    }
+
+    var unit = [0, 1];
+
+    function identity$3(x) {
+      return x;
+    }
+
+    function normalize(a, b) {
+      return (b -= (a = +a))
+          ? function(x) { return (x - a) / b; }
+          : constant$3(isNaN(b) ? NaN : 0.5);
+    }
+
+    function clamper(domain) {
+      var a = domain[0], b = domain[domain.length - 1], t;
+      if (a > b) t = a, a = b, b = t;
+      return function(x) { return Math.max(a, Math.min(b, x)); };
+    }
+
+    // normalize(a, b)(x) takes a domain value x in [a,b] and returns the corresponding parameter t in [0,1].
+    // interpolate(a, b)(t) takes a parameter t in [0,1] and returns the corresponding range value x in [a,b].
+    function bimap(domain, range, interpolate) {
+      var d0 = domain[0], d1 = domain[1], r0 = range[0], r1 = range[1];
+      if (d1 < d0) d0 = normalize(d1, d0), r0 = interpolate(r1, r0);
+      else d0 = normalize(d0, d1), r0 = interpolate(r0, r1);
+      return function(x) { return r0(d0(x)); };
+    }
+
+    function polymap(domain, range, interpolate) {
+      var j = Math.min(domain.length, range.length) - 1,
+          d = new Array(j),
+          r = new Array(j),
+          i = -1;
+
+      // Reverse descending domains.
+      if (domain[j] < domain[0]) {
+        domain = domain.slice().reverse();
+        range = range.slice().reverse();
+      }
+
+      while (++i < j) {
+        d[i] = normalize(domain[i], domain[i + 1]);
+        r[i] = interpolate(range[i], range[i + 1]);
+      }
+
+      return function(x) {
+        var i = bisectRight(domain, x, 1, j) - 1;
+        return r[i](d[i](x));
+      };
+    }
+
+    function copy(source, target) {
+      return target
+          .domain(source.domain())
+          .range(source.range())
+          .interpolate(source.interpolate())
+          .clamp(source.clamp())
+          .unknown(source.unknown());
+    }
+
+    function transformer() {
+      var domain = unit,
+          range = unit,
+          interpolate$1 = interpolate,
+          transform,
+          untransform,
+          unknown,
+          clamp = identity$3,
+          piecewise,
+          output,
+          input;
+
+      function rescale() {
+        piecewise = Math.min(domain.length, range.length) > 2 ? polymap : bimap;
+        output = input = null;
+        return scale;
+      }
+
+      function scale(x) {
+        return isNaN(x = +x) ? unknown : (output || (output = piecewise(domain.map(transform), range, interpolate$1)))(transform(clamp(x)));
+      }
+
+      scale.invert = function(y) {
+        return clamp(untransform((input || (input = piecewise(range, domain.map(transform), interpolateNumber)))(y)));
+      };
+
+      scale.domain = function(_) {
+        return arguments.length ? (domain = map$2.call(_, number$1), clamp === identity$3 || (clamp = clamper(domain)), rescale()) : domain.slice();
+      };
+
+      scale.range = function(_) {
+        return arguments.length ? (range = slice$1.call(_), rescale()) : range.slice();
+      };
+
+      scale.rangeRound = function(_) {
+        return range = slice$1.call(_), interpolate$1 = interpolateRound, rescale();
+      };
+
+      scale.clamp = function(_) {
+        return arguments.length ? (clamp = _ ? clamper(domain) : identity$3, scale) : clamp !== identity$3;
+      };
+
+      scale.interpolate = function(_) {
+        return arguments.length ? (interpolate$1 = _, rescale()) : interpolate$1;
+      };
+
+      scale.unknown = function(_) {
+        return arguments.length ? (unknown = _, scale) : unknown;
+      };
+
+      return function(t, u) {
+        transform = t, untransform = u;
+        return rescale();
+      };
+    }
+
+    function continuous(transform, untransform) {
+      return transformer()(transform, untransform);
+    }
+
+    function tickFormat(start, stop, count, specifier) {
+      var step = tickStep(start, stop, count),
+          precision;
+      specifier = formatSpecifier(specifier == null ? ",f" : specifier);
+      switch (specifier.type) {
+        case "s": {
+          var value = Math.max(Math.abs(start), Math.abs(stop));
+          if (specifier.precision == null && !isNaN(precision = precisionPrefix(step, value))) specifier.precision = precision;
+          return formatPrefix(specifier, value);
+        }
+        case "":
+        case "e":
+        case "g":
+        case "p":
+        case "r": {
+          if (specifier.precision == null && !isNaN(precision = precisionRound(step, Math.max(Math.abs(start), Math.abs(stop))))) specifier.precision = precision - (specifier.type === "e");
+          break;
+        }
+        case "f":
+        case "%": {
+          if (specifier.precision == null && !isNaN(precision = precisionFixed(step))) specifier.precision = precision - (specifier.type === "%") * 2;
+          break;
+        }
+      }
+      return format(specifier);
+    }
+
+    function linearish(scale) {
+      var domain = scale.domain;
+
+      scale.ticks = function(count) {
+        var d = domain();
+        return ticks(d[0], d[d.length - 1], count == null ? 10 : count);
+      };
+
+      scale.tickFormat = function(count, specifier) {
+        var d = domain();
+        return tickFormat(d[0], d[d.length - 1], count == null ? 10 : count, specifier);
+      };
+
+      scale.nice = function(count) {
+        if (count == null) count = 10;
+
+        var d = domain(),
+            i0 = 0,
+            i1 = d.length - 1,
+            start = d[i0],
+            stop = d[i1],
+            step;
+
+        if (stop < start) {
+          step = start, start = stop, stop = step;
+          step = i0, i0 = i1, i1 = step;
+        }
+
+        step = tickIncrement(start, stop, count);
+
+        if (step > 0) {
+          start = Math.floor(start / step) * step;
+          stop = Math.ceil(stop / step) * step;
+          step = tickIncrement(start, stop, count);
+        } else if (step < 0) {
+          start = Math.ceil(start * step) / step;
+          stop = Math.floor(stop * step) / step;
+          step = tickIncrement(start, stop, count);
+        }
+
+        if (step > 0) {
+          d[i0] = Math.floor(start / step) * step;
+          d[i1] = Math.ceil(stop / step) * step;
+          domain(d);
+        } else if (step < 0) {
+          d[i0] = Math.ceil(start * step) / step;
+          d[i1] = Math.floor(stop * step) / step;
+          domain(d);
+        }
+
+        return scale;
+      };
+
+      return scale;
+    }
+
+    function linear$1() {
+      var scale = continuous(identity$3, identity$3);
+
+      scale.copy = function() {
+        return copy(scale, linear$1());
+      };
+
+      initRange.apply(scale, arguments);
+
+      return linearish(scale);
+    }
+
+    function nice(domain, interval) {
+      domain = domain.slice();
+
+      var i0 = 0,
+          i1 = domain.length - 1,
+          x0 = domain[i0],
+          x1 = domain[i1],
+          t;
+
+      if (x1 < x0) {
+        t = i0, i0 = i1, i1 = t;
+        t = x0, x0 = x1, x1 = t;
+      }
+
+      domain[i0] = interval.floor(x0);
+      domain[i1] = interval.ceil(x1);
+      return domain;
+    }
+
+    var t0 = new Date,
+        t1 = new Date;
+
+    function newInterval(floori, offseti, count, field) {
+
+      function interval(date) {
+        return floori(date = arguments.length === 0 ? new Date : new Date(+date)), date;
+      }
+
+      interval.floor = function(date) {
+        return floori(date = new Date(+date)), date;
+      };
+
+      interval.ceil = function(date) {
+        return floori(date = new Date(date - 1)), offseti(date, 1), floori(date), date;
+      };
+
+      interval.round = function(date) {
+        var d0 = interval(date),
+            d1 = interval.ceil(date);
+        return date - d0 < d1 - date ? d0 : d1;
+      };
+
+      interval.offset = function(date, step) {
+        return offseti(date = new Date(+date), step == null ? 1 : Math.floor(step)), date;
+      };
+
+      interval.range = function(start, stop, step) {
+        var range = [], previous;
+        start = interval.ceil(start);
+        step = step == null ? 1 : Math.floor(step);
+        if (!(start < stop) || !(step > 0)) return range; // also handles Invalid Date
+        do range.push(previous = new Date(+start)), offseti(start, step), floori(start);
+        while (previous < start && start < stop);
+        return range;
+      };
+
+      interval.filter = function(test) {
+        return newInterval(function(date) {
+          if (date >= date) while (floori(date), !test(date)) date.setTime(date - 1);
+        }, function(date, step) {
+          if (date >= date) {
+            if (step < 0) while (++step <= 0) {
+              while (offseti(date, -1), !test(date)) {} // eslint-disable-line no-empty
+            } else while (--step >= 0) {
+              while (offseti(date, +1), !test(date)) {} // eslint-disable-line no-empty
+            }
+          }
+        });
+      };
+
+      if (count) {
+        interval.count = function(start, end) {
+          t0.setTime(+start), t1.setTime(+end);
+          floori(t0), floori(t1);
+          return Math.floor(count(t0, t1));
+        };
+
+        interval.every = function(step) {
+          step = Math.floor(step);
+          return !isFinite(step) || !(step > 0) ? null
+              : !(step > 1) ? interval
+              : interval.filter(field
+                  ? function(d) { return field(d) % step === 0; }
+                  : function(d) { return interval.count(0, d) % step === 0; });
+        };
+      }
+
+      return interval;
+    }
+
+    var millisecond = newInterval(function() {
+      // noop
+    }, function(date, step) {
+      date.setTime(+date + step);
+    }, function(start, end) {
+      return end - start;
+    });
+
+    // An optimized implementation for this simple case.
+    millisecond.every = function(k) {
+      k = Math.floor(k);
+      if (!isFinite(k) || !(k > 0)) return null;
+      if (!(k > 1)) return millisecond;
+      return newInterval(function(date) {
+        date.setTime(Math.floor(date / k) * k);
+      }, function(date, step) {
+        date.setTime(+date + step * k);
+      }, function(start, end) {
+        return (end - start) / k;
+      });
+    };
+
+    var durationSecond = 1e3;
+    var durationMinute = 6e4;
+    var durationHour = 36e5;
+    var durationDay = 864e5;
+    var durationWeek = 6048e5;
+
+    var second = newInterval(function(date) {
+      date.setTime(date - date.getMilliseconds());
+    }, function(date, step) {
+      date.setTime(+date + step * durationSecond);
+    }, function(start, end) {
+      return (end - start) / durationSecond;
+    }, function(date) {
+      return date.getUTCSeconds();
+    });
+
+    var minute = newInterval(function(date) {
+      date.setTime(date - date.getMilliseconds() - date.getSeconds() * durationSecond);
+    }, function(date, step) {
+      date.setTime(+date + step * durationMinute);
+    }, function(start, end) {
+      return (end - start) / durationMinute;
+    }, function(date) {
+      return date.getMinutes();
+    });
+
+    var hour = newInterval(function(date) {
+      date.setTime(date - date.getMilliseconds() - date.getSeconds() * durationSecond - date.getMinutes() * durationMinute);
+    }, function(date, step) {
+      date.setTime(+date + step * durationHour);
+    }, function(start, end) {
+      return (end - start) / durationHour;
+    }, function(date) {
+      return date.getHours();
+    });
+
+    var day = newInterval(function(date) {
+      date.setHours(0, 0, 0, 0);
+    }, function(date, step) {
+      date.setDate(date.getDate() + step);
+    }, function(start, end) {
+      return (end - start - (end.getTimezoneOffset() - start.getTimezoneOffset()) * durationMinute) / durationDay;
+    }, function(date) {
+      return date.getDate() - 1;
+    });
+
+    function weekday(i) {
+      return newInterval(function(date) {
+        date.setDate(date.getDate() - (date.getDay() + 7 - i) % 7);
+        date.setHours(0, 0, 0, 0);
+      }, function(date, step) {
+        date.setDate(date.getDate() + step * 7);
+      }, function(start, end) {
+        return (end - start - (end.getTimezoneOffset() - start.getTimezoneOffset()) * durationMinute) / durationWeek;
+      });
+    }
+
+    var sunday = weekday(0);
+    var monday = weekday(1);
+    var tuesday = weekday(2);
+    var wednesday = weekday(3);
+    var thursday = weekday(4);
+    var friday = weekday(5);
+    var saturday = weekday(6);
+
+    var month = newInterval(function(date) {
+      date.setDate(1);
+      date.setHours(0, 0, 0, 0);
+    }, function(date, step) {
+      date.setMonth(date.getMonth() + step);
+    }, function(start, end) {
+      return end.getMonth() - start.getMonth() + (end.getFullYear() - start.getFullYear()) * 12;
+    }, function(date) {
+      return date.getMonth();
+    });
+
+    var year = newInterval(function(date) {
+      date.setMonth(0, 1);
+      date.setHours(0, 0, 0, 0);
+    }, function(date, step) {
+      date.setFullYear(date.getFullYear() + step);
+    }, function(start, end) {
+      return end.getFullYear() - start.getFullYear();
+    }, function(date) {
+      return date.getFullYear();
+    });
+
+    // An optimized implementation for this simple case.
+    year.every = function(k) {
+      return !isFinite(k = Math.floor(k)) || !(k > 0) ? null : newInterval(function(date) {
+        date.setFullYear(Math.floor(date.getFullYear() / k) * k);
+        date.setMonth(0, 1);
+        date.setHours(0, 0, 0, 0);
+      }, function(date, step) {
+        date.setFullYear(date.getFullYear() + step * k);
+      });
+    };
+
+    var utcDay = newInterval(function(date) {
+      date.setUTCHours(0, 0, 0, 0);
+    }, function(date, step) {
+      date.setUTCDate(date.getUTCDate() + step);
+    }, function(start, end) {
+      return (end - start) / durationDay;
+    }, function(date) {
+      return date.getUTCDate() - 1;
+    });
+
+    function utcWeekday(i) {
+      return newInterval(function(date) {
+        date.setUTCDate(date.getUTCDate() - (date.getUTCDay() + 7 - i) % 7);
+        date.setUTCHours(0, 0, 0, 0);
+      }, function(date, step) {
+        date.setUTCDate(date.getUTCDate() + step * 7);
+      }, function(start, end) {
+        return (end - start) / durationWeek;
+      });
+    }
+
+    var utcSunday = utcWeekday(0);
+    var utcMonday = utcWeekday(1);
+    var utcTuesday = utcWeekday(2);
+    var utcWednesday = utcWeekday(3);
+    var utcThursday = utcWeekday(4);
+    var utcFriday = utcWeekday(5);
+    var utcSaturday = utcWeekday(6);
+
+    var utcYear = newInterval(function(date) {
+      date.setUTCMonth(0, 1);
+      date.setUTCHours(0, 0, 0, 0);
+    }, function(date, step) {
+      date.setUTCFullYear(date.getUTCFullYear() + step);
+    }, function(start, end) {
+      return end.getUTCFullYear() - start.getUTCFullYear();
+    }, function(date) {
+      return date.getUTCFullYear();
+    });
+
+    // An optimized implementation for this simple case.
+    utcYear.every = function(k) {
+      return !isFinite(k = Math.floor(k)) || !(k > 0) ? null : newInterval(function(date) {
+        date.setUTCFullYear(Math.floor(date.getUTCFullYear() / k) * k);
+        date.setUTCMonth(0, 1);
+        date.setUTCHours(0, 0, 0, 0);
+      }, function(date, step) {
+        date.setUTCFullYear(date.getUTCFullYear() + step * k);
+      });
+    };
+
+    function localDate(d) {
+      if (0 <= d.y && d.y < 100) {
+        var date = new Date(-1, d.m, d.d, d.H, d.M, d.S, d.L);
+        date.setFullYear(d.y);
+        return date;
+      }
+      return new Date(d.y, d.m, d.d, d.H, d.M, d.S, d.L);
+    }
+
+    function utcDate(d) {
+      if (0 <= d.y && d.y < 100) {
+        var date = new Date(Date.UTC(-1, d.m, d.d, d.H, d.M, d.S, d.L));
+        date.setUTCFullYear(d.y);
+        return date;
+      }
+      return new Date(Date.UTC(d.y, d.m, d.d, d.H, d.M, d.S, d.L));
+    }
+
+    function newYear(y) {
+      return {y: y, m: 0, d: 1, H: 0, M: 0, S: 0, L: 0};
+    }
+
+    function formatLocale$1(locale) {
+      var locale_dateTime = locale.dateTime,
+          locale_date = locale.date,
+          locale_time = locale.time,
+          locale_periods = locale.periods,
+          locale_weekdays = locale.days,
+          locale_shortWeekdays = locale.shortDays,
+          locale_months = locale.months,
+          locale_shortMonths = locale.shortMonths;
+
+      var periodRe = formatRe(locale_periods),
+          periodLookup = formatLookup(locale_periods),
+          weekdayRe = formatRe(locale_weekdays),
+          weekdayLookup = formatLookup(locale_weekdays),
+          shortWeekdayRe = formatRe(locale_shortWeekdays),
+          shortWeekdayLookup = formatLookup(locale_shortWeekdays),
+          monthRe = formatRe(locale_months),
+          monthLookup = formatLookup(locale_months),
+          shortMonthRe = formatRe(locale_shortMonths),
+          shortMonthLookup = formatLookup(locale_shortMonths);
+
+      var formats = {
+        "a": formatShortWeekday,
+        "A": formatWeekday,
+        "b": formatShortMonth,
+        "B": formatMonth,
+        "c": null,
+        "d": formatDayOfMonth,
+        "e": formatDayOfMonth,
+        "f": formatMicroseconds,
+        "H": formatHour24,
+        "I": formatHour12,
+        "j": formatDayOfYear,
+        "L": formatMilliseconds,
+        "m": formatMonthNumber,
+        "M": formatMinutes,
+        "p": formatPeriod,
+        "Q": formatUnixTimestamp,
+        "s": formatUnixTimestampSeconds,
+        "S": formatSeconds,
+        "u": formatWeekdayNumberMonday,
+        "U": formatWeekNumberSunday,
+        "V": formatWeekNumberISO,
+        "w": formatWeekdayNumberSunday,
+        "W": formatWeekNumberMonday,
+        "x": null,
+        "X": null,
+        "y": formatYear$1,
+        "Y": formatFullYear,
+        "Z": formatZone,
+        "%": formatLiteralPercent
+      };
+
+      var utcFormats = {
+        "a": formatUTCShortWeekday,
+        "A": formatUTCWeekday,
+        "b": formatUTCShortMonth,
+        "B": formatUTCMonth,
+        "c": null,
+        "d": formatUTCDayOfMonth,
+        "e": formatUTCDayOfMonth,
+        "f": formatUTCMicroseconds,
+        "H": formatUTCHour24,
+        "I": formatUTCHour12,
+        "j": formatUTCDayOfYear,
+        "L": formatUTCMilliseconds,
+        "m": formatUTCMonthNumber,
+        "M": formatUTCMinutes,
+        "p": formatUTCPeriod,
+        "Q": formatUnixTimestamp,
+        "s": formatUnixTimestampSeconds,
+        "S": formatUTCSeconds,
+        "u": formatUTCWeekdayNumberMonday,
+        "U": formatUTCWeekNumberSunday,
+        "V": formatUTCWeekNumberISO,
+        "w": formatUTCWeekdayNumberSunday,
+        "W": formatUTCWeekNumberMonday,
+        "x": null,
+        "X": null,
+        "y": formatUTCYear,
+        "Y": formatUTCFullYear,
+        "Z": formatUTCZone,
+        "%": formatLiteralPercent
+      };
+
+      var parses = {
+        "a": parseShortWeekday,
+        "A": parseWeekday,
+        "b": parseShortMonth,
+        "B": parseMonth,
+        "c": parseLocaleDateTime,
+        "d": parseDayOfMonth,
+        "e": parseDayOfMonth,
+        "f": parseMicroseconds,
+        "H": parseHour24,
+        "I": parseHour24,
+        "j": parseDayOfYear,
+        "L": parseMilliseconds,
+        "m": parseMonthNumber,
+        "M": parseMinutes,
+        "p": parsePeriod,
+        "Q": parseUnixTimestamp,
+        "s": parseUnixTimestampSeconds,
+        "S": parseSeconds,
+        "u": parseWeekdayNumberMonday,
+        "U": parseWeekNumberSunday,
+        "V": parseWeekNumberISO,
+        "w": parseWeekdayNumberSunday,
+        "W": parseWeekNumberMonday,
+        "x": parseLocaleDate,
+        "X": parseLocaleTime,
+        "y": parseYear,
+        "Y": parseFullYear,
+        "Z": parseZone,
+        "%": parseLiteralPercent
+      };
+
+      // These recursive directive definitions must be deferred.
+      formats.x = newFormat(locale_date, formats);
+      formats.X = newFormat(locale_time, formats);
+      formats.c = newFormat(locale_dateTime, formats);
+      utcFormats.x = newFormat(locale_date, utcFormats);
+      utcFormats.X = newFormat(locale_time, utcFormats);
+      utcFormats.c = newFormat(locale_dateTime, utcFormats);
+
+      function newFormat(specifier, formats) {
+        return function(date) {
+          var string = [],
+              i = -1,
+              j = 0,
+              n = specifier.length,
+              c,
+              pad,
+              format;
+
+          if (!(date instanceof Date)) date = new Date(+date);
+
+          while (++i < n) {
+            if (specifier.charCodeAt(i) === 37) {
+              string.push(specifier.slice(j, i));
+              if ((pad = pads[c = specifier.charAt(++i)]) != null) c = specifier.charAt(++i);
+              else pad = c === "e" ? " " : "0";
+              if (format = formats[c]) c = format(date, pad);
+              string.push(c);
+              j = i + 1;
+            }
+          }
+
+          string.push(specifier.slice(j, i));
+          return string.join("");
+        };
+      }
+
+      function newParse(specifier, newDate) {
+        return function(string) {
+          var d = newYear(1900),
+              i = parseSpecifier(d, specifier, string += "", 0),
+              week, day$1;
+          if (i != string.length) return null;
+
+          // If a UNIX timestamp is specified, return it.
+          if ("Q" in d) return new Date(d.Q);
+
+          // The am-pm flag is 0 for AM, and 1 for PM.
+          if ("p" in d) d.H = d.H % 12 + d.p * 12;
+
+          // Convert day-of-week and week-of-year to day-of-year.
+          if ("V" in d) {
+            if (d.V < 1 || d.V > 53) return null;
+            if (!("w" in d)) d.w = 1;
+            if ("Z" in d) {
+              week = utcDate(newYear(d.y)), day$1 = week.getUTCDay();
+              week = day$1 > 4 || day$1 === 0 ? utcMonday.ceil(week) : utcMonday(week);
+              week = utcDay.offset(week, (d.V - 1) * 7);
+              d.y = week.getUTCFullYear();
+              d.m = week.getUTCMonth();
+              d.d = week.getUTCDate() + (d.w + 6) % 7;
+            } else {
+              week = newDate(newYear(d.y)), day$1 = week.getDay();
+              week = day$1 > 4 || day$1 === 0 ? monday.ceil(week) : monday(week);
+              week = day.offset(week, (d.V - 1) * 7);
+              d.y = week.getFullYear();
+              d.m = week.getMonth();
+              d.d = week.getDate() + (d.w + 6) % 7;
+            }
+          } else if ("W" in d || "U" in d) {
+            if (!("w" in d)) d.w = "u" in d ? d.u % 7 : "W" in d ? 1 : 0;
+            day$1 = "Z" in d ? utcDate(newYear(d.y)).getUTCDay() : newDate(newYear(d.y)).getDay();
+            d.m = 0;
+            d.d = "W" in d ? (d.w + 6) % 7 + d.W * 7 - (day$1 + 5) % 7 : d.w + d.U * 7 - (day$1 + 6) % 7;
+          }
+
+          // If a time zone is specified, all fields are interpreted as UTC and then
+          // offset according to the specified time zone.
+          if ("Z" in d) {
+            d.H += d.Z / 100 | 0;
+            d.M += d.Z % 100;
+            return utcDate(d);
+          }
+
+          // Otherwise, all fields are in local time.
+          return newDate(d);
+        };
+      }
+
+      function parseSpecifier(d, specifier, string, j) {
+        var i = 0,
+            n = specifier.length,
+            m = string.length,
+            c,
+            parse;
+
+        while (i < n) {
+          if (j >= m) return -1;
+          c = specifier.charCodeAt(i++);
+          if (c === 37) {
+            c = specifier.charAt(i++);
+            parse = parses[c in pads ? specifier.charAt(i++) : c];
+            if (!parse || ((j = parse(d, string, j)) < 0)) return -1;
+          } else if (c != string.charCodeAt(j++)) {
+            return -1;
+          }
+        }
+
+        return j;
+      }
+
+      function parsePeriod(d, string, i) {
+        var n = periodRe.exec(string.slice(i));
+        return n ? (d.p = periodLookup[n[0].toLowerCase()], i + n[0].length) : -1;
+      }
+
+      function parseShortWeekday(d, string, i) {
+        var n = shortWeekdayRe.exec(string.slice(i));
+        return n ? (d.w = shortWeekdayLookup[n[0].toLowerCase()], i + n[0].length) : -1;
+      }
+
+      function parseWeekday(d, string, i) {
+        var n = weekdayRe.exec(string.slice(i));
+        return n ? (d.w = weekdayLookup[n[0].toLowerCase()], i + n[0].length) : -1;
+      }
+
+      function parseShortMonth(d, string, i) {
+        var n = shortMonthRe.exec(string.slice(i));
+        return n ? (d.m = shortMonthLookup[n[0].toLowerCase()], i + n[0].length) : -1;
+      }
+
+      function parseMonth(d, string, i) {
+        var n = monthRe.exec(string.slice(i));
+        return n ? (d.m = monthLookup[n[0].toLowerCase()], i + n[0].length) : -1;
+      }
+
+      function parseLocaleDateTime(d, string, i) {
+        return parseSpecifier(d, locale_dateTime, string, i);
+      }
+
+      function parseLocaleDate(d, string, i) {
+        return parseSpecifier(d, locale_date, string, i);
+      }
+
+      function parseLocaleTime(d, string, i) {
+        return parseSpecifier(d, locale_time, string, i);
+      }
+
+      function formatShortWeekday(d) {
+        return locale_shortWeekdays[d.getDay()];
+      }
+
+      function formatWeekday(d) {
+        return locale_weekdays[d.getDay()];
+      }
+
+      function formatShortMonth(d) {
+        return locale_shortMonths[d.getMonth()];
+      }
+
+      function formatMonth(d) {
+        return locale_months[d.getMonth()];
+      }
+
+      function formatPeriod(d) {
+        return locale_periods[+(d.getHours() >= 12)];
+      }
+
+      function formatUTCShortWeekday(d) {
+        return locale_shortWeekdays[d.getUTCDay()];
+      }
+
+      function formatUTCWeekday(d) {
+        return locale_weekdays[d.getUTCDay()];
+      }
+
+      function formatUTCShortMonth(d) {
+        return locale_shortMonths[d.getUTCMonth()];
+      }
+
+      function formatUTCMonth(d) {
+        return locale_months[d.getUTCMonth()];
+      }
+
+      function formatUTCPeriod(d) {
+        return locale_periods[+(d.getUTCHours() >= 12)];
+      }
+
+      return {
+        format: function(specifier) {
+          var f = newFormat(specifier += "", formats);
+          f.toString = function() { return specifier; };
+          return f;
+        },
+        parse: function(specifier) {
+          var p = newParse(specifier += "", localDate);
+          p.toString = function() { return specifier; };
+          return p;
+        },
+        utcFormat: function(specifier) {
+          var f = newFormat(specifier += "", utcFormats);
+          f.toString = function() { return specifier; };
+          return f;
+        },
+        utcParse: function(specifier) {
+          var p = newParse(specifier, utcDate);
+          p.toString = function() { return specifier; };
+          return p;
+        }
+      };
+    }
+
+    var pads = {"-": "", "_": " ", "0": "0"},
+        numberRe = /^\s*\d+/, // note: ignores next directive
+        percentRe = /^%/,
+        requoteRe = /[\\^$*+?|[\]().{}]/g;
+
+    function pad$1(value, fill, width) {
+      var sign = value < 0 ? "-" : "",
+          string = (sign ? -value : value) + "",
+          length = string.length;
+      return sign + (length < width ? new Array(width - length + 1).join(fill) + string : string);
+    }
+
+    function requote(s) {
+      return s.replace(requoteRe, "\\$&");
+    }
+
+    function formatRe(names) {
+      return new RegExp("^(?:" + names.map(requote).join("|") + ")", "i");
+    }
+
+    function formatLookup(names) {
+      var map = {}, i = -1, n = names.length;
+      while (++i < n) map[names[i].toLowerCase()] = i;
+      return map;
+    }
+
+    function parseWeekdayNumberSunday(d, string, i) {
+      var n = numberRe.exec(string.slice(i, i + 1));
+      return n ? (d.w = +n[0], i + n[0].length) : -1;
+    }
+
+    function parseWeekdayNumberMonday(d, string, i) {
+      var n = numberRe.exec(string.slice(i, i + 1));
+      return n ? (d.u = +n[0], i + n[0].length) : -1;
+    }
+
+    function parseWeekNumberSunday(d, string, i) {
+      var n = numberRe.exec(string.slice(i, i + 2));
+      return n ? (d.U = +n[0], i + n[0].length) : -1;
+    }
+
+    function parseWeekNumberISO(d, string, i) {
+      var n = numberRe.exec(string.slice(i, i + 2));
+      return n ? (d.V = +n[0], i + n[0].length) : -1;
+    }
+
+    function parseWeekNumberMonday(d, string, i) {
+      var n = numberRe.exec(string.slice(i, i + 2));
+      return n ? (d.W = +n[0], i + n[0].length) : -1;
+    }
+
+    function parseFullYear(d, string, i) {
+      var n = numberRe.exec(string.slice(i, i + 4));
+      return n ? (d.y = +n[0], i + n[0].length) : -1;
+    }
+
+    function parseYear(d, string, i) {
+      var n = numberRe.exec(string.slice(i, i + 2));
+      return n ? (d.y = +n[0] + (+n[0] > 68 ? 1900 : 2000), i + n[0].length) : -1;
+    }
+
+    function parseZone(d, string, i) {
+      var n = /^(Z)|([+-]\d\d)(?::?(\d\d))?/.exec(string.slice(i, i + 6));
+      return n ? (d.Z = n[1] ? 0 : -(n[2] + (n[3] || "00")), i + n[0].length) : -1;
+    }
+
+    function parseMonthNumber(d, string, i) {
+      var n = numberRe.exec(string.slice(i, i + 2));
+      return n ? (d.m = n[0] - 1, i + n[0].length) : -1;
+    }
+
+    function parseDayOfMonth(d, string, i) {
+      var n = numberRe.exec(string.slice(i, i + 2));
+      return n ? (d.d = +n[0], i + n[0].length) : -1;
+    }
+
+    function parseDayOfYear(d, string, i) {
+      var n = numberRe.exec(string.slice(i, i + 3));
+      return n ? (d.m = 0, d.d = +n[0], i + n[0].length) : -1;
+    }
+
+    function parseHour24(d, string, i) {
+      var n = numberRe.exec(string.slice(i, i + 2));
+      return n ? (d.H = +n[0], i + n[0].length) : -1;
+    }
+
+    function parseMinutes(d, string, i) {
+      var n = numberRe.exec(string.slice(i, i + 2));
+      return n ? (d.M = +n[0], i + n[0].length) : -1;
+    }
+
+    function parseSeconds(d, string, i) {
+      var n = numberRe.exec(string.slice(i, i + 2));
+      return n ? (d.S = +n[0], i + n[0].length) : -1;
+    }
+
+    function parseMilliseconds(d, string, i) {
+      var n = numberRe.exec(string.slice(i, i + 3));
+      return n ? (d.L = +n[0], i + n[0].length) : -1;
+    }
+
+    function parseMicroseconds(d, string, i) {
+      var n = numberRe.exec(string.slice(i, i + 6));
+      return n ? (d.L = Math.floor(n[0] / 1000), i + n[0].length) : -1;
+    }
+
+    function parseLiteralPercent(d, string, i) {
+      var n = percentRe.exec(string.slice(i, i + 1));
+      return n ? i + n[0].length : -1;
+    }
+
+    function parseUnixTimestamp(d, string, i) {
+      var n = numberRe.exec(string.slice(i));
+      return n ? (d.Q = +n[0], i + n[0].length) : -1;
+    }
+
+    function parseUnixTimestampSeconds(d, string, i) {
+      var n = numberRe.exec(string.slice(i));
+      return n ? (d.Q = (+n[0]) * 1000, i + n[0].length) : -1;
+    }
+
+    function formatDayOfMonth(d, p) {
+      return pad$1(d.getDate(), p, 2);
+    }
+
+    function formatHour24(d, p) {
+      return pad$1(d.getHours(), p, 2);
+    }
+
+    function formatHour12(d, p) {
+      return pad$1(d.getHours() % 12 || 12, p, 2);
+    }
+
+    function formatDayOfYear(d, p) {
+      return pad$1(1 + day.count(year(d), d), p, 3);
+    }
+
+    function formatMilliseconds(d, p) {
+      return pad$1(d.getMilliseconds(), p, 3);
+    }
+
+    function formatMicroseconds(d, p) {
+      return formatMilliseconds(d, p) + "000";
+    }
+
+    function formatMonthNumber(d, p) {
+      return pad$1(d.getMonth() + 1, p, 2);
+    }
+
+    function formatMinutes(d, p) {
+      return pad$1(d.getMinutes(), p, 2);
+    }
+
+    function formatSeconds(d, p) {
+      return pad$1(d.getSeconds(), p, 2);
+    }
+
+    function formatWeekdayNumberMonday(d) {
+      var day = d.getDay();
+      return day === 0 ? 7 : day;
+    }
+
+    function formatWeekNumberSunday(d, p) {
+      return pad$1(sunday.count(year(d), d), p, 2);
+    }
+
+    function formatWeekNumberISO(d, p) {
+      var day = d.getDay();
+      d = (day >= 4 || day === 0) ? thursday(d) : thursday.ceil(d);
+      return pad$1(thursday.count(year(d), d) + (year(d).getDay() === 4), p, 2);
+    }
+
+    function formatWeekdayNumberSunday(d) {
+      return d.getDay();
+    }
+
+    function formatWeekNumberMonday(d, p) {
+      return pad$1(monday.count(year(d), d), p, 2);
+    }
+
+    function formatYear$1(d, p) {
+      return pad$1(d.getFullYear() % 100, p, 2);
+    }
+
+    function formatFullYear(d, p) {
+      return pad$1(d.getFullYear() % 10000, p, 4);
+    }
+
+    function formatZone(d) {
+      var z = d.getTimezoneOffset();
+      return (z > 0 ? "-" : (z *= -1, "+"))
+          + pad$1(z / 60 | 0, "0", 2)
+          + pad$1(z % 60, "0", 2);
+    }
+
+    function formatUTCDayOfMonth(d, p) {
+      return pad$1(d.getUTCDate(), p, 2);
+    }
+
+    function formatUTCHour24(d, p) {
+      return pad$1(d.getUTCHours(), p, 2);
+    }
+
+    function formatUTCHour12(d, p) {
+      return pad$1(d.getUTCHours() % 12 || 12, p, 2);
+    }
+
+    function formatUTCDayOfYear(d, p) {
+      return pad$1(1 + utcDay.count(utcYear(d), d), p, 3);
+    }
+
+    function formatUTCMilliseconds(d, p) {
+      return pad$1(d.getUTCMilliseconds(), p, 3);
+    }
+
+    function formatUTCMicroseconds(d, p) {
+      return formatUTCMilliseconds(d, p) + "000";
+    }
+
+    function formatUTCMonthNumber(d, p) {
+      return pad$1(d.getUTCMonth() + 1, p, 2);
+    }
+
+    function formatUTCMinutes(d, p) {
+      return pad$1(d.getUTCMinutes(), p, 2);
+    }
+
+    function formatUTCSeconds(d, p) {
+      return pad$1(d.getUTCSeconds(), p, 2);
+    }
+
+    function formatUTCWeekdayNumberMonday(d) {
+      var dow = d.getUTCDay();
+      return dow === 0 ? 7 : dow;
+    }
+
+    function formatUTCWeekNumberSunday(d, p) {
+      return pad$1(utcSunday.count(utcYear(d), d), p, 2);
+    }
+
+    function formatUTCWeekNumberISO(d, p) {
+      var day = d.getUTCDay();
+      d = (day >= 4 || day === 0) ? utcThursday(d) : utcThursday.ceil(d);
+      return pad$1(utcThursday.count(utcYear(d), d) + (utcYear(d).getUTCDay() === 4), p, 2);
+    }
+
+    function formatUTCWeekdayNumberSunday(d) {
+      return d.getUTCDay();
+    }
+
+    function formatUTCWeekNumberMonday(d, p) {
+      return pad$1(utcMonday.count(utcYear(d), d), p, 2);
+    }
+
+    function formatUTCYear(d, p) {
+      return pad$1(d.getUTCFullYear() % 100, p, 2);
+    }
+
+    function formatUTCFullYear(d, p) {
+      return pad$1(d.getUTCFullYear() % 10000, p, 4);
+    }
+
+    function formatUTCZone() {
+      return "+0000";
+    }
+
+    function formatLiteralPercent() {
+      return "%";
+    }
+
+    function formatUnixTimestamp(d) {
+      return +d;
+    }
+
+    function formatUnixTimestampSeconds(d) {
+      return Math.floor(+d / 1000);
+    }
+
+    var locale$1;
+    var timeFormat;
+    var timeParse;
+    var utcFormat;
+    var utcParse;
+
+    defaultLocale$1({
+      dateTime: "%x, %X",
+      date: "%-m/%-d/%Y",
+      time: "%-I:%M:%S %p",
+      periods: ["AM", "PM"],
+      days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      shortDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+      months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    });
+
+    function defaultLocale$1(definition) {
+      locale$1 = formatLocale$1(definition);
+      timeFormat = locale$1.format;
+      timeParse = locale$1.parse;
+      utcFormat = locale$1.utcFormat;
+      utcParse = locale$1.utcParse;
+      return locale$1;
+    }
+
+    var isoSpecifier = "%Y-%m-%dT%H:%M:%S.%LZ";
+
+    function formatIsoNative(date) {
+      return date.toISOString();
+    }
+
+    var formatIso = Date.prototype.toISOString
+        ? formatIsoNative
+        : utcFormat(isoSpecifier);
+
+    function parseIsoNative(string) {
+      var date = new Date(string);
+      return isNaN(date) ? null : date;
+    }
+
+    var parseIso = +new Date("2000-01-01T00:00:00.000Z")
+        ? parseIsoNative
+        : utcParse(isoSpecifier);
+
+    var durationSecond$1 = 1000,
+        durationMinute$1 = durationSecond$1 * 60,
+        durationHour$1 = durationMinute$1 * 60,
+        durationDay$1 = durationHour$1 * 24,
+        durationWeek$1 = durationDay$1 * 7,
+        durationMonth = durationDay$1 * 30,
+        durationYear = durationDay$1 * 365;
+
+    function date$1(t) {
+      return new Date(t);
+    }
+
+    function number$2(t) {
+      return t instanceof Date ? +t : +new Date(+t);
+    }
+
+    function calendar(year, month, week, day, hour, minute, second, millisecond, format) {
+      var scale = continuous(identity$3, identity$3),
+          invert = scale.invert,
+          domain = scale.domain;
+
+      var formatMillisecond = format(".%L"),
+          formatSecond = format(":%S"),
+          formatMinute = format("%I:%M"),
+          formatHour = format("%I %p"),
+          formatDay = format("%a %d"),
+          formatWeek = format("%b %d"),
+          formatMonth = format("%B"),
+          formatYear = format("%Y");
+
+      var tickIntervals = [
+        [second,  1,      durationSecond$1],
+        [second,  5,  5 * durationSecond$1],
+        [second, 15, 15 * durationSecond$1],
+        [second, 30, 30 * durationSecond$1],
+        [minute,  1,      durationMinute$1],
+        [minute,  5,  5 * durationMinute$1],
+        [minute, 15, 15 * durationMinute$1],
+        [minute, 30, 30 * durationMinute$1],
+        [  hour,  1,      durationHour$1  ],
+        [  hour,  3,  3 * durationHour$1  ],
+        [  hour,  6,  6 * durationHour$1  ],
+        [  hour, 12, 12 * durationHour$1  ],
+        [   day,  1,      durationDay$1   ],
+        [   day,  2,  2 * durationDay$1   ],
+        [  week,  1,      durationWeek$1  ],
+        [ month,  1,      durationMonth ],
+        [ month,  3,  3 * durationMonth ],
+        [  year,  1,      durationYear  ]
+      ];
+
+      function tickFormat(date) {
+        return (second(date) < date ? formatMillisecond
+            : minute(date) < date ? formatSecond
+            : hour(date) < date ? formatMinute
+            : day(date) < date ? formatHour
+            : month(date) < date ? (week(date) < date ? formatDay : formatWeek)
+            : year(date) < date ? formatMonth
+            : formatYear)(date);
+      }
+
+      function tickInterval(interval, start, stop, step) {
+        if (interval == null) interval = 10;
+
+        // If a desired tick count is specified, pick a reasonable tick interval
+        // based on the extent of the domain and a rough estimate of tick size.
+        // Otherwise, assume interval is already a time interval and use it.
+        if (typeof interval === "number") {
+          var target = Math.abs(stop - start) / interval,
+              i = bisector(function(i) { return i[2]; }).right(tickIntervals, target);
+          if (i === tickIntervals.length) {
+            step = tickStep(start / durationYear, stop / durationYear, interval);
+            interval = year;
+          } else if (i) {
+            i = tickIntervals[target / tickIntervals[i - 1][2] < tickIntervals[i][2] / target ? i - 1 : i];
+            step = i[1];
+            interval = i[0];
+          } else {
+            step = Math.max(tickStep(start, stop, interval), 1);
+            interval = millisecond;
+          }
+        }
+
+        return step == null ? interval : interval.every(step);
+      }
+
+      scale.invert = function(y) {
+        return new Date(invert(y));
+      };
+
+      scale.domain = function(_) {
+        return arguments.length ? domain(map$2.call(_, number$2)) : domain().map(date$1);
+      };
+
+      scale.ticks = function(interval, step) {
+        var d = domain(),
+            t0 = d[0],
+            t1 = d[d.length - 1],
+            r = t1 < t0,
+            t;
+        if (r) t = t0, t0 = t1, t1 = t;
+        t = tickInterval(interval, t0, t1, step);
+        t = t ? t.range(t0, t1 + 1) : []; // inclusive stop
+        return r ? t.reverse() : t;
+      };
+
+      scale.tickFormat = function(count, specifier) {
+        return specifier == null ? tickFormat : format(specifier);
+      };
+
+      scale.nice = function(interval, step) {
+        var d = domain();
+        return (interval = tickInterval(interval, d[0], d[d.length - 1], step))
+            ? domain(nice(d, interval))
+            : scale;
+      };
+
+      scale.copy = function() {
+        return copy(scale, calendar(year, month, week, day, hour, minute, second, millisecond, format));
+      };
+
+      return scale;
+    }
+
+    function time() {
+      return initRange.apply(calendar(year, month, sunday, day, hour, minute, second, millisecond, timeFormat).domain([new Date(2000, 0, 1), new Date(2000, 0, 2)]), arguments);
+    }
+
+    function sign(x) {
+      return x < 0 ? -1 : 1;
+    }
+
+    // Calculate the slopes of the tangents (Hermite-type interpolation) based on
+    // the following paper: Steffen, M. 1990. A Simple Method for Monotonic
+    // Interpolation in One Dimension. Astronomy and Astrophysics, Vol. 239, NO.
+    // NOV(II), P. 443, 1990.
+    function slope3(that, x2, y2) {
+      var h0 = that._x1 - that._x0,
+          h1 = x2 - that._x1,
+          s0 = (that._y1 - that._y0) / (h0 || h1 < 0 && -0),
+          s1 = (y2 - that._y1) / (h1 || h0 < 0 && -0),
+          p = (s0 * h1 + s1 * h0) / (h0 + h1);
+      return (sign(s0) + sign(s1)) * Math.min(Math.abs(s0), Math.abs(s1), 0.5 * Math.abs(p)) || 0;
+    }
+
+    // Calculate a one-sided slope.
+    function slope2(that, t) {
+      var h = that._x1 - that._x0;
+      return h ? (3 * (that._y1 - that._y0) / h - t) / 2 : t;
+    }
+
+    // According to https://en.wikipedia.org/wiki/Cubic_Hermite_spline#Representations
+    // "you can express cubic Hermite interpolation in terms of cubic Bézier curves
+    // with respect to the four values p0, p0 + m0 / 3, p1 - m1 / 3, p1".
+    function point$1(that, t0, t1) {
+      var x0 = that._x0,
+          y0 = that._y0,
+          x1 = that._x1,
+          y1 = that._y1,
+          dx = (x1 - x0) / 3;
+      that._context.bezierCurveTo(x0 + dx, y0 + dx * t0, x1 - dx, y1 - dx * t1, x1, y1);
+    }
+
+    function MonotoneX(context) {
+      this._context = context;
+    }
+
+    MonotoneX.prototype = {
+      areaStart: function() {
+        this._line = 0;
+      },
+      areaEnd: function() {
+        this._line = NaN;
+      },
+      lineStart: function() {
+        this._x0 = this._x1 =
+        this._y0 = this._y1 =
+        this._t0 = NaN;
+        this._point = 0;
+      },
+      lineEnd: function() {
+        switch (this._point) {
+          case 2: this._context.lineTo(this._x1, this._y1); break;
+          case 3: point$1(this, this._t0, slope2(this, this._t0)); break;
+        }
+        if (this._line || (this._line !== 0 && this._point === 1)) this._context.closePath();
+        this._line = 1 - this._line;
+      },
+      point: function(x, y) {
+        var t1 = NaN;
+
+        x = +x, y = +y;
+        if (x === this._x1 && y === this._y1) return; // Ignore coincident points.
+        switch (this._point) {
+          case 0: this._point = 1; this._line ? this._context.lineTo(x, y) : this._context.moveTo(x, y); break;
+          case 1: this._point = 2; break;
+          case 2: this._point = 3; point$1(this, slope2(this, t1 = slope3(this, x, y)), t1); break;
+          default: point$1(this, this._t0, t1 = slope3(this, x, y)); break;
+        }
+
+        this._x0 = this._x1, this._x1 = x;
+        this._y0 = this._y1, this._y1 = y;
+        this._t0 = t1;
+      }
+    };
+
+    function MonotoneY(context) {
+      this._context = new ReflectContext(context);
+    }
+
+    (MonotoneY.prototype = Object.create(MonotoneX.prototype)).point = function(x, y) {
+      MonotoneX.prototype.point.call(this, y, x);
+    };
+
+    function ReflectContext(context) {
+      this._context = context;
+    }
+
+    ReflectContext.prototype = {
+      moveTo: function(x, y) { this._context.moveTo(y, x); },
+      closePath: function() { this._context.closePath(); },
+      lineTo: function(x, y) { this._context.lineTo(y, x); },
+      bezierCurveTo: function(x1, y1, x2, y2, x, y) { this._context.bezierCurveTo(y1, x1, y2, x2, y, x); }
+    };
+
+    var patchInfo = {"2.48.1":{date:"2019-09-25",type:"hotfix"},"2.48.0":{date:"2019-09-24",type:"patch"},"2.47.3":{date:"2019-09-05",type:"hotfix"},"2.47.2":{date:"2019-08-28",type:"balance"},"2.47.1":{date:"2019-08-14",type:"hotfix"},"2.47.0":{date:"2019-08-06",type:"hero",hero:"qhira"},"2.46.1":{date:"2019-07-10",type:"balance"},"2.46.0":{date:"2019-06-18",type:"patch"},"2.45.1":{date:"2019-05-22",type:"balance"},"2.45.0":{date:"2019-04-30",type:"hero",hero:"anduin"},"2.44.1":{date:"2019-04-17",type:"balance"},"2.44.0":{date:"2019-03-26",type:"patch"},"2.43.3":{date:"2019-03-07",type:"hotfix"},"2.43.2":{date:"2019-02-27",type:"balance"},"2.43.1":{date:"2019-02-15",type:"hotfix"},"2.43.0":{date:"2019-02-12",type:"patch"},"2.42.2":{date:"2019-01-31",type:"hotfix"},"2.42.1":{date:"2019-01-23",type:"balance"},"2.42.0":{date:"2019-01-08",type:"hero",hero:"imperius"},"2.41.2":{date:"2018-12-19",type:"balance"},"2.41.1":{date:"2018-12-13",type:"hotfix"},"2.41.0":{date:"2018-12-11",type:"patch"},"2.40.1":{date:"2018-11-28",type:"balance"},"2.40.0":{date:"2018-11-13",type:"hero",hero:"orphea"},"2.39.2":{date:"2018-10-31",type:"balance"},"2.39.1":{date:"2018-10-26",type:"hotfix"},"2.39.0":{date:"2018-10-16",type:"hero",hero:"malganis"},"2.38.3":{date:"2018-10-11",type:"hotfix"},"2.38.2":{date:"2018-10-10",type:"balance"},"2.38.1":{date:"2018-09-26",type:"hotfix"},"2.38.0":{date:"2018-09-25",type:"patch"},"2.37.1":{date:"2018-09-19",type:"balance"},"2.37.0":{date:"2018-09-04",type:"hero",hero:"mephisto"},"2.36.2":{date:"2018-08-22",type:"balance"},"2.36.1":{date:"2018-08-16",type:"hotfix"},"2.36.0":{date:"2018-08-07",type:"hero",hero:"whitemane"},"2.35.2":{date:"2018-07-27",type:"hotfix"},"2.35.1":{date:"2018-07-25",type:"balance"},"2.35.0":{date:"2018-07-10",type:"patch"},"2.34.3":{date:"2018-06-27",type:"balance"},"2.34.2":{date:"2018-06-15",type:"hotfix"},"2.34.1":{date:"2018-06-12",type:"hotfix"},"2.34.0":{date:"2018-06-12",type:"hero",hero:"yrel"},"2.33.1":{date:"2018-06-06",type:"balance"},"2.33.0":{date:"2018-05-22",type:"patch"},"2.32.3":{date:"2018-05-10",type:"hotfix"},"2.32.2":{date:"2018-05-09",type:"balance"},"2.32.1":{date:"2018-05-01",type:"hotfix"},"2.32.0":{date:"2018-04-24",type:"hero",hero:"deckard"},"2.31.3":{date:"2018-04-12",type:"hotfix"},"2.31.2":{date:"2018-04-11",type:"balance"},"2.31.1":{date:"2018-03-30",type:"hotfix"},"2.31.0":{date:"2018-03-27",type:"hero",hero:"fenix"},"2.30.6":{date:"2018-03-21",type:"balance"},"2.30.5":{date:"2018-03-09",type:"hotfix"},"2.30.4":{date:"2018-03-06",type:"patch"},"2.30.3":{date:"2018-02-21",type:"balance"},"2.30.2":{date:"2018-02-14",type:"hotfix"},"2.30.1":{date:"2018-02-09",type:"balance"},"2.30.0":{date:"2018-02-06",type:"hero",hero:"maiev"},"2.29.9":{date:"2018-01-24",type:"balance"},"2.29.8":{date:"2018-01-16",type:"patch"},"2.29.7":{date:"2018-01-09",type:"hero",hero:"blaze"},"2.29.6":{date:"2017-12-22",type:"hotfix"},"2.29.5":{date:"2017-12-20",type:"balance"},"2.29.4":{date:"2017-12-13",type:"hotfix"},"2.29.3":{date:"2017-12-12",type:"hero",hero:"hanzo"},"2.29.2":{date:"2017-11-29",type:"balance"},"2.29.1":{date:"2017-11-22",type:"hotfix"},"2.29.0":{date:"2017-11-14",type:"hero",hero:"alexstrasza"},"2.28.5":{date:"2017-11-01",type:"balance"},"2.28.4":{date:"2017-10-25",type:"hotfix"},"2.28.3":{date:"2017-10-17",type:"hero",hero:"junkrat"},"2.28.2":{date:"2017-10-11",type:"balance"},"2.28.1":{date:"2017-10-02",type:"hotfix"},"2.28.0":{date:"2017-09-26",type:"hero",hero:"ana"},"2.27.5":{date:"2017-09-20",type:"balance"},"2.27.4":{date:"2017-09-08",type:"hotfix"},"2.27.3":{date:"2017-09-05",type:"hero",hero:"kelthuzad"},"2.27.2":{date:"2017-08-23",type:"balance"},"2.27.1":{date:"2017-08-11",type:"hotfix"},"2.27.0":{date:"2017-08-08",type:"hero",hero:"garrosh"},"2.26.4":{date:"2017-07-26",type:"balance"},"2.26.3":{date:"2017-07-11",type:"hero",hero:"stukov"},"2.26.2":{date:"2017-06-28",type:"hotfix"},"2.26.1":{date:"2017-06-28",type:"balance"},"2.26.0":{date:"2017-06-13",type:"hero",hero:"malthael"},"2.25.5":{date:"2017-05-31",type:"balance"},"2.25.4":{date:"2017-05-16",type:"hero",hero:"dva"},"2.25.3":{date:"2017-05-10",type:"balance"},"2.25.2":{date:"2017-05-04",type:"hotfix"},"2.25.1":{date:"2017-04-28",type:"hotfix"},"2.25.0":{date:"2017-04-25",type:"hero",hero:"genji"},"0.24.6":{date:"2017-04-20",type:"balance"},"0.24.5":{date:"2017-04-12",type:"hotfix"},"0.24.4":{date:"2017-04-04",type:"hero",hero:"cassia"},"0.24.3":{date:"2017-03-30",type:"hotfix"},"0.24.2":{date:"2017-03-28",type:"balance"},"0.24.1":{date:"2017-03-22",type:"hotfix"},"0.24.0":{date:"2017-03-14",type:"hero",hero:"probius"},"0.23.5":{date:"2017-02-27",type:"balance"},"0.23.4":{date:"2017-02-17",type:"hotfix"},"0.23.3":{date:"2017-02-14",type:"hero",hero:"lucio"},"0.23.2":{date:"2017-02-08",type:"hotfix"},"0.23.1":{date:"2017-01-27",type:"balance"},"0.23.0":{date:"2017-01-24",type:"hero",hero:"valeera"},"0.22.7":{date:"2017-01-12",type:"hotfix"},"0.22.6":{date:"2017-01-06",type:"balance"},"0.22.5":{date:"2017-01-04",type:"hero",hero:"zuljin"},"0.22.4":{date:"2016-12-20",type:"balance"},"0.22.3":{date:"2016-12-14",type:"hero",hero:"ragnaros"},"0.22.2":{date:"2016-12-06",type:"balance"},"0.22.1":{date:"2016-11-22",type:"hotfix"},"0.22.0":{date:"2016-11-15",type:"hero",hero:"varian"},"0.21.2":{date:"2016-11-10",type:"balance"},"0.21.1":{date:"2016-10-25",type:"balance"},"0.21.0":{date:"2016-10-18",type:"hero",hero:"samuro"},"0.20.6":{date:"2016-10-12",type:"balance"},"0.20.4":{date:"2016-09-30",type:"hotfix"},"0.20.3":{date:"2016-09-29",type:"hotfix"},"0.20.2":{date:"2016-09-27",type:"hero",hero:"zarya"},"0.20.1":{date:"2016-09-20",type:"hotfix"},"0.20.0":{date:"2016-09-13",type:"hero",hero:"alarak"},"0.19.5":{date:"2016-08-24",type:"balance"},"0.19.4":{date:"2016-08-09",type:"hero",hero:"auriel"},"0.19.3":{date:"2016-07-27",type:"balance"},"0.19.2":{date:"2016-07-21",type:"hotfix"},"0.19.1":{date:"2016-07-20",type:"hotfix"},"0.19.0":{date:"2016-07-12",type:"hero","hero:":"guldan"},"0.18.6":{date:"2016-06-29",type:"balance"},"0.18.5":{date:"2016-06-21",type:"balance"}};
+
+    // based on https://bl.ocks.org/officeofjane/47d2b0bfeecfcb41d2212d06d095c763
+
+    const patches = Object.keys(patchInfo).sort((a, b) => new Date(patchInfo[b].date) - new Date(patchInfo[a].date));
+    const dates = patches.map(p => new Date(patchInfo[p].date));
+
+    const getPatchBeDate = (date) => {
+      const result = patches.find((p) => {
+        const patchDate = new Date(patchInfo[p].date);
+        if (date >= patchDate) {
+          return true
+        }
+      });
+      return result || patches[patches.length - 1]
+    };
+
+    const dateSlider = (g, width, tDuration, onChange) => {
+      const formatDate = timeFormat('%b %Y');
+      const formatDateYear = timeFormat('%Y');
+
+      let currentValue = 0;
+      const slider = g
+        .attr('class', 'slider');
+
+      const startDate = min(dates);
+      const endDate = max(dates);
+
+      const x = time()
+        .domain([startDate, endDate])
+        .range([0, width])
+        .clamp(true);
+
+      slider.append('line')
+        .attr('class', 'track')
+        .attr('x1', x.range()[0])
+        .attr('x2', x.range()[1])
+        .select(function () { return this.parentNode.appendChild(this.cloneNode(true)) })
+        .attr('class', 'track-inset')
+        .select(function () { return this.parentNode.appendChild(this.cloneNode(true)) })
+        .attr('class', 'track-overlay')
+        .call(drag()
+          .on('start.interrupt', function () { slider.interrupt(); })
+          .on('start drag', function () {
+            currentValue = event.x;
+            update(x.invert(currentValue), false);
+            onChange && onChange(getPatchBeDate(x.invert(currentValue)));
+          })
+        );
+
+      slider.insert('g', '.track-overlay')
+        .attr('class', 'ticks')
+        .attr('transform', 'translate(0,18)')
+        .selectAll('text')
+        .data(x.ticks(5))
+        .enter()
+        .append('text')
+        .attr('x', x)
+        .attr('y', 10)
+        .attr('text-anchor', 'middle')
+        .text((d) => formatDateYear(d));
+
+      const handle = slider.insert('circle', '.track-overlay')
+        .attr('class', 'handle')
+        .attr('r', 9);
+
+      const label = slider.append('text')
+        .attr('class', 'label')
+        .attr('text-anchor', 'middle')
+        .text(formatDate(startDate))
+        .attr('transform', 'translate(0, -18)');
+
+      function update (h, withTransition = true) {
+        const _h = withTransition ? handle.transition().duration(tDuration) : handle.interrupt();
+        _h.attr('cx', x(h));
+        const _l = withTransition ? label.transition().duration(tDuration) : label.interrupt();
+        _l
+          .attr('cx', x(h))
+          .attr('x', x(h))
+          .text(formatDate(h));
+      }
+
+      return update
+    };
+
+    const margin = {
+      top: 10, right: 30, bottom: 130, left: 50
+    };
+    const getHeroColor = (n) => `hsl(${(n - 71) * 3.6}, 30%, 90%)`;
+
+    class DoubleBarsHeroesChart {
+      constructor ({ data, xValue, x2Value, onPlayingEnd, xInterpolate, xFormat }) {
+        this.data = data;
+
+        this.xValue = xValue;
+        this.x2Value = x2Value;
+        this.yValue = (d) => d.name;
+
+        this.format = xFormat || format('.3');
+        this.interpolate = xInterpolate || interpolateRound;
+
+        this.dataOffset = 0;
+        this.tDuration = 1000;
+        this.tEase = sinOut;
+        this.isPlaying = true;
+        this.onPlayingEnd = onPlayingEnd;
+        this.isReversed = true;
+      }
+
+      mount () {
+        this.svg = select('svg.chartContainer');
+        const [width, height] = this.svg.attr('viewBox').split(' ').slice(2);
+        this.innerWidth = width - margin.left - margin.right;
+        this.innerHeight = height - margin.top - margin.bottom;
+
+        this.g = this.svg.append('g')
+          .attr('transform', `translate(${margin.left},${margin.top})`);
+        this.g.append('g').attr('class', 'xAxis').attr('transform', `translate(0, ${this.innerHeight})`);
+        this.g.append('g').attr('class', 'x2Axis').attr('transform', `translate(0, ${this.innerHeight + 30})`);
+
+        const sliderG = this.g.append('g')
+          .attr('transform', `translate(0, ${this.innerHeight + 85})`);
+        this.updateDateSlider = dateSlider(sliderG, this.innerWidth, this.tDuration, (v) => this.onDateSliderChange(v));
+      }
+
+      update ({ data, xDomain, x2Domain, isPlaying = true, isReversed = false }) {
+        if (data) this.data = data;
+        if (xDomain) {
+          this.xDomain = xDomain;
+          this.xScale = this.getXScale();
+        }
+        if (x2Domain) {
+          this.x2Domain = x2Domain;
+          this.x2Scale = this.getX2Scale();
+        }
+        this.isPlaying = isPlaying;
+        this.isReversed = isReversed;
+
+        this.xScale = this.getXScale();
+        this.x2Scale = this.getX2Scale();
+        const xAxis = axisBottom(this.xScale).tickFormat(n => `${n}%`);
+        const x2Axis = axisBottom(this.x2Scale).tickFormat(n => `${n}%`).ticks(2);
+
+        this.g.select('.xAxis').transition().call(xAxis);
+        this.g.select('.x2Axis').call(x2Axis);
+
+        this.render();
+        this.runInterval();
+      }
+
+      runInterval () {
+        this.clearInterval();
+        this.interval = interval$1(() => {
+          if (!this.isPlaying) {
+            this.clearInterval();
+            return
+          }
+          this.dataOffset += 1;
+          if (this.dataOffset >= this.data.length) {
+            this.clearInterval();
+            this.dataOffset = this.data.length - 1;
+            this.onPlayingEnd && this.onPlayingEnd();
+          } else {
+            this.render();
+            const v = this.data[this.dataOffset].version;
+            const date = patchInfo[v] && patchInfo[v].date && new Date(patchInfo[v].date);
+            if (date) { this.updateDateSlider(date); }
+          }
+        }, 2700);
+      }
+
+      clearInterval () {
+        this.interval && this.interval.stop();
+      }
+
+      onDateSliderChange (ver) {
+        if (!this.data) return
+        const idx = this.data.findIndex(d => ver <= d.version);
+        this.dataOffset = idx !== -1 ? idx : this.data.length - 1;
+        if (this.dataOffset < this.data.length) { this.render(false); } else { this.clearInterval(); }
+      }
+
+      getXScale () {
+        return linear$1()
+          .domain(this.xDomain)
+          .range([0, this.innerWidth])
+          .nice()
+      }
+
+      getX2Scale () {
+        return linear$1()
+          .domain(this.x2Domain)
+          .range([0, this.innerWidth / 2])
+          .nice()
+      }
+
+      render (withTransitions = true) {
+        const patchData = this.data && this.data[this.dataOffset];
+        if (!patchData) return
+        const { version, data: heroData } = patchData;
+        this.yScale = band()
+          .domain(heroData.map(this.yValue))
+          .range([0, this.innerHeight])
+          .padding(0.2);
+
+        const barRect = this.g.selectAll('rect.bar').data(heroData, this.yValue);
+        const bar2Rect = this.g.selectAll('rect.subbar').data(heroData, this.yValue);
+        const barName = this.g.selectAll('text.barName').data(heroData, this.yValue);
+        const barValue = this.g.selectAll('text.barValue').data(heroData, this.yValue);
+        const bar2Value = this.g.selectAll('text.bar2Value').data(heroData, this.yValue);
+        const images = this.g.selectAll('image.barImg').data(heroData, this.yValue);
+
+        const yStart = this.isReversed ? -10 : this.innerHeight;
+        const widthStart = this.isReversed ? this.innerWidth * 0.70 : 0;
+
+        const onExit = (exitSelection) => {
+          if (withTransitions) {
+            exitSelection
+              .transition().duration(this.tDuration * 0.70).ease(this.tEase)
+              .attr('y', yStart)
+              .remove();
+          } else {
+            exitSelection.remove();
+          }
+        };
+        barRect.exit().call(onExit);
+        bar2Rect.exit().call(onExit);
+        barName.exit().remove();
+        barValue.exit().remove();
+        bar2Value.exit().remove();
+
+        bar2Rect.enter()
+          .append('rect')
+          .attr('class', 'subbar')
+          .attr('stroke', 'grey')
+          .style('fill', (d) => 'white')
+          .attr('y', yStart)
+          .attr('width', widthStart / 2)
+          .merge(bar2Rect)
+          .attr('height', this.yScale.bandwidth() / 3)
+          .call((selection) => {
+            if (withTransitions) {
+              selection = selection.transition().duration(this.tDuration).ease(this.tEase);
+            } else {
+              selection = selection.interrupt();
+            }
+            selection
+              .attr('y', (d) => this.yScale(this.yValue(d)) + this.yScale.bandwidth() * 0.66)
+              .attr('width', (d) => this.x2Scale(this.x2Value(d)));
+          });
+
+        barRect.enter()
+          .append('rect')
+          .attr('class', 'bar')
+          .attr('stroke', 'black')
+          .style('fill', (d) => `${getHeroColor(d.id)}`)
+          .attr('y', yStart)
+          .attr('width', widthStart)
+          .merge(barRect)
+          .attr('height', this.yScale.bandwidth() * 0.66)
+          .call((selection) => {
+            if (withTransitions) {
+              selection = selection.transition().duration(this.tDuration).ease(this.tEase);
+            } else {
+              selection = selection.interrupt();
+            }
+            selection
+              .attr('y', (d) => this.yScale(this.yValue(d)))
+              .attr('width', (d) => this.xScale(this.xValue(d)));
+          });
+
+        barName.enter().append('text')
+          .attr('class', 'barName')
+          .attr('text-anchor', 'end')
+          .attr('dominant-baseline', 'central')
+          .style('fill', 'black')
+          .attr('y', yStart)
+          .attr('x', widthStart - 5)
+          .text((d) => this.yValue(d))
+          .merge(barName)
+          .attr('font-size', this.yScale.bandwidth() * 0.4)
+          .call((selection) => {
+            if (withTransitions) {
+              selection = selection.transition().duration(this.tDuration).ease(this.tEase);
+            } else {
+              selection = selection.interrupt();
+            }
+            selection
+              .attr('x', (d) => this.xScale(this.xValue(d)) - 5)
+              .attr('y', (d) => this.yScale(this.yValue(d)) + this.yScale.bandwidth() * 0.33);
+          });
+
+        barValue.enter().append('text')
+          .attr('class', 'barValue')
+          .attr('text-anchor', 'start')
+          .attr('dominant-baseline', 'central')
+          .style('fill', 'black')
+          .attr('y', yStart)
+          .attr('x', widthStart + 5)
+          .merge(barValue)
+          .attr('font-size', this.yScale.bandwidth() * 0.4)
+          .call((selection) => {
+            if (withTransitions) {
+              const { xValue, format, interpolate, isReversed } = this;
+              selection = selection.transition().duration(this.tDuration).ease(this.tEase)
+                .tween('text', function (d) {
+                  const startValue = isReversed ? xValue(d) + 3 : xValue(d) - 3;
+                  const i = interpolate(this.textContent || startValue, xValue(d));
+                  return function (t) { this.textContent = format(i(t)); }
+                });
+            } else { selection = selection.interrupt().text(d => this.format(this.xValue(d))); }
+
+            selection
+              .attr('x', (d) => this.xScale(this.xValue(d)) + 5)
+              .attr('y', (d) => this.yScale(this.yValue(d)) + this.yScale.bandwidth() * 0.33);
+          });
+
+        bar2Value.enter().append('text')
+          .attr('class', 'bar2Value')
+          .attr('text-anchor', 'start')
+          .attr('dominant-baseline', 'central')
+          .style('fill', 'black')
+          .attr('y', yStart)
+          .attr('x', widthStart / 2 + 3)
+          .merge(bar2Value)
+          .attr('font-size', this.yScale.bandwidth() * 0.3)
+          .call((selection) => {
+            if (withTransitions) {
+              const { x2Value } = this;
+              selection = selection.transition().duration(this.tDuration).ease(this.tEase)
+                .tween('text', function (d) {
+                  const i = interpolateRound(this.textContent || x2Value(d), x2Value(d));
+                  return function (t) { this.textContent = format('d')(i(t)); }
+                });
+            } else {
+              selection = selection.interrupt().text((d) => format('d')(this.x2Value(d)));
+            }
+
+            selection
+              .attr('x', (d) => this.x2Scale(this.x2Value(d)) + 3)
+              .attr('y', (d) => this.yScale(this.yValue(d)) + this.yScale.bandwidth() * 0.825);
+          });
+
+        images.enter().append('image')
+          .attr('class', 'barImg')
+          .attr('xlink:href', (d) => `assets/images/${d.shortName}.png`)
+          .attr('y', yStart)
+          .merge(images)
+          .attr('width', this.yScale.bandwidth())
+          .attr('height', this.yScale.bandwidth())
+          .attr('x', -this.yScale.bandwidth())
+          .call((selection) => {
+            if (withTransitions) {
+              selection = selection.transition().duration(this.tDuration).ease(this.tEase);
+            } else {
+              selection = selection.interrupt();
+            }
+            selection.attr('y', (d) => this.yScale(this.yValue(d)));
+          });
+
+        if (withTransitions) {
+          images.exit()
+            .transition().duration(this.tDuration / 2).ease(this.tEase)
+            .attr('y', yStart)
+            .remove();
+        } else {
+          images.exit().remove();
+        }
+
+        this.g.select('text.patchNumber').remove();
+        this.g
+          .append('text')
+          .attr('class', 'patchNumber')
+          .attr('x', this.innerWidth)
+          .attr('y', this.innerHeight - 10)
+          .attr('text-anchor', 'end')
+          .text(d => `Patch: ${version}`);
+      }
+    }
+
+    /* src/components/charts/chart-container.svelte generated by Svelte v3.12.1 */
+
+    const file = "src/components/charts/chart-container.svelte";
+
+    function create_fragment(ctx) {
+    	var svg, svg_viewBox_value;
+
+    	const block = {
+    		c: function create() {
+    			svg = svg_element("svg");
+    			attr_dev(svg, "class", "chartContainer svelte-n05gy9");
+    			attr_dev(svg, "width", ctx.width);
+    			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + ctx.width + " " + ctx.height);
+    			add_location(svg, file, 45, 0, 696);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, svg, anchor);
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (changed.width) {
+    				attr_dev(svg, "width", ctx.width);
+    			}
+
+    			if ((changed.width || changed.height) && svg_viewBox_value !== (svg_viewBox_value = "0 0 " + ctx.width + " " + ctx.height)) {
+    				attr_dev(svg, "viewBox", svg_viewBox_value);
+    			}
+    		},
+
+    		i: noop,
+    		o: noop,
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(svg);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance($$self, $$props, $$invalidate) {
+    	let { width = 600, height = 700 } = $$props;
+
+    	const writable_props = ['width', 'height'];
+    	Object.keys($$props).forEach(key => {
+    		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<Chart_container> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$set = $$props => {
+    		if ('width' in $$props) $$invalidate('width', width = $$props.width);
+    		if ('height' in $$props) $$invalidate('height', height = $$props.height);
+    	};
+
+    	$$self.$capture_state = () => {
+    		return { width, height };
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ('width' in $$props) $$invalidate('width', width = $$props.width);
+    		if ('height' in $$props) $$invalidate('height', height = $$props.height);
+    	};
+
+    	return { width, height };
+    }
+
+    class Chart_container extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance, create_fragment, safe_not_equal, ["width", "height"]);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Chart_container", options, id: create_fragment.name });
+    	}
+
+    	get width() {
+    		throw new Error("<Chart_container>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set width(value) {
+    		throw new Error("<Chart_container>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get height() {
+    		throw new Error("<Chart_container>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set height(value) {
+    		throw new Error("<Chart_container>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
     Licensed under the Apache License, Version 2.0 (the "License"); you may not use
     this file except in compliance with the License. You may obtain a copy of the
@@ -12,163 +6886,57 @@ var app=function(){"use strict";function t(){}function e(t,e){for(const n in e)t
 
     See the Apache Version 2.0 License for specific language governing permissions
     and limitations under the License.
-    ***************************************************************************** */var Ls=function(t,e){return(Ls=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var n in e)e.hasOwnProperty(n)&&(t[n]=e[n])})(t,e)};function Os(t,e){function n(){this.constructor=t}Ls(t,e),t.prototype=null===e?Object.create(e):(n.prototype=e.prototype,new n)}var Ds=function(){return(Ds=Object.assign||function(t){for(var e,n=1,r=arguments.length;n<r;n++)for(var i in e=arguments[n])Object.prototype.hasOwnProperty.call(e,i)&&(t[i]=e[i]);return t}).apply(this,arguments)};function Ps(t,e){var n="function"==typeof Symbol&&t[Symbol.iterator];if(!n)return t;var r,i,a=n.call(t),o=[];try{for(;(void 0===e||e-- >0)&&!(r=a.next()).done;)o.push(r.value)}catch(t){i={error:t}}finally{try{r&&!r.done&&(n=a.return)&&n.call(a)}finally{if(i)throw i.error}}return o}function Hs(){for(var t=[],e=0;e<arguments.length;e++)t=t.concat(Ps(arguments[e]));return t}
-/**
-     * @license
-     * Copyright 2016 Google Inc.
-     *
-     * Permission is hereby granted, free of charge, to any person obtaining a copy
-     * of this software and associated documentation files (the "Software"), to deal
-     * in the Software without restriction, including without limitation the rights
-     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-     * copies of the Software, and to permit persons to whom the Software is
-     * furnished to do so, subject to the following conditions:
-     *
-     * The above copyright notice and this permission notice shall be included in
-     * all copies or substantial portions of the Software.
-     *
-     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-     * THE SOFTWARE.
-     */var Vs,Fs=function(){function t(t){void 0===t&&(t={}),this.adapter_=t}return Object.defineProperty(t,"cssClasses",{get:function(){return{}},enumerable:!0,configurable:!0}),Object.defineProperty(t,"strings",{get:function(){return{}},enumerable:!0,configurable:!0}),Object.defineProperty(t,"numbers",{get:function(){return{}},enumerable:!0,configurable:!0}),Object.defineProperty(t,"defaultAdapter",{get:function(){return{}},enumerable:!0,configurable:!0}),t.prototype.init=function(){},t.prototype.destroy=function(){},t}(),Us=function(){function t(t,e){for(var n=[],r=2;r<arguments.length;r++)n[r-2]=arguments[r];this.root_=t,this.initialize.apply(this,Hs(n)),this.foundation_=void 0===e?this.getDefaultFoundation():e,this.foundation_.init(),this.initialSyncWithDOM()}return t.attachTo=function(e){return new t(e,new Fs({}))},t.prototype.initialize=function(){for(var t=[],e=0;e<arguments.length;e++)t[e]=arguments[e]},t.prototype.getDefaultFoundation=function(){throw new Error("Subclasses must override getDefaultFoundation to return a properly configured foundation class")},t.prototype.initialSyncWithDOM=function(){},t.prototype.destroy=function(){this.foundation_.destroy()},t.prototype.listen=function(t,e,n){this.root_.addEventListener(t,e,n)},t.prototype.unlisten=function(t,e,n){this.root_.removeEventListener(t,e,n)},t.prototype.emit=function(t,e,n){var r;void 0===n&&(n=!1),"function"==typeof CustomEvent?r=new CustomEvent(t,{bubbles:n,detail:e}):(r=document.createEvent("CustomEvent")).initCustomEvent(t,n,!1,e),this.root_.dispatchEvent(r)},t}();
-/**
-     * @license
-     * Copyright 2016 Google Inc.
-     *
-     * Permission is hereby granted, free of charge, to any person obtaining a copy
-     * of this software and associated documentation files (the "Software"), to deal
-     * in the Software without restriction, including without limitation the rights
-     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-     * copies of the Software, and to permit persons to whom the Software is
-     * furnished to do so, subject to the following conditions:
-     *
-     * The above copyright notice and this permission notice shall be included in
-     * all copies or substantial portions of the Software.
-     *
-     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-     * THE SOFTWARE.
-     */function Bs(t,e){if(void 0===t&&(t=window),void 0===e&&(e=!1),void 0===Vs||e){var n=!1;try{t.document.addEventListener("test",(function(){}),{get passive(){return n=!0}})}catch(t){}Vs=n}return!!Vs&&{passive:!0}}
-/**
-     * @license
-     * Copyright 2017 Google Inc.
-     *
-     * Permission is hereby granted, free of charge, to any person obtaining a copy
-     * of this software and associated documentation files (the "Software"), to deal
-     * in the Software without restriction, including without limitation the rights
-     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-     * copies of the Software, and to permit persons to whom the Software is
-     * furnished to do so, subject to the following conditions:
-     *
-     * The above copyright notice and this permission notice shall be included in
-     * all copies or substantial portions of the Software.
-     *
-     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-     * THE SOFTWARE.
-     */var js={ACTIVE:"mdc-slider--active",DISABLED:"mdc-slider--disabled",DISCRETE:"mdc-slider--discrete",FOCUS:"mdc-slider--focus",HAS_TRACK_MARKER:"mdc-slider--display-markers",IN_TRANSIT:"mdc-slider--in-transit",IS_DISCRETE:"mdc-slider--discrete"},zs={ARIA_DISABLED:"aria-disabled",ARIA_VALUEMAX:"aria-valuemax",ARIA_VALUEMIN:"aria-valuemin",ARIA_VALUENOW:"aria-valuenow",CHANGE_EVENT:"MDCSlider:change",INPUT_EVENT:"MDCSlider:input",LAST_TRACK_MARKER_SELECTOR:".mdc-slider__track-marker:last-child",PIN_VALUE_MARKER_SELECTOR:".mdc-slider__pin-value-marker",STEP_DATA_ATTR:"data-step",THUMB_CONTAINER_SELECTOR:".mdc-slider__thumb-container",TRACK_MARKER_CONTAINER_SELECTOR:".mdc-slider__track-marker-container",TRACK_SELECTOR:".mdc-slider__track"},Ws={PAGE_FACTOR:4},Ys={animation:{prefixed:"-webkit-animation",standard:"animation"},transform:{prefixed:"-webkit-transform",standard:"transform"},transition:{prefixed:"-webkit-transition",standard:"transition"}},Ks={animationend:{cssProperty:"animation",prefixed:"webkitAnimationEnd",standard:"animationend"},animationiteration:{cssProperty:"animation",prefixed:"webkitAnimationIteration",standard:"animationiteration"},animationstart:{cssProperty:"animation",prefixed:"webkitAnimationStart",standard:"animationstart"},transitionend:{cssProperty:"transition",prefixed:"webkitTransitionEnd",standard:"transitionend"}};function Xs(t){return Boolean(t.document)&&"function"==typeof t.document.createElement}
-/**
-     * @license
-     * Copyright 2017 Google Inc.
-     *
-     * Permission is hereby granted, free of charge, to any person obtaining a copy
-     * of this software and associated documentation files (the "Software"), to deal
-     * in the Software without restriction, including without limitation the rights
-     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-     * copies of the Software, and to permit persons to whom the Software is
-     * furnished to do so, subject to the following conditions:
-     *
-     * The above copyright notice and this permission notice shall be included in
-     * all copies or substantial portions of the Software.
-     *
-     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-     * THE SOFTWARE.
-     */
-var qs=["mousedown","pointerdown","touchstart"],Gs=["mouseup","pointerup","touchend"],Zs={mousedown:"mousemove",pointerdown:"pointermove",touchstart:"touchmove"},Js="ArrowDown",Qs="ArrowLeft",tc="ArrowRight",ec="ArrowUp",nc="End",rc="Home",ic="PageDown",ac="PageUp",oc=function(t){function e(n){var r=t.call(this,Ds({},e.defaultAdapter,n))||this;return r.savedTabIndex_=NaN,r.active_=!1,r.inTransit_=!1,r.isDiscrete_=!1,r.hasTrackMarker_=!1,r.handlingThumbTargetEvt_=!1,r.min_=0,r.max_=100,r.step_=0,r.value_=0,r.disabled_=!1,r.preventFocusState_=!1,r.thumbContainerPointerHandler_=function(){return r.handlingThumbTargetEvt_=!0},r.interactionStartHandler_=function(t){return r.handleDown_(t)},r.keydownHandler_=function(t){return r.handleKeydown_(t)},r.focusHandler_=function(){return r.handleFocus_()},r.blurHandler_=function(){return r.handleBlur_()},r.resizeHandler_=function(){return r.layout()},r}return Os(e,t),Object.defineProperty(e,"cssClasses",{get:function(){return js},enumerable:!0,configurable:!0}),Object.defineProperty(e,"strings",{get:function(){return zs},enumerable:!0,configurable:!0}),Object.defineProperty(e,"numbers",{get:function(){return Ws},enumerable:!0,configurable:!0}),Object.defineProperty(e,"defaultAdapter",{get:function(){return{hasClass:function(){return!1},addClass:function(){},removeClass:function(){},getAttribute:function(){return null},setAttribute:function(){},removeAttribute:function(){},computeBoundingRect:function(){return{top:0,right:0,bottom:0,left:0,width:0,height:0}},getTabIndex:function(){return 0},registerInteractionHandler:function(){},deregisterInteractionHandler:function(){},registerThumbContainerInteractionHandler:function(){},deregisterThumbContainerInteractionHandler:function(){},registerBodyInteractionHandler:function(){},deregisterBodyInteractionHandler:function(){},registerResizeHandler:function(){},deregisterResizeHandler:function(){},notifyInput:function(){},notifyChange:function(){},setThumbContainerStyleProperty:function(){},setTrackStyleProperty:function(){},setMarkerValue:function(){},appendTrackMarkers:function(){},removeTrackMarkers:function(){},setLastTrackMarkersStyleProperty:function(){},isRTL:function(){return!1}}},enumerable:!0,configurable:!0}),e.prototype.init=function(){var t=this;this.isDiscrete_=this.adapter_.hasClass(js.IS_DISCRETE),this.hasTrackMarker_=this.adapter_.hasClass(js.HAS_TRACK_MARKER),qs.forEach((function(e){t.adapter_.registerInteractionHandler(e,t.interactionStartHandler_),t.adapter_.registerThumbContainerInteractionHandler(e,t.thumbContainerPointerHandler_)})),this.adapter_.registerInteractionHandler("keydown",this.keydownHandler_),this.adapter_.registerInteractionHandler("focus",this.focusHandler_),this.adapter_.registerInteractionHandler("blur",this.blurHandler_),this.adapter_.registerResizeHandler(this.resizeHandler_),this.layout(),this.isDiscrete_&&0===this.getStep()&&(this.step_=1)},e.prototype.destroy=function(){var t=this;qs.forEach((function(e){t.adapter_.deregisterInteractionHandler(e,t.interactionStartHandler_),t.adapter_.deregisterThumbContainerInteractionHandler(e,t.thumbContainerPointerHandler_)})),this.adapter_.deregisterInteractionHandler("keydown",this.keydownHandler_),this.adapter_.deregisterInteractionHandler("focus",this.focusHandler_),this.adapter_.deregisterInteractionHandler("blur",this.blurHandler_),this.adapter_.deregisterResizeHandler(this.resizeHandler_)},e.prototype.setupTrackMarker=function(){if(this.isDiscrete_&&this.hasTrackMarker_&&0!==this.getStep()){var t=this.getMin(),e=this.getMax(),n=this.getStep(),r=(e-t)/n,i=Math.ceil(r)!==r;if(i&&(r=Math.ceil(r)),this.adapter_.removeTrackMarkers(),this.adapter_.appendTrackMarkers(r),i){var a=(e-r*n)/n+1;this.adapter_.setLastTrackMarkersStyleProperty("flex-grow",String(a))}}},e.prototype.layout=function(){this.rect_=this.adapter_.computeBoundingRect(),this.updateUIForCurrentValue_()},e.prototype.getValue=function(){return this.value_},e.prototype.setValue=function(t){this.setValue_(t,!1)},e.prototype.getMax=function(){return this.max_},e.prototype.setMax=function(t){if(t<this.min_)throw new Error("Cannot set max to be less than the slider's minimum value");this.max_=t,this.setValue_(this.value_,!1,!0),this.adapter_.setAttribute(zs.ARIA_VALUEMAX,String(this.max_)),this.setupTrackMarker()},e.prototype.getMin=function(){return this.min_},e.prototype.setMin=function(t){if(t>this.max_)throw new Error("Cannot set min to be greater than the slider's maximum value");this.min_=t,this.setValue_(this.value_,!1,!0),this.adapter_.setAttribute(zs.ARIA_VALUEMIN,String(this.min_)),this.setupTrackMarker()},e.prototype.getStep=function(){return this.step_},e.prototype.setStep=function(t){if(t<0)throw new Error("Step cannot be set to a negative number");this.isDiscrete_&&("number"!=typeof t||t<1)&&(t=1),this.step_=t,this.setValue_(this.value_,!1,!0),this.setupTrackMarker()},e.prototype.isDisabled=function(){return this.disabled_},e.prototype.setDisabled=function(t){this.disabled_=t,this.toggleClass_(js.DISABLED,this.disabled_),this.disabled_?(this.savedTabIndex_=this.adapter_.getTabIndex(),this.adapter_.setAttribute(zs.ARIA_DISABLED,"true"),this.adapter_.removeAttribute("tabindex")):(this.adapter_.removeAttribute(zs.ARIA_DISABLED),isNaN(this.savedTabIndex_)||this.adapter_.setAttribute("tabindex",String(this.savedTabIndex_)))},e.prototype.handleDown_=function(t){var e=this;if(!this.disabled_){this.preventFocusState_=!0,this.setInTransit_(!this.handlingThumbTargetEvt_),this.handlingThumbTargetEvt_=!1,this.setActive_(!0);var n=function(t){e.handleMove_(t)},r=Zs[t.type],i=function(){e.handleUp_(),e.adapter_.deregisterBodyInteractionHandler(r,n),Gs.forEach((function(t){return e.adapter_.deregisterBodyInteractionHandler(t,i)}))};this.adapter_.registerBodyInteractionHandler(r,n),Gs.forEach((function(t){return e.adapter_.registerBodyInteractionHandler(t,i)})),this.setValueFromEvt_(t)}},e.prototype.handleMove_=function(t){t.preventDefault(),this.setValueFromEvt_(t)},e.prototype.handleUp_=function(){this.setActive_(!1),this.adapter_.notifyChange()},e.prototype.getPageX_=function(t){return t.targetTouches&&t.targetTouches.length>0?t.targetTouches[0].pageX:t.pageX},e.prototype.setValueFromEvt_=function(t){var e=this.getPageX_(t),n=this.computeValueFromPageX_(e);this.setValue_(n,!0)},e.prototype.computeValueFromPageX_=function(t){var e=this.max_,n=this.min_,r=(t-this.rect_.left)/this.rect_.width;return this.adapter_.isRTL()&&(r=1-r),n+r*(e-n)},e.prototype.handleKeydown_=function(t){var e=this.getKeyId_(t),n=this.getValueForKeyId_(e);isNaN(n)||(t.preventDefault(),this.adapter_.addClass(js.FOCUS),this.setValue_(n,!0),this.adapter_.notifyChange())},e.prototype.getKeyId_=function(t){return t.key===Qs||37===t.keyCode?Qs:t.key===tc||39===t.keyCode?tc:t.key===ec||38===t.keyCode?ec:t.key===Js||40===t.keyCode?Js:t.key===rc||36===t.keyCode?rc:t.key===nc||35===t.keyCode?nc:t.key===ac||33===t.keyCode?ac:t.key===ic||34===t.keyCode?ic:""},e.prototype.getValueForKeyId_=function(t){var e=this.max_,n=this.min_,r=this.step_||(e-n)/100;switch(this.adapter_.isRTL()&&(t===Qs||t===tc)&&(r=-r),t){case Qs:case Js:return this.value_-r;case tc:case ec:return this.value_+r;case rc:return this.min_;case nc:return this.max_;case ac:return this.value_+r*Ws.PAGE_FACTOR;case ic:return this.value_-r*Ws.PAGE_FACTOR;default:return NaN}},e.prototype.handleFocus_=function(){this.preventFocusState_||this.adapter_.addClass(js.FOCUS)},e.prototype.handleBlur_=function(){this.preventFocusState_=!1,this.adapter_.removeClass(js.FOCUS)},e.prototype.setValue_=function(t,e,n){if(void 0===n&&(n=!1),t!==this.value_||n){var r=this.min_,i=this.max_,a=t===r||t===i;this.step_&&!a&&(t=this.quantize_(t)),t<r?t=r:t>i&&(t=i),this.value_=t,this.adapter_.setAttribute(zs.ARIA_VALUENOW,String(this.value_)),this.updateUIForCurrentValue_(),e&&(this.adapter_.notifyInput(),this.isDiscrete_&&this.adapter_.setMarkerValue(t))}},e.prototype.quantize_=function(t){return Math.round(t/this.step_)*this.step_},e.prototype.updateUIForCurrentValue_=function(){var t=this,e=this.max_,n=this.min_,r=(this.value_-n)/(e-n),i=r*this.rect_.width;this.adapter_.isRTL()&&(i=this.rect_.width-i);var a=function(t,e){if(Xs(t)&&e in Ys){var n=t.document.createElement("div"),r=Ys[e],i=r.standard,a=r.prefixed;return i in n.style?i:a}return e}(window,"transform"),o=function(t,e){if(Xs(t)&&e in Ks){var n=t.document.createElement("div"),r=Ks[e],i=r.standard,a=r.prefixed;return r.cssProperty in n.style?i:a}return e}(window,"transitionend");if(this.inTransit_){var s=function(){t.setInTransit_(!1),t.adapter_.deregisterThumbContainerInteractionHandler(o,s)};this.adapter_.registerThumbContainerInteractionHandler(o,s)}requestAnimationFrame((function(){t.adapter_.setThumbContainerStyleProperty(a,"translateX("+i+"px) translateX(-50%)"),t.adapter_.setTrackStyleProperty(a,"scaleX("+r+")")}))},e.prototype.setActive_=function(t){this.active_=t,this.toggleClass_(js.ACTIVE,this.active_)},e.prototype.setInTransit_=function(t){this.inTransit_=t,this.toggleClass_(js.IN_TRANSIT,this.inTransit_)},e.prototype.toggleClass_=function(t,e){e?this.adapter_.addClass(t):this.adapter_.removeClass(t)},e}(Fs),sc=function(t){function e(){return null!==t&&t.apply(this,arguments)||this}return Os(e,t),e.attachTo=function(t){return new e(t)},Object.defineProperty(e.prototype,"value",{get:function(){return this.foundation_.getValue()},set:function(t){this.foundation_.setValue(t)},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"min",{get:function(){return this.foundation_.getMin()},set:function(t){this.foundation_.setMin(t)},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"max",{get:function(){return this.foundation_.getMax()},set:function(t){this.foundation_.setMax(t)},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"step",{get:function(){return this.foundation_.getStep()},set:function(t){this.foundation_.setStep(t)},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"disabled",{get:function(){return this.foundation_.isDisabled()},set:function(t){this.foundation_.setDisabled(t)},enumerable:!0,configurable:!0}),e.prototype.initialize=function(){this.thumbContainer_=this.root_.querySelector(zs.THUMB_CONTAINER_SELECTOR),this.track_=this.root_.querySelector(zs.TRACK_SELECTOR),this.pinValueMarker_=this.root_.querySelector(zs.PIN_VALUE_MARKER_SELECTOR),this.trackMarkerContainer_=this.root_.querySelector(zs.TRACK_MARKER_CONTAINER_SELECTOR)},e.prototype.getDefaultFoundation=function(){var t=this;return new oc({hasClass:function(e){return t.root_.classList.contains(e)},addClass:function(e){return t.root_.classList.add(e)},removeClass:function(e){return t.root_.classList.remove(e)},getAttribute:function(e){return t.root_.getAttribute(e)},setAttribute:function(e,n){return t.root_.setAttribute(e,n)},removeAttribute:function(e){return t.root_.removeAttribute(e)},computeBoundingRect:function(){return t.root_.getBoundingClientRect()},getTabIndex:function(){return t.root_.tabIndex},registerInteractionHandler:function(e,n){return t.listen(e,n,Bs())},deregisterInteractionHandler:function(e,n){return t.unlisten(e,n,Bs())},registerThumbContainerInteractionHandler:function(e,n){t.thumbContainer_.addEventListener(e,n,Bs())},deregisterThumbContainerInteractionHandler:function(e,n){t.thumbContainer_.removeEventListener(e,n,Bs())},registerBodyInteractionHandler:function(t,e){return document.body.addEventListener(t,e)},deregisterBodyInteractionHandler:function(t,e){return document.body.removeEventListener(t,e)},registerResizeHandler:function(t){return window.addEventListener("resize",t)},deregisterResizeHandler:function(t){return window.removeEventListener("resize",t)},notifyInput:function(){return t.emit(zs.INPUT_EVENT,t)},notifyChange:function(){return t.emit(zs.CHANGE_EVENT,t)},setThumbContainerStyleProperty:function(e,n){t.thumbContainer_.style.setProperty(e,n)},setTrackStyleProperty:function(e,n){return t.track_.style.setProperty(e,n)},setMarkerValue:function(e){return t.pinValueMarker_.innerText=e.toLocaleString()},appendTrackMarkers:function(e){for(var n=document.createDocumentFragment(),r=0;r<e;r++){var i=document.createElement("div");i.classList.add("mdc-slider__track-marker"),n.appendChild(i)}t.trackMarkerContainer_.appendChild(n)},removeTrackMarkers:function(){for(;t.trackMarkerContainer_.firstChild;)t.trackMarkerContainer_.removeChild(t.trackMarkerContainer_.firstChild)},setLastTrackMarkersStyleProperty:function(e,n){t.root_.querySelector(zs.LAST_TRACK_MARKER_SELECTOR).style.setProperty(e,n)},isRTL:function(){return"rtl"===getComputedStyle(t.root_).direction}})},e.prototype.initialSyncWithDOM=function(){var t=this.parseFloat_(this.root_.getAttribute(zs.ARIA_VALUENOW),this.value),e=this.parseFloat_(this.root_.getAttribute(zs.ARIA_VALUEMIN),this.min),n=this.parseFloat_(this.root_.getAttribute(zs.ARIA_VALUEMAX),this.max);e>=this.max?(this.max=n,this.min=e):(this.min=e,this.max=n),this.step=this.parseFloat_(this.root_.getAttribute(zs.STEP_DATA_ATTR),this.step),this.value=t,this.disabled=this.root_.hasAttribute(zs.ARIA_DISABLED)&&"false"!==this.root_.getAttribute(zs.ARIA_DISABLED),this.foundation_.setupTrackMarker()},e.prototype.layout=function(){this.foundation_.layout()},e.prototype.stepUp=function(t){void 0===t&&(t=this.step||1),this.value+=t},e.prototype.stepDown=function(t){void 0===t&&(t=this.step||1),this.value-=t},e.prototype.parseFloat_=function(t,e){var n=parseFloat(t);return"number"==typeof n&&isFinite(n)?n:e},e}(Us);function cc(t,e=[]){const n=["focus","blur","fullscreenchange","fullscreenerror","scroll","cut","copy","paste","keydown","keypress","keyup","auxclick","click","contextmenu","dblclick","mousedown","mouseenter","mouseleave","mousemove","mouseover","mouseout","mouseup","pointerlockchange","pointerlockerror","select","wheel","drag","dragend","dragenter","dragstart","dragleave","dragover","drop","touchcancel","touchend","touchmove","touchstart","pointerover","pointerenter","pointerdown","pointermove","pointerup","pointercancel","pointerout","pointerleave","gotpointercapture","lostpointercapture",...e];function r(e){L(t,e)}return t=>{const e=[];for(let i=0;i<n.length;i++)e.push($(t,n[i],r));return{destroy:()=>{for(let t=0;t<e.length;t++)e[t]()}}}}function uc(t,e){let n=Object.getOwnPropertyNames(t);const r={};for(let i=0;i<n.length;i++){const a=n[i],o=a.indexOf("$");-1!==o&&-1!==e.indexOf(a.substring(0,o+1))||-1===e.indexOf(a)&&(r[a]=t[a])}return r}function lc(t,e){let n=[];if(e)for(let r=0;r<e.length;r++){const i=Array.isArray(e[r]),a=i?e[r][0]:e[r];i&&e[r].length>1?n.push(a(t,e[r][1])):n.push(a(t))}return{update(t){if((t&&t.length||0)!=n.length)throw new Error("You must not change the length of an actions array.");if(t)for(let e=0;e<t.length;e++)if(n[e]&&"update"in n[e]){Array.isArray(t[e])&&t[e].length>1?n[e].update(t[e][1]):n[e].update()}},destroy(){for(let t=0;t<n.length;t++)n[t]&&"destroy"in n[t]&&n[t].destroy()}}}function dc(t){var e;return{c(){x(e=_("div"),"class","mdc-slider__track-marker-container")},m(t,n){p(t,e,n)},d(t){t&&m(e)}}}function fc(t){var e;return{c(){(e=_("div")).innerHTML='<span class="mdc-slider__pin-value-marker"></span>',x(e,"class","mdc-slider__pin")},m(t,n){p(t,e,n)},d(t){t&&m(e)}}}function hc(n){for(var r,i,a,o,s,c,u,l,d,f,g,b,A,T,S=n.discrete&&n.displayMarkers&&dc(),E=n.discrete&&fc(),I=[{class:"mdc-slider "+n.className},{role:"slider"},{"aria-disabled":n.disabled?"true":"false"},{"aria-valuemin":n.min},{"aria-valuemax":n.max},{"aria-valuenow":n.value},{"data-step":0===n.step?void 0:n.step},{tabindex:n.tabindex},n.inputProps,uc(n.$$props,["use","class","disabled","discrete","displayMarkers","min","max","step","value","tabindex"])],k={},M=0;M<I.length;M+=1)k=e(k,I[M]);return{c(){r=_("div"),i=_("div"),a=_("div"),o=y(),S&&S.c(),s=y(),c=_("div"),E&&E.c(),u=y(),l=v("svg"),d=v("circle"),f=y(),g=_("div"),x(a,"class","mdc-slider__track"),x(i,"class","mdc-slider__track-container"),x(d,"cx","10.5"),x(d,"cy","10.5"),x(d,"r","7.875"),x(l,"class","mdc-slider__thumb"),x(l,"width","21"),x(l,"height","21"),x(g,"class","mdc-slider__focus-ring"),x(c,"class","mdc-slider__thumb-container"),w(r,k),C(r,"mdc-slider--discrete",n.discrete),C(r,"mdc-slider--display-markers",n.discrete&&n.displayMarkers),T=$(r,"MDCSlider:change",n.handleChange)},m(t,e){p(t,r,e),h(r,i),h(i,a),h(i,o),S&&S.m(i,null),h(r,s),h(r,c),E&&E.m(c,null),h(c,u),h(c,l),h(l,d),h(c,f),h(c,g),n.div4_binding(r),b=lc.call(null,r,n.use)||{},A=n.forwardEvents.call(null,r)||{}},p(t,e){e.discrete&&e.displayMarkers?S||((S=dc()).c(),S.m(i,null)):S&&(S.d(1),S=null),e.discrete?E||((E=fc()).c(),E.m(c,u)):E&&(E.d(1),E=null),w(r,J(I,[t.className&&{class:"mdc-slider "+e.className},{role:"slider"},t.disabled&&{"aria-disabled":e.disabled?"true":"false"},t.min&&{"aria-valuemin":e.min},t.max&&{"aria-valuemax":e.max},t.value&&{"aria-valuenow":e.value},t.step&&{"data-step":0===e.step?void 0:e.step},t.tabindex&&{tabindex:e.tabindex},t.inputProps&&e.inputProps,(t.exclude||t.$$props)&&uc(e.$$props,["use","class","disabled","discrete","displayMarkers","min","max","step","value","tabindex"])])),"function"==typeof b.update&&t.use&&b.update.call(null,e.use),(t.className||t.discrete)&&C(r,"mdc-slider--discrete",e.discrete),(t.className||t.discrete||t.displayMarkers)&&C(r,"mdc-slider--display-markers",e.discrete&&e.displayMarkers)},i:t,o:t,d(t){t&&m(r),S&&S.d(),E&&E.d(),n.div4_binding(null),b&&"function"==typeof b.destroy&&b.destroy(),A&&"function"==typeof A.destroy&&A.destroy(),T()}}}function pc(t,n,r){const i=cc(T,["MDCSlider:input","MDCSlider:change"]);let a,o,{use:s=[],class:c="",disabled:u=!1,discrete:l=!1,displayMarkers:f=!1,min:h=0,max:p=100,step:m=0,value:_=null,tabindex:v="0"}=n,g=N("SMUI:form-field"),y=N("SMUI:generic:input:props")||{};return I(()=>{r("slider",o=new sc(a)),g&&g()&&(g().input=o)}),M(()=>{o&&o.destroy()}),t.$set=t=>{r("$$props",n=e(e({},n),t)),"use"in t&&r("use",s=t.use),"class"in t&&r("className",c=t.class),"disabled"in t&&r("disabled",u=t.disabled),"discrete"in t&&r("discrete",l=t.discrete),"displayMarkers"in t&&r("displayMarkers",f=t.displayMarkers),"min"in t&&r("min",h=t.min),"max"in t&&r("max",p=t.max),"step"in t&&r("step",m=t.step),"value"in t&&r("value",_=t.value),"tabindex"in t&&r("tabindex",v=t.tabindex)},t.$$.update=(t={slider:1,disabled:1,min:1,max:1,step:1,value:1})=>{(t.slider||t.disabled)&&o&&o.disabled!==u&&r("slider",o.disabled=u,o),(t.slider||t.min)&&o&&o.min!==h&&r("slider",o.min=h,o),(t.slider||t.max)&&o&&o.max!==p&&r("slider",o.max=p,o),(t.slider||t.step)&&o&&o.step!==m&&r("slider",o.step=m,o),(t.slider||t.value)&&o&&o.value!==_&&r("slider",o.value=_,o)},{forwardEvents:i,use:s,className:c,disabled:u,discrete:l,displayMarkers:f,min:h,max:p,step:m,value:_,tabindex:v,element:a,inputProps:y,handleChange:function(){r("value",_=o.value)},layout:function(...t){return o.layout(...t)},stepUp:function(t=1,...e){return o.stepUp(t,...e)},stepDown:function(t=1,...e){return o.stepDown(t,...e)},getId:function(){return y&&y.id},$$props:n,div4_binding:function(t){D[t?"unshift":"push"](()=>{r("element",a=t)})},$$props:n=d(n)}}class mc extends at{constructor(t){super(),it(this,t,pc,hc,o,["use","class","disabled","discrete","displayMarkers","min","max","step","value","tabindex","layout","stepUp","stepDown","getId"])}get layout(){return this.$$.ctx.layout}get stepUp(){return this.$$.ctx.stepUp}get stepDown(){return this.$$.ctx.stepDown}get getId(){return this.$$.ctx.getId}}
-/**
-     * @license
-     * Copyright 2017 Google Inc.
-     *
-     * Permission is hereby granted, free of charge, to any person obtaining a copy
-     * of this software and associated documentation files (the "Software"), to deal
-     * in the Software without restriction, including without limitation the rights
-     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-     * copies of the Software, and to permit persons to whom the Software is
-     * furnished to do so, subject to the following conditions:
-     *
-     * The above copyright notice and this permission notice shall be included in
-     * all copies or substantial portions of the Software.
-     *
-     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-     * THE SOFTWARE.
-     */var _c={ROOT:"mdc-form-field"},vc={LABEL_SELECTOR:".mdc-form-field > label"},gc=function(t){function e(n){var r=t.call(this,Ds({},e.defaultAdapter,n))||this;return r.clickHandler_=function(){return r.handleClick_()},r}return Os(e,t),Object.defineProperty(e,"cssClasses",{get:function(){return _c},enumerable:!0,configurable:!0}),Object.defineProperty(e,"strings",{get:function(){return vc},enumerable:!0,configurable:!0}),Object.defineProperty(e,"defaultAdapter",{get:function(){return{activateInputRipple:function(){},deactivateInputRipple:function(){},deregisterInteractionHandler:function(){},registerInteractionHandler:function(){}}},enumerable:!0,configurable:!0}),e.prototype.init=function(){this.adapter_.registerInteractionHandler("click",this.clickHandler_)},e.prototype.destroy=function(){this.adapter_.deregisterInteractionHandler("click",this.clickHandler_)},e.prototype.handleClick_=function(){var t=this;this.adapter_.activateInputRipple(),requestAnimationFrame((function(){return t.adapter_.deactivateInputRipple()}))},e}(Fs),yc=function(t){function e(){return null!==t&&t.apply(this,arguments)||this}return Os(e,t),e.attachTo=function(t){return new e(t)},Object.defineProperty(e.prototype,"input",{get:function(){return this.input_},set:function(t){this.input_=t},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"label_",{get:function(){var t=gc.strings.LABEL_SELECTOR;return this.root_.querySelector(t)},enumerable:!0,configurable:!0}),e.prototype.getDefaultFoundation=function(){var t=this;return new gc({activateInputRipple:function(){t.input_&&t.input_.ripple&&t.input_.ripple.activate()},deactivateInputRipple:function(){t.input_&&t.input_.ripple&&t.input_.ripple.deactivate()},deregisterInteractionHandler:function(e,n){t.label_&&t.label_.removeEventListener(e,n)},registerInteractionHandler:function(e,n){t.label_&&t.label_.addEventListener(e,n)}})},e}(Us);function bc(t,e){let n=Object.getOwnPropertyNames(t);const r={};for(let i=0;i<n.length;i++){const a=n[i];a.substring(0,e.length)===e&&(r[a.substring(e.length)]=t[a])}return r}const $c=()=>({}),xc=()=>({});function wc(t){var n,r,i,a,o,s,d;const f=t.$$slots.default,v=c(f,t,null),g=t.$$slots.label,b=c(g,t,xc);for(var $=[{for:t.inputId},uc(bc(t.$$props,"label$"),["use"])],x={},A=0;A<$.length;A+=1)x=e(x,$[A]);var T=[{class:"mdc-form-field "+t.className},uc(t.$$props,["use","class","alignEnd","inputId","label$"])],S={};for(A=0;A<T.length;A+=1)S=e(S,T[A]);return{c(){n=_("div"),v&&v.c(),r=y(),i=_("label"),b&&b.c(),w(i,x),w(n,S),C(n,"mdc-form-field--align-end","end"===t.align)},l(t){v&&v.l(div_nodes),b&&b.l(label_nodes)},m(e,c){p(e,n,c),v&&v.m(n,null),h(n,r),h(n,i),b&&b.m(i,null),a=lc.call(null,i,t.label$use)||{},t.div_binding(n),o=lc.call(null,n,t.use)||{},s=t.forwardEvents.call(null,n)||{},d=!0},p(t,e){v&&v.p&&t.$$scope&&v.p(l(f,e,t,null),u(f,e,null)),b&&b.p&&t.$$scope&&b.p(l(g,e,t,$c),u(g,e,xc)),w(i,J($,[t.inputId&&{for:e.inputId},(t.exclude||t.prefixFilter||t.$$props)&&uc(bc(e.$$props,"label$"),["use"])])),"function"==typeof a.update&&t.label$use&&a.update.call(null,e.label$use),w(n,J(T,[t.className&&{class:"mdc-form-field "+e.className},(t.exclude||t.$$props)&&uc(e.$$props,["use","class","alignEnd","inputId","label$"])])),"function"==typeof o.update&&t.use&&o.update.call(null,e.use),(t.className||t.align)&&C(n,"mdc-form-field--align-end","end"===e.align)},i(t){d||(q(v,t),q(b,t),d=!0)},o(t){G(v,t),G(b,t),d=!1},d(e){e&&m(n),v&&v.d(e),b&&b.d(e),a&&"function"==typeof a.destroy&&a.destroy(),t.div_binding(null),o&&"function"==typeof o.destroy&&o.destroy(),s&&"function"==typeof s.destroy&&s.destroy()}}}let Ac=0;function Cc(t,n,r){const i=cc(T);let a,o,{use:s=[],class:c="",align:u="start",inputId:l="SMUI-form-field-"+Ac++,label$use:f=[]}=n;R("SMUI:form-field",()=>o),R("SMUI:generic:input:props",{id:l}),I(()=>{o=new yc(a)}),M(()=>{o&&o&&o.destroy()});let{$$slots:h={},$$scope:p}=n;return t.$set=t=>{r("$$props",n=e(e({},n),t)),"use"in t&&r("use",s=t.use),"class"in t&&r("className",c=t.class),"align"in t&&r("align",u=t.align),"inputId"in t&&r("inputId",l=t.inputId),"label$use"in t&&r("label$use",f=t.label$use),"$$scope"in t&&r("$$scope",p=t.$$scope)},{forwardEvents:i,use:s,className:c,align:u,inputId:l,label$use:f,element:a,$$props:n,div_binding:function(t){D[t?"unshift":"push"](()=>{r("element",a=t)})},$$props:n=d(n),$$slots:h,$$scope:p}}class Tc extends at{constructor(t){super(),it(this,t,Cc,wc,o,["use","class","align","inputId","label$use"])}}
-/**
-     * @license
-     * Copyright 2018 Google Inc.
-     *
-     * Permission is hereby granted, free of charge, to any person obtaining a copy
-     * of this software and associated documentation files (the "Software"), to deal
-     * in the Software without restriction, including without limitation the rights
-     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-     * copies of the Software, and to permit persons to whom the Software is
-     * furnished to do so, subject to the following conditions:
-     *
-     * The above copyright notice and this permission notice shall be included in
-     * all copies or substantial portions of the Software.
-     *
-     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-     * THE SOFTWARE.
-     */function Sc(t,e){return(t.matches||t.webkitMatchesSelector||t.msMatchesSelector).call(t,e)}
-/**
-     * @license
-     * Copyright 2016 Google Inc.
-     *
-     * Permission is hereby granted, free of charge, to any person obtaining a copy
-     * of this software and associated documentation files (the "Software"), to deal
-     * in the Software without restriction, including without limitation the rights
-     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-     * copies of the Software, and to permit persons to whom the Software is
-     * furnished to do so, subject to the following conditions:
-     *
-     * The above copyright notice and this permission notice shall be included in
-     * all copies or substantial portions of the Software.
-     *
-     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-     * THE SOFTWARE.
-     */var Ec,Ic={BG_FOCUSED:"mdc-ripple-upgraded--background-focused",FG_ACTIVATION:"mdc-ripple-upgraded--foreground-activation",FG_DEACTIVATION:"mdc-ripple-upgraded--foreground-deactivation",ROOT:"mdc-ripple-upgraded",UNBOUNDED:"mdc-ripple-upgraded--unbounded"},kc={VAR_FG_SCALE:"--mdc-ripple-fg-scale",VAR_FG_SIZE:"--mdc-ripple-fg-size",VAR_FG_TRANSLATE_END:"--mdc-ripple-fg-translate-end",VAR_FG_TRANSLATE_START:"--mdc-ripple-fg-translate-start",VAR_LEFT:"--mdc-ripple-left",VAR_TOP:"--mdc-ripple-top"},Mc={DEACTIVATION_TIMEOUT_MS:225,FG_DEACTIVATION_MS:150,INITIAL_ORIGIN_SCALE:.6,PADDING:10,TAP_DELAY_MS:300};
-/**
+    ***************************************************************************** */
+    /* global Reflect, Promise */
+
+    var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+
+    function __extends(d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    }
+
+    var __assign = function() {
+        __assign = Object.assign || function __assign(t) {
+            for (var s, i = 1, n = arguments.length; i < n; i++) {
+                s = arguments[i];
+                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+            }
+            return t;
+        };
+        return __assign.apply(this, arguments);
+    };
+
+    function __read(o, n) {
+        var m = typeof Symbol === "function" && o[Symbol.iterator];
+        if (!m) return o;
+        var i = m.call(o), r, ar = [], e;
+        try {
+            while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+        }
+        catch (error) { e = { error: error }; }
+        finally {
+            try {
+                if (r && !r.done && (m = i["return"])) m.call(i);
+            }
+            finally { if (e) throw e.error; }
+        }
+        return ar;
+    }
+
+    function __spread() {
+        for (var ar = [], i = 0; i < arguments.length; i++)
+            ar = ar.concat(__read(arguments[i]));
+        return ar;
+    }
+
+    /**
      * @license
      * Copyright 2016 Google Inc.
      *
@@ -190,10 +6958,60 @@ var qs=["mousedown","pointerdown","touchstart"],Gs=["mouseup","pointerup","touch
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-var Rc=["touchstart","pointerdown","mousedown","keydown"],Nc=["touchend","pointerup","mouseup","contextmenu"],Lc=[],Oc=function(t){function e(n){var r=t.call(this,Ds({},e.defaultAdapter,n))||this;return r.activationAnimationHasEnded_=!1,r.activationTimer_=0,r.fgDeactivationRemovalTimer_=0,r.fgScale_="0",r.frame_={width:0,height:0},r.initialSize_=0,r.layoutFrame_=0,r.maxRadius_=0,r.unboundedCoords_={left:0,top:0},r.activationState_=r.defaultActivationState_(),r.activationTimerCallback_=function(){r.activationAnimationHasEnded_=!0,r.runDeactivationUXLogicIfReady_()},r.activateHandler_=function(t){return r.activate_(t)},r.deactivateHandler_=function(){return r.deactivate_()},r.focusHandler_=function(){return r.handleFocus()},r.blurHandler_=function(){return r.handleBlur()},r.resizeHandler_=function(){return r.layout()},r}return Os(e,t),Object.defineProperty(e,"cssClasses",{get:function(){return Ic},enumerable:!0,configurable:!0}),Object.defineProperty(e,"strings",{get:function(){return kc},enumerable:!0,configurable:!0}),Object.defineProperty(e,"numbers",{get:function(){return Mc},enumerable:!0,configurable:!0}),Object.defineProperty(e,"defaultAdapter",{get:function(){return{addClass:function(){},browserSupportsCssVars:function(){return!0},computeBoundingRect:function(){return{top:0,right:0,bottom:0,left:0,width:0,height:0}},containsEventTarget:function(){return!0},deregisterDocumentInteractionHandler:function(){},deregisterInteractionHandler:function(){},deregisterResizeHandler:function(){},getWindowPageOffset:function(){return{x:0,y:0}},isSurfaceActive:function(){return!0},isSurfaceDisabled:function(){return!0},isUnbounded:function(){return!0},registerDocumentInteractionHandler:function(){},registerInteractionHandler:function(){},registerResizeHandler:function(){},removeClass:function(){},updateCssVariable:function(){}}},enumerable:!0,configurable:!0}),e.prototype.init=function(){var t=this,n=this.supportsPressRipple_();if(this.registerRootHandlers_(n),n){var r=e.cssClasses,i=r.ROOT,a=r.UNBOUNDED;requestAnimationFrame((function(){t.adapter_.addClass(i),t.adapter_.isUnbounded()&&(t.adapter_.addClass(a),t.layoutInternal_())}))}},e.prototype.destroy=function(){var t=this;if(this.supportsPressRipple_()){this.activationTimer_&&(clearTimeout(this.activationTimer_),this.activationTimer_=0,this.adapter_.removeClass(e.cssClasses.FG_ACTIVATION)),this.fgDeactivationRemovalTimer_&&(clearTimeout(this.fgDeactivationRemovalTimer_),this.fgDeactivationRemovalTimer_=0,this.adapter_.removeClass(e.cssClasses.FG_DEACTIVATION));var n=e.cssClasses,r=n.ROOT,i=n.UNBOUNDED;requestAnimationFrame((function(){t.adapter_.removeClass(r),t.adapter_.removeClass(i),t.removeCssVars_()}))}this.deregisterRootHandlers_(),this.deregisterDeactivationHandlers_()},e.prototype.activate=function(t){this.activate_(t)},e.prototype.deactivate=function(){this.deactivate_()},e.prototype.layout=function(){var t=this;this.layoutFrame_&&cancelAnimationFrame(this.layoutFrame_),this.layoutFrame_=requestAnimationFrame((function(){t.layoutInternal_(),t.layoutFrame_=0}))},e.prototype.setUnbounded=function(t){var n=e.cssClasses.UNBOUNDED;t?this.adapter_.addClass(n):this.adapter_.removeClass(n)},e.prototype.handleFocus=function(){var t=this;requestAnimationFrame((function(){return t.adapter_.addClass(e.cssClasses.BG_FOCUSED)}))},e.prototype.handleBlur=function(){var t=this;requestAnimationFrame((function(){return t.adapter_.removeClass(e.cssClasses.BG_FOCUSED)}))},e.prototype.supportsPressRipple_=function(){return this.adapter_.browserSupportsCssVars()},e.prototype.defaultActivationState_=function(){return{activationEvent:void 0,hasDeactivationUXRun:!1,isActivated:!1,isProgrammatic:!1,wasActivatedByPointer:!1,wasElementMadeActive:!1}},e.prototype.registerRootHandlers_=function(t){var e=this;t&&(Rc.forEach((function(t){e.adapter_.registerInteractionHandler(t,e.activateHandler_)})),this.adapter_.isUnbounded()&&this.adapter_.registerResizeHandler(this.resizeHandler_)),this.adapter_.registerInteractionHandler("focus",this.focusHandler_),this.adapter_.registerInteractionHandler("blur",this.blurHandler_)},e.prototype.registerDeactivationHandlers_=function(t){var e=this;"keydown"===t.type?this.adapter_.registerInteractionHandler("keyup",this.deactivateHandler_):Nc.forEach((function(t){e.adapter_.registerDocumentInteractionHandler(t,e.deactivateHandler_)}))},e.prototype.deregisterRootHandlers_=function(){var t=this;Rc.forEach((function(e){t.adapter_.deregisterInteractionHandler(e,t.activateHandler_)})),this.adapter_.deregisterInteractionHandler("focus",this.focusHandler_),this.adapter_.deregisterInteractionHandler("blur",this.blurHandler_),this.adapter_.isUnbounded()&&this.adapter_.deregisterResizeHandler(this.resizeHandler_)},e.prototype.deregisterDeactivationHandlers_=function(){var t=this;this.adapter_.deregisterInteractionHandler("keyup",this.deactivateHandler_),Nc.forEach((function(e){t.adapter_.deregisterDocumentInteractionHandler(e,t.deactivateHandler_)}))},e.prototype.removeCssVars_=function(){var t=this,n=e.strings;Object.keys(n).forEach((function(e){0===e.indexOf("VAR_")&&t.adapter_.updateCssVariable(n[e],null)}))},e.prototype.activate_=function(t){var e=this;if(!this.adapter_.isSurfaceDisabled()){var n=this.activationState_;if(!n.isActivated){var r=this.previousActivationEvent_;if(!(r&&void 0!==t&&r.type!==t.type))n.isActivated=!0,n.isProgrammatic=void 0===t,n.activationEvent=t,n.wasActivatedByPointer=!n.isProgrammatic&&(void 0!==t&&("mousedown"===t.type||"touchstart"===t.type||"pointerdown"===t.type)),void 0!==t&&Lc.length>0&&Lc.some((function(t){return e.adapter_.containsEventTarget(t)}))?this.resetActivationState_():(void 0!==t&&(Lc.push(t.target),this.registerDeactivationHandlers_(t)),n.wasElementMadeActive=this.checkElementMadeActive_(t),n.wasElementMadeActive&&this.animateActivation_(),requestAnimationFrame((function(){Lc=[],n.wasElementMadeActive||void 0===t||" "!==t.key&&32!==t.keyCode||(n.wasElementMadeActive=e.checkElementMadeActive_(t),n.wasElementMadeActive&&e.animateActivation_()),n.wasElementMadeActive||(e.activationState_=e.defaultActivationState_())})))}}},e.prototype.checkElementMadeActive_=function(t){return void 0===t||"keydown"!==t.type||this.adapter_.isSurfaceActive()},e.prototype.animateActivation_=function(){var t=this,n=e.strings,r=n.VAR_FG_TRANSLATE_START,i=n.VAR_FG_TRANSLATE_END,a=e.cssClasses,o=a.FG_DEACTIVATION,s=a.FG_ACTIVATION,c=e.numbers.DEACTIVATION_TIMEOUT_MS;this.layoutInternal_();var u="",l="";if(!this.adapter_.isUnbounded()){var d=this.getFgTranslationCoordinates_(),f=d.startPoint,h=d.endPoint;u=f.x+"px, "+f.y+"px",l=h.x+"px, "+h.y+"px"}this.adapter_.updateCssVariable(r,u),this.adapter_.updateCssVariable(i,l),clearTimeout(this.activationTimer_),clearTimeout(this.fgDeactivationRemovalTimer_),this.rmBoundedActivationClasses_(),this.adapter_.removeClass(o),this.adapter_.computeBoundingRect(),this.adapter_.addClass(s),this.activationTimer_=setTimeout((function(){return t.activationTimerCallback_()}),c)},e.prototype.getFgTranslationCoordinates_=function(){var t,e=this.activationState_,n=e.activationEvent;return{startPoint:t={x:(t=e.wasActivatedByPointer?function(t,e,n){if(!t)return{x:0,y:0};var r,i,a=e.x,o=e.y,s=a+n.left,c=o+n.top;if("touchstart"===t.type){var u=t;r=u.changedTouches[0].pageX-s,i=u.changedTouches[0].pageY-c}else{var l=t;r=l.pageX-s,i=l.pageY-c}return{x:r,y:i}}(n,this.adapter_.getWindowPageOffset(),this.adapter_.computeBoundingRect()):{x:this.frame_.width/2,y:this.frame_.height/2}).x-this.initialSize_/2,y:t.y-this.initialSize_/2},endPoint:{x:this.frame_.width/2-this.initialSize_/2,y:this.frame_.height/2-this.initialSize_/2}}},e.prototype.runDeactivationUXLogicIfReady_=function(){var t=this,n=e.cssClasses.FG_DEACTIVATION,r=this.activationState_,i=r.hasDeactivationUXRun,a=r.isActivated;(i||!a)&&this.activationAnimationHasEnded_&&(this.rmBoundedActivationClasses_(),this.adapter_.addClass(n),this.fgDeactivationRemovalTimer_=setTimeout((function(){t.adapter_.removeClass(n)}),Mc.FG_DEACTIVATION_MS))},e.prototype.rmBoundedActivationClasses_=function(){var t=e.cssClasses.FG_ACTIVATION;this.adapter_.removeClass(t),this.activationAnimationHasEnded_=!1,this.adapter_.computeBoundingRect()},e.prototype.resetActivationState_=function(){var t=this;this.previousActivationEvent_=this.activationState_.activationEvent,this.activationState_=this.defaultActivationState_(),setTimeout((function(){return t.previousActivationEvent_=void 0}),e.numbers.TAP_DELAY_MS)},e.prototype.deactivate_=function(){var t=this,e=this.activationState_;if(e.isActivated){var n=Ds({},e);e.isProgrammatic?(requestAnimationFrame((function(){return t.animateDeactivation_(n)})),this.resetActivationState_()):(this.deregisterDeactivationHandlers_(),requestAnimationFrame((function(){t.activationState_.hasDeactivationUXRun=!0,t.animateDeactivation_(n),t.resetActivationState_()})))}},e.prototype.animateDeactivation_=function(t){var e=t.wasActivatedByPointer,n=t.wasElementMadeActive;(e||n)&&this.runDeactivationUXLogicIfReady_()},e.prototype.layoutInternal_=function(){var t=this;this.frame_=this.adapter_.computeBoundingRect();var n=Math.max(this.frame_.height,this.frame_.width);this.maxRadius_=this.adapter_.isUnbounded()?n:Math.sqrt(Math.pow(t.frame_.width,2)+Math.pow(t.frame_.height,2))+e.numbers.PADDING,this.initialSize_=Math.floor(n*e.numbers.INITIAL_ORIGIN_SCALE),this.fgScale_=""+this.maxRadius_/this.initialSize_,this.updateLayoutCssVars_()},e.prototype.updateLayoutCssVars_=function(){var t=e.strings,n=t.VAR_FG_SIZE,r=t.VAR_LEFT,i=t.VAR_TOP,a=t.VAR_FG_SCALE;this.adapter_.updateCssVariable(n,this.initialSize_+"px"),this.adapter_.updateCssVariable(a,this.fgScale_),this.adapter_.isUnbounded()&&(this.unboundedCoords_={left:Math.round(this.frame_.width/2-this.initialSize_/2),top:Math.round(this.frame_.height/2-this.initialSize_/2)},this.adapter_.updateCssVariable(r,this.unboundedCoords_.left+"px"),this.adapter_.updateCssVariable(i,this.unboundedCoords_.top+"px"))},e}(Fs),Dc=function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e.disabled=!1,e}return Os(e,t),e.attachTo=function(t,n){void 0===n&&(n={isUnbounded:void 0});var r=new e(t);return void 0!==n.isUnbounded&&(r.unbounded=n.isUnbounded),r},e.createAdapter=function(t){return{addClass:function(e){return t.root_.classList.add(e)},browserSupportsCssVars:function(){return function(t,e){void 0===e&&(e=!1);var n=t.CSS,r=Ec;if("boolean"==typeof Ec&&!e)return Ec;if(!(n&&"function"==typeof n.supports))return!1;var i=n.supports("--css-vars","yes"),a=n.supports("(--css-vars: yes)")&&n.supports("color","#00000000");return r=!(!i&&!a)&&!function(t){var e=t.document,n=e.createElement("div");n.className="mdc-ripple-surface--test-edge-var-bug",e.head.appendChild(n);var r=t.getComputedStyle(n),i=null!==r&&"solid"===r.borderTopStyle;return n.parentNode&&n.parentNode.removeChild(n),i}(t),e||(Ec=r),r}(window)},computeBoundingRect:function(){return t.root_.getBoundingClientRect()},containsEventTarget:function(e){return t.root_.contains(e)},deregisterDocumentInteractionHandler:function(t,e){return document.documentElement.removeEventListener(t,e,Bs())},deregisterInteractionHandler:function(e,n){return t.root_.removeEventListener(e,n,Bs())},deregisterResizeHandler:function(t){return window.removeEventListener("resize",t)},getWindowPageOffset:function(){return{x:window.pageXOffset,y:window.pageYOffset}},isSurfaceActive:function(){return Sc(t.root_,":active")},isSurfaceDisabled:function(){return Boolean(t.disabled)},isUnbounded:function(){return Boolean(t.unbounded)},registerDocumentInteractionHandler:function(t,e){return document.documentElement.addEventListener(t,e,Bs())},registerInteractionHandler:function(e,n){return t.root_.addEventListener(e,n,Bs())},registerResizeHandler:function(t){return window.addEventListener("resize",t)},removeClass:function(e){return t.root_.classList.remove(e)},updateCssVariable:function(e,n){return t.root_.style.setProperty(e,n)}}},Object.defineProperty(e.prototype,"unbounded",{get:function(){return Boolean(this.unbounded_)},set:function(t){this.unbounded_=Boolean(t),this.setUnbounded_()},enumerable:!0,configurable:!0}),e.prototype.activate=function(){this.foundation_.activate()},e.prototype.deactivate=function(){this.foundation_.deactivate()},e.prototype.layout=function(){this.foundation_.layout()},e.prototype.getDefaultFoundation=function(){return new Oc(e.createAdapter(this))},e.prototype.initialSyncWithDOM=function(){var t=this.root_;this.unbounded="mdcRippleIsUnbounded"in t.dataset},e.prototype.setUnbounded_=function(){this.foundation_.setUnbounded(Boolean(this.unbounded_))},e}(Us),Pc={CHECKED:"mdc-switch--checked",DISABLED:"mdc-switch--disabled"},Hc={NATIVE_CONTROL_SELECTOR:".mdc-switch__native-control",RIPPLE_SURFACE_SELECTOR:".mdc-switch__thumb-underlay"},Vc=function(t){function e(n){return t.call(this,Ds({},e.defaultAdapter,n))||this}return Os(e,t),Object.defineProperty(e,"strings",{get:function(){return Hc},enumerable:!0,configurable:!0}),Object.defineProperty(e,"cssClasses",{get:function(){return Pc},enumerable:!0,configurable:!0}),Object.defineProperty(e,"defaultAdapter",{get:function(){return{addClass:function(){},removeClass:function(){},setNativeControlChecked:function(){},setNativeControlDisabled:function(){}}},enumerable:!0,configurable:!0}),e.prototype.setChecked=function(t){this.adapter_.setNativeControlChecked(t),this.updateCheckedStyling_(t)},e.prototype.setDisabled=function(t){this.adapter_.setNativeControlDisabled(t),t?this.adapter_.addClass(Pc.DISABLED):this.adapter_.removeClass(Pc.DISABLED)},e.prototype.handleChange=function(t){var e=t.target;this.updateCheckedStyling_(e.checked)},e.prototype.updateCheckedStyling_=function(t){t?this.adapter_.addClass(Pc.CHECKED):this.adapter_.removeClass(Pc.CHECKED)},e}(Fs),Fc=function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e.ripple_=e.createRipple_(),e}return Os(e,t),e.attachTo=function(t){return new e(t)},e.prototype.destroy=function(){t.prototype.destroy.call(this),this.ripple_.destroy(),this.nativeControl_.removeEventListener("change",this.changeHandler_)},e.prototype.initialSyncWithDOM=function(){var t=this;this.changeHandler_=function(){for(var e,n=[],r=0;r<arguments.length;r++)n[r]=arguments[r];return(e=t.foundation_).handleChange.apply(e,Hs(n))},this.nativeControl_.addEventListener("change",this.changeHandler_),this.checked=this.checked},e.prototype.getDefaultFoundation=function(){var t=this;return new Vc({addClass:function(e){return t.root_.classList.add(e)},removeClass:function(e){return t.root_.classList.remove(e)},setNativeControlChecked:function(e){return t.nativeControl_.checked=e},setNativeControlDisabled:function(e){return t.nativeControl_.disabled=e}})},Object.defineProperty(e.prototype,"ripple",{get:function(){return this.ripple_},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"checked",{get:function(){return this.nativeControl_.checked},set:function(t){this.foundation_.setChecked(t)},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"disabled",{get:function(){return this.nativeControl_.disabled},set:function(t){this.foundation_.setDisabled(t)},enumerable:!0,configurable:!0}),e.prototype.createRipple_=function(){var t=this,e=Vc.strings.RIPPLE_SURFACE_SELECTOR,n=this.root_.querySelector(e),r=Ds({},Dc.createAdapter(this),{addClass:function(t){return n.classList.add(t)},computeBoundingRect:function(){return n.getBoundingClientRect()},deregisterInteractionHandler:function(e,n){t.nativeControl_.removeEventListener(e,n,Bs())},isSurfaceActive:function(){return Sc(t.nativeControl_,":active")},isUnbounded:function(){return!0},registerInteractionHandler:function(e,n){t.nativeControl_.addEventListener(e,n,Bs())},removeClass:function(t){return n.classList.remove(t)},updateCssVariable:function(t,e){n.style.setProperty(t,e)}});return new Dc(this.root_,new Oc(r))},Object.defineProperty(e.prototype,"nativeControl_",{get:function(){var t=Vc.strings.NATIVE_CONTROL_SELECTOR;return this.root_.querySelector(t)},enumerable:!0,configurable:!0}),e}(Us);function Uc(n){for(var r,a,o,s,c,u,l,d,f,v,g=[{class:"mdc-switch__native-control "+n.input$class},{type:"checkbox"},{role:"switch"},n.inputProps,{disabled:n.disabled},{value:n.valueKey===n.uninitializedValue?n.value:n.valueKey},uc(bc(n.$$props,"input$"),["use","class"])],b={},A=0;A<g.length;A+=1)b=e(b,g[A]);var T=[{class:"mdc-switch "+n.className},uc(n.$$props,["use","class","disabled","group","checked","value","input$"])],S={};for(A=0;A<T.length;A+=1)S=e(S,T[A]);return{c(){r=_("div"),a=_("div"),o=y(),s=_("div"),c=_("div"),u=_("input"),x(a,"class","mdc-switch__track"),w(u,b),x(c,"class","mdc-switch__thumb"),x(s,"class","mdc-switch__thumb-underlay"),w(r,S),C(r,"mdc-switch--disabled",n.disabled),C(r,"mdc-switch--checked",n.nativeChecked),v=[$(u,"change",n.input_change_handler),$(u,"change",n.handleChange),$(u,"change",n.change_handler),$(u,"input",n.input_handler)]},m(t,e){p(t,r,e),h(r,a),h(r,o),h(r,s),h(s,c),h(c,u),u.checked=n.nativeChecked,l=lc.call(null,u,n.input$use)||{},n.div3_binding(r),d=lc.call(null,r,n.use)||{},f=n.forwardEvents.call(null,r)||{}},p(t,e){t.nativeChecked&&(u.checked=e.nativeChecked),w(u,J(g,[t.input$class&&{class:"mdc-switch__native-control "+e.input$class},{type:"checkbox"},{role:"switch"},t.inputProps&&e.inputProps,t.disabled&&{disabled:e.disabled},(t.valueKey||t.uninitializedValue||t.value)&&{value:e.valueKey===e.uninitializedValue?e.value:e.valueKey},(t.exclude||t.prefixFilter||t.$$props)&&uc(bc(e.$$props,"input$"),["use","class"])])),"function"==typeof l.update&&t.input$use&&l.update.call(null,e.input$use),w(r,J(T,[t.className&&{class:"mdc-switch "+e.className},(t.exclude||t.$$props)&&uc(e.$$props,["use","class","disabled","group","checked","value","input$"])])),"function"==typeof d.update&&t.use&&d.update.call(null,e.use),(t.className||t.disabled)&&C(r,"mdc-switch--disabled",e.disabled),(t.className||t.nativeChecked)&&C(r,"mdc-switch--checked",e.nativeChecked)},i:t,o:t,d(t){t&&m(r),l&&"function"==typeof l.destroy&&l.destroy(),n.div3_binding(null),d&&"function"==typeof d.destroy&&d.destroy(),f&&"function"==typeof f.destroy&&f.destroy(),i(v)}}}function Bc(t,n,r){const i=cc(T);let a,o,s=()=>{},{use:c=[],class:u="",disabled:l=!1,group:f=s,checked:h=s,value:p=null,valueKey:m=s,input$use:_=[],input$class:v=""}=n,g=N("SMUI:form-field"),y=N("SMUI:generic:input:props")||{},b=N("SMUI:generic:input:setChecked"),$=f===s?h!==s&&h:-1!==f.indexOf(p),x=h;return I(()=>{r("switchControl",o=new Fc(a)),g&&g()&&(g().input=o)}),M(()=>{o&&o.destroy()}),t.$set=t=>{r("$$props",n=e(e({},n),t)),"use"in t&&r("use",c=t.use),"class"in t&&r("className",u=t.class),"disabled"in t&&r("disabled",l=t.disabled),"group"in t&&r("group",f=t.group),"checked"in t&&r("checked",h=t.checked),"value"in t&&r("value",p=t.value),"valueKey"in t&&r("valueKey",m=t.valueKey),"input$use"in t&&r("input$use",_=t.input$use),"input$class"in t&&r("input$class",v=t.input$class)},t.$$.update=(t={checked:1,uninitializedValue:1,previousChecked:1,nativeChecked:1,setChecked:1,switchControl:1,group:1,value:1,disabled:1,valueKey:1})=>{if((t.checked||t.uninitializedValue||t.previousChecked||t.nativeChecked)&&h!==s&&(h===x?r("checked",h=$):$!==h&&r("nativeChecked",$=h),r("previousChecked",x=h)),(t.setChecked||t.nativeChecked)&&b&&b($),(t.switchControl||t.group||t.uninitializedValue||t.value||t.checked)&&o)if(f!==s){const t=-1!==f.indexOf(p);o.checked!==t&&r("switchControl",o.checked=t,o)}else h!==s&&o.checked!==h&&r("switchControl",o.checked=h,o);(t.switchControl||t.disabled)&&o&&o.disabled!==l&&r("switchControl",o.disabled=l,o),(t.switchControl||t.valueKey||t.uninitializedValue||t.value)&&o&&m===s&&o.value!==p&&r("switchControl",o.value=p,o),(t.switchControl||t.valueKey||t.uninitializedValue)&&o&&m!==s&&o.value!==m&&r("switchControl",o.value=m,o)},{forwardEvents:i,uninitializedValue:s,use:c,className:u,disabled:l,group:f,checked:h,value:p,valueKey:m,input$use:_,input$class:v,element:a,inputProps:y,nativeChecked:$,handleChange:function(t){if(f!==s){const t=f.indexOf(p);o.checked&&-1===t?(f.push(p),r("group",f)):o.checked||-1===t||(f.splice(t,1),r("group",f))}},getId:function(){return y&&y.id},$$props:n,change_handler:function(e){L(t,e)},input_handler:function(e){L(t,e)},input_change_handler:function(){$=this.checked,r("nativeChecked",$),r("checked",h),r("uninitializedValue",s),r("previousChecked",x)},div3_binding:function(t){D[t?"unshift":"push"](()=>{r("element",a=t)})},$$props:n=d(n)}}class jc extends at{constructor(t){super(),it(this,t,Bc,Uc,o,["use","class","disabled","group","checked","value","valueKey","input$use","input$class","getId"])}get getId(){return this.$$.ctx.getId}}function zc(t){var e,n;const r=t.$$slots.default,i=c(r,t,null);return{c(){e=_("section"),i&&i.c(),x(e,"class","optionGroup svelte-cyg75r")},l(t){i&&i.l(section_nodes)},m(t,r){p(t,e,r),i&&i.m(e,null),n=!0},p(t,e){i&&i.p&&t.$$scope&&i.p(l(r,e,t,null),u(r,e,null))},i(t){n||(q(i,t),n=!0)},o(t){G(i,t),n=!1},d(t){t&&m(e),i&&i.d(t)}}}function Wc(t,e,n){let{$$slots:r={},$$scope:i}=e;return t.$set=t=>{"$$scope"in t&&n("$$scope",i=t.$$scope)},{$$slots:r,$$scope:i}}class Yc extends at{constructor(t){super(),it(this,t,Wc,zc,o,[])}}function Kc(t){var e,n,r,i,a,o,s,c,u,l,d;function f(e){t.slider_value_binding.call(null,e),l=!0,B(()=>l=!1)}let v={color:"secondary",min:0,max:30,discrete:!0};void 0!==t.$minPopularity&&(v.value=t.$minPopularity);var b=new mc({props:v});return D.push(()=>tt(b,"value",f)),{c(){e=_("article"),(n=_("div")).textContent="popularity",r=y(),i=_("div"),a=g("≥ "),o=g(t.$minPopularity),s=g("%"),c=y(),u=_("div"),b.$$.fragment.c(),x(n,"class","name"),x(i,"class","value"),x(u,"class","slider"),x(e,"class","item")},m(t,l){p(t,e,l),h(e,n),h(e,r),h(e,i),h(i,a),h(i,o),h(i,s),h(e,c),h(e,u),et(b,u,null),d=!0},p(t,e){d&&!t.$minPopularity||A(o,e.$minPopularity);var n={};!l&&t.$minPopularity&&(n.value=e.$minPopularity),b.$set(n)},i(t){d||(q(b.$$.fragment,t),d=!0)},o(t){G(b.$$.fragment,t),d=!1},d(t){t&&m(e),nt(b)}}}function Xc(t,e,n){let r;return s(t,ut,t=>{n("$minPopularity",r=t)}),{$minPopularity:r,slider_value_binding:function(t){r=t,ut.set(r)}}}class qc extends at{constructor(t){super(),it(this,t,Xc,Kc,o,[])}}function Gc(t){var e,n,r,i,a,o,s,c,u;function l(e){t.slider_value_binding.call(null,e),c=!0,B(()=>c=!1)}let d={min:8,max:30,discrete:!0};void 0!==t.$maxHeroes&&(d.value=t.$maxHeroes);var f=new mc({props:d});return D.push(()=>tt(f,"value",l)),{c(){e=_("article"),(n=_("div")).textContent="heroes",r=y(),i=_("div"),a=g(t.$maxHeroes),o=y(),s=_("div"),f.$$.fragment.c(),x(n,"class","name"),x(i,"class","value"),x(s,"class","slider"),x(e,"class","item")},m(t,c){p(t,e,c),h(e,n),h(e,r),h(e,i),h(i,a),h(e,o),h(e,s),et(f,s,null),u=!0},p(t,e){u&&!t.$maxHeroes||A(a,e.$maxHeroes);var n={};!c&&t.$maxHeroes&&(n.value=e.$maxHeroes),f.$set(n)},i(t){u||(q(f.$$.fragment,t),u=!0)},o(t){G(f.$$.fragment,t),u=!1},d(t){t&&m(e),nt(f)}}}function Zc(t,e,n){let r;return s(t,lt,t=>{n("$maxHeroes",r=t)}),{$maxHeroes:r,slider_value_binding:function(t){r=t,lt.set(r)}}}class Jc extends at{constructor(t){super(),it(this,t,Zc,Gc,o,[])}}function Qc(t){var e;return{c(){(e=_("span")).textContent="bottom",x(e,"slot","label")},m(t,n){p(t,e,n)},d(t){t&&m(e)}}}function tu(t){var e,n,r;function i(n){t.switch_1_checked_binding.call(null,n),e=!0,B(()=>e=!1)}let a={};void 0!==t.$isAtBottom&&(a.checked=t.$isAtBottom);var o=new jc({props:a});return D.push(()=>tt(o,"checked",i)),{c(){o.$$.fragment.c(),n=y()},m(t,e){et(o,t,e),p(t,n,e),r=!0},p(t,n){var r={};!e&&t.$isAtBottom&&(r.checked=n.$isAtBottom),o.$set(r)},i(t){r||(q(o.$$.fragment,t),r=!0)},o(t){G(o.$$.fragment,t),r=!1},d(t){nt(o,t),t&&m(n)}}}function eu(t){var e,n,r=new Tc({props:{$$slots:{default:[tu],label:[Qc]},$$scope:{ctx:t}}});return{c(){e=_("article"),r.$$.fragment.c(),x(e,"class","item")},m(t,i){p(t,e,i),et(r,e,null),n=!0},p(t,e){var n={};(t.$$scope||t.$isAtBottom)&&(n.$$scope={changed:t,ctx:e}),r.$set(n)},i(t){n||(q(r.$$.fragment,t),n=!0)},o(t){G(r.$$.fragment,t),n=!1},d(t){t&&m(e),nt(r)}}}function nu(t,e,n){let r;return s(t,ft,t=>{n("$isAtBottom",r=t)}),{$isAtBottom:r,switch_1_checked_binding:function(t){r=t,ft.set(r)}}}class ru extends at{constructor(t){super(),it(this,t,nu,eu,o,[])}}function iu(t){var e,n,r,i=new qc({}),a=new Jc({}),o=new ru({});return{c(){i.$$.fragment.c(),e=y(),a.$$.fragment.c(),n=y(),o.$$.fragment.c()},m(t,s){et(i,t,s),p(t,e,s),et(a,t,s),p(t,n,s),et(o,t,s),r=!0},i(t){r||(q(i.$$.fragment,t),q(a.$$.fragment,t),q(o.$$.fragment,t),r=!0)},o(t){G(i.$$.fragment,t),G(a.$$.fragment,t),G(o.$$.fragment,t),r=!1},d(t){nt(i,t),t&&m(e),nt(a,t),t&&m(n),nt(o,t)}}}function au(t){var e,n,r=new Yc({props:{$$slots:{default:[iu]},$$scope:{ctx:t}}}),i=new Ns({});return{c(){r.$$.fragment.c(),e=y(),i.$$.fragment.c()},m(t,a){et(r,t,a),p(t,e,a),et(i,t,a),n=!0},p(t,e){var n={};t.$$scope&&(n.$$scope={changed:t,ctx:e}),r.$set(n)},i(t){n||(q(r.$$.fragment,t),q(i.$$.fragment,t),n=!0)},o(t){G(r.$$.fragment,t),G(i.$$.fragment,t),n=!1},d(t){nt(r,t),t&&m(e),nt(i,t)}}}function ou(t,e,n){let r,i,a,o,c;s(t,dt,t=>{n("$isPlaying",r=t)}),s(t,pt,t=>{n("$rankedData",i=t)}),s(t,ut,t=>{n("$minPopularity",a=t)}),s(t,ft,t=>{n("$isAtBottom",o=t)}),s(t,lt,t=>{n("$maxHeroes",c=t)});const u=new ks({xValue:t=>t.winrate,x2Value:t=>t.popularity,onPlayingEnd:()=>f(dt,r=!1),xInterpolate:er});return I(()=>{u.mount()}),k(()=>{const{data:t}=i;if(t){const e=t.map(t=>{const e={};return e.version=t.version,e.data=t.data.filter(t=>t.popularity>=a),e.data=o?e.data.slice(e.data.length-c):e.data.slice(0,c),e}),n=e.flatMap(t=>t.data.filter(t=>t.popularity>=a).map(t=>t.winrate)),[i,s]=o?[2,8]:[8,2],l=[At(n)-i,wt(n)+s],d=[0,100];u.update({data:e,xDomain:l,x2Domain:d,isPlaying:r,isReversed:o})}}),M(()=>{u.clearInterval()}),{}}class su extends at{constructor(t){super(),it(this,t,ou,au,o,[])}}function cu(t,[e,n={unbounded:!1,color:null}]){let r=null;function i(e,n){if(e&&!r?r=new Dc(t):r&&!e&&(r.destroy(),r=null),e)switch(r.unbounded=!!n.unbounded,n.color){case"surface":return t.classList.add("mdc-ripple-surface"),t.classList.remove("mdc-ripple-surface--primary"),void t.classList.remove("mdc-ripple-surface--accent");case"primary":return t.classList.add("mdc-ripple-surface"),t.classList.add("mdc-ripple-surface--primary"),void t.classList.remove("mdc-ripple-surface--accent");case"secondary":return t.classList.add("mdc-ripple-surface"),t.classList.remove("mdc-ripple-surface--primary"),void t.classList.add("mdc-ripple-surface--accent")}t.classList.remove("mdc-ripple-surface"),t.classList.remove("mdc-ripple-surface--primary"),t.classList.remove("mdc-ripple-surface--accent")}return e&&i(e,n),{update([t,e={unbounded:!1,color:null}]){i(t,e)},destroy(){r&&(r.destroy(),r=null,t.classList.remove("mdc-ripple-surface"),t.classList.remove("mdc-ripple-surface--primary"),t.classList.remove("mdc-ripple-surface--accent"))}}}function uu(t){var n,r,i,a,o;const s=t.$$slots.default,d=c(s,t,null);for(var f=[{class:"mdc-button "+t.className},t.actionProp,t.defaultProp,t.props],h={},v=0;v<f.length;v+=1)h=e(h,f[v]);return{c(){n=_("button"),d&&d.c(),w(n,h),C(n,"mdc-button--raised","raised"===t.variant),C(n,"mdc-button--unelevated","unelevated"===t.variant),C(n,"mdc-button--outlined","outlined"===t.variant),C(n,"mdc-button--dense",t.dense),C(n,"smui-button--color-secondary","secondary"===t.color),C(n,"mdc-card__action","card:action"===t.context),C(n,"mdc-card__action--button","card:action"===t.context),C(n,"mdc-dialog__button","dialog:action"===t.context),C(n,"mdc-top-app-bar__navigation-icon","top-app-bar:navigation"===t.context),C(n,"mdc-top-app-bar__action-item","top-app-bar:action"===t.context),C(n,"mdc-snackbar__action","snackbar"===t.context)},l(t){d&&d.l(button_nodes)},m(e,s){p(e,n,s),d&&d.m(n,null),r=lc.call(null,n,t.use)||{},i=t.forwardEvents.call(null,n)||{},a=cu.call(null,n,[t.ripple,{unbounded:!1}])||{},o=!0},p(t,e){d&&d.p&&t.$$scope&&d.p(l(s,e,t,null),u(s,e,null)),w(n,J(f,[t.className&&{class:"mdc-button "+e.className},t.actionProp&&e.actionProp,t.defaultProp&&e.defaultProp,t.props&&e.props])),"function"==typeof r.update&&t.use&&r.update.call(null,e.use),"function"==typeof a.update&&t.ripple&&a.update.call(null,[e.ripple,{unbounded:!1}]),(t.className||t.variant)&&(C(n,"mdc-button--raised","raised"===e.variant),C(n,"mdc-button--unelevated","unelevated"===e.variant),C(n,"mdc-button--outlined","outlined"===e.variant)),(t.className||t.dense)&&C(n,"mdc-button--dense",e.dense),(t.className||t.color)&&C(n,"smui-button--color-secondary","secondary"===e.color),(t.className||t.context)&&(C(n,"mdc-card__action","card:action"===e.context),C(n,"mdc-card__action--button","card:action"===e.context),C(n,"mdc-dialog__button","dialog:action"===e.context),C(n,"mdc-top-app-bar__navigation-icon","top-app-bar:navigation"===e.context),C(n,"mdc-top-app-bar__action-item","top-app-bar:action"===e.context),C(n,"mdc-snackbar__action","snackbar"===e.context))},i(t){o||(q(d,t),o=!0)},o(t){G(d,t),o=!1},d(t){t&&m(n),d&&d.d(t),r&&"function"==typeof r.destroy&&r.destroy(),i&&"function"==typeof i.destroy&&i.destroy(),a&&"function"==typeof a.destroy&&a.destroy()}}}function lu(t){var n,r,i,a,o;const s=t.$$slots.default,d=c(s,t,null);for(var f=[{class:"mdc-button "+t.className},{href:t.href},t.actionProp,t.defaultProp,t.props],h={},v=0;v<f.length;v+=1)h=e(h,f[v]);return{c(){n=_("a"),d&&d.c(),w(n,h),C(n,"mdc-button--raised","raised"===t.variant),C(n,"mdc-button--unelevated","unelevated"===t.variant),C(n,"mdc-button--outlined","outlined"===t.variant),C(n,"mdc-button--dense",t.dense),C(n,"smui-button--color-secondary","secondary"===t.color),C(n,"mdc-card__action","card:action"===t.context),C(n,"mdc-card__action--button","card:action"===t.context),C(n,"mdc-dialog__button","dialog:action"===t.context),C(n,"mdc-top-app-bar__navigation-icon","top-app-bar:navigation"===t.context),C(n,"mdc-top-app-bar__action-item","top-app-bar:action"===t.context),C(n,"mdc-snackbar__action","snackbar"===t.context)},l(t){d&&d.l(a_nodes)},m(e,s){p(e,n,s),d&&d.m(n,null),r=lc.call(null,n,t.use)||{},i=t.forwardEvents.call(null,n)||{},a=cu.call(null,n,[t.ripple,{unbounded:!1}])||{},o=!0},p(t,e){d&&d.p&&t.$$scope&&d.p(l(s,e,t,null),u(s,e,null)),w(n,J(f,[t.className&&{class:"mdc-button "+e.className},t.href&&{href:e.href},t.actionProp&&e.actionProp,t.defaultProp&&e.defaultProp,t.props&&e.props])),"function"==typeof r.update&&t.use&&r.update.call(null,e.use),"function"==typeof a.update&&t.ripple&&a.update.call(null,[e.ripple,{unbounded:!1}]),(t.className||t.variant)&&(C(n,"mdc-button--raised","raised"===e.variant),C(n,"mdc-button--unelevated","unelevated"===e.variant),C(n,"mdc-button--outlined","outlined"===e.variant)),(t.className||t.dense)&&C(n,"mdc-button--dense",e.dense),(t.className||t.color)&&C(n,"smui-button--color-secondary","secondary"===e.color),(t.className||t.context)&&(C(n,"mdc-card__action","card:action"===e.context),C(n,"mdc-card__action--button","card:action"===e.context),C(n,"mdc-dialog__button","dialog:action"===e.context),C(n,"mdc-top-app-bar__navigation-icon","top-app-bar:navigation"===e.context),C(n,"mdc-top-app-bar__action-item","top-app-bar:action"===e.context),C(n,"mdc-snackbar__action","snackbar"===e.context))},i(t){o||(q(d,t),o=!0)},o(t){G(d,t),o=!1},d(t){t&&m(n),d&&d.d(t),r&&"function"==typeof r.destroy&&r.destroy(),i&&"function"==typeof i.destroy&&i.destroy(),a&&"function"==typeof a.destroy&&a.destroy()}}}function du(t){var e,n,r,i,a=[lu,uu],o=[];function s(t,e){return e.href?0:1}return e=s(0,t),n=o[e]=a[e](t),{c(){n.c(),r=b()},m(t,n){o[e].m(t,n),p(t,r,n),i=!0},p(t,i){var c=e;(e=s(0,i))===c?o[e].p(t,i):(K(),G(o[c],1,1,()=>{o[c]=null}),X(),(n=o[e])||(n=o[e]=a[e](i)).c(),q(n,1),n.m(r.parentNode,r))},i(t){i||(q(n),i=!0)},o(t){G(n),i=!1},d(t){o[e].d(t),t&&m(r)}}}function fu(t,n,r){const i=cc(T);let{use:a=[],class:o="",ripple:s=!0,color:c="primary",variant:u="text",dense:l=!1,href:f=null,action:h="close",default:p=!1}=n,m=N("SMUI:button:context");R("SMUI:label:context","button"),R("SMUI:icon:context","button");let _,v,g,y,{$$slots:b={},$$scope:$}=n;return t.$set=t=>{r("$$props",n=e(e({},n),t)),"use"in t&&r("use",a=t.use),"class"in t&&r("className",o=t.class),"ripple"in t&&r("ripple",s=t.ripple),"color"in t&&r("color",c=t.color),"variant"in t&&r("variant",u=t.variant),"dense"in t&&r("dense",l=t.dense),"href"in t&&r("href",f=t.href),"action"in t&&r("action",h=t.action),"default"in t&&r("defaultAction",p=t.default),"$$scope"in t&&r("$$scope",$=t.$$scope)},t.$$.update=(t={context:1,$$props:1,dialogExcludes:1,action:1,defaultAction:1})=>{t.context&&r("dialogExcludes",_="dialog:action"===m?["action","default"]:[]),r("props",v=uc(n,["use","class","ripple","color","variant","dense","href",..._])),(t.context||t.action)&&r("actionProp",g="dialog:action"===m&&null!==h?{"data-mdc-dialog-action":h}:{}),(t.context||t.defaultAction)&&r("defaultProp",y="dialog:action"===m&&p?{"data-mdc-dialog-button-default":""}:{})},{forwardEvents:i,use:a,className:o,ripple:s,color:c,variant:u,dense:l,href:f,action:h,defaultAction:p,context:m,props:v,actionProp:g,defaultProp:y,$$props:n=d(n),$$slots:b,$$scope:$}}class hu extends at{constructor(t){super(),it(this,t,fu,du,o,["use","class","ripple","color","variant","dense","href","action","default"])}}function pu(t){var n,r,i,a;const o=t.$$slots.default,s=c(o,t,null);for(var d=[{class:t.className},t.snackbarProps,uc(t.$$props,["use","class"])],f={},h=0;h<d.length;h+=1)f=e(f,d[h]);return{c(){n=_("span"),s&&s.c(),w(n,f),C(n,"mdc-button__label","button"===t.context),C(n,"mdc-fab__label","fab"===t.context),C(n,"mdc-chip__text","chip"===t.context),C(n,"mdc-tab__text-label","tab"===t.context),C(n,"mdc-image-list__label","image-list"===t.context),C(n,"mdc-snackbar__label","snackbar"===t.context)},l(t){s&&s.l(span_nodes)},m(e,o){p(e,n,o),s&&s.m(n,null),r=lc.call(null,n,t.use)||{},i=t.forwardEvents.call(null,n)||{},a=!0},p(t,e){s&&s.p&&t.$$scope&&s.p(l(o,e,t,null),u(o,e,null)),w(n,J(d,[t.className&&{class:e.className},t.snackbarProps&&e.snackbarProps,(t.exclude||t.$$props)&&uc(e.$$props,["use","class"])])),"function"==typeof r.update&&t.use&&r.update.call(null,e.use),(t.className||t.context)&&(C(n,"mdc-button__label","button"===e.context),C(n,"mdc-fab__label","fab"===e.context),C(n,"mdc-chip__text","chip"===e.context),C(n,"mdc-tab__text-label","tab"===e.context),C(n,"mdc-image-list__label","image-list"===e.context),C(n,"mdc-snackbar__label","snackbar"===e.context))},i(t){a||(q(s,t),a=!0)},o(t){G(s,t),a=!1},d(t){t&&m(n),s&&s.d(t),r&&"function"==typeof r.destroy&&r.destroy(),i&&"function"==typeof i.destroy&&i.destroy()}}}function mu(t,n,r){const i=cc(T);let{use:a=[],class:o=""}=n;const s=N("SMUI:label:context");let c,{$$slots:u={},$$scope:l}=n;return t.$set=t=>{r("$$props",n=e(e({},n),t)),"use"in t&&r("use",a=t.use),"class"in t&&r("className",o=t.class),"$$scope"in t&&r("$$scope",l=t.$$scope)},r("snackbarProps",c="snackbar"===s?{role:"status","aria-live":"polite"}:{}),{forwardEvents:i,use:a,className:o,context:s,snackbarProps:c,$$props:n,$$props:n=d(n),$$slots:u,$$scope:l}}class _u extends at{constructor(t){super(),it(this,t,mu,pu,o,["use","class"])}}function vu(t){var e,n=new hu({props:{variant:"raised",$$slots:{default:[bu]},$$scope:{ctx:t}}});return n.$on("click",t.click_handler_1),{c(){n.$$.fragment.c()},m(t,r){et(n,t,r),e=!0},i(t){e||(q(n.$$.fragment,t),e=!0)},o(t){G(n.$$.fragment,t),e=!1},d(t){nt(n,t)}}}function gu(t){var e,n=new hu({props:{color:"secondary",variant:"raised",$$slots:{default:[xu]},$$scope:{ctx:t}}});return n.$on("click",t.click_handler),{c(){n.$$.fragment.c()},m(t,r){et(n,t,r),e=!0},i(t){e||(q(n.$$.fragment,t),e=!0)},o(t){G(n.$$.fragment,t),e=!1},d(t){nt(n,t)}}}function yu(t){var e;return{c(){e=g("Play")},m(t,n){p(t,e,n)},d(t){t&&m(e)}}}function bu(t){var e,n=new _u({props:{$$slots:{default:[yu]},$$scope:{ctx:t}}});return{c(){n.$$.fragment.c()},m(t,r){et(n,t,r),e=!0},p(t,e){var r={};t.$$scope&&(r.$$scope={changed:t,ctx:e}),n.$set(r)},i(t){e||(q(n.$$.fragment,t),e=!0)},o(t){G(n.$$.fragment,t),e=!1},d(t){nt(n,t)}}}function $u(t){var e;return{c(){e=g("Stop")},m(t,n){p(t,e,n)},d(t){t&&m(e)}}}function xu(t){var e,n=new _u({props:{$$slots:{default:[$u]},$$scope:{ctx:t}}});return{c(){n.$$.fragment.c()},m(t,r){et(n,t,r),e=!0},p(t,e){var r={};t.$$scope&&(r.$$scope={changed:t,ctx:e}),n.$set(r)},i(t){e||(q(n.$$.fragment,t),e=!0)},o(t){G(n.$$.fragment,t),e=!1},d(t){nt(n,t)}}}function wu(t){var e,n,r,i,a=[gu,vu],o=[];function s(t,e){return e.$isPlaying?0:1}return e=s(0,t),n=o[e]=a[e](t),{c(){n.c(),r=b()},m(t,n){o[e].m(t,n),p(t,r,n),i=!0},p(t,i){var c=e;(e=s(0,i))!==c&&(K(),G(o[c],1,1,()=>{o[c]=null}),X(),(n=o[e])||(n=o[e]=a[e](i)).c(),q(n,1),n.m(r.parentNode,r))},i(t){i||(q(n),i=!0)},o(t){G(n),i=!1},d(t){o[e].d(t),t&&m(r)}}}function Au(t,e,n){let r;s(t,dt,t=>{n("$isPlaying",r=t)});return{$isPlaying:r,click_handler:()=>f(dt,r=!1),click_handler_1:()=>f(dt,r=!0)}}class Cu extends at{constructor(t){super(),it(this,t,Au,wu,o,[])}}function Tu(t){var e,n,r;const i=t.$$slots.default,a=c(i,t,null);var o=new Cu({});return{c(){e=_("div"),a&&a.c(),n=y(),o.$$.fragment.c(),x(e,"class","pageContainer svelte-rwyvhq")},l(t){a&&a.l(div_nodes)},m(t,i){p(t,e,i),a&&a.m(e,null),h(e,n),et(o,e,null),r=!0},p(t,e){a&&a.p&&t.$$scope&&a.p(l(i,e,t,null),u(i,e,null))},i(t){r||(q(a,t),q(o.$$.fragment,t),r=!0)},o(t){G(a,t),G(o.$$.fragment,t),r=!1},d(t){t&&m(e),a&&a.d(t),nt(o)}}}function Su(t,e,n){let{$$slots:r={},$$scope:i}=e;return t.$set=t=>{"$$scope"in t&&n("$$scope",i=t.$$scope)},{$$slots:r,$$scope:i}}class Eu extends at{constructor(t){super(),it(this,t,Su,Tu,o,[])}}function Iu(t){var e,n=new su({});return{c(){n.$$.fragment.c()},m(t,r){et(n,t,r),e=!0},i(t){e||(q(n.$$.fragment,t),e=!0)},o(t){G(n.$$.fragment,t),e=!1},d(t){nt(n,t)}}}function ku(t){var e,n=new Eu({props:{$$slots:{default:[Iu]},$$scope:{ctx:t}}});return{c(){n.$$.fragment.c()},m(t,r){et(n,t,r),e=!0},p(t,e){var r={};t.$$scope&&(r.$$scope={changed:t,ctx:e}),n.$set(r)},i(t){e||(q(n.$$.fragment,t),e=!0)},o(t){G(n.$$.fragment,t),e=!1},d(t){nt(n,t)}}}function Mu(t){var e;return{c(){(e=_("span")).textContent="without bans",x(e,"slot","label")},m(t,n){p(t,e,n)},d(t){t&&m(e)}}}function Ru(t){var e,n,r;function i(n){t.switch_1_checked_binding.call(null,n),e=!0,B(()=>e=!1)}let a={};void 0!==t.$withoutBans&&(a.checked=t.$withoutBans);var o=new jc({props:a});return D.push(()=>tt(o,"checked",i)),{c(){o.$$.fragment.c(),n=y()},m(t,e){et(o,t,e),p(t,n,e),r=!0},p(t,n){var r={};!e&&t.$withoutBans&&(r.checked=n.$withoutBans),o.$set(r)},i(t){r||(q(o.$$.fragment,t),r=!0)},o(t){G(o.$$.fragment,t),r=!1},d(t){nt(o,t),t&&m(n)}}}function Nu(t){var e,n,r=new Tc({props:{$$slots:{default:[Ru],label:[Mu]},$$scope:{ctx:t}}});return{c(){e=_("article"),r.$$.fragment.c(),x(e,"class","item")},m(t,i){p(t,e,i),et(r,e,null),n=!0},p(t,e){var n={};(t.$$scope||t.$withoutBans)&&(n.$$scope={changed:t,ctx:e}),r.$set(n)},i(t){n||(q(r.$$.fragment,t),n=!0)},o(t){G(r.$$.fragment,t),n=!1},d(t){t&&m(e),nt(r)}}}function Lu(t,e,n){let r;return s(t,ht,t=>{n("$withoutBans",r=t)}),{$withoutBans:r,switch_1_checked_binding:function(t){r=t,ht.set(r)}}}class Ou extends at{constructor(t){super(),it(this,t,Lu,Nu,o,[])}}function Du(t){var e,n,r,i=new Jc({}),a=new Ou({}),o=new ru({});return{c(){i.$$.fragment.c(),e=y(),a.$$.fragment.c(),n=y(),o.$$.fragment.c()},m(t,s){et(i,t,s),p(t,e,s),et(a,t,s),p(t,n,s),et(o,t,s),r=!0},i(t){r||(q(i.$$.fragment,t),q(a.$$.fragment,t),q(o.$$.fragment,t),r=!0)},o(t){G(i.$$.fragment,t),G(a.$$.fragment,t),G(o.$$.fragment,t),r=!1},d(t){nt(i,t),t&&m(e),nt(a,t),t&&m(n),nt(o,t)}}}function Pu(t){var e,n,r=new Yc({props:{$$slots:{default:[Du]},$$scope:{ctx:t}}}),i=new Ns({});return{c(){r.$$.fragment.c(),e=y(),i.$$.fragment.c()},m(t,a){et(r,t,a),p(t,e,a),et(i,t,a),n=!0},p(t,e){var n={};t.$$scope&&(n.$$scope={changed:t,ctx:e}),r.$set(n)},i(t){n||(q(r.$$.fragment,t),q(i.$$.fragment,t),n=!0)},o(t){G(r.$$.fragment,t),G(i.$$.fragment,t),n=!1},d(t){nt(r,t),t&&m(e),nt(i,t)}}}function Hu(t,e,n){let r,i,a,o,c;s(t,dt,t=>{n("$isPlaying",r=t)}),s(t,pt,t=>{n("$rankedData",i=t)}),s(t,ht,t=>{n("$withoutBans",a=t)}),s(t,ft,t=>{n("$isAtBottom",o=t)}),s(t,lt,t=>{n("$maxHeroes",c=t)});const u=t=>t.popularity,l=new ks({xValue:u,x2Value:t=>t.winrate,onPlayingEnd:()=>f(dt,r=!1)});return I(()=>{l.mount()}),k(()=>{const{data:t}=i;if(t){const e=t.map(t=>{const e={},{totalGames:n}=t;return e.version=t.version,e.data=a?t.data.map(t=>({...t,popularity:(t.win+t.lose)/n*100})):t.data.slice(),e.data.sort((t,e)=>u(e)-u(t)),e.data=o?e.data.slice(e.data.length-c):e.data.slice(0,c),e}),n=e.flatMap(t=>t.data.map(u)),i=o?[At(n)-2,wt(n)]:[At(n)-10,wt(n)],s=[0,100];l.update({data:e,xDomain:i,x2Domain:s,isPlaying:r,isReversed:o})}}),M(()=>{l.clearInterval()}),{}}class Vu extends at{constructor(t){super(),it(this,t,Hu,Pu,o,[])}}function Fu(t){var e,n=new Vu({});return{c(){n.$$.fragment.c()},m(t,r){et(n,t,r),e=!0},i(t){e||(q(n.$$.fragment,t),e=!0)},o(t){G(n.$$.fragment,t),e=!1},d(t){nt(n,t)}}}function Uu(t){var e,n=new Eu({props:{$$slots:{default:[Fu]},$$scope:{ctx:t}}});return{c(){n.$$.fragment.c()},m(t,r){et(n,t,r),e=!0},p(t,e){var r={};t.$$scope&&(r.$$scope={changed:t,ctx:e}),n.$set(r)},i(t){e||(q(n.$$.fragment,t),e=!0)},o(t){G(n.$$.fragment,t),e=!1},d(t){nt(n,t)}}}function Bu(t){var e,n,r=new Jc({}),i=new ru({});return{c(){r.$$.fragment.c(),e=y(),i.$$.fragment.c()},m(t,a){et(r,t,a),p(t,e,a),et(i,t,a),n=!0},i(t){n||(q(r.$$.fragment,t),q(i.$$.fragment,t),n=!0)},o(t){G(r.$$.fragment,t),G(i.$$.fragment,t),n=!1},d(t){nt(r,t),t&&m(e),nt(i,t)}}}function ju(t){var e,n,r=new Yc({props:{$$slots:{default:[Bu]},$$scope:{ctx:t}}}),i=new Ns({});return{c(){r.$$.fragment.c(),e=y(),i.$$.fragment.c()},m(t,a){et(r,t,a),p(t,e,a),et(i,t,a),n=!0},p(t,e){var n={};t.$$scope&&(n.$$scope={changed:t,ctx:e}),r.$set(n)},i(t){n||(q(r.$$.fragment,t),q(i.$$.fragment,t),n=!0)},o(t){G(r.$$.fragment,t),G(i.$$.fragment,t),n=!1},d(t){nt(r,t),t&&m(e),nt(i,t)}}}function zu(t,e,n){let r,i,a,o;s(t,dt,t=>{n("$isPlaying",r=t)}),s(t,pt,t=>{n("$rankedData",i=t)}),s(t,ft,t=>{n("$isAtBottom",a=t)}),s(t,lt,t=>{n("$maxHeroes",o=t)});const c=t=>t.banrate,u=new ks({xValue:c,x2Value:t=>t.winrate,onPlayingEnd:()=>f(dt,r=!1)});return I(()=>{u.mount()}),k(()=>{const{data:t}=i;if(t){const e=t.map(t=>{const e={},{totalGames:n}=t;return e.version=t.version,e.data=t.data.map(t=>({...t,banrate:t.ban/n*100})),e.data.sort((t,e)=>c(e)-c(t)),e.data=a?e.data.slice(e.data.length-o):e.data.slice(0,o),e}),n=e.flatMap(t=>t.data.map(c)),i=a?[At(n)-1,wt(n)+2]:[At(n)-10,wt(n)],s=[0,100];u.update({data:e,xDomain:i,x2Domain:s,isPlaying:r,isReversed:a})}}),M(()=>{u.clearInterval()}),{}}class Wu extends at{constructor(t){super(),it(this,t,zu,ju,o,[])}}function Yu(t){var e,n=new Wu({});return{c(){n.$$.fragment.c()},m(t,r){et(n,t,r),e=!0},i(t){e||(q(n.$$.fragment,t),e=!0)},o(t){G(n.$$.fragment,t),e=!1},d(t){nt(n,t)}}}function Ku(t){var e,n=new Eu({props:{$$slots:{default:[Yu]},$$scope:{ctx:t}}});return{c(){n.$$.fragment.c()},m(t,r){et(n,t,r),e=!0},p(t,e){var r={};t.$$scope&&(r.$$scope={changed:t,ctx:e}),n.$set(r)},i(t){e||(q(n.$$.fragment,t),e=!0)},o(t){G(n.$$.fragment,t),e=!1},d(t){nt(n,t)}}}var Xu=[{path:"#ranked_wr",component:class extends at{constructor(t){super(),it(this,t,null,ku,o,[])}}},{path:"#ranked_popularity",component:class extends at{constructor(t){super(),it(this,t,null,Uu,o,[])}}},{path:"#banrate",component:class extends at{constructor(t){super(),it(this,t,null,Ku,o,[])}}}];function qu(t){var e,n,r=t.component;if(r)var i=new r({});return{c(){i&&i.$$.fragment.c(),e=b()},m(t,r){i&&et(i,t,r),p(t,e,r),n=!0},p(t,n){if(r!==(r=n.component)){if(i){K();const t=i;G(t.$$.fragment,1,0,()=>{nt(t,1)}),X()}r?((i=new r({})).$$.fragment.c(),q(i.$$.fragment,1),et(i,e.parentNode,e)):i=null}},i(t){n||(i&&q(i.$$.fragment,t),n=!0)},o(t){i&&G(i.$$.fragment,t),n=!1},d(t){t&&m(e),i&&nt(i,t)}}}function Gu(t,e,n){let r,i;return s(t,ct,t=>{n("$curRoute",r=t)}),M(ct.subscribe(t=>{const e=Xu.filter(t=>t.path===r);n("component",i=e.length?e[0].component:Xu[0].component)})),{component:i}}class Zu extends at{constructor(t){super(),it(this,t,Gu,qu,o,[])}}
-/**
+    var MDCFoundation = /** @class */ (function () {
+        function MDCFoundation(adapter) {
+            if (adapter === void 0) { adapter = {}; }
+            this.adapter_ = adapter;
+        }
+        Object.defineProperty(MDCFoundation, "cssClasses", {
+            get: function () {
+                // Classes extending MDCFoundation should implement this method to return an object which exports every
+                // CSS class the foundation class needs as a property. e.g. {ACTIVE: 'mdc-component--active'}
+                return {};
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCFoundation, "strings", {
+            get: function () {
+                // Classes extending MDCFoundation should implement this method to return an object which exports all
+                // semantic strings as constants. e.g. {ARIA_ROLE: 'tablist'}
+                return {};
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCFoundation, "numbers", {
+            get: function () {
+                // Classes extending MDCFoundation should implement this method to return an object which exports all
+                // of its semantic numbers as constants. e.g. {ANIMATION_DELAY_MS: 350}
+                return {};
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCFoundation, "defaultAdapter", {
+            get: function () {
+                // Classes extending MDCFoundation may choose to implement this getter in order to provide a convenient
+                // way of viewing the necessary methods of an adapter. In the future, this could also be used for adapter
+                // validation.
+                return {};
+            },
+            enumerable: true,
+            configurable: true
+        });
+        MDCFoundation.prototype.init = function () {
+            // Subclasses should override this method to perform initialization routines (registering events, etc.)
+        };
+        MDCFoundation.prototype.destroy = function () {
+            // Subclasses should override this method to perform de-initialization routines (de-registering events, etc.)
+        };
+        return MDCFoundation;
+    }());
+
+    /**
      * @license
-     * Copyright 2018 Google Inc.
+     * Copyright 2016 Google Inc.
      *
      * Permission is hereby granted, free of charge, to any person obtaining a copy
      * of this software and associated documentation files (the "Software"), to deal
@@ -212,10 +7030,85 @@ var Rc=["touchstart","pointerdown","mousedown","keydown"],Nc=["touchend","pointe
      * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
-     */var Ju={ACTIVE:"mdc-tab-indicator--active",FADE:"mdc-tab-indicator--fade",NO_TRANSITION:"mdc-tab-indicator--no-transition"},Qu={CONTENT_SELECTOR:".mdc-tab-indicator__content"},tl=function(t){function e(n){return t.call(this,Ds({},e.defaultAdapter,n))||this}return Os(e,t),Object.defineProperty(e,"cssClasses",{get:function(){return Ju},enumerable:!0,configurable:!0}),Object.defineProperty(e,"strings",{get:function(){return Qu},enumerable:!0,configurable:!0}),Object.defineProperty(e,"defaultAdapter",{get:function(){return{addClass:function(){},removeClass:function(){},computeContentClientRect:function(){return{top:0,right:0,bottom:0,left:0,width:0,height:0}},setContentStyleProperty:function(){}}},enumerable:!0,configurable:!0}),e.prototype.computeContentClientRect=function(){return this.adapter_.computeContentClientRect()},e}(Fs),el=function(t){function e(){return null!==t&&t.apply(this,arguments)||this}return Os(e,t),e.prototype.activate=function(){this.adapter_.addClass(tl.cssClasses.ACTIVE)},e.prototype.deactivate=function(){this.adapter_.removeClass(tl.cssClasses.ACTIVE)},e}(tl),nl=function(t){function e(){return null!==t&&t.apply(this,arguments)||this}return Os(e,t),e.prototype.activate=function(t){if(t){var e=this.computeContentClientRect(),n=t.width/e.width,r=t.left-e.left;this.adapter_.addClass(tl.cssClasses.NO_TRANSITION),this.adapter_.setContentStyleProperty("transform","translateX("+r+"px) scaleX("+n+")"),this.computeContentClientRect(),this.adapter_.removeClass(tl.cssClasses.NO_TRANSITION),this.adapter_.addClass(tl.cssClasses.ACTIVE),this.adapter_.setContentStyleProperty("transform","")}else this.adapter_.addClass(tl.cssClasses.ACTIVE)},e.prototype.deactivate=function(){this.adapter_.removeClass(tl.cssClasses.ACTIVE)},e}(tl),rl=function(t){function e(){return null!==t&&t.apply(this,arguments)||this}return Os(e,t),e.attachTo=function(t){return new e(t)},e.prototype.initialize=function(){this.content_=this.root_.querySelector(tl.strings.CONTENT_SELECTOR)},e.prototype.computeContentClientRect=function(){return this.foundation_.computeContentClientRect()},e.prototype.getDefaultFoundation=function(){var t=this,e={addClass:function(e){return t.root_.classList.add(e)},removeClass:function(e){return t.root_.classList.remove(e)},computeContentClientRect:function(){return t.content_.getBoundingClientRect()},setContentStyleProperty:function(e,n){return t.content_.style.setProperty(e,n)}};return this.root_.classList.contains(tl.cssClasses.FADE)?new el(e):new nl(e)},e.prototype.activate=function(t){this.foundation_.activate(t)},e.prototype.deactivate=function(){this.foundation_.deactivate()},e}(Us),il={ACTIVE:"mdc-tab--active"},al={ARIA_SELECTED:"aria-selected",CONTENT_SELECTOR:".mdc-tab__content",INTERACTED_EVENT:"MDCTab:interacted",RIPPLE_SELECTOR:".mdc-tab__ripple",TABINDEX:"tabIndex",TAB_INDICATOR_SELECTOR:".mdc-tab-indicator"},ol=function(t){function e(n){var r=t.call(this,Ds({},e.defaultAdapter,n))||this;return r.focusOnActivate_=!0,r}return Os(e,t),Object.defineProperty(e,"cssClasses",{get:function(){return il},enumerable:!0,configurable:!0}),Object.defineProperty(e,"strings",{get:function(){return al},enumerable:!0,configurable:!0}),Object.defineProperty(e,"defaultAdapter",{get:function(){return{addClass:function(){},removeClass:function(){},hasClass:function(){return!1},setAttr:function(){},activateIndicator:function(){},deactivateIndicator:function(){},notifyInteracted:function(){},getOffsetLeft:function(){return 0},getOffsetWidth:function(){return 0},getContentOffsetLeft:function(){return 0},getContentOffsetWidth:function(){return 0},focus:function(){}}},enumerable:!0,configurable:!0}),e.prototype.handleClick=function(){this.adapter_.notifyInteracted()},e.prototype.isActive=function(){return this.adapter_.hasClass(il.ACTIVE)},e.prototype.setFocusOnActivate=function(t){this.focusOnActivate_=t},e.prototype.activate=function(t){this.adapter_.addClass(il.ACTIVE),this.adapter_.setAttr(al.ARIA_SELECTED,"true"),this.adapter_.setAttr(al.TABINDEX,"0"),this.adapter_.activateIndicator(t),this.focusOnActivate_&&this.adapter_.focus()},e.prototype.deactivate=function(){this.isActive()&&(this.adapter_.removeClass(il.ACTIVE),this.adapter_.setAttr(al.ARIA_SELECTED,"false"),this.adapter_.setAttr(al.TABINDEX,"-1"),this.adapter_.deactivateIndicator())},e.prototype.computeDimensions=function(){var t=this.adapter_.getOffsetWidth(),e=this.adapter_.getOffsetLeft(),n=this.adapter_.getContentOffsetWidth(),r=this.adapter_.getContentOffsetLeft();return{contentLeft:e+r,contentRight:e+r+n,rootLeft:e,rootRight:e+t}},e}(Fs),sl=function(t){function e(){return null!==t&&t.apply(this,arguments)||this}return Os(e,t),e.attachTo=function(t){return new e(t)},e.prototype.initialize=function(t,e){void 0===t&&(t=function(t,e){return new Dc(t,e)}),void 0===e&&(e=function(t){return new rl(t)}),this.id=this.root_.id;var n=this.root_.querySelector(ol.strings.RIPPLE_SELECTOR),r=Ds({},Dc.createAdapter(this),{addClass:function(t){return n.classList.add(t)},removeClass:function(t){return n.classList.remove(t)},updateCssVariable:function(t,e){return n.style.setProperty(t,e)}}),i=new Oc(r);this.ripple_=t(this.root_,i);var a=this.root_.querySelector(ol.strings.TAB_INDICATOR_SELECTOR);this.tabIndicator_=e(a),this.content_=this.root_.querySelector(ol.strings.CONTENT_SELECTOR)},e.prototype.initialSyncWithDOM=function(){var t=this;this.handleClick_=function(){return t.foundation_.handleClick()},this.listen("click",this.handleClick_)},e.prototype.destroy=function(){this.unlisten("click",this.handleClick_),this.ripple_.destroy(),t.prototype.destroy.call(this)},e.prototype.getDefaultFoundation=function(){var t=this;return new ol({setAttr:function(e,n){return t.root_.setAttribute(e,n)},addClass:function(e){return t.root_.classList.add(e)},removeClass:function(e){return t.root_.classList.remove(e)},hasClass:function(e){return t.root_.classList.contains(e)},activateIndicator:function(e){return t.tabIndicator_.activate(e)},deactivateIndicator:function(){return t.tabIndicator_.deactivate()},notifyInteracted:function(){return t.emit(ol.strings.INTERACTED_EVENT,{tabId:t.id},!0)},getOffsetLeft:function(){return t.root_.offsetLeft},getOffsetWidth:function(){return t.root_.offsetWidth},getContentOffsetLeft:function(){return t.content_.offsetLeft},getContentOffsetWidth:function(){return t.content_.offsetWidth},focus:function(){return t.root_.focus()}})},Object.defineProperty(e.prototype,"active",{get:function(){return this.foundation_.isActive()},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"focusOnActivate",{set:function(t){this.foundation_.setFocusOnActivate(t)},enumerable:!0,configurable:!0}),e.prototype.activate=function(t){this.foundation_.activate(t)},e.prototype.deactivate=function(){this.foundation_.deactivate()},e.prototype.computeIndicatorClientRect=function(){return this.tabIndicator_.computeContentClientRect()},e.prototype.computeDimensions=function(){return this.foundation_.computeDimensions()},e.prototype.focus=function(){this.root_.focus()},e}(Us);function cl(t){var n,r,i,a,o,s;const d=t.$$slots.default,f=c(d,t,null);for(var v=[{class:"mdc-tab-indicator__content "+t.content$class},{"aria-hidden":"icon"===t.type},uc(bc(t.$$props,"content$"),["use","class"])],g={},y=0;y<v.length;y+=1)g=e(g,v[y]);var b=[{class:"mdc-tab-indicator "+t.className},uc(t.$$props,["use","class","active","type","transition","content$"])],$={};for(y=0;y<b.length;y+=1)$=e($,b[y]);return{c(){n=_("span"),r=_("span"),f&&f.c(),w(r,g),C(r,"mdc-tab-indicator__content--underline","underline"===t.type),C(r,"mdc-tab-indicator__content--icon","icon"===t.type),w(n,$),C(n,"mdc-tab-indicator--active",t.active),C(n,"mdc-tab-indicator--fade","fade"===t.transition)},l(t){f&&f.l(span0_nodes)},m(e,c){p(e,n,c),h(n,r),f&&f.m(r,null),i=lc.call(null,r,t.content$use)||{},t.span1_binding(n),a=lc.call(null,n,t.use)||{},o=t.forwardEvents.call(null,n)||{},s=!0},p(t,e){f&&f.p&&t.$$scope&&f.p(l(d,e,t,null),u(d,e,null)),w(r,J(v,[t.content$class&&{class:"mdc-tab-indicator__content "+e.content$class},t.type&&{"aria-hidden":"icon"===e.type},(t.exclude||t.prefixFilter||t.$$props)&&uc(bc(e.$$props,"content$"),["use","class"])])),"function"==typeof i.update&&t.content$use&&i.update.call(null,e.content$use),(t.content$class||t.type)&&(C(r,"mdc-tab-indicator__content--underline","underline"===e.type),C(r,"mdc-tab-indicator__content--icon","icon"===e.type)),w(n,J(b,[t.className&&{class:"mdc-tab-indicator "+e.className},(t.exclude||t.$$props)&&uc(e.$$props,["use","class","active","type","transition","content$"])])),"function"==typeof a.update&&t.use&&a.update.call(null,e.use),(t.className||t.active)&&C(n,"mdc-tab-indicator--active",e.active),(t.className||t.transition)&&C(n,"mdc-tab-indicator--fade","fade"===e.transition)},i(t){s||(q(f,t),s=!0)},o(t){G(f,t),s=!1},d(e){e&&m(n),f&&f.d(e),i&&"function"==typeof i.destroy&&i.destroy(),t.span1_binding(null),a&&"function"==typeof a.destroy&&a.destroy(),o&&"function"==typeof o.destroy&&o.destroy()}}}function ul(t,n,r){const i=cc(T);let a,o,{use:s=[],class:c="",active:u=!1,type:l="underline",transition:f="slide",content$use:h=[],content$class:p=""}=n,m=N("SMUI:tab-indicator:instantiate"),_=N("SMUI:tab-indicator:getInstance");I(async()=>{o=!1!==m?new rl(a):await _()}),M(()=>{o&&o.destroy()});let{$$slots:v={},$$scope:g}=n;return t.$set=t=>{r("$$props",n=e(e({},n),t)),"use"in t&&r("use",s=t.use),"class"in t&&r("className",c=t.class),"active"in t&&r("active",u=t.active),"type"in t&&r("type",l=t.type),"transition"in t&&r("transition",f=t.transition),"content$use"in t&&r("content$use",h=t.content$use),"content$class"in t&&r("content$class",p=t.content$class),"$$scope"in t&&r("$$scope",g=t.$$scope)},{forwardEvents:i,use:s,className:c,active:u,type:l,transition:f,content$use:h,content$class:p,element:a,activate:function(...t){return o.activate(...t)},deactivate:function(...t){return o.deactivate(...t)},computeContentClientRect:function(...t){return o.computeContentClientRect(...t)},$$props:n,span1_binding:function(t){D[t?"unshift":"push"](()=>{r("element",a=t)})},$$props:n=d(n),$$slots:v,$$scope:g}}class ll extends at{constructor(t){super(),it(this,t,ul,cl,o,["use","class","active","type","transition","content$use","content$class","activate","deactivate","computeContentClientRect"])}get activate(){return this.$$.ctx.activate}get deactivate(){return this.$$.ctx.deactivate}get computeContentClientRect(){return this.$$.ctx.computeContentClientRect}}const dl=()=>({}),fl=()=>({}),hl=()=>({}),pl=()=>({});function ml(t){var n,r=[{active:t.active},bc(t.$$props,"tabIndicator$")];let i={$$slots:{default:[_l]},$$scope:{ctx:t}};for(var a=0;a<r.length;a+=1)i=e(i,r[a]);var o=new ll({props:i});return{c(){o.$$.fragment.c()},m(t,e){et(o,t,e),n=!0},p(t,e){var n=t.active||t.prefixFilter||t.$$props?J(r,[t.active&&{active:e.active},(t.prefixFilter||t.$$props)&&Q(bc(e.$$props,"tabIndicator$"))]):{};t.$$scope&&(n.$$scope={changed:t,ctx:e}),o.$set(n)},i(t){n||(q(o.$$.fragment,t),n=!0)},o(t){G(o.$$.fragment,t),n=!1},d(t){nt(o,t)}}}function _l(t){var e;const n=t.$$slots["tab-indicator"],r=c(n,t,pl);return{c(){r&&r.c()},l(t){r&&r.l(t)},m(t,n){r&&r.m(t,n),e=!0},p(t,e){r&&r.p&&t.$$scope&&r.p(l(n,e,t,hl),u(n,e,pl))},i(t){e||(q(r,t),e=!0)},o(t){G(r,t),e=!1},d(t){r&&r.d(t)}}}function vl(t){var n,r=[{active:t.active},bc(t.$$props,"tabIndicator$")];let i={$$slots:{default:[gl]},$$scope:{ctx:t}};for(var a=0;a<r.length;a+=1)i=e(i,r[a]);var o=new ll({props:i});return{c(){o.$$.fragment.c()},m(t,e){et(o,t,e),n=!0},p(t,e){var n=t.active||t.prefixFilter||t.$$props?J(r,[t.active&&{active:e.active},(t.prefixFilter||t.$$props)&&Q(bc(e.$$props,"tabIndicator$"))]):{};t.$$scope&&(n.$$scope={changed:t,ctx:e}),o.$set(n)},i(t){n||(q(o.$$.fragment,t),n=!0)},o(t){G(o.$$.fragment,t),n=!1},d(t){nt(o,t)}}}function gl(t){var e;const n=t.$$slots["tab-indicator"],r=c(n,t,fl);return{c(){r&&r.c()},l(t){r&&r.l(t)},m(t,n){r&&r.m(t,n),e=!0},p(t,e){r&&r.p&&t.$$scope&&r.p(l(n,e,t,dl),u(n,e,fl))},i(t){e||(q(r,t),e=!0)},o(t){G(r,t),e=!1},d(t){r&&r.d(t)}}}function yl(t){var e;return{c(){x(e=_("span"),"class","mdc-tab__ripple")},m(t,n){p(t,e,n)},d(t){t&&m(e)}}}function bl(t){var n,r,i,a,o,s,d,f,v,g;const b=t.$$slots.default,x=c(b,t,null);for(var A=t.indicatorSpanOnlyContent&&ml(t),T=[{class:"mdc-tab__content "+t.content$class},uc(bc(t.$$props,"content$"),["use","class"])],S={},E=0;E<T.length;E+=1)S=e(S,T[E]);var I=!t.indicatorSpanOnlyContent&&vl(t),k=t.ripple&&yl(),M=[{class:"mdc-tab "+t.className},{role:"tab"},{"aria-selected":t.active},{tabindex:t.active?"0":"-1"},uc(t.$$props,["use","class","ripple","active","stacked","minWidth","indicatorSpanOnlyContent","focusOnActivate","content$","tabIndicator$"])],R={};for(E=0;E<M.length;E+=1)R=e(R,M[E]);return{c(){n=_("button"),r=_("span"),x&&x.c(),i=y(),A&&A.c(),o=y(),I&&I.c(),s=y(),k&&k.c(),w(r,S),w(n,R),C(n,"mdc-tab--active",t.active),C(n,"mdc-tab--stacked",t.stacked),C(n,"mdc-tab--min-width",t.minWidth),g=$(n,"MDCTab:interacted",t.interactedHandler)},l(t){x&&x.l(span_nodes)},m(e,c){p(e,n,c),h(n,r),x&&x.m(r,null),h(r,i),A&&A.m(r,null),a=lc.call(null,r,t.content$use)||{},h(n,o),I&&I.m(n,null),h(n,s),k&&k.m(n,null),t.button_binding(n),d=lc.call(null,n,t.use)||{},f=t.forwardEvents.call(null,n)||{},v=!0},p(t,e){x&&x.p&&t.$$scope&&x.p(l(b,e,t,null),u(b,e,null)),e.indicatorSpanOnlyContent?A?(A.p(t,e),q(A,1)):((A=ml(e)).c(),q(A,1),A.m(r,null)):A&&(K(),G(A,1,1,()=>{A=null}),X()),w(r,J(T,[t.content$class&&{class:"mdc-tab__content "+e.content$class},(t.exclude||t.prefixFilter||t.$$props)&&uc(bc(e.$$props,"content$"),["use","class"])])),"function"==typeof a.update&&t.content$use&&a.update.call(null,e.content$use),e.indicatorSpanOnlyContent?I&&(K(),G(I,1,1,()=>{I=null}),X()):I?(I.p(t,e),q(I,1)):((I=vl(e)).c(),q(I,1),I.m(n,s)),e.ripple?k||((k=yl()).c(),k.m(n,null)):k&&(k.d(1),k=null),w(n,J(M,[t.className&&{class:"mdc-tab "+e.className},{role:"tab"},t.active&&{"aria-selected":e.active},t.active&&{tabindex:e.active?"0":"-1"},(t.exclude||t.$$props)&&uc(e.$$props,["use","class","ripple","active","stacked","minWidth","indicatorSpanOnlyContent","focusOnActivate","content$","tabIndicator$"])])),"function"==typeof d.update&&t.use&&d.update.call(null,e.use),(t.className||t.active)&&C(n,"mdc-tab--active",e.active),(t.className||t.stacked)&&C(n,"mdc-tab--stacked",e.stacked),(t.className||t.minWidth)&&C(n,"mdc-tab--min-width",e.minWidth)},i(t){v||(q(x,t),q(A),q(I),v=!0)},o(t){G(x,t),G(A),G(I),v=!1},d(e){e&&m(n),x&&x.d(e),A&&A.d(),a&&"function"==typeof a.destroy&&a.destroy(),I&&I.d(),k&&k.d(),t.button_binding(null),d&&"function"==typeof d.destroy&&d.destroy(),f&&"function"==typeof f.destroy&&f.destroy(),g()}}}function $l(t,n,r){const i=cc(T,["MDCTab:interacted"]);let a,o,s,c=N("SMUI:tab:active"),{use:u=[],class:l="",tab:f,ripple:h=!0,active:p=f===c,stacked:m=!1,minWidth:_=!1,indicatorSpanOnlyContent:v=!1,focusOnActivate:g=!0,content$use:y=[],content$class:b=""}=n,$=N("SMUI:tab:instantiate"),x=N("SMUI:tab:getInstance"),w=new Promise(t=>s=t);if(R("SMUI:tab-indicator:instantiate",!1),R("SMUI:tab-indicator:getInstance",(function(){return w})),R("SMUI:label:context","tab"),R("SMUI:icon:context","tab"),!f)throw new Error("The tab property is required! It should be passed down from the TabBar to the Tab.");I(async()=>{r("tab",o=!1!==$?new sl(a):await x(f)),s(o.tabIndicator_),h||o.ripple_&&o.ripple_.destroy()}),M(()=>{o&&o.destroy()});let{$$slots:A={},$$scope:C}=n;return t.$set=t=>{r("$$props",n=e(e({},n),t)),"use"in t&&r("use",u=t.use),"class"in t&&r("className",l=t.class),"tab"in t&&r("tabEntry",f=t.tab),"ripple"in t&&r("ripple",h=t.ripple),"active"in t&&r("active",p=t.active),"stacked"in t&&r("stacked",m=t.stacked),"minWidth"in t&&r("minWidth",_=t.minWidth),"indicatorSpanOnlyContent"in t&&r("indicatorSpanOnlyContent",v=t.indicatorSpanOnlyContent),"focusOnActivate"in t&&r("focusOnActivate",g=t.focusOnActivate),"content$use"in t&&r("content$use",y=t.content$use),"content$class"in t&&r("content$class",b=t.content$class),"$$scope"in t&&r("$$scope",C=t.$$scope)},t.$$.update=(t={tab:1,focusOnActivate:1,active:1})=>{(t.tab||t.focusOnActivate)&&o&&r("tab",o.focusOnActivate=g,o),(t.tab||t.active)&&o&&o.active!==p&&r("active",p=o.active)},{forwardEvents:i,use:u,className:l,tabEntry:f,ripple:h,active:p,stacked:m,minWidth:_,indicatorSpanOnlyContent:v,focusOnActivate:g,content$use:y,content$class:b,element:a,interactedHandler:function(){r("active",p=o.active)},activate:function(...t){return r("active",p=!0),o.activate(...t)},deactivate:function(...t){return r("active",p=!1),o.deactivate(...t)},focus:function(...t){return o.focus(...t)},computeIndicatorClientRect:function(...t){return o.computeIndicatorClientRect(...t)},computeDimensions:function(...t){return o.computeDimensions(...t)},$$props:n,button_binding:function(t){D[t?"unshift":"push"](()=>{r("element",a=t)})},$$props:n=d(n),$$slots:A,$$scope:C}}class xl extends at{constructor(t){super(),it(this,t,$l,bl,o,["use","class","tab","ripple","active","stacked","minWidth","indicatorSpanOnlyContent","focusOnActivate","content$use","content$class","activate","deactivate","focus","computeIndicatorClientRect","computeDimensions"])}get activate(){return this.$$.ctx.activate}get deactivate(){return this.$$.ctx.deactivate}get focus(){return this.$$.ctx.focus}get computeIndicatorClientRect(){return this.$$.ctx.computeIndicatorClientRect}get computeDimensions(){return this.$$.ctx.computeDimensions}}
-/**
+     */
+    var MDCComponent = /** @class */ (function () {
+        function MDCComponent(root, foundation) {
+            var args = [];
+            for (var _i = 2; _i < arguments.length; _i++) {
+                args[_i - 2] = arguments[_i];
+            }
+            this.root_ = root;
+            this.initialize.apply(this, __spread(args));
+            // Note that we initialize foundation here and not within the constructor's default param so that
+            // this.root_ is defined and can be used within the foundation class.
+            this.foundation_ = foundation === undefined ? this.getDefaultFoundation() : foundation;
+            this.foundation_.init();
+            this.initialSyncWithDOM();
+        }
+        MDCComponent.attachTo = function (root) {
+            // Subclasses which extend MDCBase should provide an attachTo() method that takes a root element and
+            // returns an instantiated component with its root set to that element. Also note that in the cases of
+            // subclasses, an explicit foundation class will not have to be passed in; it will simply be initialized
+            // from getDefaultFoundation().
+            return new MDCComponent(root, new MDCFoundation({}));
+        };
+        /* istanbul ignore next: method param only exists for typing purposes; it does not need to be unit tested */
+        MDCComponent.prototype.initialize = function () {
+            var _args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                _args[_i] = arguments[_i];
+            }
+            // Subclasses can override this to do any additional setup work that would be considered part of a
+            // "constructor". Essentially, it is a hook into the parent constructor before the foundation is
+            // initialized. Any additional arguments besides root and foundation will be passed in here.
+        };
+        MDCComponent.prototype.getDefaultFoundation = function () {
+            // Subclasses must override this method to return a properly configured foundation class for the
+            // component.
+            throw new Error('Subclasses must override getDefaultFoundation to return a properly configured ' +
+                'foundation class');
+        };
+        MDCComponent.prototype.initialSyncWithDOM = function () {
+            // Subclasses should override this method if they need to perform work to synchronize with a host DOM
+            // object. An example of this would be a form control wrapper that needs to synchronize its internal state
+            // to some property or attribute of the host DOM. Please note: this is *not* the place to perform DOM
+            // reads/writes that would cause layout / paint, as this is called synchronously from within the constructor.
+        };
+        MDCComponent.prototype.destroy = function () {
+            // Subclasses may implement this method to release any resources / deregister any listeners they have
+            // attached. An example of this might be deregistering a resize event from the window object.
+            this.foundation_.destroy();
+        };
+        MDCComponent.prototype.listen = function (evtType, handler, options) {
+            this.root_.addEventListener(evtType, handler, options);
+        };
+        MDCComponent.prototype.unlisten = function (evtType, handler, options) {
+            this.root_.removeEventListener(evtType, handler, options);
+        };
+        /**
+         * Fires a cross-browser-compatible custom event from the component root of the given type, with the given data.
+         */
+        MDCComponent.prototype.emit = function (evtType, evtData, shouldBubble) {
+            if (shouldBubble === void 0) { shouldBubble = false; }
+            var evt;
+            if (typeof CustomEvent === 'function') {
+                evt = new CustomEvent(evtType, {
+                    bubbles: shouldBubble,
+                    detail: evtData,
+                });
+            }
+            else {
+                evt = document.createEvent('CustomEvent');
+                evt.initCustomEvent(evtType, shouldBubble, false, evtData);
+            }
+            this.root_.dispatchEvent(evt);
+        };
+        return MDCComponent;
+    }());
+
+    /**
      * @license
-     * Copyright 2018 Google Inc.
+     * Copyright 2019 Google Inc.
      *
      * Permission is hereby granted, free of charge, to any person obtaining a copy
      * of this software and associated documentation files (the "Software"), to deal
@@ -234,8 +7127,1872 @@ var Rc=["touchstart","pointerdown","mousedown","keydown"],Nc=["touchend","pointe
      * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
-     */var wl,Al={ANIMATING:"mdc-tab-scroller--animating",SCROLL_AREA_SCROLL:"mdc-tab-scroller__scroll-area--scroll",SCROLL_TEST:"mdc-tab-scroller__test"},Cl={AREA_SELECTOR:".mdc-tab-scroller__scroll-area",CONTENT_SELECTOR:".mdc-tab-scroller__scroll-content"},Tl=function(t){this.adapter_=t},Sl=function(t){function e(){return null!==t&&t.apply(this,arguments)||this}return Os(e,t),e.prototype.getScrollPositionRTL=function(){var t=this.adapter_.getScrollAreaScrollLeft(),e=this.calculateScrollEdges_().right;return Math.round(e-t)},e.prototype.scrollToRTL=function(t){var e=this.calculateScrollEdges_(),n=this.adapter_.getScrollAreaScrollLeft(),r=this.clampScrollValue_(e.right-t);return{finalScrollPosition:r,scrollDelta:r-n}},e.prototype.incrementScrollRTL=function(t){var e=this.adapter_.getScrollAreaScrollLeft(),n=this.clampScrollValue_(e-t);return{finalScrollPosition:n,scrollDelta:n-e}},e.prototype.getAnimatingScrollPosition=function(t){return t},e.prototype.calculateScrollEdges_=function(){return{left:0,right:this.adapter_.getScrollContentOffsetWidth()-this.adapter_.getScrollAreaOffsetWidth()}},e.prototype.clampScrollValue_=function(t){var e=this.calculateScrollEdges_();return Math.min(Math.max(e.left,t),e.right)},e}(Tl),El=function(t){function e(){return null!==t&&t.apply(this,arguments)||this}return Os(e,t),e.prototype.getScrollPositionRTL=function(t){var e=this.adapter_.getScrollAreaScrollLeft();return Math.round(t-e)},e.prototype.scrollToRTL=function(t){var e=this.adapter_.getScrollAreaScrollLeft(),n=this.clampScrollValue_(-t);return{finalScrollPosition:n,scrollDelta:n-e}},e.prototype.incrementScrollRTL=function(t){var e=this.adapter_.getScrollAreaScrollLeft(),n=this.clampScrollValue_(e-t);return{finalScrollPosition:n,scrollDelta:n-e}},e.prototype.getAnimatingScrollPosition=function(t,e){return t-e},e.prototype.calculateScrollEdges_=function(){var t=this.adapter_.getScrollContentOffsetWidth();return{left:this.adapter_.getScrollAreaOffsetWidth()-t,right:0}},e.prototype.clampScrollValue_=function(t){var e=this.calculateScrollEdges_();return Math.max(Math.min(e.right,t),e.left)},e}(Tl),Il=function(t){function e(){return null!==t&&t.apply(this,arguments)||this}return Os(e,t),e.prototype.getScrollPositionRTL=function(t){var e=this.adapter_.getScrollAreaScrollLeft();return Math.round(e-t)},e.prototype.scrollToRTL=function(t){var e=this.adapter_.getScrollAreaScrollLeft(),n=this.clampScrollValue_(t);return{finalScrollPosition:n,scrollDelta:e-n}},e.prototype.incrementScrollRTL=function(t){var e=this.adapter_.getScrollAreaScrollLeft(),n=this.clampScrollValue_(e+t);return{finalScrollPosition:n,scrollDelta:e-n}},e.prototype.getAnimatingScrollPosition=function(t,e){return t+e},e.prototype.calculateScrollEdges_=function(){return{left:this.adapter_.getScrollContentOffsetWidth()-this.adapter_.getScrollAreaOffsetWidth(),right:0}},e.prototype.clampScrollValue_=function(t){var e=this.calculateScrollEdges_();return Math.min(Math.max(e.right,t),e.left)},e}(Tl),kl=function(t){function e(n){var r=t.call(this,Ds({},e.defaultAdapter,n))||this;return r.isAnimating_=!1,r}return Os(e,t),Object.defineProperty(e,"cssClasses",{get:function(){return Al},enumerable:!0,configurable:!0}),Object.defineProperty(e,"strings",{get:function(){return Cl},enumerable:!0,configurable:!0}),Object.defineProperty(e,"defaultAdapter",{get:function(){return{eventTargetMatchesSelector:function(){return!1},addClass:function(){},removeClass:function(){},addScrollAreaClass:function(){},setScrollAreaStyleProperty:function(){},setScrollContentStyleProperty:function(){},getScrollContentStyleValue:function(){return""},setScrollAreaScrollLeft:function(){},getScrollAreaScrollLeft:function(){return 0},getScrollContentOffsetWidth:function(){return 0},getScrollAreaOffsetWidth:function(){return 0},computeScrollAreaClientRect:function(){return{top:0,right:0,bottom:0,left:0,width:0,height:0}},computeScrollContentClientRect:function(){return{top:0,right:0,bottom:0,left:0,width:0,height:0}},computeHorizontalScrollbarHeight:function(){return 0}}},enumerable:!0,configurable:!0}),e.prototype.init=function(){var t=this.adapter_.computeHorizontalScrollbarHeight();this.adapter_.setScrollAreaStyleProperty("margin-bottom",-t+"px"),this.adapter_.addScrollAreaClass(e.cssClasses.SCROLL_AREA_SCROLL)},e.prototype.getScrollPosition=function(){if(this.isRTL_())return this.computeCurrentScrollPositionRTL_();var t=this.calculateCurrentTranslateX_();return this.adapter_.getScrollAreaScrollLeft()-t},e.prototype.handleInteraction=function(){this.isAnimating_&&this.stopScrollAnimation_()},e.prototype.handleTransitionEnd=function(t){var n=t.target;this.isAnimating_&&this.adapter_.eventTargetMatchesSelector(n,e.strings.CONTENT_SELECTOR)&&(this.isAnimating_=!1,this.adapter_.removeClass(e.cssClasses.ANIMATING))},e.prototype.incrementScroll=function(t){if(0!==t)return this.isRTL_()?this.incrementScrollRTL_(t):void this.incrementScroll_(t)},e.prototype.scrollTo=function(t){if(this.isRTL_())return this.scrollToRTL_(t);this.scrollTo_(t)},e.prototype.getRTLScroller=function(){return this.rtlScrollerInstance_||(this.rtlScrollerInstance_=this.rtlScrollerFactory_()),this.rtlScrollerInstance_},e.prototype.calculateCurrentTranslateX_=function(){var t=this.adapter_.getScrollContentStyleValue("transform");if("none"===t)return 0;var e=/\((.+?)\)/.exec(t);if(!e)return 0;var n=Ps(e[1].split(","),6),r=(n[0],n[1],n[2],n[3],n[4]);n[5];return parseFloat(r)},e.prototype.clampScrollValue_=function(t){var e=this.calculateScrollEdges_();return Math.min(Math.max(e.left,t),e.right)},e.prototype.computeCurrentScrollPositionRTL_=function(){var t=this.calculateCurrentTranslateX_();return this.getRTLScroller().getScrollPositionRTL(t)},e.prototype.calculateScrollEdges_=function(){return{left:0,right:this.adapter_.getScrollContentOffsetWidth()-this.adapter_.getScrollAreaOffsetWidth()}},e.prototype.scrollTo_=function(t){var e=this.getScrollPosition(),n=this.clampScrollValue_(t),r=n-e;this.animate_({finalScrollPosition:n,scrollDelta:r})},e.prototype.scrollToRTL_=function(t){var e=this.getRTLScroller().scrollToRTL(t);this.animate_(e)},e.prototype.incrementScroll_=function(t){var e=this.getScrollPosition(),n=t+e,r=this.clampScrollValue_(n),i=r-e;this.animate_({finalScrollPosition:r,scrollDelta:i})},e.prototype.incrementScrollRTL_=function(t){var e=this.getRTLScroller().incrementScrollRTL(t);this.animate_(e)},e.prototype.animate_=function(t){var n=this;0!==t.scrollDelta&&(this.stopScrollAnimation_(),this.adapter_.setScrollAreaScrollLeft(t.finalScrollPosition),this.adapter_.setScrollContentStyleProperty("transform","translateX("+t.scrollDelta+"px)"),this.adapter_.computeScrollAreaClientRect(),requestAnimationFrame((function(){n.adapter_.addClass(e.cssClasses.ANIMATING),n.adapter_.setScrollContentStyleProperty("transform","none")})),this.isAnimating_=!0)},e.prototype.stopScrollAnimation_=function(){this.isAnimating_=!1;var t=this.getAnimatingScrollPosition_();this.adapter_.removeClass(e.cssClasses.ANIMATING),this.adapter_.setScrollContentStyleProperty("transform","translateX(0px)"),this.adapter_.setScrollAreaScrollLeft(t)},e.prototype.getAnimatingScrollPosition_=function(){var t=this.calculateCurrentTranslateX_(),e=this.adapter_.getScrollAreaScrollLeft();return this.isRTL_()?this.getRTLScroller().getAnimatingScrollPosition(e,t):e-t},e.prototype.rtlScrollerFactory_=function(){var t=this.adapter_.getScrollAreaScrollLeft();this.adapter_.setScrollAreaScrollLeft(t-1);var e=this.adapter_.getScrollAreaScrollLeft();if(e<0)return this.adapter_.setScrollAreaScrollLeft(t),new El(this.adapter_);var n=this.adapter_.computeScrollAreaClientRect(),r=this.adapter_.computeScrollContentClientRect(),i=Math.round(r.right-n.right);return this.adapter_.setScrollAreaScrollLeft(t),i===e?new Il(this.adapter_):new Sl(this.adapter_)},e.prototype.isRTL_=function(){return"rtl"===this.adapter_.getScrollContentStyleValue("direction")},e}(Fs);
-/**
+     */
+    /**
+     * Stores result from applyPassive to avoid redundant processing to detect
+     * passive event listener support.
+     */
+    var supportsPassive_;
+    /**
+     * Determine whether the current browser supports passive event listeners, and
+     * if so, use them.
+     */
+    function applyPassive(globalObj, forceRefresh) {
+        if (globalObj === void 0) { globalObj = window; }
+        if (forceRefresh === void 0) { forceRefresh = false; }
+        if (supportsPassive_ === undefined || forceRefresh) {
+            var isSupported_1 = false;
+            try {
+                globalObj.document.addEventListener('test', function () { return undefined; }, {
+                    get passive() {
+                        isSupported_1 = true;
+                        return isSupported_1;
+                    },
+                });
+            }
+            catch (e) {
+            } // tslint:disable-line:no-empty cannot throw error due to tests. tslint also disables console.log.
+            supportsPassive_ = isSupported_1;
+        }
+        return supportsPassive_ ? { passive: true } : false;
+    }
+
+    /**
+     * @license
+     * Copyright 2017 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var cssClasses = {
+        ACTIVE: 'mdc-slider--active',
+        DISABLED: 'mdc-slider--disabled',
+        DISCRETE: 'mdc-slider--discrete',
+        FOCUS: 'mdc-slider--focus',
+        HAS_TRACK_MARKER: 'mdc-slider--display-markers',
+        IN_TRANSIT: 'mdc-slider--in-transit',
+        IS_DISCRETE: 'mdc-slider--discrete',
+    };
+    var strings = {
+        ARIA_DISABLED: 'aria-disabled',
+        ARIA_VALUEMAX: 'aria-valuemax',
+        ARIA_VALUEMIN: 'aria-valuemin',
+        ARIA_VALUENOW: 'aria-valuenow',
+        CHANGE_EVENT: 'MDCSlider:change',
+        INPUT_EVENT: 'MDCSlider:input',
+        LAST_TRACK_MARKER_SELECTOR: '.mdc-slider__track-marker:last-child',
+        PIN_VALUE_MARKER_SELECTOR: '.mdc-slider__pin-value-marker',
+        STEP_DATA_ATTR: 'data-step',
+        THUMB_CONTAINER_SELECTOR: '.mdc-slider__thumb-container',
+        TRACK_MARKER_CONTAINER_SELECTOR: '.mdc-slider__track-marker-container',
+        TRACK_SELECTOR: '.mdc-slider__track',
+    };
+    var numbers = {
+        PAGE_FACTOR: 4,
+    };
+
+    /**
+     * @license
+     * Copyright 2016 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var cssPropertyNameMap = {
+        animation: {
+            prefixed: '-webkit-animation',
+            standard: 'animation',
+        },
+        transform: {
+            prefixed: '-webkit-transform',
+            standard: 'transform',
+        },
+        transition: {
+            prefixed: '-webkit-transition',
+            standard: 'transition',
+        },
+    };
+    var jsEventTypeMap = {
+        animationend: {
+            cssProperty: 'animation',
+            prefixed: 'webkitAnimationEnd',
+            standard: 'animationend',
+        },
+        animationiteration: {
+            cssProperty: 'animation',
+            prefixed: 'webkitAnimationIteration',
+            standard: 'animationiteration',
+        },
+        animationstart: {
+            cssProperty: 'animation',
+            prefixed: 'webkitAnimationStart',
+            standard: 'animationstart',
+        },
+        transitionend: {
+            cssProperty: 'transition',
+            prefixed: 'webkitTransitionEnd',
+            standard: 'transitionend',
+        },
+    };
+    function isWindow(windowObj) {
+        return Boolean(windowObj.document) && typeof windowObj.document.createElement === 'function';
+    }
+    function getCorrectPropertyName(windowObj, cssProperty) {
+        if (isWindow(windowObj) && cssProperty in cssPropertyNameMap) {
+            var el = windowObj.document.createElement('div');
+            var _a = cssPropertyNameMap[cssProperty], standard = _a.standard, prefixed = _a.prefixed;
+            var isStandard = standard in el.style;
+            return isStandard ? standard : prefixed;
+        }
+        return cssProperty;
+    }
+    function getCorrectEventName(windowObj, eventType) {
+        if (isWindow(windowObj) && eventType in jsEventTypeMap) {
+            var el = windowObj.document.createElement('div');
+            var _a = jsEventTypeMap[eventType], standard = _a.standard, prefixed = _a.prefixed, cssProperty = _a.cssProperty;
+            var isStandard = cssProperty in el.style;
+            return isStandard ? standard : prefixed;
+        }
+        return eventType;
+    }
+
+    /**
+     * @license
+     * Copyright 2017 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var DOWN_EVENTS = ['mousedown', 'pointerdown', 'touchstart'];
+    var UP_EVENTS = ['mouseup', 'pointerup', 'touchend'];
+    var MOVE_EVENT_MAP = {
+        mousedown: 'mousemove',
+        pointerdown: 'pointermove',
+        touchstart: 'touchmove',
+    };
+    var KEY_IDS = {
+        ARROW_DOWN: 'ArrowDown',
+        ARROW_LEFT: 'ArrowLeft',
+        ARROW_RIGHT: 'ArrowRight',
+        ARROW_UP: 'ArrowUp',
+        END: 'End',
+        HOME: 'Home',
+        PAGE_DOWN: 'PageDown',
+        PAGE_UP: 'PageUp',
+    };
+    var MDCSliderFoundation = /** @class */ (function (_super) {
+        __extends(MDCSliderFoundation, _super);
+        function MDCSliderFoundation(adapter) {
+            var _this = _super.call(this, __assign({}, MDCSliderFoundation.defaultAdapter, adapter)) || this;
+            /**
+             * We set this to NaN since we want it to be a number, but we can't use '0' or '-1'
+             * because those could be valid tabindices set by the client code.
+             */
+            _this.savedTabIndex_ = NaN;
+            _this.active_ = false;
+            _this.inTransit_ = false;
+            _this.isDiscrete_ = false;
+            _this.hasTrackMarker_ = false;
+            _this.handlingThumbTargetEvt_ = false;
+            _this.min_ = 0;
+            _this.max_ = 100;
+            _this.step_ = 0;
+            _this.value_ = 0;
+            _this.disabled_ = false;
+            _this.preventFocusState_ = false;
+            _this.thumbContainerPointerHandler_ = function () { return _this.handlingThumbTargetEvt_ = true; };
+            _this.interactionStartHandler_ = function (evt) { return _this.handleDown_(evt); };
+            _this.keydownHandler_ = function (evt) { return _this.handleKeydown_(evt); };
+            _this.focusHandler_ = function () { return _this.handleFocus_(); };
+            _this.blurHandler_ = function () { return _this.handleBlur_(); };
+            _this.resizeHandler_ = function () { return _this.layout(); };
+            return _this;
+        }
+        Object.defineProperty(MDCSliderFoundation, "cssClasses", {
+            get: function () {
+                return cssClasses;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCSliderFoundation, "strings", {
+            get: function () {
+                return strings;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCSliderFoundation, "numbers", {
+            get: function () {
+                return numbers;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCSliderFoundation, "defaultAdapter", {
+            get: function () {
+                // tslint:disable:object-literal-sort-keys Methods should be in the same order as the adapter interface.
+                return {
+                    hasClass: function () { return false; },
+                    addClass: function () { return undefined; },
+                    removeClass: function () { return undefined; },
+                    getAttribute: function () { return null; },
+                    setAttribute: function () { return undefined; },
+                    removeAttribute: function () { return undefined; },
+                    computeBoundingRect: function () { return ({ top: 0, right: 0, bottom: 0, left: 0, width: 0, height: 0 }); },
+                    getTabIndex: function () { return 0; },
+                    registerInteractionHandler: function () { return undefined; },
+                    deregisterInteractionHandler: function () { return undefined; },
+                    registerThumbContainerInteractionHandler: function () { return undefined; },
+                    deregisterThumbContainerInteractionHandler: function () { return undefined; },
+                    registerBodyInteractionHandler: function () { return undefined; },
+                    deregisterBodyInteractionHandler: function () { return undefined; },
+                    registerResizeHandler: function () { return undefined; },
+                    deregisterResizeHandler: function () { return undefined; },
+                    notifyInput: function () { return undefined; },
+                    notifyChange: function () { return undefined; },
+                    setThumbContainerStyleProperty: function () { return undefined; },
+                    setTrackStyleProperty: function () { return undefined; },
+                    setMarkerValue: function () { return undefined; },
+                    appendTrackMarkers: function () { return undefined; },
+                    removeTrackMarkers: function () { return undefined; },
+                    setLastTrackMarkersStyleProperty: function () { return undefined; },
+                    isRTL: function () { return false; },
+                };
+                // tslint:enable:object-literal-sort-keys
+            },
+            enumerable: true,
+            configurable: true
+        });
+        MDCSliderFoundation.prototype.init = function () {
+            var _this = this;
+            this.isDiscrete_ = this.adapter_.hasClass(cssClasses.IS_DISCRETE);
+            this.hasTrackMarker_ = this.adapter_.hasClass(cssClasses.HAS_TRACK_MARKER);
+            DOWN_EVENTS.forEach(function (evtName) {
+                _this.adapter_.registerInteractionHandler(evtName, _this.interactionStartHandler_);
+                _this.adapter_.registerThumbContainerInteractionHandler(evtName, _this.thumbContainerPointerHandler_);
+            });
+            this.adapter_.registerInteractionHandler('keydown', this.keydownHandler_);
+            this.adapter_.registerInteractionHandler('focus', this.focusHandler_);
+            this.adapter_.registerInteractionHandler('blur', this.blurHandler_);
+            this.adapter_.registerResizeHandler(this.resizeHandler_);
+            this.layout();
+            // At last step, provide a reasonable default value to discrete slider
+            if (this.isDiscrete_ && this.getStep() === 0) {
+                this.step_ = 1;
+            }
+        };
+        MDCSliderFoundation.prototype.destroy = function () {
+            var _this = this;
+            DOWN_EVENTS.forEach(function (evtName) {
+                _this.adapter_.deregisterInteractionHandler(evtName, _this.interactionStartHandler_);
+                _this.adapter_.deregisterThumbContainerInteractionHandler(evtName, _this.thumbContainerPointerHandler_);
+            });
+            this.adapter_.deregisterInteractionHandler('keydown', this.keydownHandler_);
+            this.adapter_.deregisterInteractionHandler('focus', this.focusHandler_);
+            this.adapter_.deregisterInteractionHandler('blur', this.blurHandler_);
+            this.adapter_.deregisterResizeHandler(this.resizeHandler_);
+        };
+        MDCSliderFoundation.prototype.setupTrackMarker = function () {
+            if (this.isDiscrete_ && this.hasTrackMarker_ && this.getStep() !== 0) {
+                var min = this.getMin();
+                var max = this.getMax();
+                var step = this.getStep();
+                var numMarkers = (max - min) / step;
+                // In case distance between max & min is indivisible to step,
+                // we place the secondary to last marker proportionally at where thumb
+                // could reach and place the last marker at max value
+                var indivisible = Math.ceil(numMarkers) !== numMarkers;
+                if (indivisible) {
+                    numMarkers = Math.ceil(numMarkers);
+                }
+                this.adapter_.removeTrackMarkers();
+                this.adapter_.appendTrackMarkers(numMarkers);
+                if (indivisible) {
+                    var lastStepRatio = (max - numMarkers * step) / step + 1;
+                    this.adapter_.setLastTrackMarkersStyleProperty('flex-grow', String(lastStepRatio));
+                }
+            }
+        };
+        MDCSliderFoundation.prototype.layout = function () {
+            this.rect_ = this.adapter_.computeBoundingRect();
+            this.updateUIForCurrentValue_();
+        };
+        MDCSliderFoundation.prototype.getValue = function () {
+            return this.value_;
+        };
+        MDCSliderFoundation.prototype.setValue = function (value) {
+            this.setValue_(value, false);
+        };
+        MDCSliderFoundation.prototype.getMax = function () {
+            return this.max_;
+        };
+        MDCSliderFoundation.prototype.setMax = function (max) {
+            if (max < this.min_) {
+                throw new Error('Cannot set max to be less than the slider\'s minimum value');
+            }
+            this.max_ = max;
+            this.setValue_(this.value_, false, true);
+            this.adapter_.setAttribute(strings.ARIA_VALUEMAX, String(this.max_));
+            this.setupTrackMarker();
+        };
+        MDCSliderFoundation.prototype.getMin = function () {
+            return this.min_;
+        };
+        MDCSliderFoundation.prototype.setMin = function (min) {
+            if (min > this.max_) {
+                throw new Error('Cannot set min to be greater than the slider\'s maximum value');
+            }
+            this.min_ = min;
+            this.setValue_(this.value_, false, true);
+            this.adapter_.setAttribute(strings.ARIA_VALUEMIN, String(this.min_));
+            this.setupTrackMarker();
+        };
+        MDCSliderFoundation.prototype.getStep = function () {
+            return this.step_;
+        };
+        MDCSliderFoundation.prototype.setStep = function (step) {
+            if (step < 0) {
+                throw new Error('Step cannot be set to a negative number');
+            }
+            if (this.isDiscrete_ && (typeof (step) !== 'number' || step < 1)) {
+                step = 1;
+            }
+            this.step_ = step;
+            this.setValue_(this.value_, false, true);
+            this.setupTrackMarker();
+        };
+        MDCSliderFoundation.prototype.isDisabled = function () {
+            return this.disabled_;
+        };
+        MDCSliderFoundation.prototype.setDisabled = function (disabled) {
+            this.disabled_ = disabled;
+            this.toggleClass_(cssClasses.DISABLED, this.disabled_);
+            if (this.disabled_) {
+                this.savedTabIndex_ = this.adapter_.getTabIndex();
+                this.adapter_.setAttribute(strings.ARIA_DISABLED, 'true');
+                this.adapter_.removeAttribute('tabindex');
+            }
+            else {
+                this.adapter_.removeAttribute(strings.ARIA_DISABLED);
+                if (!isNaN(this.savedTabIndex_)) {
+                    this.adapter_.setAttribute('tabindex', String(this.savedTabIndex_));
+                }
+            }
+        };
+        /**
+         * Called when the user starts interacting with the slider
+         */
+        MDCSliderFoundation.prototype.handleDown_ = function (downEvent) {
+            var _this = this;
+            if (this.disabled_) {
+                return;
+            }
+            this.preventFocusState_ = true;
+            this.setInTransit_(!this.handlingThumbTargetEvt_);
+            this.handlingThumbTargetEvt_ = false;
+            this.setActive_(true);
+            var moveHandler = function (moveEvent) {
+                _this.handleMove_(moveEvent);
+            };
+            var moveEventType = MOVE_EVENT_MAP[downEvent.type];
+            // Note: upHandler is [de]registered on ALL potential pointer-related release event types, since some browsers
+            // do not always fire these consistently in pairs.
+            // (See https://github.com/material-components/material-components-web/issues/1192)
+            var upHandler = function () {
+                _this.handleUp_();
+                _this.adapter_.deregisterBodyInteractionHandler(moveEventType, moveHandler);
+                UP_EVENTS.forEach(function (evtName) { return _this.adapter_.deregisterBodyInteractionHandler(evtName, upHandler); });
+            };
+            this.adapter_.registerBodyInteractionHandler(moveEventType, moveHandler);
+            UP_EVENTS.forEach(function (evtName) { return _this.adapter_.registerBodyInteractionHandler(evtName, upHandler); });
+            this.setValueFromEvt_(downEvent);
+        };
+        /**
+         * Called when the user moves the slider
+         */
+        MDCSliderFoundation.prototype.handleMove_ = function (evt) {
+            evt.preventDefault();
+            this.setValueFromEvt_(evt);
+        };
+        /**
+         * Called when the user's interaction with the slider ends
+         */
+        MDCSliderFoundation.prototype.handleUp_ = function () {
+            this.setActive_(false);
+            this.adapter_.notifyChange();
+        };
+        /**
+         * Returns the pageX of the event
+         */
+        MDCSliderFoundation.prototype.getPageX_ = function (evt) {
+            if (evt.targetTouches && evt.targetTouches.length > 0) {
+                return evt.targetTouches[0].pageX;
+            }
+            return evt.pageX;
+        };
+        /**
+         * Sets the slider value from an event
+         */
+        MDCSliderFoundation.prototype.setValueFromEvt_ = function (evt) {
+            var pageX = this.getPageX_(evt);
+            var value = this.computeValueFromPageX_(pageX);
+            this.setValue_(value, true);
+        };
+        /**
+         * Computes the new value from the pageX position
+         */
+        MDCSliderFoundation.prototype.computeValueFromPageX_ = function (pageX) {
+            var _a = this, max = _a.max_, min = _a.min_;
+            var xPos = pageX - this.rect_.left;
+            var pctComplete = xPos / this.rect_.width;
+            if (this.adapter_.isRTL()) {
+                pctComplete = 1 - pctComplete;
+            }
+            // Fit the percentage complete between the range [min,max]
+            // by remapping from [0, 1] to [min, min+(max-min)].
+            return min + pctComplete * (max - min);
+        };
+        /**
+         * Handles keydown events
+         */
+        MDCSliderFoundation.prototype.handleKeydown_ = function (evt) {
+            var keyId = this.getKeyId_(evt);
+            var value = this.getValueForKeyId_(keyId);
+            if (isNaN(value)) {
+                return;
+            }
+            // Prevent page from scrolling due to key presses that would normally scroll the page
+            evt.preventDefault();
+            this.adapter_.addClass(cssClasses.FOCUS);
+            this.setValue_(value, true);
+            this.adapter_.notifyChange();
+        };
+        /**
+         * Returns the computed name of the event
+         */
+        MDCSliderFoundation.prototype.getKeyId_ = function (kbdEvt) {
+            if (kbdEvt.key === KEY_IDS.ARROW_LEFT || kbdEvt.keyCode === 37) {
+                return KEY_IDS.ARROW_LEFT;
+            }
+            if (kbdEvt.key === KEY_IDS.ARROW_RIGHT || kbdEvt.keyCode === 39) {
+                return KEY_IDS.ARROW_RIGHT;
+            }
+            if (kbdEvt.key === KEY_IDS.ARROW_UP || kbdEvt.keyCode === 38) {
+                return KEY_IDS.ARROW_UP;
+            }
+            if (kbdEvt.key === KEY_IDS.ARROW_DOWN || kbdEvt.keyCode === 40) {
+                return KEY_IDS.ARROW_DOWN;
+            }
+            if (kbdEvt.key === KEY_IDS.HOME || kbdEvt.keyCode === 36) {
+                return KEY_IDS.HOME;
+            }
+            if (kbdEvt.key === KEY_IDS.END || kbdEvt.keyCode === 35) {
+                return KEY_IDS.END;
+            }
+            if (kbdEvt.key === KEY_IDS.PAGE_UP || kbdEvt.keyCode === 33) {
+                return KEY_IDS.PAGE_UP;
+            }
+            if (kbdEvt.key === KEY_IDS.PAGE_DOWN || kbdEvt.keyCode === 34) {
+                return KEY_IDS.PAGE_DOWN;
+            }
+            return '';
+        };
+        /**
+         * Computes the value given a keyboard key ID
+         */
+        MDCSliderFoundation.prototype.getValueForKeyId_ = function (keyId) {
+            var _a = this, max = _a.max_, min = _a.min_, step = _a.step_;
+            var delta = step || (max - min) / 100;
+            var valueNeedsToBeFlipped = this.adapter_.isRTL() && (keyId === KEY_IDS.ARROW_LEFT || keyId === KEY_IDS.ARROW_RIGHT);
+            if (valueNeedsToBeFlipped) {
+                delta = -delta;
+            }
+            switch (keyId) {
+                case KEY_IDS.ARROW_LEFT:
+                case KEY_IDS.ARROW_DOWN:
+                    return this.value_ - delta;
+                case KEY_IDS.ARROW_RIGHT:
+                case KEY_IDS.ARROW_UP:
+                    return this.value_ + delta;
+                case KEY_IDS.HOME:
+                    return this.min_;
+                case KEY_IDS.END:
+                    return this.max_;
+                case KEY_IDS.PAGE_UP:
+                    return this.value_ + delta * numbers.PAGE_FACTOR;
+                case KEY_IDS.PAGE_DOWN:
+                    return this.value_ - delta * numbers.PAGE_FACTOR;
+                default:
+                    return NaN;
+            }
+        };
+        MDCSliderFoundation.prototype.handleFocus_ = function () {
+            if (this.preventFocusState_) {
+                return;
+            }
+            this.adapter_.addClass(cssClasses.FOCUS);
+        };
+        MDCSliderFoundation.prototype.handleBlur_ = function () {
+            this.preventFocusState_ = false;
+            this.adapter_.removeClass(cssClasses.FOCUS);
+        };
+        /**
+         * Sets the value of the slider
+         */
+        MDCSliderFoundation.prototype.setValue_ = function (value, shouldFireInput, force) {
+            if (force === void 0) { force = false; }
+            if (value === this.value_ && !force) {
+                return;
+            }
+            var _a = this, min = _a.min_, max = _a.max_;
+            var valueSetToBoundary = value === min || value === max;
+            if (this.step_ && !valueSetToBoundary) {
+                value = this.quantize_(value);
+            }
+            if (value < min) {
+                value = min;
+            }
+            else if (value > max) {
+                value = max;
+            }
+            this.value_ = value;
+            this.adapter_.setAttribute(strings.ARIA_VALUENOW, String(this.value_));
+            this.updateUIForCurrentValue_();
+            if (shouldFireInput) {
+                this.adapter_.notifyInput();
+                if (this.isDiscrete_) {
+                    this.adapter_.setMarkerValue(value);
+                }
+            }
+        };
+        /**
+         * Calculates the quantized value
+         */
+        MDCSliderFoundation.prototype.quantize_ = function (value) {
+            var numSteps = Math.round(value / this.step_);
+            return numSteps * this.step_;
+        };
+        MDCSliderFoundation.prototype.updateUIForCurrentValue_ = function () {
+            var _this = this;
+            var _a = this, max = _a.max_, min = _a.min_, value = _a.value_;
+            var pctComplete = (value - min) / (max - min);
+            var translatePx = pctComplete * this.rect_.width;
+            if (this.adapter_.isRTL()) {
+                translatePx = this.rect_.width - translatePx;
+            }
+            var transformProp = getCorrectPropertyName(window, 'transform');
+            var transitionendEvtName = getCorrectEventName(window, 'transitionend');
+            if (this.inTransit_) {
+                var onTransitionEnd_1 = function () {
+                    _this.setInTransit_(false);
+                    _this.adapter_.deregisterThumbContainerInteractionHandler(transitionendEvtName, onTransitionEnd_1);
+                };
+                this.adapter_.registerThumbContainerInteractionHandler(transitionendEvtName, onTransitionEnd_1);
+            }
+            requestAnimationFrame(function () {
+                // NOTE(traviskaufman): It would be nice to use calc() here,
+                // but IE cannot handle calcs in transforms correctly.
+                // See: https://goo.gl/NC2itk
+                // Also note that the -50% offset is used to center the slider thumb.
+                _this.adapter_.setThumbContainerStyleProperty(transformProp, "translateX(" + translatePx + "px) translateX(-50%)");
+                _this.adapter_.setTrackStyleProperty(transformProp, "scaleX(" + pctComplete + ")");
+            });
+        };
+        /**
+         * Toggles the active state of the slider
+         */
+        MDCSliderFoundation.prototype.setActive_ = function (active) {
+            this.active_ = active;
+            this.toggleClass_(cssClasses.ACTIVE, this.active_);
+        };
+        /**
+         * Toggles the inTransit state of the slider
+         */
+        MDCSliderFoundation.prototype.setInTransit_ = function (inTransit) {
+            this.inTransit_ = inTransit;
+            this.toggleClass_(cssClasses.IN_TRANSIT, this.inTransit_);
+        };
+        /**
+         * Conditionally adds or removes a class based on shouldBePresent
+         */
+        MDCSliderFoundation.prototype.toggleClass_ = function (className, shouldBePresent) {
+            if (shouldBePresent) {
+                this.adapter_.addClass(className);
+            }
+            else {
+                this.adapter_.removeClass(className);
+            }
+        };
+        return MDCSliderFoundation;
+    }(MDCFoundation));
+
+    /**
+     * @license
+     * Copyright 2017 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var MDCSlider = /** @class */ (function (_super) {
+        __extends(MDCSlider, _super);
+        function MDCSlider() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        MDCSlider.attachTo = function (root) {
+            return new MDCSlider(root);
+        };
+        Object.defineProperty(MDCSlider.prototype, "value", {
+            get: function () {
+                return this.foundation_.getValue();
+            },
+            set: function (value) {
+                this.foundation_.setValue(value);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCSlider.prototype, "min", {
+            get: function () {
+                return this.foundation_.getMin();
+            },
+            set: function (min) {
+                this.foundation_.setMin(min);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCSlider.prototype, "max", {
+            get: function () {
+                return this.foundation_.getMax();
+            },
+            set: function (max) {
+                this.foundation_.setMax(max);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCSlider.prototype, "step", {
+            get: function () {
+                return this.foundation_.getStep();
+            },
+            set: function (step) {
+                this.foundation_.setStep(step);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCSlider.prototype, "disabled", {
+            get: function () {
+                return this.foundation_.isDisabled();
+            },
+            set: function (disabled) {
+                this.foundation_.setDisabled(disabled);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        MDCSlider.prototype.initialize = function () {
+            this.thumbContainer_ = this.root_.querySelector(strings.THUMB_CONTAINER_SELECTOR);
+            this.track_ = this.root_.querySelector(strings.TRACK_SELECTOR);
+            this.pinValueMarker_ = this.root_.querySelector(strings.PIN_VALUE_MARKER_SELECTOR);
+            this.trackMarkerContainer_ = this.root_.querySelector(strings.TRACK_MARKER_CONTAINER_SELECTOR);
+        };
+        MDCSlider.prototype.getDefaultFoundation = function () {
+            var _this = this;
+            // DO NOT INLINE this variable. For backward compatibility, foundations take a Partial<MDCFooAdapter>.
+            // To ensure we don't accidentally omit any methods, we need a separate, strongly typed adapter variable.
+            // tslint:disable:object-literal-sort-keys Methods should be in the same order as the adapter interface.
+            var adapter = {
+                hasClass: function (className) { return _this.root_.classList.contains(className); },
+                addClass: function (className) { return _this.root_.classList.add(className); },
+                removeClass: function (className) { return _this.root_.classList.remove(className); },
+                getAttribute: function (name) { return _this.root_.getAttribute(name); },
+                setAttribute: function (name, value) { return _this.root_.setAttribute(name, value); },
+                removeAttribute: function (name) { return _this.root_.removeAttribute(name); },
+                computeBoundingRect: function () { return _this.root_.getBoundingClientRect(); },
+                getTabIndex: function () { return _this.root_.tabIndex; },
+                registerInteractionHandler: function (evtType, handler) { return _this.listen(evtType, handler, applyPassive()); },
+                deregisterInteractionHandler: function (evtType, handler) { return _this.unlisten(evtType, handler, applyPassive()); },
+                registerThumbContainerInteractionHandler: function (evtType, handler) {
+                    _this.thumbContainer_.addEventListener(evtType, handler, applyPassive());
+                },
+                deregisterThumbContainerInteractionHandler: function (evtType, handler) {
+                    _this.thumbContainer_.removeEventListener(evtType, handler, applyPassive());
+                },
+                registerBodyInteractionHandler: function (evtType, handler) { return document.body.addEventListener(evtType, handler); },
+                deregisterBodyInteractionHandler: function (evtType, handler) { return document.body.removeEventListener(evtType, handler); },
+                registerResizeHandler: function (handler) { return window.addEventListener('resize', handler); },
+                deregisterResizeHandler: function (handler) { return window.removeEventListener('resize', handler); },
+                notifyInput: function () { return _this.emit(strings.INPUT_EVENT, _this); },
+                notifyChange: function () { return _this.emit(strings.CHANGE_EVENT, _this); },
+                setThumbContainerStyleProperty: function (propertyName, value) {
+                    _this.thumbContainer_.style.setProperty(propertyName, value);
+                },
+                setTrackStyleProperty: function (propertyName, value) { return _this.track_.style.setProperty(propertyName, value); },
+                setMarkerValue: function (value) { return _this.pinValueMarker_.innerText = value.toLocaleString(); },
+                appendTrackMarkers: function (numMarkers) {
+                    var frag = document.createDocumentFragment();
+                    for (var i = 0; i < numMarkers; i++) {
+                        var marker = document.createElement('div');
+                        marker.classList.add('mdc-slider__track-marker');
+                        frag.appendChild(marker);
+                    }
+                    _this.trackMarkerContainer_.appendChild(frag);
+                },
+                removeTrackMarkers: function () {
+                    while (_this.trackMarkerContainer_.firstChild) {
+                        _this.trackMarkerContainer_.removeChild(_this.trackMarkerContainer_.firstChild);
+                    }
+                },
+                setLastTrackMarkersStyleProperty: function (propertyName, value) {
+                    // We remove and append new nodes, thus, the last track marker must be dynamically found.
+                    var lastTrackMarker = _this.root_.querySelector(strings.LAST_TRACK_MARKER_SELECTOR);
+                    lastTrackMarker.style.setProperty(propertyName, value);
+                },
+                isRTL: function () { return getComputedStyle(_this.root_).direction === 'rtl'; },
+            };
+            // tslint:enable:object-literal-sort-keys
+            return new MDCSliderFoundation(adapter);
+        };
+        MDCSlider.prototype.initialSyncWithDOM = function () {
+            var origValueNow = this.parseFloat_(this.root_.getAttribute(strings.ARIA_VALUENOW), this.value);
+            var min = this.parseFloat_(this.root_.getAttribute(strings.ARIA_VALUEMIN), this.min);
+            var max = this.parseFloat_(this.root_.getAttribute(strings.ARIA_VALUEMAX), this.max);
+            // min and max need to be set in the right order to avoid throwing an error
+            // when the new min is greater than the default max.
+            if (min >= this.max) {
+                this.max = max;
+                this.min = min;
+            }
+            else {
+                this.min = min;
+                this.max = max;
+            }
+            this.step = this.parseFloat_(this.root_.getAttribute(strings.STEP_DATA_ATTR), this.step);
+            this.value = origValueNow;
+            this.disabled = (this.root_.hasAttribute(strings.ARIA_DISABLED) &&
+                this.root_.getAttribute(strings.ARIA_DISABLED) !== 'false');
+            this.foundation_.setupTrackMarker();
+        };
+        MDCSlider.prototype.layout = function () {
+            this.foundation_.layout();
+        };
+        MDCSlider.prototype.stepUp = function (amount) {
+            if (amount === void 0) { amount = (this.step || 1); }
+            this.value += amount;
+        };
+        MDCSlider.prototype.stepDown = function (amount) {
+            if (amount === void 0) { amount = (this.step || 1); }
+            this.value -= amount;
+        };
+        MDCSlider.prototype.parseFloat_ = function (str, defaultValue) {
+            var num = parseFloat(str); // tslint:disable-line:ban
+            var isNumeric = typeof num === 'number' && isFinite(num);
+            return isNumeric ? num : defaultValue;
+        };
+        return MDCSlider;
+    }(MDCComponent));
+
+    function forwardEventsBuilder(component, additionalEvents = []) {
+      const events = [
+        'focus', 'blur',
+        'fullscreenchange', 'fullscreenerror', 'scroll',
+        'cut', 'copy', 'paste',
+        'keydown', 'keypress', 'keyup',
+        'auxclick', 'click', 'contextmenu', 'dblclick', 'mousedown', 'mouseenter', 'mouseleave', 'mousemove', 'mouseover', 'mouseout', 'mouseup', 'pointerlockchange', 'pointerlockerror', 'select', 'wheel',
+        'drag', 'dragend', 'dragenter', 'dragstart', 'dragleave', 'dragover', 'drop',
+        'touchcancel', 'touchend', 'touchmove', 'touchstart',
+        'pointerover', 'pointerenter', 'pointerdown', 'pointermove', 'pointerup', 'pointercancel', 'pointerout', 'pointerleave', 'gotpointercapture', 'lostpointercapture',
+        ...additionalEvents
+      ];
+
+      function forward(e) {
+        bubble(component, e);
+      }
+
+      return node => {
+        const destructors = [];
+
+        for (let i = 0; i < events.length; i++) {
+          destructors.push(listen(node, events[i], forward));
+        }
+
+        return {
+          destroy: () => {
+            for (let i = 0; i < destructors.length; i++) {
+              destructors[i]();
+            }
+          }
+        }
+      };
+    }
+
+    function exclude(obj, keys) {
+      let names = Object.getOwnPropertyNames(obj);
+      const newObj = {};
+
+      for (let i = 0; i < names.length; i++) {
+        const name = names[i];
+        const cashIndex = name.indexOf('$');
+        if (cashIndex !== -1 && keys.indexOf(name.substring(0, cashIndex + 1)) !== -1) {
+          continue;
+        }
+        if (keys.indexOf(name) !== -1) {
+          continue;
+        }
+        newObj[name] = obj[name];
+      }
+
+      return newObj;
+    }
+
+    function useActions(node, actions) {
+      let objects = [];
+
+      if (actions) {
+        for (let i = 0; i < actions.length; i++) {
+          const isArray = Array.isArray(actions[i]);
+          const action = isArray ? actions[i][0] : actions[i];
+          if (isArray && actions[i].length > 1) {
+            objects.push(action(node, actions[i][1]));
+          } else {
+            objects.push(action(node));
+          }
+        }
+      }
+
+      return {
+        update(actions) {
+          if ((actions && actions.length || 0) != objects.length) {
+            throw new Error('You must not change the length of an actions array.');
+          }
+
+          if (actions) {
+            for (let i = 0; i < actions.length; i++) {
+              if (objects[i] && 'update' in objects[i]) {
+                const isArray = Array.isArray(actions[i]);
+                if (isArray && actions[i].length > 1) {
+                  objects[i].update(actions[i][1]);
+                } else {
+                  objects[i].update();
+                }
+              }
+            }
+          }
+        },
+
+        destroy() {
+          for (let i = 0; i < objects.length; i++) {
+            if (objects[i] && 'destroy' in objects[i]) {
+              objects[i].destroy();
+            }
+          }
+        }
+      }
+    }
+
+    /* node_modules/@smui/slider/Slider.svelte generated by Svelte v3.12.1 */
+
+    const file$1 = "node_modules/@smui/slider/Slider.svelte";
+
+    // (21:4) {#if discrete && displayMarkers}
+    function create_if_block_1(ctx) {
+    	var div;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			attr_dev(div, "class", "mdc-slider__track-marker-container");
+    			add_location(div, file$1, 21, 6, 708);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(div);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_if_block_1.name, type: "if", source: "(21:4) {#if discrete && displayMarkers}", ctx });
+    	return block;
+    }
+
+    // (26:4) {#if discrete}
+    function create_if_block(ctx) {
+    	var div, span;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			span = element("span");
+    			attr_dev(span, "class", "mdc-slider__pin-value-marker");
+    			add_location(span, file$1, 27, 8, 889);
+    			attr_dev(div, "class", "mdc-slider__pin");
+    			add_location(div, file$1, 26, 6, 851);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, span);
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(div);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_if_block.name, type: "if", source: "(26:4) {#if discrete}", ctx });
+    	return block;
+    }
+
+    function create_fragment$1(ctx) {
+    	var div4, div1, div0, t0, t1, div3, t2, svg, circle, t3, div2, useActions_action, forwardEvents_action, dispose;
+
+    	var if_block0 = (ctx.discrete && ctx.displayMarkers) && create_if_block_1(ctx);
+
+    	var if_block1 = (ctx.discrete) && create_if_block(ctx);
+
+    	var div4_levels = [
+    		{ class: "mdc-slider " + ctx.className },
+    		{ role: "slider" },
+    		{ "aria-disabled": ctx.disabled ? 'true' : 'false' },
+    		{ "aria-valuemin": ctx.min },
+    		{ "aria-valuemax": ctx.max },
+    		{ "aria-valuenow": ctx.value },
+    		{ "data-step": ctx.step === 0 ? undefined : ctx.step },
+    		{ tabindex: ctx.tabindex },
+    		ctx.inputProps,
+    		exclude(ctx.$$props, ['use', 'class', 'disabled', 'discrete', 'displayMarkers', 'min', 'max', 'step', 'value', 'tabindex'])
+    	];
+
+    	var div4_data = {};
+    	for (var i = 0; i < div4_levels.length; i += 1) {
+    		div4_data = assign(div4_data, div4_levels[i]);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div4 = element("div");
+    			div1 = element("div");
+    			div0 = element("div");
+    			t0 = space();
+    			if (if_block0) if_block0.c();
+    			t1 = space();
+    			div3 = element("div");
+    			if (if_block1) if_block1.c();
+    			t2 = space();
+    			svg = svg_element("svg");
+    			circle = svg_element("circle");
+    			t3 = space();
+    			div2 = element("div");
+    			attr_dev(div0, "class", "mdc-slider__track");
+    			add_location(div0, file$1, 19, 4, 627);
+    			attr_dev(div1, "class", "mdc-slider__track-container");
+    			add_location(div1, file$1, 18, 2, 581);
+    			attr_dev(circle, "cx", "10.5");
+    			attr_dev(circle, "cy", "10.5");
+    			attr_dev(circle, "r", "7.875");
+    			add_location(circle, file$1, 31, 6, 1028);
+    			attr_dev(svg, "class", "mdc-slider__thumb");
+    			attr_dev(svg, "width", "21");
+    			attr_dev(svg, "height", "21");
+    			add_location(svg, file$1, 30, 4, 967);
+    			attr_dev(div2, "class", "mdc-slider__focus-ring");
+    			add_location(div2, file$1, 33, 4, 1091);
+    			attr_dev(div3, "class", "mdc-slider__thumb-container");
+    			add_location(div3, file$1, 24, 2, 784);
+    			set_attributes(div4, div4_data);
+    			toggle_class(div4, "mdc-slider--discrete", ctx.discrete);
+    			toggle_class(div4, "mdc-slider--display-markers", ctx.discrete && ctx.displayMarkers);
+    			add_location(div4, file$1, 0, 0, 0);
+    			dispose = listen_dev(div4, "MDCSlider:change", ctx.handleChange);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div4, anchor);
+    			append_dev(div4, div1);
+    			append_dev(div1, div0);
+    			append_dev(div1, t0);
+    			if (if_block0) if_block0.m(div1, null);
+    			append_dev(div4, t1);
+    			append_dev(div4, div3);
+    			if (if_block1) if_block1.m(div3, null);
+    			append_dev(div3, t2);
+    			append_dev(div3, svg);
+    			append_dev(svg, circle);
+    			append_dev(div3, t3);
+    			append_dev(div3, div2);
+    			ctx.div4_binding(div4);
+    			useActions_action = useActions.call(null, div4, ctx.use) || {};
+    			forwardEvents_action = ctx.forwardEvents.call(null, div4) || {};
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (ctx.discrete && ctx.displayMarkers) {
+    				if (!if_block0) {
+    					if_block0 = create_if_block_1(ctx);
+    					if_block0.c();
+    					if_block0.m(div1, null);
+    				}
+    			} else if (if_block0) {
+    				if_block0.d(1);
+    				if_block0 = null;
+    			}
+
+    			if (ctx.discrete) {
+    				if (!if_block1) {
+    					if_block1 = create_if_block(ctx);
+    					if_block1.c();
+    					if_block1.m(div3, t2);
+    				}
+    			} else if (if_block1) {
+    				if_block1.d(1);
+    				if_block1 = null;
+    			}
+
+    			set_attributes(div4, get_spread_update(div4_levels, [
+    				(changed.className) && { class: "mdc-slider " + ctx.className },
+    				{ role: "slider" },
+    				(changed.disabled) && { "aria-disabled": ctx.disabled ? 'true' : 'false' },
+    				(changed.min) && { "aria-valuemin": ctx.min },
+    				(changed.max) && { "aria-valuemax": ctx.max },
+    				(changed.value) && { "aria-valuenow": ctx.value },
+    				(changed.step) && { "data-step": ctx.step === 0 ? undefined : ctx.step },
+    				(changed.tabindex) && { tabindex: ctx.tabindex },
+    				(changed.inputProps) && ctx.inputProps,
+    				(changed.exclude || changed.$$props) && exclude(ctx.$$props, ['use', 'class', 'disabled', 'discrete', 'displayMarkers', 'min', 'max', 'step', 'value', 'tabindex'])
+    			]));
+
+    			if (typeof useActions_action.update === 'function' && changed.use) {
+    				useActions_action.update.call(null, ctx.use);
+    			}
+
+    			if ((changed.className || changed.discrete)) {
+    				toggle_class(div4, "mdc-slider--discrete", ctx.discrete);
+    			}
+
+    			if ((changed.className || changed.discrete || changed.displayMarkers)) {
+    				toggle_class(div4, "mdc-slider--display-markers", ctx.discrete && ctx.displayMarkers);
+    			}
+    		},
+
+    		i: noop,
+    		o: noop,
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(div4);
+    			}
+
+    			if (if_block0) if_block0.d();
+    			if (if_block1) if_block1.d();
+    			ctx.div4_binding(null);
+    			if (useActions_action && typeof useActions_action.destroy === 'function') useActions_action.destroy();
+    			if (forwardEvents_action && typeof forwardEvents_action.destroy === 'function') forwardEvents_action.destroy();
+    			dispose();
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$1.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$1($$self, $$props, $$invalidate) {
+    	
+
+      const forwardEvents = forwardEventsBuilder(current_component, ['MDCSlider:input', 'MDCSlider:change']);
+
+      let { use = [], class: className = '', disabled = false, discrete = false, displayMarkers = false, min = 0, max = 100, step = 0, value = null, tabindex = '0' } = $$props;
+
+      let element;
+      let slider;
+      let formField = getContext('SMUI:form-field');
+      let inputProps = getContext('SMUI:generic:input:props') || {};
+
+      onMount(() => {
+        $$invalidate('slider', slider = new MDCSlider(element));
+
+        if (formField && formField()) {
+          formField().input = slider;
+        }
+      });
+
+      onDestroy(() => {
+        slider && slider.destroy();
+      });
+
+      function handleChange() {
+        $$invalidate('value', value = slider.value);
+      }
+
+      function layout(...args) {
+        return slider.layout(...args);
+      }
+
+      function stepUp(amount = 1, ...args) {
+        return slider.stepUp(amount, ...args);
+      }
+
+      function stepDown(amount = 1, ...args) {
+        return slider.stepDown(amount, ...args);
+      }
+
+      function getId() {
+        return inputProps && inputProps.id;
+      }
+
+    	function div4_binding($$value) {
+    		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+    			$$invalidate('element', element = $$value);
+    		});
+    	}
+
+    	$$self.$set = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('use' in $$new_props) $$invalidate('use', use = $$new_props.use);
+    		if ('class' in $$new_props) $$invalidate('className', className = $$new_props.class);
+    		if ('disabled' in $$new_props) $$invalidate('disabled', disabled = $$new_props.disabled);
+    		if ('discrete' in $$new_props) $$invalidate('discrete', discrete = $$new_props.discrete);
+    		if ('displayMarkers' in $$new_props) $$invalidate('displayMarkers', displayMarkers = $$new_props.displayMarkers);
+    		if ('min' in $$new_props) $$invalidate('min', min = $$new_props.min);
+    		if ('max' in $$new_props) $$invalidate('max', max = $$new_props.max);
+    		if ('step' in $$new_props) $$invalidate('step', step = $$new_props.step);
+    		if ('value' in $$new_props) $$invalidate('value', value = $$new_props.value);
+    		if ('tabindex' in $$new_props) $$invalidate('tabindex', tabindex = $$new_props.tabindex);
+    	};
+
+    	$$self.$capture_state = () => {
+    		return { use, className, disabled, discrete, displayMarkers, min, max, step, value, tabindex, element, slider, formField, inputProps };
+    	};
+
+    	$$self.$inject_state = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('use' in $$props) $$invalidate('use', use = $$new_props.use);
+    		if ('className' in $$props) $$invalidate('className', className = $$new_props.className);
+    		if ('disabled' in $$props) $$invalidate('disabled', disabled = $$new_props.disabled);
+    		if ('discrete' in $$props) $$invalidate('discrete', discrete = $$new_props.discrete);
+    		if ('displayMarkers' in $$props) $$invalidate('displayMarkers', displayMarkers = $$new_props.displayMarkers);
+    		if ('min' in $$props) $$invalidate('min', min = $$new_props.min);
+    		if ('max' in $$props) $$invalidate('max', max = $$new_props.max);
+    		if ('step' in $$props) $$invalidate('step', step = $$new_props.step);
+    		if ('value' in $$props) $$invalidate('value', value = $$new_props.value);
+    		if ('tabindex' in $$props) $$invalidate('tabindex', tabindex = $$new_props.tabindex);
+    		if ('element' in $$props) $$invalidate('element', element = $$new_props.element);
+    		if ('slider' in $$props) $$invalidate('slider', slider = $$new_props.slider);
+    		if ('formField' in $$props) formField = $$new_props.formField;
+    		if ('inputProps' in $$props) $$invalidate('inputProps', inputProps = $$new_props.inputProps);
+    	};
+
+    	$$self.$$.update = ($$dirty = { slider: 1, disabled: 1, min: 1, max: 1, step: 1, value: 1 }) => {
+    		if ($$dirty.slider || $$dirty.disabled) { if (slider && slider.disabled !== disabled) {
+            $$invalidate('slider', slider.disabled = disabled, slider);
+          } }
+    		if ($$dirty.slider || $$dirty.min) { if (slider && slider.min !== min) {
+            $$invalidate('slider', slider.min = min, slider);
+          } }
+    		if ($$dirty.slider || $$dirty.max) { if (slider && slider.max !== max) {
+            $$invalidate('slider', slider.max = max, slider);
+          } }
+    		if ($$dirty.slider || $$dirty.step) { if (slider && slider.step !== step) {
+            $$invalidate('slider', slider.step = step, slider);
+          } }
+    		if ($$dirty.slider || $$dirty.value) { if (slider && slider.value !== value) {
+            $$invalidate('slider', slider.value = value, slider);
+          } }
+    	};
+
+    	return {
+    		forwardEvents,
+    		use,
+    		className,
+    		disabled,
+    		discrete,
+    		displayMarkers,
+    		min,
+    		max,
+    		step,
+    		value,
+    		tabindex,
+    		element,
+    		inputProps,
+    		handleChange,
+    		layout,
+    		stepUp,
+    		stepDown,
+    		getId,
+    		$$props,
+    		div4_binding,
+    		$$props: $$props = exclude_internal_props($$props)
+    	};
+    }
+
+    class Slider extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$1, create_fragment$1, safe_not_equal, ["use", "class", "disabled", "discrete", "displayMarkers", "min", "max", "step", "value", "tabindex", "layout", "stepUp", "stepDown", "getId"]);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Slider", options, id: create_fragment$1.name });
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+    		if (ctx.layout === undefined && !('layout' in props)) {
+    			console.warn("<Slider> was created without expected prop 'layout'");
+    		}
+    		if (ctx.stepUp === undefined && !('stepUp' in props)) {
+    			console.warn("<Slider> was created without expected prop 'stepUp'");
+    		}
+    		if (ctx.stepDown === undefined && !('stepDown' in props)) {
+    			console.warn("<Slider> was created without expected prop 'stepDown'");
+    		}
+    		if (ctx.getId === undefined && !('getId' in props)) {
+    			console.warn("<Slider> was created without expected prop 'getId'");
+    		}
+    	}
+
+    	get use() {
+    		throw new Error("<Slider>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set use(value) {
+    		throw new Error("<Slider>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get class() {
+    		throw new Error("<Slider>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set class(value) {
+    		throw new Error("<Slider>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get disabled() {
+    		throw new Error("<Slider>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set disabled(value) {
+    		throw new Error("<Slider>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get discrete() {
+    		throw new Error("<Slider>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set discrete(value) {
+    		throw new Error("<Slider>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get displayMarkers() {
+    		throw new Error("<Slider>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set displayMarkers(value) {
+    		throw new Error("<Slider>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get min() {
+    		throw new Error("<Slider>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set min(value) {
+    		throw new Error("<Slider>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get max() {
+    		throw new Error("<Slider>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set max(value) {
+    		throw new Error("<Slider>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get step() {
+    		throw new Error("<Slider>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set step(value) {
+    		throw new Error("<Slider>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get value() {
+    		throw new Error("<Slider>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set value(value) {
+    		throw new Error("<Slider>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get tabindex() {
+    		throw new Error("<Slider>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set tabindex(value) {
+    		throw new Error("<Slider>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get layout() {
+    		return this.$$.ctx.layout;
+    	}
+
+    	set layout(value) {
+    		throw new Error("<Slider>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get stepUp() {
+    		return this.$$.ctx.stepUp;
+    	}
+
+    	set stepUp(value) {
+    		throw new Error("<Slider>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get stepDown() {
+    		return this.$$.ctx.stepDown;
+    	}
+
+    	set stepDown(value) {
+    		throw new Error("<Slider>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get getId() {
+    		return this.$$.ctx.getId;
+    	}
+
+    	set getId(value) {
+    		throw new Error("<Slider>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /**
+     * @license
+     * Copyright 2017 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var cssClasses$1 = {
+        ROOT: 'mdc-form-field',
+    };
+    var strings$1 = {
+        LABEL_SELECTOR: '.mdc-form-field > label',
+    };
+
+    /**
+     * @license
+     * Copyright 2017 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var MDCFormFieldFoundation = /** @class */ (function (_super) {
+        __extends(MDCFormFieldFoundation, _super);
+        function MDCFormFieldFoundation(adapter) {
+            var _this = _super.call(this, __assign({}, MDCFormFieldFoundation.defaultAdapter, adapter)) || this;
+            _this.clickHandler_ = function () { return _this.handleClick_(); };
+            return _this;
+        }
+        Object.defineProperty(MDCFormFieldFoundation, "cssClasses", {
+            get: function () {
+                return cssClasses$1;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCFormFieldFoundation, "strings", {
+            get: function () {
+                return strings$1;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCFormFieldFoundation, "defaultAdapter", {
+            get: function () {
+                return {
+                    activateInputRipple: function () { return undefined; },
+                    deactivateInputRipple: function () { return undefined; },
+                    deregisterInteractionHandler: function () { return undefined; },
+                    registerInteractionHandler: function () { return undefined; },
+                };
+            },
+            enumerable: true,
+            configurable: true
+        });
+        MDCFormFieldFoundation.prototype.init = function () {
+            this.adapter_.registerInteractionHandler('click', this.clickHandler_);
+        };
+        MDCFormFieldFoundation.prototype.destroy = function () {
+            this.adapter_.deregisterInteractionHandler('click', this.clickHandler_);
+        };
+        MDCFormFieldFoundation.prototype.handleClick_ = function () {
+            var _this = this;
+            this.adapter_.activateInputRipple();
+            requestAnimationFrame(function () { return _this.adapter_.deactivateInputRipple(); });
+        };
+        return MDCFormFieldFoundation;
+    }(MDCFoundation));
+
+    /**
+     * @license
+     * Copyright 2017 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var MDCFormField = /** @class */ (function (_super) {
+        __extends(MDCFormField, _super);
+        function MDCFormField() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        MDCFormField.attachTo = function (root) {
+            return new MDCFormField(root);
+        };
+        Object.defineProperty(MDCFormField.prototype, "input", {
+            get: function () {
+                return this.input_;
+            },
+            set: function (input) {
+                this.input_ = input;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCFormField.prototype, "label_", {
+            get: function () {
+                var LABEL_SELECTOR = MDCFormFieldFoundation.strings.LABEL_SELECTOR;
+                return this.root_.querySelector(LABEL_SELECTOR);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        MDCFormField.prototype.getDefaultFoundation = function () {
+            var _this = this;
+            // DO NOT INLINE this variable. For backward compatibility, foundations take a Partial<MDCFooAdapter>.
+            // To ensure we don't accidentally omit any methods, we need a separate, strongly typed adapter variable.
+            var adapter = {
+                activateInputRipple: function () {
+                    if (_this.input_ && _this.input_.ripple) {
+                        _this.input_.ripple.activate();
+                    }
+                },
+                deactivateInputRipple: function () {
+                    if (_this.input_ && _this.input_.ripple) {
+                        _this.input_.ripple.deactivate();
+                    }
+                },
+                deregisterInteractionHandler: function (evtType, handler) {
+                    if (_this.label_) {
+                        _this.label_.removeEventListener(evtType, handler);
+                    }
+                },
+                registerInteractionHandler: function (evtType, handler) {
+                    if (_this.label_) {
+                        _this.label_.addEventListener(evtType, handler);
+                    }
+                },
+            };
+            return new MDCFormFieldFoundation(adapter);
+        };
+        return MDCFormField;
+    }(MDCComponent));
+
+    function prefixFilter(obj, prefix) {
+      let names = Object.getOwnPropertyNames(obj);
+      const newObj = {};
+
+      for (let i = 0; i < names.length; i++) {
+        const name = names[i];
+        if (name.substring(0, prefix.length) === prefix) {
+          newObj[name.substring(prefix.length)] = obj[name];
+        }
+      }
+
+      return newObj;
+    }
+
+    /* node_modules/@smui/form-field/FormField.svelte generated by Svelte v3.12.1 */
+
+    const file$2 = "node_modules/@smui/form-field/FormField.svelte";
+
+    const get_label_slot_changes = () => ({});
+    const get_label_slot_context = () => ({});
+
+    function create_fragment$2(ctx) {
+    	var div, t, label, useActions_action, useActions_action_1, forwardEvents_action, current;
+
+    	const default_slot_template = ctx.$$slots.default;
+    	const default_slot = create_slot(default_slot_template, ctx, null);
+
+    	const label_slot_template = ctx.$$slots.label;
+    	const label_slot = create_slot(label_slot_template, ctx, get_label_slot_context);
+
+    	var label_levels = [
+    		{ for: ctx.inputId },
+    		exclude(prefixFilter(ctx.$$props, 'label$'), ['use'])
+    	];
+
+    	var label_data = {};
+    	for (var i = 0; i < label_levels.length; i += 1) {
+    		label_data = assign(label_data, label_levels[i]);
+    	}
+
+    	var div_levels = [
+    		{ class: "mdc-form-field " + ctx.className },
+    		exclude(ctx.$$props, ['use', 'class', 'alignEnd', 'inputId', 'label$'])
+    	];
+
+    	var div_data = {};
+    	for (var i = 0; i < div_levels.length; i += 1) {
+    		div_data = assign(div_data, div_levels[i]);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+
+    			if (default_slot) default_slot.c();
+    			t = space();
+    			label = element("label");
+
+    			if (label_slot) label_slot.c();
+
+    			set_attributes(label, label_data);
+    			add_location(label, file$2, 9, 2, 254);
+    			set_attributes(div, div_data);
+    			toggle_class(div, "mdc-form-field--align-end", ctx.align === 'end');
+    			add_location(div, file$2, 0, 0, 0);
+    		},
+
+    		l: function claim(nodes) {
+    			if (default_slot) default_slot.l(div_nodes);
+
+    			if (label_slot) label_slot.l(label_nodes);
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+
+    			if (default_slot) {
+    				default_slot.m(div, null);
+    			}
+
+    			append_dev(div, t);
+    			append_dev(div, label);
+
+    			if (label_slot) {
+    				label_slot.m(label, null);
+    			}
+
+    			useActions_action = useActions.call(null, label, ctx.label$use) || {};
+    			ctx.div_binding(div);
+    			useActions_action_1 = useActions.call(null, div, ctx.use) || {};
+    			forwardEvents_action = ctx.forwardEvents.call(null, div) || {};
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (default_slot && default_slot.p && changed.$$scope) {
+    				default_slot.p(
+    					get_slot_changes(default_slot_template, ctx, changed, null),
+    					get_slot_context(default_slot_template, ctx, null)
+    				);
+    			}
+
+    			if (label_slot && label_slot.p && changed.$$scope) {
+    				label_slot.p(
+    					get_slot_changes(label_slot_template, ctx, changed, get_label_slot_changes),
+    					get_slot_context(label_slot_template, ctx, get_label_slot_context)
+    				);
+    			}
+
+    			set_attributes(label, get_spread_update(label_levels, [
+    				(changed.inputId) && { for: ctx.inputId },
+    				(changed.exclude || changed.prefixFilter || changed.$$props) && exclude(prefixFilter(ctx.$$props, 'label$'), ['use'])
+    			]));
+
+    			if (typeof useActions_action.update === 'function' && changed.label$use) {
+    				useActions_action.update.call(null, ctx.label$use);
+    			}
+
+    			set_attributes(div, get_spread_update(div_levels, [
+    				(changed.className) && { class: "mdc-form-field " + ctx.className },
+    				(changed.exclude || changed.$$props) && exclude(ctx.$$props, ['use', 'class', 'alignEnd', 'inputId', 'label$'])
+    			]));
+
+    			if (typeof useActions_action_1.update === 'function' && changed.use) {
+    				useActions_action_1.update.call(null, ctx.use);
+    			}
+
+    			if ((changed.className || changed.align)) {
+    				toggle_class(div, "mdc-form-field--align-end", ctx.align === 'end');
+    			}
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(default_slot, local);
+    			transition_in(label_slot, local);
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(default_slot, local);
+    			transition_out(label_slot, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(div);
+    			}
+
+    			if (default_slot) default_slot.d(detaching);
+
+    			if (label_slot) label_slot.d(detaching);
+    			if (useActions_action && typeof useActions_action.destroy === 'function') useActions_action.destroy();
+    			ctx.div_binding(null);
+    			if (useActions_action_1 && typeof useActions_action_1.destroy === 'function') useActions_action_1.destroy();
+    			if (forwardEvents_action && typeof forwardEvents_action.destroy === 'function') forwardEvents_action.destroy();
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$2.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    let counter = 0;
+
+    function instance$2($$self, $$props, $$invalidate) {
+    	
+
+      const forwardEvents = forwardEventsBuilder(current_component);
+
+      let { use = [], class: className = '', align = 'start', inputId = 'SMUI-form-field-'+(counter++), label$use = [] } = $$props;
+
+      let element;
+      let formField;
+
+      setContext('SMUI:form-field', () => formField);
+      setContext('SMUI:generic:input:props', {id: inputId});
+
+      onMount(() => {
+        formField = new MDCFormField(element);
+      });
+
+      onDestroy(() => {
+        if (formField) {
+          formField && formField.destroy();
+        }
+      });
+
+    	let { $$slots = {}, $$scope } = $$props;
+
+    	function div_binding($$value) {
+    		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+    			$$invalidate('element', element = $$value);
+    		});
+    	}
+
+    	$$self.$set = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('use' in $$new_props) $$invalidate('use', use = $$new_props.use);
+    		if ('class' in $$new_props) $$invalidate('className', className = $$new_props.class);
+    		if ('align' in $$new_props) $$invalidate('align', align = $$new_props.align);
+    		if ('inputId' in $$new_props) $$invalidate('inputId', inputId = $$new_props.inputId);
+    		if ('label$use' in $$new_props) $$invalidate('label$use', label$use = $$new_props.label$use);
+    		if ('$$scope' in $$new_props) $$invalidate('$$scope', $$scope = $$new_props.$$scope);
+    	};
+
+    	$$self.$capture_state = () => {
+    		return { counter, use, className, align, inputId, label$use, element, formField };
+    	};
+
+    	$$self.$inject_state = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('use' in $$props) $$invalidate('use', use = $$new_props.use);
+    		if ('className' in $$props) $$invalidate('className', className = $$new_props.className);
+    		if ('align' in $$props) $$invalidate('align', align = $$new_props.align);
+    		if ('inputId' in $$props) $$invalidate('inputId', inputId = $$new_props.inputId);
+    		if ('label$use' in $$props) $$invalidate('label$use', label$use = $$new_props.label$use);
+    		if ('element' in $$props) $$invalidate('element', element = $$new_props.element);
+    		if ('formField' in $$props) formField = $$new_props.formField;
+    	};
+
+    	return {
+    		forwardEvents,
+    		use,
+    		className,
+    		align,
+    		inputId,
+    		label$use,
+    		element,
+    		$$props,
+    		div_binding,
+    		$$props: $$props = exclude_internal_props($$props),
+    		$$slots,
+    		$$scope
+    	};
+    }
+
+    class FormField extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$2, create_fragment$2, safe_not_equal, ["use", "class", "align", "inputId", "label$use"]);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "FormField", options, id: create_fragment$2.name });
+    	}
+
+    	get use() {
+    		throw new Error("<FormField>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set use(value) {
+    		throw new Error("<FormField>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get class() {
+    		throw new Error("<FormField>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set class(value) {
+    		throw new Error("<FormField>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get align() {
+    		throw new Error("<FormField>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set align(value) {
+    		throw new Error("<FormField>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get inputId() {
+    		throw new Error("<FormField>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set inputId(value) {
+    		throw new Error("<FormField>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get label$use() {
+    		throw new Error("<FormField>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set label$use(value) {
+    		throw new Error("<FormField>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /**
      * @license
      * Copyright 2018 Google Inc.
      *
@@ -257,8 +9014,696 @@ var Rc=["touchstart","pointerdown","mousedown","keydown"],Nc=["touchend","pointe
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-var Ml=function(t){function e(){return null!==t&&t.apply(this,arguments)||this}return Os(e,t),e.attachTo=function(t){return new e(t)},e.prototype.initialize=function(){this.area_=this.root_.querySelector(kl.strings.AREA_SELECTOR),this.content_=this.root_.querySelector(kl.strings.CONTENT_SELECTOR)},e.prototype.initialSyncWithDOM=function(){var t=this;this.handleInteraction_=function(){return t.foundation_.handleInteraction()},this.handleTransitionEnd_=function(e){return t.foundation_.handleTransitionEnd(e)},this.area_.addEventListener("wheel",this.handleInteraction_,Bs()),this.area_.addEventListener("touchstart",this.handleInteraction_,Bs()),this.area_.addEventListener("pointerdown",this.handleInteraction_,Bs()),this.area_.addEventListener("mousedown",this.handleInteraction_,Bs()),this.area_.addEventListener("keydown",this.handleInteraction_,Bs()),this.content_.addEventListener("transitionend",this.handleTransitionEnd_)},e.prototype.destroy=function(){t.prototype.destroy.call(this),this.area_.removeEventListener("wheel",this.handleInteraction_,Bs()),this.area_.removeEventListener("touchstart",this.handleInteraction_,Bs()),this.area_.removeEventListener("pointerdown",this.handleInteraction_,Bs()),this.area_.removeEventListener("mousedown",this.handleInteraction_,Bs()),this.area_.removeEventListener("keydown",this.handleInteraction_,Bs()),this.content_.removeEventListener("transitionend",this.handleTransitionEnd_)},e.prototype.getDefaultFoundation=function(){var t=this;return new kl({eventTargetMatchesSelector:function(t,e){return Sc(t,e)},addClass:function(e){return t.root_.classList.add(e)},removeClass:function(e){return t.root_.classList.remove(e)},addScrollAreaClass:function(e){return t.area_.classList.add(e)},setScrollAreaStyleProperty:function(e,n){return t.area_.style.setProperty(e,n)},setScrollContentStyleProperty:function(e,n){return t.content_.style.setProperty(e,n)},getScrollContentStyleValue:function(e){return window.getComputedStyle(t.content_).getPropertyValue(e)},setScrollAreaScrollLeft:function(e){return t.area_.scrollLeft=e},getScrollAreaScrollLeft:function(){return t.area_.scrollLeft},getScrollContentOffsetWidth:function(){return t.content_.offsetWidth},getScrollAreaOffsetWidth:function(){return t.area_.offsetWidth},computeScrollAreaClientRect:function(){return t.area_.getBoundingClientRect()},computeScrollContentClientRect:function(){return t.content_.getBoundingClientRect()},computeHorizontalScrollbarHeight:function(){return function(t,e){if(void 0===e&&(e=!0),e&&void 0!==wl)return wl;var n=t.createElement("div");n.classList.add(Al.SCROLL_TEST),t.body.appendChild(n);var r=n.offsetHeight-n.clientHeight;return t.body.removeChild(n),e&&(wl=r),r}(document)}})},e.prototype.getScrollPosition=function(){return this.foundation_.getScrollPosition()},e.prototype.getScrollContentWidth=function(){return this.content_.offsetWidth},e.prototype.incrementScroll=function(t){this.foundation_.incrementScroll(t)},e.prototype.scrollTo=function(t){this.foundation_.scrollTo(t)},e}(Us),Rl={ARROW_LEFT_KEY:"ArrowLeft",ARROW_RIGHT_KEY:"ArrowRight",END_KEY:"End",ENTER_KEY:"Enter",HOME_KEY:"Home",SPACE_KEY:"Space",TAB_ACTIVATED_EVENT:"MDCTabBar:activated",TAB_SCROLLER_SELECTOR:".mdc-tab-scroller",TAB_SELECTOR:".mdc-tab"},Nl={ARROW_LEFT_KEYCODE:37,ARROW_RIGHT_KEYCODE:39,END_KEYCODE:35,ENTER_KEYCODE:13,EXTRA_SCROLL_AMOUNT:20,HOME_KEYCODE:36,SPACE_KEYCODE:32},Ll=new Set;
-/**
+    function matches(element, selector) {
+        var nativeMatches = element.matches
+            || element.webkitMatchesSelector
+            || element.msMatchesSelector;
+        return nativeMatches.call(element, selector);
+    }
+
+    /**
+     * @license
+     * Copyright 2016 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var cssClasses$2 = {
+        // Ripple is a special case where the "root" component is really a "mixin" of sorts,
+        // given that it's an 'upgrade' to an existing component. That being said it is the root
+        // CSS class that all other CSS classes derive from.
+        BG_FOCUSED: 'mdc-ripple-upgraded--background-focused',
+        FG_ACTIVATION: 'mdc-ripple-upgraded--foreground-activation',
+        FG_DEACTIVATION: 'mdc-ripple-upgraded--foreground-deactivation',
+        ROOT: 'mdc-ripple-upgraded',
+        UNBOUNDED: 'mdc-ripple-upgraded--unbounded',
+    };
+    var strings$2 = {
+        VAR_FG_SCALE: '--mdc-ripple-fg-scale',
+        VAR_FG_SIZE: '--mdc-ripple-fg-size',
+        VAR_FG_TRANSLATE_END: '--mdc-ripple-fg-translate-end',
+        VAR_FG_TRANSLATE_START: '--mdc-ripple-fg-translate-start',
+        VAR_LEFT: '--mdc-ripple-left',
+        VAR_TOP: '--mdc-ripple-top',
+    };
+    var numbers$1 = {
+        DEACTIVATION_TIMEOUT_MS: 225,
+        FG_DEACTIVATION_MS: 150,
+        INITIAL_ORIGIN_SCALE: 0.6,
+        PADDING: 10,
+        TAP_DELAY_MS: 300,
+    };
+
+    /**
+     * Stores result from supportsCssVariables to avoid redundant processing to
+     * detect CSS custom variable support.
+     */
+    var supportsCssVariables_;
+    function detectEdgePseudoVarBug(windowObj) {
+        // Detect versions of Edge with buggy var() support
+        // See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11495448/
+        var document = windowObj.document;
+        var node = document.createElement('div');
+        node.className = 'mdc-ripple-surface--test-edge-var-bug';
+        // Append to head instead of body because this script might be invoked in the
+        // head, in which case the body doesn't exist yet. The probe works either way.
+        document.head.appendChild(node);
+        // The bug exists if ::before style ends up propagating to the parent element.
+        // Additionally, getComputedStyle returns null in iframes with display: "none" in Firefox,
+        // but Firefox is known to support CSS custom properties correctly.
+        // See: https://bugzilla.mozilla.org/show_bug.cgi?id=548397
+        var computedStyle = windowObj.getComputedStyle(node);
+        var hasPseudoVarBug = computedStyle !== null && computedStyle.borderTopStyle === 'solid';
+        if (node.parentNode) {
+            node.parentNode.removeChild(node);
+        }
+        return hasPseudoVarBug;
+    }
+    function supportsCssVariables(windowObj, forceRefresh) {
+        if (forceRefresh === void 0) { forceRefresh = false; }
+        var CSS = windowObj.CSS;
+        var supportsCssVars = supportsCssVariables_;
+        if (typeof supportsCssVariables_ === 'boolean' && !forceRefresh) {
+            return supportsCssVariables_;
+        }
+        var supportsFunctionPresent = CSS && typeof CSS.supports === 'function';
+        if (!supportsFunctionPresent) {
+            return false;
+        }
+        var explicitlySupportsCssVars = CSS.supports('--css-vars', 'yes');
+        // See: https://bugs.webkit.org/show_bug.cgi?id=154669
+        // See: README section on Safari
+        var weAreFeatureDetectingSafari10plus = (CSS.supports('(--css-vars: yes)') &&
+            CSS.supports('color', '#00000000'));
+        if (explicitlySupportsCssVars || weAreFeatureDetectingSafari10plus) {
+            supportsCssVars = !detectEdgePseudoVarBug(windowObj);
+        }
+        else {
+            supportsCssVars = false;
+        }
+        if (!forceRefresh) {
+            supportsCssVariables_ = supportsCssVars;
+        }
+        return supportsCssVars;
+    }
+    function getNormalizedEventCoords(evt, pageOffset, clientRect) {
+        if (!evt) {
+            return { x: 0, y: 0 };
+        }
+        var x = pageOffset.x, y = pageOffset.y;
+        var documentX = x + clientRect.left;
+        var documentY = y + clientRect.top;
+        var normalizedX;
+        var normalizedY;
+        // Determine touch point relative to the ripple container.
+        if (evt.type === 'touchstart') {
+            var touchEvent = evt;
+            normalizedX = touchEvent.changedTouches[0].pageX - documentX;
+            normalizedY = touchEvent.changedTouches[0].pageY - documentY;
+        }
+        else {
+            var mouseEvent = evt;
+            normalizedX = mouseEvent.pageX - documentX;
+            normalizedY = mouseEvent.pageY - documentY;
+        }
+        return { x: normalizedX, y: normalizedY };
+    }
+
+    /**
+     * @license
+     * Copyright 2016 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    // Activation events registered on the root element of each instance for activation
+    var ACTIVATION_EVENT_TYPES = [
+        'touchstart', 'pointerdown', 'mousedown', 'keydown',
+    ];
+    // Deactivation events registered on documentElement when a pointer-related down event occurs
+    var POINTER_DEACTIVATION_EVENT_TYPES = [
+        'touchend', 'pointerup', 'mouseup', 'contextmenu',
+    ];
+    // simultaneous nested activations
+    var activatedTargets = [];
+    var MDCRippleFoundation = /** @class */ (function (_super) {
+        __extends(MDCRippleFoundation, _super);
+        function MDCRippleFoundation(adapter) {
+            var _this = _super.call(this, __assign({}, MDCRippleFoundation.defaultAdapter, adapter)) || this;
+            _this.activationAnimationHasEnded_ = false;
+            _this.activationTimer_ = 0;
+            _this.fgDeactivationRemovalTimer_ = 0;
+            _this.fgScale_ = '0';
+            _this.frame_ = { width: 0, height: 0 };
+            _this.initialSize_ = 0;
+            _this.layoutFrame_ = 0;
+            _this.maxRadius_ = 0;
+            _this.unboundedCoords_ = { left: 0, top: 0 };
+            _this.activationState_ = _this.defaultActivationState_();
+            _this.activationTimerCallback_ = function () {
+                _this.activationAnimationHasEnded_ = true;
+                _this.runDeactivationUXLogicIfReady_();
+            };
+            _this.activateHandler_ = function (e) { return _this.activate_(e); };
+            _this.deactivateHandler_ = function () { return _this.deactivate_(); };
+            _this.focusHandler_ = function () { return _this.handleFocus(); };
+            _this.blurHandler_ = function () { return _this.handleBlur(); };
+            _this.resizeHandler_ = function () { return _this.layout(); };
+            return _this;
+        }
+        Object.defineProperty(MDCRippleFoundation, "cssClasses", {
+            get: function () {
+                return cssClasses$2;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCRippleFoundation, "strings", {
+            get: function () {
+                return strings$2;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCRippleFoundation, "numbers", {
+            get: function () {
+                return numbers$1;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCRippleFoundation, "defaultAdapter", {
+            get: function () {
+                return {
+                    addClass: function () { return undefined; },
+                    browserSupportsCssVars: function () { return true; },
+                    computeBoundingRect: function () { return ({ top: 0, right: 0, bottom: 0, left: 0, width: 0, height: 0 }); },
+                    containsEventTarget: function () { return true; },
+                    deregisterDocumentInteractionHandler: function () { return undefined; },
+                    deregisterInteractionHandler: function () { return undefined; },
+                    deregisterResizeHandler: function () { return undefined; },
+                    getWindowPageOffset: function () { return ({ x: 0, y: 0 }); },
+                    isSurfaceActive: function () { return true; },
+                    isSurfaceDisabled: function () { return true; },
+                    isUnbounded: function () { return true; },
+                    registerDocumentInteractionHandler: function () { return undefined; },
+                    registerInteractionHandler: function () { return undefined; },
+                    registerResizeHandler: function () { return undefined; },
+                    removeClass: function () { return undefined; },
+                    updateCssVariable: function () { return undefined; },
+                };
+            },
+            enumerable: true,
+            configurable: true
+        });
+        MDCRippleFoundation.prototype.init = function () {
+            var _this = this;
+            var supportsPressRipple = this.supportsPressRipple_();
+            this.registerRootHandlers_(supportsPressRipple);
+            if (supportsPressRipple) {
+                var _a = MDCRippleFoundation.cssClasses, ROOT_1 = _a.ROOT, UNBOUNDED_1 = _a.UNBOUNDED;
+                requestAnimationFrame(function () {
+                    _this.adapter_.addClass(ROOT_1);
+                    if (_this.adapter_.isUnbounded()) {
+                        _this.adapter_.addClass(UNBOUNDED_1);
+                        // Unbounded ripples need layout logic applied immediately to set coordinates for both shade and ripple
+                        _this.layoutInternal_();
+                    }
+                });
+            }
+        };
+        MDCRippleFoundation.prototype.destroy = function () {
+            var _this = this;
+            if (this.supportsPressRipple_()) {
+                if (this.activationTimer_) {
+                    clearTimeout(this.activationTimer_);
+                    this.activationTimer_ = 0;
+                    this.adapter_.removeClass(MDCRippleFoundation.cssClasses.FG_ACTIVATION);
+                }
+                if (this.fgDeactivationRemovalTimer_) {
+                    clearTimeout(this.fgDeactivationRemovalTimer_);
+                    this.fgDeactivationRemovalTimer_ = 0;
+                    this.adapter_.removeClass(MDCRippleFoundation.cssClasses.FG_DEACTIVATION);
+                }
+                var _a = MDCRippleFoundation.cssClasses, ROOT_2 = _a.ROOT, UNBOUNDED_2 = _a.UNBOUNDED;
+                requestAnimationFrame(function () {
+                    _this.adapter_.removeClass(ROOT_2);
+                    _this.adapter_.removeClass(UNBOUNDED_2);
+                    _this.removeCssVars_();
+                });
+            }
+            this.deregisterRootHandlers_();
+            this.deregisterDeactivationHandlers_();
+        };
+        /**
+         * @param evt Optional event containing position information.
+         */
+        MDCRippleFoundation.prototype.activate = function (evt) {
+            this.activate_(evt);
+        };
+        MDCRippleFoundation.prototype.deactivate = function () {
+            this.deactivate_();
+        };
+        MDCRippleFoundation.prototype.layout = function () {
+            var _this = this;
+            if (this.layoutFrame_) {
+                cancelAnimationFrame(this.layoutFrame_);
+            }
+            this.layoutFrame_ = requestAnimationFrame(function () {
+                _this.layoutInternal_();
+                _this.layoutFrame_ = 0;
+            });
+        };
+        MDCRippleFoundation.prototype.setUnbounded = function (unbounded) {
+            var UNBOUNDED = MDCRippleFoundation.cssClasses.UNBOUNDED;
+            if (unbounded) {
+                this.adapter_.addClass(UNBOUNDED);
+            }
+            else {
+                this.adapter_.removeClass(UNBOUNDED);
+            }
+        };
+        MDCRippleFoundation.prototype.handleFocus = function () {
+            var _this = this;
+            requestAnimationFrame(function () {
+                return _this.adapter_.addClass(MDCRippleFoundation.cssClasses.BG_FOCUSED);
+            });
+        };
+        MDCRippleFoundation.prototype.handleBlur = function () {
+            var _this = this;
+            requestAnimationFrame(function () {
+                return _this.adapter_.removeClass(MDCRippleFoundation.cssClasses.BG_FOCUSED);
+            });
+        };
+        /**
+         * We compute this property so that we are not querying information about the client
+         * until the point in time where the foundation requests it. This prevents scenarios where
+         * client-side feature-detection may happen too early, such as when components are rendered on the server
+         * and then initialized at mount time on the client.
+         */
+        MDCRippleFoundation.prototype.supportsPressRipple_ = function () {
+            return this.adapter_.browserSupportsCssVars();
+        };
+        MDCRippleFoundation.prototype.defaultActivationState_ = function () {
+            return {
+                activationEvent: undefined,
+                hasDeactivationUXRun: false,
+                isActivated: false,
+                isProgrammatic: false,
+                wasActivatedByPointer: false,
+                wasElementMadeActive: false,
+            };
+        };
+        /**
+         * supportsPressRipple Passed from init to save a redundant function call
+         */
+        MDCRippleFoundation.prototype.registerRootHandlers_ = function (supportsPressRipple) {
+            var _this = this;
+            if (supportsPressRipple) {
+                ACTIVATION_EVENT_TYPES.forEach(function (evtType) {
+                    _this.adapter_.registerInteractionHandler(evtType, _this.activateHandler_);
+                });
+                if (this.adapter_.isUnbounded()) {
+                    this.adapter_.registerResizeHandler(this.resizeHandler_);
+                }
+            }
+            this.adapter_.registerInteractionHandler('focus', this.focusHandler_);
+            this.adapter_.registerInteractionHandler('blur', this.blurHandler_);
+        };
+        MDCRippleFoundation.prototype.registerDeactivationHandlers_ = function (evt) {
+            var _this = this;
+            if (evt.type === 'keydown') {
+                this.adapter_.registerInteractionHandler('keyup', this.deactivateHandler_);
+            }
+            else {
+                POINTER_DEACTIVATION_EVENT_TYPES.forEach(function (evtType) {
+                    _this.adapter_.registerDocumentInteractionHandler(evtType, _this.deactivateHandler_);
+                });
+            }
+        };
+        MDCRippleFoundation.prototype.deregisterRootHandlers_ = function () {
+            var _this = this;
+            ACTIVATION_EVENT_TYPES.forEach(function (evtType) {
+                _this.adapter_.deregisterInteractionHandler(evtType, _this.activateHandler_);
+            });
+            this.adapter_.deregisterInteractionHandler('focus', this.focusHandler_);
+            this.adapter_.deregisterInteractionHandler('blur', this.blurHandler_);
+            if (this.adapter_.isUnbounded()) {
+                this.adapter_.deregisterResizeHandler(this.resizeHandler_);
+            }
+        };
+        MDCRippleFoundation.prototype.deregisterDeactivationHandlers_ = function () {
+            var _this = this;
+            this.adapter_.deregisterInteractionHandler('keyup', this.deactivateHandler_);
+            POINTER_DEACTIVATION_EVENT_TYPES.forEach(function (evtType) {
+                _this.adapter_.deregisterDocumentInteractionHandler(evtType, _this.deactivateHandler_);
+            });
+        };
+        MDCRippleFoundation.prototype.removeCssVars_ = function () {
+            var _this = this;
+            var rippleStrings = MDCRippleFoundation.strings;
+            var keys = Object.keys(rippleStrings);
+            keys.forEach(function (key) {
+                if (key.indexOf('VAR_') === 0) {
+                    _this.adapter_.updateCssVariable(rippleStrings[key], null);
+                }
+            });
+        };
+        MDCRippleFoundation.prototype.activate_ = function (evt) {
+            var _this = this;
+            if (this.adapter_.isSurfaceDisabled()) {
+                return;
+            }
+            var activationState = this.activationState_;
+            if (activationState.isActivated) {
+                return;
+            }
+            // Avoid reacting to follow-on events fired by touch device after an already-processed user interaction
+            var previousActivationEvent = this.previousActivationEvent_;
+            var isSameInteraction = previousActivationEvent && evt !== undefined && previousActivationEvent.type !== evt.type;
+            if (isSameInteraction) {
+                return;
+            }
+            activationState.isActivated = true;
+            activationState.isProgrammatic = evt === undefined;
+            activationState.activationEvent = evt;
+            activationState.wasActivatedByPointer = activationState.isProgrammatic ? false : evt !== undefined && (evt.type === 'mousedown' || evt.type === 'touchstart' || evt.type === 'pointerdown');
+            var hasActivatedChild = evt !== undefined && activatedTargets.length > 0 && activatedTargets.some(function (target) { return _this.adapter_.containsEventTarget(target); });
+            if (hasActivatedChild) {
+                // Immediately reset activation state, while preserving logic that prevents touch follow-on events
+                this.resetActivationState_();
+                return;
+            }
+            if (evt !== undefined) {
+                activatedTargets.push(evt.target);
+                this.registerDeactivationHandlers_(evt);
+            }
+            activationState.wasElementMadeActive = this.checkElementMadeActive_(evt);
+            if (activationState.wasElementMadeActive) {
+                this.animateActivation_();
+            }
+            requestAnimationFrame(function () {
+                // Reset array on next frame after the current event has had a chance to bubble to prevent ancestor ripples
+                activatedTargets = [];
+                if (!activationState.wasElementMadeActive
+                    && evt !== undefined
+                    && (evt.key === ' ' || evt.keyCode === 32)) {
+                    // If space was pressed, try again within an rAF call to detect :active, because different UAs report
+                    // active states inconsistently when they're called within event handling code:
+                    // - https://bugs.chromium.org/p/chromium/issues/detail?id=635971
+                    // - https://bugzilla.mozilla.org/show_bug.cgi?id=1293741
+                    // We try first outside rAF to support Edge, which does not exhibit this problem, but will crash if a CSS
+                    // variable is set within a rAF callback for a submit button interaction (#2241).
+                    activationState.wasElementMadeActive = _this.checkElementMadeActive_(evt);
+                    if (activationState.wasElementMadeActive) {
+                        _this.animateActivation_();
+                    }
+                }
+                if (!activationState.wasElementMadeActive) {
+                    // Reset activation state immediately if element was not made active.
+                    _this.activationState_ = _this.defaultActivationState_();
+                }
+            });
+        };
+        MDCRippleFoundation.prototype.checkElementMadeActive_ = function (evt) {
+            return (evt !== undefined && evt.type === 'keydown') ? this.adapter_.isSurfaceActive() : true;
+        };
+        MDCRippleFoundation.prototype.animateActivation_ = function () {
+            var _this = this;
+            var _a = MDCRippleFoundation.strings, VAR_FG_TRANSLATE_START = _a.VAR_FG_TRANSLATE_START, VAR_FG_TRANSLATE_END = _a.VAR_FG_TRANSLATE_END;
+            var _b = MDCRippleFoundation.cssClasses, FG_DEACTIVATION = _b.FG_DEACTIVATION, FG_ACTIVATION = _b.FG_ACTIVATION;
+            var DEACTIVATION_TIMEOUT_MS = MDCRippleFoundation.numbers.DEACTIVATION_TIMEOUT_MS;
+            this.layoutInternal_();
+            var translateStart = '';
+            var translateEnd = '';
+            if (!this.adapter_.isUnbounded()) {
+                var _c = this.getFgTranslationCoordinates_(), startPoint = _c.startPoint, endPoint = _c.endPoint;
+                translateStart = startPoint.x + "px, " + startPoint.y + "px";
+                translateEnd = endPoint.x + "px, " + endPoint.y + "px";
+            }
+            this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_START, translateStart);
+            this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_END, translateEnd);
+            // Cancel any ongoing activation/deactivation animations
+            clearTimeout(this.activationTimer_);
+            clearTimeout(this.fgDeactivationRemovalTimer_);
+            this.rmBoundedActivationClasses_();
+            this.adapter_.removeClass(FG_DEACTIVATION);
+            // Force layout in order to re-trigger the animation.
+            this.adapter_.computeBoundingRect();
+            this.adapter_.addClass(FG_ACTIVATION);
+            this.activationTimer_ = setTimeout(function () { return _this.activationTimerCallback_(); }, DEACTIVATION_TIMEOUT_MS);
+        };
+        MDCRippleFoundation.prototype.getFgTranslationCoordinates_ = function () {
+            var _a = this.activationState_, activationEvent = _a.activationEvent, wasActivatedByPointer = _a.wasActivatedByPointer;
+            var startPoint;
+            if (wasActivatedByPointer) {
+                startPoint = getNormalizedEventCoords(activationEvent, this.adapter_.getWindowPageOffset(), this.adapter_.computeBoundingRect());
+            }
+            else {
+                startPoint = {
+                    x: this.frame_.width / 2,
+                    y: this.frame_.height / 2,
+                };
+            }
+            // Center the element around the start point.
+            startPoint = {
+                x: startPoint.x - (this.initialSize_ / 2),
+                y: startPoint.y - (this.initialSize_ / 2),
+            };
+            var endPoint = {
+                x: (this.frame_.width / 2) - (this.initialSize_ / 2),
+                y: (this.frame_.height / 2) - (this.initialSize_ / 2),
+            };
+            return { startPoint: startPoint, endPoint: endPoint };
+        };
+        MDCRippleFoundation.prototype.runDeactivationUXLogicIfReady_ = function () {
+            var _this = this;
+            // This method is called both when a pointing device is released, and when the activation animation ends.
+            // The deactivation animation should only run after both of those occur.
+            var FG_DEACTIVATION = MDCRippleFoundation.cssClasses.FG_DEACTIVATION;
+            var _a = this.activationState_, hasDeactivationUXRun = _a.hasDeactivationUXRun, isActivated = _a.isActivated;
+            var activationHasEnded = hasDeactivationUXRun || !isActivated;
+            if (activationHasEnded && this.activationAnimationHasEnded_) {
+                this.rmBoundedActivationClasses_();
+                this.adapter_.addClass(FG_DEACTIVATION);
+                this.fgDeactivationRemovalTimer_ = setTimeout(function () {
+                    _this.adapter_.removeClass(FG_DEACTIVATION);
+                }, numbers$1.FG_DEACTIVATION_MS);
+            }
+        };
+        MDCRippleFoundation.prototype.rmBoundedActivationClasses_ = function () {
+            var FG_ACTIVATION = MDCRippleFoundation.cssClasses.FG_ACTIVATION;
+            this.adapter_.removeClass(FG_ACTIVATION);
+            this.activationAnimationHasEnded_ = false;
+            this.adapter_.computeBoundingRect();
+        };
+        MDCRippleFoundation.prototype.resetActivationState_ = function () {
+            var _this = this;
+            this.previousActivationEvent_ = this.activationState_.activationEvent;
+            this.activationState_ = this.defaultActivationState_();
+            // Touch devices may fire additional events for the same interaction within a short time.
+            // Store the previous event until it's safe to assume that subsequent events are for new interactions.
+            setTimeout(function () { return _this.previousActivationEvent_ = undefined; }, MDCRippleFoundation.numbers.TAP_DELAY_MS);
+        };
+        MDCRippleFoundation.prototype.deactivate_ = function () {
+            var _this = this;
+            var activationState = this.activationState_;
+            // This can happen in scenarios such as when you have a keyup event that blurs the element.
+            if (!activationState.isActivated) {
+                return;
+            }
+            var state = __assign({}, activationState);
+            if (activationState.isProgrammatic) {
+                requestAnimationFrame(function () { return _this.animateDeactivation_(state); });
+                this.resetActivationState_();
+            }
+            else {
+                this.deregisterDeactivationHandlers_();
+                requestAnimationFrame(function () {
+                    _this.activationState_.hasDeactivationUXRun = true;
+                    _this.animateDeactivation_(state);
+                    _this.resetActivationState_();
+                });
+            }
+        };
+        MDCRippleFoundation.prototype.animateDeactivation_ = function (_a) {
+            var wasActivatedByPointer = _a.wasActivatedByPointer, wasElementMadeActive = _a.wasElementMadeActive;
+            if (wasActivatedByPointer || wasElementMadeActive) {
+                this.runDeactivationUXLogicIfReady_();
+            }
+        };
+        MDCRippleFoundation.prototype.layoutInternal_ = function () {
+            var _this = this;
+            this.frame_ = this.adapter_.computeBoundingRect();
+            var maxDim = Math.max(this.frame_.height, this.frame_.width);
+            // Surface diameter is treated differently for unbounded vs. bounded ripples.
+            // Unbounded ripple diameter is calculated smaller since the surface is expected to already be padded appropriately
+            // to extend the hitbox, and the ripple is expected to meet the edges of the padded hitbox (which is typically
+            // square). Bounded ripples, on the other hand, are fully expected to expand beyond the surface's longest diameter
+            // (calculated based on the diagonal plus a constant padding), and are clipped at the surface's border via
+            // `overflow: hidden`.
+            var getBoundedRadius = function () {
+                var hypotenuse = Math.sqrt(Math.pow(_this.frame_.width, 2) + Math.pow(_this.frame_.height, 2));
+                return hypotenuse + MDCRippleFoundation.numbers.PADDING;
+            };
+            this.maxRadius_ = this.adapter_.isUnbounded() ? maxDim : getBoundedRadius();
+            // Ripple is sized as a fraction of the largest dimension of the surface, then scales up using a CSS scale transform
+            this.initialSize_ = Math.floor(maxDim * MDCRippleFoundation.numbers.INITIAL_ORIGIN_SCALE);
+            this.fgScale_ = "" + this.maxRadius_ / this.initialSize_;
+            this.updateLayoutCssVars_();
+        };
+        MDCRippleFoundation.prototype.updateLayoutCssVars_ = function () {
+            var _a = MDCRippleFoundation.strings, VAR_FG_SIZE = _a.VAR_FG_SIZE, VAR_LEFT = _a.VAR_LEFT, VAR_TOP = _a.VAR_TOP, VAR_FG_SCALE = _a.VAR_FG_SCALE;
+            this.adapter_.updateCssVariable(VAR_FG_SIZE, this.initialSize_ + "px");
+            this.adapter_.updateCssVariable(VAR_FG_SCALE, this.fgScale_);
+            if (this.adapter_.isUnbounded()) {
+                this.unboundedCoords_ = {
+                    left: Math.round((this.frame_.width / 2) - (this.initialSize_ / 2)),
+                    top: Math.round((this.frame_.height / 2) - (this.initialSize_ / 2)),
+                };
+                this.adapter_.updateCssVariable(VAR_LEFT, this.unboundedCoords_.left + "px");
+                this.adapter_.updateCssVariable(VAR_TOP, this.unboundedCoords_.top + "px");
+            }
+        };
+        return MDCRippleFoundation;
+    }(MDCFoundation));
+
+    /**
+     * @license
+     * Copyright 2016 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var MDCRipple = /** @class */ (function (_super) {
+        __extends(MDCRipple, _super);
+        function MDCRipple() {
+            var _this = _super !== null && _super.apply(this, arguments) || this;
+            _this.disabled = false;
+            return _this;
+        }
+        MDCRipple.attachTo = function (root, opts) {
+            if (opts === void 0) { opts = { isUnbounded: undefined }; }
+            var ripple = new MDCRipple(root);
+            // Only override unbounded behavior if option is explicitly specified
+            if (opts.isUnbounded !== undefined) {
+                ripple.unbounded = opts.isUnbounded;
+            }
+            return ripple;
+        };
+        MDCRipple.createAdapter = function (instance) {
+            return {
+                addClass: function (className) { return instance.root_.classList.add(className); },
+                browserSupportsCssVars: function () { return supportsCssVariables(window); },
+                computeBoundingRect: function () { return instance.root_.getBoundingClientRect(); },
+                containsEventTarget: function (target) { return instance.root_.contains(target); },
+                deregisterDocumentInteractionHandler: function (evtType, handler) {
+                    return document.documentElement.removeEventListener(evtType, handler, applyPassive());
+                },
+                deregisterInteractionHandler: function (evtType, handler) {
+                    return instance.root_.removeEventListener(evtType, handler, applyPassive());
+                },
+                deregisterResizeHandler: function (handler) { return window.removeEventListener('resize', handler); },
+                getWindowPageOffset: function () { return ({ x: window.pageXOffset, y: window.pageYOffset }); },
+                isSurfaceActive: function () { return matches(instance.root_, ':active'); },
+                isSurfaceDisabled: function () { return Boolean(instance.disabled); },
+                isUnbounded: function () { return Boolean(instance.unbounded); },
+                registerDocumentInteractionHandler: function (evtType, handler) {
+                    return document.documentElement.addEventListener(evtType, handler, applyPassive());
+                },
+                registerInteractionHandler: function (evtType, handler) {
+                    return instance.root_.addEventListener(evtType, handler, applyPassive());
+                },
+                registerResizeHandler: function (handler) { return window.addEventListener('resize', handler); },
+                removeClass: function (className) { return instance.root_.classList.remove(className); },
+                updateCssVariable: function (varName, value) { return instance.root_.style.setProperty(varName, value); },
+            };
+        };
+        Object.defineProperty(MDCRipple.prototype, "unbounded", {
+            get: function () {
+                return Boolean(this.unbounded_);
+            },
+            set: function (unbounded) {
+                this.unbounded_ = Boolean(unbounded);
+                this.setUnbounded_();
+            },
+            enumerable: true,
+            configurable: true
+        });
+        MDCRipple.prototype.activate = function () {
+            this.foundation_.activate();
+        };
+        MDCRipple.prototype.deactivate = function () {
+            this.foundation_.deactivate();
+        };
+        MDCRipple.prototype.layout = function () {
+            this.foundation_.layout();
+        };
+        MDCRipple.prototype.getDefaultFoundation = function () {
+            return new MDCRippleFoundation(MDCRipple.createAdapter(this));
+        };
+        MDCRipple.prototype.initialSyncWithDOM = function () {
+            var root = this.root_;
+            this.unbounded = 'mdcRippleIsUnbounded' in root.dataset;
+        };
+        /**
+         * Closure Compiler throws an access control error when directly accessing a
+         * protected or private property inside a getter/setter, like unbounded above.
+         * By accessing the protected property inside a method, we solve that problem.
+         * That's why this function exists.
+         */
+        MDCRipple.prototype.setUnbounded_ = function () {
+            this.foundation_.setUnbounded(Boolean(this.unbounded_));
+        };
+        return MDCRipple;
+    }(MDCComponent));
+
+    /**
      * @license
      * Copyright 2018 Google Inc.
      *
@@ -279,8 +9724,23 @@ var Ml=function(t){function e(){return null!==t&&t.apply(this,arguments)||this}r
      * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
-     */Ll.add(Rl.ARROW_LEFT_KEY),Ll.add(Rl.ARROW_RIGHT_KEY),Ll.add(Rl.END_KEY),Ll.add(Rl.HOME_KEY),Ll.add(Rl.ENTER_KEY),Ll.add(Rl.SPACE_KEY);var Ol=new Map;Ol.set(Nl.ARROW_LEFT_KEYCODE,Rl.ARROW_LEFT_KEY),Ol.set(Nl.ARROW_RIGHT_KEYCODE,Rl.ARROW_RIGHT_KEY),Ol.set(Nl.END_KEYCODE,Rl.END_KEY),Ol.set(Nl.HOME_KEYCODE,Rl.HOME_KEY),Ol.set(Nl.ENTER_KEYCODE,Rl.ENTER_KEY),Ol.set(Nl.SPACE_KEYCODE,Rl.SPACE_KEY);var Dl=function(t){function e(n){var r=t.call(this,Ds({},e.defaultAdapter,n))||this;return r.useAutomaticActivation_=!1,r}return Os(e,t),Object.defineProperty(e,"strings",{get:function(){return Rl},enumerable:!0,configurable:!0}),Object.defineProperty(e,"numbers",{get:function(){return Nl},enumerable:!0,configurable:!0}),Object.defineProperty(e,"defaultAdapter",{get:function(){return{scrollTo:function(){},incrementScroll:function(){},getScrollPosition:function(){return 0},getScrollContentWidth:function(){return 0},getOffsetWidth:function(){return 0},isRTL:function(){return!1},setActiveTab:function(){},activateTabAtIndex:function(){},deactivateTabAtIndex:function(){},focusTabAtIndex:function(){},getTabIndicatorClientRectAtIndex:function(){return{top:0,right:0,bottom:0,left:0,width:0,height:0}},getTabDimensionsAtIndex:function(){return{rootLeft:0,rootRight:0,contentLeft:0,contentRight:0}},getPreviousActiveTabIndex:function(){return-1},getFocusedTabIndex:function(){return-1},getIndexOfTabById:function(){return-1},getTabListLength:function(){return 0},notifyTabActivated:function(){}}},enumerable:!0,configurable:!0}),e.prototype.setUseAutomaticActivation=function(t){this.useAutomaticActivation_=t},e.prototype.activateTab=function(t){var e,n=this.adapter_.getPreviousActiveTabIndex();this.indexIsInRange_(t)&&t!==n&&(-1!==n&&(this.adapter_.deactivateTabAtIndex(n),e=this.adapter_.getTabIndicatorClientRectAtIndex(n)),this.adapter_.activateTabAtIndex(t,e),this.scrollIntoView(t),this.adapter_.notifyTabActivated(t))},e.prototype.handleKeyDown=function(t){var e=this.getKeyFromEvent_(t);if(void 0!==e)if(this.isActivationKey_(e)||t.preventDefault(),this.useAutomaticActivation_){if(this.isActivationKey_(e))return;var n=this.determineTargetFromKey_(this.adapter_.getPreviousActiveTabIndex(),e);this.adapter_.setActiveTab(n),this.scrollIntoView(n)}else{var r=this.adapter_.getFocusedTabIndex();if(this.isActivationKey_(e))this.adapter_.setActiveTab(r);else{n=this.determineTargetFromKey_(r,e);this.adapter_.focusTabAtIndex(n),this.scrollIntoView(n)}}},e.prototype.handleTabInteraction=function(t){this.adapter_.setActiveTab(this.adapter_.getIndexOfTabById(t.detail.tabId))},e.prototype.scrollIntoView=function(t){if(this.indexIsInRange_(t))return 0===t?this.adapter_.scrollTo(0):t===this.adapter_.getTabListLength()-1?this.adapter_.scrollTo(this.adapter_.getScrollContentWidth()):this.isRTL_()?this.scrollIntoViewRTL_(t):void this.scrollIntoView_(t)},e.prototype.determineTargetFromKey_=function(t,e){var n=this.isRTL_(),r=this.adapter_.getTabListLength()-1,i=t;return e===Rl.END_KEY?i=r:e===Rl.ARROW_LEFT_KEY&&!n||e===Rl.ARROW_RIGHT_KEY&&n?i-=1:e===Rl.ARROW_RIGHT_KEY&&!n||e===Rl.ARROW_LEFT_KEY&&n?i+=1:i=0,i<0?i=r:i>r&&(i=0),i},e.prototype.calculateScrollIncrement_=function(t,e,n,r){var i=this.adapter_.getTabDimensionsAtIndex(e),a=i.contentLeft-n-r,o=i.contentRight-n-Nl.EXTRA_SCROLL_AMOUNT,s=a+Nl.EXTRA_SCROLL_AMOUNT;return e<t?Math.min(o,0):Math.max(s,0)},e.prototype.calculateScrollIncrementRTL_=function(t,e,n,r,i){var a=this.adapter_.getTabDimensionsAtIndex(e),o=i-a.contentLeft-n,s=i-a.contentRight-n-r+Nl.EXTRA_SCROLL_AMOUNT,c=o-Nl.EXTRA_SCROLL_AMOUNT;return e>t?Math.max(s,0):Math.min(c,0)},e.prototype.findAdjacentTabIndexClosestToEdge_=function(t,e,n,r){var i=e.rootLeft-n,a=e.rootRight-n-r,o=i+a;return i<0||o<0?t-1:a>0||o>0?t+1:-1},e.prototype.findAdjacentTabIndexClosestToEdgeRTL_=function(t,e,n,r,i){var a=i-e.rootLeft-r-n,o=i-e.rootRight-n,s=a+o;return a>0||s>0?t+1:o<0||s<0?t-1:-1},e.prototype.getKeyFromEvent_=function(t){return Ll.has(t.key)?t.key:Ol.get(t.keyCode)},e.prototype.isActivationKey_=function(t){return t===Rl.SPACE_KEY||t===Rl.ENTER_KEY},e.prototype.indexIsInRange_=function(t){return t>=0&&t<this.adapter_.getTabListLength()},e.prototype.isRTL_=function(){return this.adapter_.isRTL()},e.prototype.scrollIntoView_=function(t){var e=this.adapter_.getScrollPosition(),n=this.adapter_.getOffsetWidth(),r=this.adapter_.getTabDimensionsAtIndex(t),i=this.findAdjacentTabIndexClosestToEdge_(t,r,e,n);if(this.indexIsInRange_(i)){var a=this.calculateScrollIncrement_(t,i,e,n);this.adapter_.incrementScroll(a)}},e.prototype.scrollIntoViewRTL_=function(t){var e=this.adapter_.getScrollPosition(),n=this.adapter_.getOffsetWidth(),r=this.adapter_.getTabDimensionsAtIndex(t),i=this.adapter_.getScrollContentWidth(),a=this.findAdjacentTabIndexClosestToEdgeRTL_(t,r,e,n,i);if(this.indexIsInRange_(a)){var o=this.calculateScrollIncrementRTL_(t,a,e,n,i);this.adapter_.incrementScroll(o)}},e}(Fs),Pl=Dl.strings,Hl=0,Vl=function(t){function e(){return null!==t&&t.apply(this,arguments)||this}return Os(e,t),e.attachTo=function(t){return new e(t)},Object.defineProperty(e.prototype,"focusOnActivate",{set:function(t){this.tabList_.forEach((function(e){return e.focusOnActivate=t}))},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"useAutomaticActivation",{set:function(t){this.foundation_.setUseAutomaticActivation(t)},enumerable:!0,configurable:!0}),e.prototype.initialize=function(t,e){void 0===t&&(t=function(t){return new sl(t)}),void 0===e&&(e=function(t){return new Ml(t)}),this.tabList_=this.instantiateTabs_(t),this.tabScroller_=this.instantiateTabScroller_(e)},e.prototype.initialSyncWithDOM=function(){var t=this;this.handleTabInteraction_=function(e){return t.foundation_.handleTabInteraction(e)},this.handleKeyDown_=function(e){return t.foundation_.handleKeyDown(e)},this.listen(ol.strings.INTERACTED_EVENT,this.handleTabInteraction_),this.listen("keydown",this.handleKeyDown_);for(var e=0;e<this.tabList_.length;e++)if(this.tabList_[e].active){this.scrollIntoView(e);break}},e.prototype.destroy=function(){t.prototype.destroy.call(this),this.unlisten(ol.strings.INTERACTED_EVENT,this.handleTabInteraction_),this.unlisten("keydown",this.handleKeyDown_),this.tabList_.forEach((function(t){return t.destroy()})),this.tabScroller_&&this.tabScroller_.destroy()},e.prototype.getDefaultFoundation=function(){var t=this;return new Dl({scrollTo:function(e){return t.tabScroller_.scrollTo(e)},incrementScroll:function(e){return t.tabScroller_.incrementScroll(e)},getScrollPosition:function(){return t.tabScroller_.getScrollPosition()},getScrollContentWidth:function(){return t.tabScroller_.getScrollContentWidth()},getOffsetWidth:function(){return t.root_.offsetWidth},isRTL:function(){return"rtl"===window.getComputedStyle(t.root_).getPropertyValue("direction")},setActiveTab:function(e){return t.foundation_.activateTab(e)},activateTabAtIndex:function(e,n){return t.tabList_[e].activate(n)},deactivateTabAtIndex:function(e){return t.tabList_[e].deactivate()},focusTabAtIndex:function(e){return t.tabList_[e].focus()},getTabIndicatorClientRectAtIndex:function(e){return t.tabList_[e].computeIndicatorClientRect()},getTabDimensionsAtIndex:function(e){return t.tabList_[e].computeDimensions()},getPreviousActiveTabIndex:function(){for(var e=0;e<t.tabList_.length;e++)if(t.tabList_[e].active)return e;return-1},getFocusedTabIndex:function(){var e=t.getTabElements_(),n=document.activeElement;return e.indexOf(n)},getIndexOfTabById:function(e){for(var n=0;n<t.tabList_.length;n++)if(t.tabList_[n].id===e)return n;return-1},getTabListLength:function(){return t.tabList_.length},notifyTabActivated:function(e){return t.emit(Pl.TAB_ACTIVATED_EVENT,{index:e},!0)}})},e.prototype.activateTab=function(t){this.foundation_.activateTab(t)},e.prototype.scrollIntoView=function(t){this.foundation_.scrollIntoView(t)},e.prototype.getTabElements_=function(){return[].slice.call(this.root_.querySelectorAll(Pl.TAB_SELECTOR))},e.prototype.instantiateTabs_=function(t){return this.getTabElements_().map((function(e){return e.id=e.id||"mdc-tab-"+ ++Hl,t(e)}))},e.prototype.instantiateTabScroller_=function(t){var e=this.root_.querySelector(Pl.TAB_SCROLLER_SELECTOR);return e?t(e):null},e}(Us);
-/**
+     */
+    /** CSS classes used by the switch. */
+    var cssClasses$3 = {
+        /** Class used for a switch that is in the "checked" (on) position. */
+        CHECKED: 'mdc-switch--checked',
+        /** Class used for a switch that is disabled. */
+        DISABLED: 'mdc-switch--disabled',
+    };
+    /** String constants used by the switch. */
+    var strings$3 = {
+        /** A CSS selector used to locate the native HTML control for the switch.  */
+        NATIVE_CONTROL_SELECTOR: '.mdc-switch__native-control',
+        /** A CSS selector used to locate the ripple surface element for the switch. */
+        RIPPLE_SURFACE_SELECTOR: '.mdc-switch__thumb-underlay',
+    };
+
+    /**
      * @license
      * Copyright 2018 Google Inc.
      *
@@ -301,5 +9761,7844 @@ var Ml=function(t){function e(){return null!==t&&t.apply(this,arguments)||this}r
      * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
-     */function Fl(t){var n,r,i,a,o,s,d,f;const v=t.$$slots.default,g=c(v,t,null);for(var y=[{class:"mdc-tab-scroller__scroll-content "+t.scrollContent$class},uc(bc(t.$$props,"scrollContent$"),["use","class"])],b={},$=0;$<y.length;$+=1)b=e(b,y[$]);var x=[{class:"mdc-tab-scroller__scroll-area "+t.scrollArea$class},uc(bc(t.$$props,"scrollArea$"),["use","class"])],A={};for($=0;$<x.length;$+=1)A=e(A,x[$]);var C=[{class:"mdc-tab-scroller "+t.className},uc(t.$$props,["use","class","scrollArea$","scrollContent$"])],T={};for($=0;$<C.length;$+=1)T=e(T,C[$]);return{c(){n=_("div"),r=_("div"),i=_("div"),g&&g.c(),w(i,b),w(r,A),w(n,T)},l(t){g&&g.l(div0_nodes)},m(e,c){p(e,n,c),h(n,r),h(r,i),g&&g.m(i,null),a=lc.call(null,i,t.scrollContent$use)||{},o=lc.call(null,r,t.scrollArea$use)||{},t.div2_binding(n),s=lc.call(null,n,t.use)||{},d=t.forwardEvents.call(null,n)||{},f=!0},p(t,e){g&&g.p&&t.$$scope&&g.p(l(v,e,t,null),u(v,e,null)),w(i,J(y,[t.scrollContent$class&&{class:"mdc-tab-scroller__scroll-content "+e.scrollContent$class},(t.exclude||t.prefixFilter||t.$$props)&&uc(bc(e.$$props,"scrollContent$"),["use","class"])])),"function"==typeof a.update&&t.scrollContent$use&&a.update.call(null,e.scrollContent$use),w(r,J(x,[t.scrollArea$class&&{class:"mdc-tab-scroller__scroll-area "+e.scrollArea$class},(t.exclude||t.prefixFilter||t.$$props)&&uc(bc(e.$$props,"scrollArea$"),["use","class"])])),"function"==typeof o.update&&t.scrollArea$use&&o.update.call(null,e.scrollArea$use),w(n,J(C,[t.className&&{class:"mdc-tab-scroller "+e.className},(t.exclude||t.$$props)&&uc(e.$$props,["use","class","scrollArea$","scrollContent$"])])),"function"==typeof s.update&&t.use&&s.update.call(null,e.use)},i(t){f||(q(g,t),f=!0)},o(t){G(g,t),f=!1},d(e){e&&m(n),g&&g.d(e),a&&"function"==typeof a.destroy&&a.destroy(),o&&"function"==typeof o.destroy&&o.destroy(),t.div2_binding(null),s&&"function"==typeof s.destroy&&s.destroy(),d&&"function"==typeof d.destroy&&d.destroy()}}}function Ul(t,n,r){const i=cc(T);let a,o,{use:s=[],class:c="",scrollArea$use:u=[],scrollArea$class:l="",scrollContent$use:f=[],scrollContent$class:h=""}=n,p=N("SMUI:tab-scroller:instantiate"),m=N("SMUI:tab-scroller:getInstance");I(async()=>{o=!1!==p?new Ml(a):await m()}),M(()=>{o&&o.destroy()});let{$$slots:_={},$$scope:v}=n;return t.$set=t=>{r("$$props",n=e(e({},n),t)),"use"in t&&r("use",s=t.use),"class"in t&&r("className",c=t.class),"scrollArea$use"in t&&r("scrollArea$use",u=t.scrollArea$use),"scrollArea$class"in t&&r("scrollArea$class",l=t.scrollArea$class),"scrollContent$use"in t&&r("scrollContent$use",f=t.scrollContent$use),"scrollContent$class"in t&&r("scrollContent$class",h=t.scrollContent$class),"$$scope"in t&&r("$$scope",v=t.$$scope)},{forwardEvents:i,use:s,className:c,scrollArea$use:u,scrollArea$class:l,scrollContent$use:f,scrollContent$class:h,element:a,scrollTo:function(...t){return o.scrollTo(...t)},incrementScroll:function(...t){return o.incrementScroll(...t)},getScrollPosition:function(...t){return o.getScrollPosition(...t)},getScrollContentWidth:function(...t){return o.getScrollContentWidth(...t)},$$props:n,div2_binding:function(t){D[t?"unshift":"push"](()=>{r("element",a=t)})},$$props:n=d(n),$$slots:_,$$scope:v}}class Bl extends at{constructor(t){super(),it(this,t,Ul,Fl,o,["use","class","scrollArea$use","scrollArea$class","scrollContent$use","scrollContent$class","scrollTo","incrementScroll","getScrollPosition","getScrollContentWidth"])}get scrollTo(){return this.$$.ctx.scrollTo}get incrementScroll(){return this.$$.ctx.incrementScroll}get getScrollPosition(){return this.$$.ctx.getScrollPosition}get getScrollContentWidth(){return this.$$.ctx.getScrollContentWidth}}const jl=({tab:t,tabs:e})=>({tab:e}),zl=({tab:t,tabs:e})=>({tab:t});function Wl(t,e,n){const r=Object.create(t);return r.tab=e[n],r.i=n,r}function Yl(t,e){var n,r;const i=e.$$slots.default,a=c(i,e,zl);return{key:t,first:null,c(){n=b(),a&&a.c(),this.first=n},l(t){a&&a.l(t)},m(t,e){p(t,n,e),a&&a.m(t,e),r=!0},p(t,e){a&&a.p&&(t.$$scope||t.tabs)&&a.p(l(i,e,t,jl),u(i,e,zl))},i(t){r||(q(a,t),r=!0)},o(t){G(a,t),r=!1},d(t){t&&m(n),a&&a.d(t)}}}function Kl(t){var e,n,r=[],i=new Map;let a=t.tabs;const o=t=>t.key(t.tab);for(let e=0;e<a.length;e+=1){let n=Wl(t,a,e),s=o(n);i.set(s,r[e]=Yl(s,n))}return{c(){for(let t=0;t<r.length;t+=1)r[t].c();e=b()},m(t,i){for(let e=0;e<r.length;e+=1)r[e].m(t,i);p(t,e,i),n=!0},p(t,n){const a=n.tabs;K(),r=function(t,e,n,r,i,a,o,s,c,u,l,d){let f=t.length,h=a.length,p=f;const m={};for(;p--;)m[t[p].key]=p;const _=[],v=new Map,g=new Map;for(p=h;p--;){const t=d(i,a,p),s=n(t);let c=o.get(s);c?r&&c.p(e,t):(c=u(s,t)).c(),v.set(s,_[p]=c),s in m&&g.set(s,Math.abs(p-m[s]))}const y=new Set,b=new Set;function $(t){q(t,1),t.m(s,l),o.set(t.key,t),l=t.first,h--}for(;f&&h;){const e=_[h-1],n=t[f-1],r=e.key,i=n.key;e===n?(l=e.first,f--,h--):v.has(i)?!o.has(r)||y.has(r)?$(e):b.has(i)?f--:g.get(r)>g.get(i)?(b.add(r),$(e)):(y.add(i),f--):(c(n,o),f--)}for(;f--;){const e=t[f];v.has(e.key)||c(e,o)}for(;h;)$(_[h-1]);return _}(r,t,o,1,n,a,i,e.parentNode,Z,Yl,e,Wl),X()},i(t){if(!n){for(let t=0;t<a.length;t+=1)q(r[t]);n=!0}},o(t){for(let t=0;t<r.length;t+=1)G(r[t]);n=!1},d(t){for(let e=0;e<r.length;e+=1)r[e].d(t);t&&m(e)}}}function Xl(t){var n,r,i,a,o,s=[bc(t.$$props,"tabScroller$")];let c={$$slots:{default:[Kl]},$$scope:{ctx:t}};for(var u=0;u<s.length;u+=1)c=e(c,s[u]);var l=new Bl({props:c}),d=[{class:"mdc-tab-bar "+t.className},{role:"tablist"},uc(t.$$props,["use","class","tabs","key","focusOnActivate","useAutomaticActivation","activeIndex","tabScroller$"])],f={};for(u=0;u<d.length;u+=1)f=e(f,d[u]);return{c(){n=_("div"),l.$$.fragment.c(),w(n,f),o=$(n,"MDCTabBar:activated",t.activatedHandler)},m(e,o){p(e,n,o),et(l,n,null),t.div_binding(n),r=lc.call(null,n,t.use)||{},i=t.forwardEvents.call(null,n)||{},a=!0},p(t,e){var i=t.prefixFilter||t.$$props?J(s,[Q(bc(e.$$props,"tabScroller$"))]):{};(t.$$scope||t.tabs)&&(i.$$scope={changed:t,ctx:e}),l.$set(i),w(n,J(d,[t.className&&{class:"mdc-tab-bar "+e.className},{role:"tablist"},(t.exclude||t.$$props)&&uc(e.$$props,["use","class","tabs","key","focusOnActivate","useAutomaticActivation","activeIndex","tabScroller$"])])),"function"==typeof r.update&&t.use&&r.update.call(null,e.use)},i(t){a||(q(l.$$.fragment,t),a=!0)},o(t){G(l.$$.fragment,t),a=!1},d(e){e&&m(n),nt(l),t.div_binding(null),r&&"function"==typeof r.destroy&&r.destroy(),i&&"function"==typeof i.destroy&&i.destroy(),o()}}}function ql(t,n,r){const i=cc(T,["MDCTabBar:activated"]);let a,o,s,c=()=>{},{use:u=[],class:l="",tabs:f=[],key:h=(t=>t)}=n,{focusOnActivate:p=!0,useAutomaticActivation:m=!0,activeIndex:_=c,active:v=c}=n;_===c&&v===c?(r("activeIndex",_=0),r("active",v=f[0])):_===c?r("activeIndex",_=f.indexOf(v)):v===c&&r("active",v=f[_]);let g=new Promise(t=>s=t),y=[],b=f.map((t,e)=>new Promise(t=>y[e]=t));R("SMUI:tab-scroller:instantiate",!1),R("SMUI:tab-scroller:getInstance",(function(){return g})),R("SMUI:tab:instantiate",!1),R("SMUI:tab:getInstance",(function(t){return b[f.indexOf(t)]})),R("SMUI:tab:active",v);let $=_,x=v;function w(t){r("activeIndex",_=t),r("previousActiveIndex",$=t),r("active",v=f[t]),r("previousActive",x=f[t])}function A(t,...e){return w(t),o.activateTab(t,...e)}I(()=>{r("tabBar",o=new Vl(a)),s(o.tabScroller_);for(let t=0;t<f.length;t++)y[t](o.tabList_[t])}),M(()=>{o&&o.destroy()});let{$$slots:C={},$$scope:S}=n;return t.$set=t=>{r("$$props",n=e(e({},n),t)),"use"in t&&r("use",u=t.use),"class"in t&&r("className",l=t.class),"tabs"in t&&r("tabs",f=t.tabs),"key"in t&&r("key",h=t.key),"focusOnActivate"in t&&r("focusOnActivate",p=t.focusOnActivate),"useAutomaticActivation"in t&&r("useAutomaticActivation",m=t.useAutomaticActivation),"activeIndex"in t&&r("activeIndex",_=t.activeIndex),"active"in t&&r("active",v=t.active),"$$scope"in t&&r("$$scope",S=t.$$scope)},t.$$.update=(t={tabBar:1,focusOnActivate:1,useAutomaticActivation:1,tabs:1,activeIndex:1,previousActiveIndex:1,previousActive:1,active:1})=>{(t.tabBar||t.focusOnActivate)&&o&&r("tabBar",o.focusOnActivate=p,o),(t.tabBar||t.useAutomaticActivation)&&o&&r("tabBar",o.useAutomaticActivation=m,o),(t.tabBar||t.tabs||t.activeIndex)&&o&&r("active",v=f[_]),(t.tabBar||t.previousActiveIndex||t.activeIndex)&&o&&$!==_&&A(_),(t.tabBar||t.previousActive||t.active||t.tabs)&&o&&x!==v&&A(f.indexOf(v))},{forwardEvents:i,use:u,className:l,tabs:f,key:h,focusOnActivate:p,useAutomaticActivation:m,activeIndex:_,active:v,element:a,activatedHandler:function(t){w(t.detail.index)},activateTab:A,scrollIntoView:function(...t){return o.scrollIntoView(...t)},$$props:n,div_binding:function(t){D[t?"unshift":"push"](()=>{r("element",a=t)})},$$props:n=d(n),$$slots:C,$$scope:S}}class Gl extends at{constructor(t){super(),it(this,t,ql,Xl,o,["use","class","tabs","key","focusOnActivate","useAutomaticActivation","activeIndex","active","activateTab","scrollIntoView"])}get activateTab(){return this.$$.ctx.activateTab}get scrollIntoView(){return this.$$.ctx.scrollIntoView}}var Zl=t=>{ct.set(t),window.history.pushState({path:t},"",`${window.location.origin}${t}`)};function Jl(t){var e,n=t.tab.label+"";return{c(){e=g(n)},m(t,n){p(t,e,n)},p(t,r){t.tab&&n!==(n=r.tab.label+"")&&A(e,n)},d(t){t&&m(e)}}}function Ql(t){var e,n=new _u({props:{$$slots:{default:[Jl]},$$scope:{ctx:t}}});return{c(){n.$$.fragment.c()},m(t,r){et(n,t,r),e=!0},p(t,e){var r={};t.$$scope&&(r.$$scope={changed:t,ctx:e}),n.$set(r)},i(t){e||(q(n.$$.fragment,t),e=!0)},o(t){G(n.$$.fragment,t),e=!1},d(t){nt(n,t)}}}function td(t){var e,n=new xl({props:{tab:t.tab,minWidth:!0,$$slots:{default:[Ql]},$$scope:{ctx:t}}});return{c(){n.$$.fragment.c()},m(t,r){et(n,t,r),e=!0},p(t,e){var r={};t.tab&&(r.tab=e.tab),t.$$scope&&(r.$$scope={changed:t,ctx:e}),n.$set(r)},i(t){e||(q(n.$$.fragment,t),e=!0)},o(t){G(n.$$.fragment,t),e=!1},d(t){nt(n,t)}}}function ed(t){var e,n,r;function i(e){t.tabbar_active_binding.call(null,e),n=!0,B(()=>n=!1)}let a={tabs:t.tabs,key:nd,$$slots:{default:[td,({tab:t})=>({tab:t})]},$$scope:{ctx:t}};void 0!==t.activeTab&&(a.active=t.activeTab);var o=new Gl({props:a});return D.push(()=>tt(o,"active",i)),{c(){e=_("nav"),o.$$.fragment.c()},m(t,n){p(t,e,n),et(o,e,null),r=!0},p(t,e){var r={};t.$$scope&&(r.$$scope={changed:t,ctx:e}),!n&&t.activeTab&&(r.active=e.activeTab),o.$set(r)},i(t){r||(q(o.$$.fragment,t),r=!0)},o(t){G(o.$$.fragment,t),r=!1},d(t){t&&m(e),nt(o)}}}const nd=t=>t.key;function rd(t,e,n){let r;s(t,ct,t=>{n("$curRoute",r=t)});let i=[{label:"Winrate",key:"#ranked_wr"},{label:"Popularity",key:"#ranked_popularity"},{label:"Banrate",key:"#banrate"}],a=i.find(t=>t.key===r)||i[0];return t.$$.update=(t={$curRoute:1,activeTab:1})=>{(t.$curRoute||t.activeTab)&&r!==a.key&&Zl(a.key)},{tabs:i,activeTab:a,tabbar_active_binding:function(t){n("activeTab",a=t)}}}class id extends at{constructor(t){super(),it(this,t,rd,ed,o,[])}}function ad(t){var e,n=new Zu({});return{c(){n.$$.fragment.c()},m(t,r){et(n,t,r),e=!0},i(t){e||(q(n.$$.fragment,t),e=!0)},o(t){G(n.$$.fragment,t),e=!1},d(t){nt(n,t)}}}function od(e){var n;return{c(){(n=_("p")).textContent="Loading..."},m(t,e){p(t,n,e)},i:t,o:t,d(t){t&&m(n)}}}function sd(t){var e,n,r,i,a,o=new id({}),s=[od,ad],c=[];function u(t,e){return e.$rankedData.isLoading?0:1}return n=u(0,t),r=c[n]=s[n](t),{c(){o.$$.fragment.c(),e=y(),r.c(),i=b()},m(t,r){et(o,t,r),p(t,e,r),c[n].m(t,r),p(t,i,r),a=!0},p(t,e){var a=n;(n=u(0,e))!==a&&(K(),G(c[a],1,1,()=>{c[a]=null}),X(),(r=c[n])||(r=c[n]=s[n](e)).c(),q(r,1),r.m(i.parentNode,i))},i(t){a||(q(o.$$.fragment,t),q(r),a=!0)},o(t){G(o.$$.fragment,t),G(r),a=!1},d(t){nt(o,t),t&&m(e),c[n].d(t),t&&m(i)}}}function cd(t,e,n){let r;s(t,pt,t=>{n("$rankedData",r=t)});const i=async()=>{const t=(await function(t,e){return fetch(t,e).then(Mi)}("stats/ranked-stats.json")).filter(t=>t.totalGames>1e3).map(t=>(t.version=t.version.split(".").slice(0,3).join("."),t));f(pt,r={data:t,isLoading:!1})};return f(pt,r={...pt,isLoading:!0}),I(()=>{i()}),{$rankedData:r}}return new class extends at{constructor(t){super(),it(this,t,cd,sd,o,[])}}({target:document.body,props:{}})}();
+     */
+    var MDCSwitchFoundation = /** @class */ (function (_super) {
+        __extends(MDCSwitchFoundation, _super);
+        function MDCSwitchFoundation(adapter) {
+            return _super.call(this, __assign({}, MDCSwitchFoundation.defaultAdapter, adapter)) || this;
+        }
+        Object.defineProperty(MDCSwitchFoundation, "strings", {
+            /** The string constants used by the switch. */
+            get: function () {
+                return strings$3;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCSwitchFoundation, "cssClasses", {
+            /** The CSS classes used by the switch. */
+            get: function () {
+                return cssClasses$3;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCSwitchFoundation, "defaultAdapter", {
+            /** The default Adapter for the switch. */
+            get: function () {
+                return {
+                    addClass: function () { return undefined; },
+                    removeClass: function () { return undefined; },
+                    setNativeControlChecked: function () { return undefined; },
+                    setNativeControlDisabled: function () { return undefined; },
+                };
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /** Sets the checked state of the switch. */
+        MDCSwitchFoundation.prototype.setChecked = function (checked) {
+            this.adapter_.setNativeControlChecked(checked);
+            this.updateCheckedStyling_(checked);
+        };
+        /** Sets the disabled state of the switch. */
+        MDCSwitchFoundation.prototype.setDisabled = function (disabled) {
+            this.adapter_.setNativeControlDisabled(disabled);
+            if (disabled) {
+                this.adapter_.addClass(cssClasses$3.DISABLED);
+            }
+            else {
+                this.adapter_.removeClass(cssClasses$3.DISABLED);
+            }
+        };
+        /** Handles the change event for the switch native control. */
+        MDCSwitchFoundation.prototype.handleChange = function (evt) {
+            var nativeControl = evt.target;
+            this.updateCheckedStyling_(nativeControl.checked);
+        };
+        /** Updates the styling of the switch based on its checked state. */
+        MDCSwitchFoundation.prototype.updateCheckedStyling_ = function (checked) {
+            if (checked) {
+                this.adapter_.addClass(cssClasses$3.CHECKED);
+            }
+            else {
+                this.adapter_.removeClass(cssClasses$3.CHECKED);
+            }
+        };
+        return MDCSwitchFoundation;
+    }(MDCFoundation));
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var MDCSwitch = /** @class */ (function (_super) {
+        __extends(MDCSwitch, _super);
+        function MDCSwitch() {
+            var _this = _super !== null && _super.apply(this, arguments) || this;
+            _this.ripple_ = _this.createRipple_();
+            return _this;
+        }
+        MDCSwitch.attachTo = function (root) {
+            return new MDCSwitch(root);
+        };
+        MDCSwitch.prototype.destroy = function () {
+            _super.prototype.destroy.call(this);
+            this.ripple_.destroy();
+            this.nativeControl_.removeEventListener('change', this.changeHandler_);
+        };
+        MDCSwitch.prototype.initialSyncWithDOM = function () {
+            var _this = this;
+            this.changeHandler_ = function () {
+                var _a;
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i] = arguments[_i];
+                }
+                return (_a = _this.foundation_).handleChange.apply(_a, __spread(args));
+            };
+            this.nativeControl_.addEventListener('change', this.changeHandler_);
+            // Sometimes the checked state of the input element is saved in the history.
+            // The switch styling should match the checked state of the input element.
+            // Do an initial sync between the native control and the foundation.
+            this.checked = this.checked;
+        };
+        MDCSwitch.prototype.getDefaultFoundation = function () {
+            var _this = this;
+            // DO NOT INLINE this variable. For backward compatibility, foundations take a Partial<MDCFooAdapter>.
+            // To ensure we don't accidentally omit any methods, we need a separate, strongly typed adapter variable.
+            var adapter = {
+                addClass: function (className) { return _this.root_.classList.add(className); },
+                removeClass: function (className) { return _this.root_.classList.remove(className); },
+                setNativeControlChecked: function (checked) { return _this.nativeControl_.checked = checked; },
+                setNativeControlDisabled: function (disabled) { return _this.nativeControl_.disabled = disabled; },
+            };
+            return new MDCSwitchFoundation(adapter);
+        };
+        Object.defineProperty(MDCSwitch.prototype, "ripple", {
+            get: function () {
+                return this.ripple_;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCSwitch.prototype, "checked", {
+            get: function () {
+                return this.nativeControl_.checked;
+            },
+            set: function (checked) {
+                this.foundation_.setChecked(checked);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCSwitch.prototype, "disabled", {
+            get: function () {
+                return this.nativeControl_.disabled;
+            },
+            set: function (disabled) {
+                this.foundation_.setDisabled(disabled);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        MDCSwitch.prototype.createRipple_ = function () {
+            var _this = this;
+            var RIPPLE_SURFACE_SELECTOR = MDCSwitchFoundation.strings.RIPPLE_SURFACE_SELECTOR;
+            var rippleSurface = this.root_.querySelector(RIPPLE_SURFACE_SELECTOR);
+            // DO NOT INLINE this variable. For backward compatibility, foundations take a Partial<MDCFooAdapter>.
+            // To ensure we don't accidentally omit any methods, we need a separate, strongly typed adapter variable.
+            var adapter = __assign({}, MDCRipple.createAdapter(this), { addClass: function (className) { return rippleSurface.classList.add(className); }, computeBoundingRect: function () { return rippleSurface.getBoundingClientRect(); }, deregisterInteractionHandler: function (evtType, handler) {
+                    _this.nativeControl_.removeEventListener(evtType, handler, applyPassive());
+                }, isSurfaceActive: function () { return matches(_this.nativeControl_, ':active'); }, isUnbounded: function () { return true; }, registerInteractionHandler: function (evtType, handler) {
+                    _this.nativeControl_.addEventListener(evtType, handler, applyPassive());
+                }, removeClass: function (className) { return rippleSurface.classList.remove(className); }, updateCssVariable: function (varName, value) {
+                    rippleSurface.style.setProperty(varName, value);
+                } });
+            return new MDCRipple(this.root_, new MDCRippleFoundation(adapter));
+        };
+        Object.defineProperty(MDCSwitch.prototype, "nativeControl_", {
+            get: function () {
+                var NATIVE_CONTROL_SELECTOR = MDCSwitchFoundation.strings.NATIVE_CONTROL_SELECTOR;
+                return this.root_.querySelector(NATIVE_CONTROL_SELECTOR);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        return MDCSwitch;
+    }(MDCComponent));
+
+    /* node_modules/@smui/switch/Switch.svelte generated by Svelte v3.12.1 */
+
+    const file$3 = "node_modules/@smui/switch/Switch.svelte";
+
+    function create_fragment$3(ctx) {
+    	var div3, div0, t, div2, div1, input, useActions_action, useActions_action_1, forwardEvents_action, dispose;
+
+    	var input_levels = [
+    		{ class: "mdc-switch__native-control " + ctx.input$class },
+    		{ type: "checkbox" },
+    		{ role: "switch" },
+    		ctx.inputProps,
+    		{ disabled: ctx.disabled },
+    		{ value: ctx.valueKey === ctx.uninitializedValue ? ctx.value : ctx.valueKey },
+    		exclude(prefixFilter(ctx.$$props, 'input$'), ['use', 'class'])
+    	];
+
+    	var input_data = {};
+    	for (var i = 0; i < input_levels.length; i += 1) {
+    		input_data = assign(input_data, input_levels[i]);
+    	}
+
+    	var div3_levels = [
+    		{ class: "mdc-switch " + ctx.className },
+    		exclude(ctx.$$props, ['use', 'class', 'disabled', 'group', 'checked', 'value', 'input$'])
+    	];
+
+    	var div3_data = {};
+    	for (var i = 0; i < div3_levels.length; i += 1) {
+    		div3_data = assign(div3_data, div3_levels[i]);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div3 = element("div");
+    			div0 = element("div");
+    			t = space();
+    			div2 = element("div");
+    			div1 = element("div");
+    			input = element("input");
+    			attr_dev(div0, "class", "mdc-switch__track");
+    			add_location(div0, file$3, 9, 2, 284);
+    			set_attributes(input, input_data);
+    			add_location(input, file$3, 12, 6, 407);
+    			attr_dev(div1, "class", "mdc-switch__thumb");
+    			add_location(div1, file$3, 11, 4, 369);
+    			attr_dev(div2, "class", "mdc-switch__thumb-underlay");
+    			add_location(div2, file$3, 10, 2, 324);
+    			set_attributes(div3, div3_data);
+    			toggle_class(div3, "mdc-switch--disabled", ctx.disabled);
+    			toggle_class(div3, "mdc-switch--checked", ctx.nativeChecked);
+    			add_location(div3, file$3, 0, 0, 0);
+
+    			dispose = [
+    				listen_dev(input, "change", ctx.input_change_handler),
+    				listen_dev(input, "change", ctx.handleChange),
+    				listen_dev(input, "change", ctx.change_handler),
+    				listen_dev(input, "input", ctx.input_handler)
+    			];
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div3, anchor);
+    			append_dev(div3, div0);
+    			append_dev(div3, t);
+    			append_dev(div3, div2);
+    			append_dev(div2, div1);
+    			append_dev(div1, input);
+
+    			input.checked = ctx.nativeChecked;
+
+    			useActions_action = useActions.call(null, input, ctx.input$use) || {};
+    			ctx.div3_binding(div3);
+    			useActions_action_1 = useActions.call(null, div3, ctx.use) || {};
+    			forwardEvents_action = ctx.forwardEvents.call(null, div3) || {};
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (changed.nativeChecked) input.checked = ctx.nativeChecked;
+
+    			set_attributes(input, get_spread_update(input_levels, [
+    				(changed.input$class) && { class: "mdc-switch__native-control " + ctx.input$class },
+    				{ type: "checkbox" },
+    				{ role: "switch" },
+    				(changed.inputProps) && ctx.inputProps,
+    				(changed.disabled) && { disabled: ctx.disabled },
+    				(changed.valueKey || changed.uninitializedValue || changed.value) && { value: ctx.valueKey === ctx.uninitializedValue ? ctx.value : ctx.valueKey },
+    				(changed.exclude || changed.prefixFilter || changed.$$props) && exclude(prefixFilter(ctx.$$props, 'input$'), ['use', 'class'])
+    			]));
+
+    			if (typeof useActions_action.update === 'function' && changed.input$use) {
+    				useActions_action.update.call(null, ctx.input$use);
+    			}
+
+    			set_attributes(div3, get_spread_update(div3_levels, [
+    				(changed.className) && { class: "mdc-switch " + ctx.className },
+    				(changed.exclude || changed.$$props) && exclude(ctx.$$props, ['use', 'class', 'disabled', 'group', 'checked', 'value', 'input$'])
+    			]));
+
+    			if (typeof useActions_action_1.update === 'function' && changed.use) {
+    				useActions_action_1.update.call(null, ctx.use);
+    			}
+
+    			if ((changed.className || changed.disabled)) {
+    				toggle_class(div3, "mdc-switch--disabled", ctx.disabled);
+    			}
+
+    			if ((changed.className || changed.nativeChecked)) {
+    				toggle_class(div3, "mdc-switch--checked", ctx.nativeChecked);
+    			}
+    		},
+
+    		i: noop,
+    		o: noop,
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(div3);
+    			}
+
+    			if (useActions_action && typeof useActions_action.destroy === 'function') useActions_action.destroy();
+    			ctx.div3_binding(null);
+    			if (useActions_action_1 && typeof useActions_action_1.destroy === 'function') useActions_action_1.destroy();
+    			if (forwardEvents_action && typeof forwardEvents_action.destroy === 'function') forwardEvents_action.destroy();
+    			run_all(dispose);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$3.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$3($$self, $$props, $$invalidate) {
+    	
+
+      const forwardEvents = forwardEventsBuilder(current_component);
+      let uninitializedValue = () => {};
+
+      let { use = [], class: className = '', disabled = false, group = uninitializedValue, checked = uninitializedValue, value = null, valueKey = uninitializedValue, input$use = [], input$class = '' } = $$props;
+
+      let element;
+      let switchControl;
+      let formField = getContext('SMUI:form-field');
+      let inputProps = getContext('SMUI:generic:input:props') || {};
+      let setChecked = getContext('SMUI:generic:input:setChecked');
+      let nativeChecked = group === uninitializedValue ? (checked === uninitializedValue ? false : checked) : group.indexOf(value) !== -1;
+
+      let previousChecked = checked;
+
+      onMount(() => {
+        $$invalidate('switchControl', switchControl = new MDCSwitch(element));
+
+        if (formField && formField()) {
+          formField().input = switchControl;
+        }
+      });
+
+      onDestroy(() => {
+        switchControl && switchControl.destroy();
+      });
+
+      function handleChange(e) {
+        if (group !== uninitializedValue) {
+          const idx = group.indexOf(value);
+          if (switchControl.checked && idx === -1) {
+            group.push(value);
+            $$invalidate('group', group);
+          } else if (!switchControl.checked && idx !== -1) {
+            group.splice(idx, 1);
+            $$invalidate('group', group);
+          }
+        }
+      }
+
+      function getId() {
+        return inputProps && inputProps.id;
+      }
+
+    	function change_handler(event) {
+    		bubble($$self, event);
+    	}
+
+    	function input_handler(event) {
+    		bubble($$self, event);
+    	}
+
+    	function input_change_handler() {
+    		nativeChecked = this.checked;
+    		$$invalidate('nativeChecked', nativeChecked), $$invalidate('checked', checked), $$invalidate('uninitializedValue', uninitializedValue), $$invalidate('previousChecked', previousChecked);
+    	}
+
+    	function div3_binding($$value) {
+    		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+    			$$invalidate('element', element = $$value);
+    		});
+    	}
+
+    	$$self.$set = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('use' in $$new_props) $$invalidate('use', use = $$new_props.use);
+    		if ('class' in $$new_props) $$invalidate('className', className = $$new_props.class);
+    		if ('disabled' in $$new_props) $$invalidate('disabled', disabled = $$new_props.disabled);
+    		if ('group' in $$new_props) $$invalidate('group', group = $$new_props.group);
+    		if ('checked' in $$new_props) $$invalidate('checked', checked = $$new_props.checked);
+    		if ('value' in $$new_props) $$invalidate('value', value = $$new_props.value);
+    		if ('valueKey' in $$new_props) $$invalidate('valueKey', valueKey = $$new_props.valueKey);
+    		if ('input$use' in $$new_props) $$invalidate('input$use', input$use = $$new_props.input$use);
+    		if ('input$class' in $$new_props) $$invalidate('input$class', input$class = $$new_props.input$class);
+    	};
+
+    	$$self.$capture_state = () => {
+    		return { uninitializedValue, use, className, disabled, group, checked, value, valueKey, input$use, input$class, element, switchControl, formField, inputProps, setChecked, nativeChecked, previousChecked };
+    	};
+
+    	$$self.$inject_state = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('uninitializedValue' in $$props) $$invalidate('uninitializedValue', uninitializedValue = $$new_props.uninitializedValue);
+    		if ('use' in $$props) $$invalidate('use', use = $$new_props.use);
+    		if ('className' in $$props) $$invalidate('className', className = $$new_props.className);
+    		if ('disabled' in $$props) $$invalidate('disabled', disabled = $$new_props.disabled);
+    		if ('group' in $$props) $$invalidate('group', group = $$new_props.group);
+    		if ('checked' in $$props) $$invalidate('checked', checked = $$new_props.checked);
+    		if ('value' in $$props) $$invalidate('value', value = $$new_props.value);
+    		if ('valueKey' in $$props) $$invalidate('valueKey', valueKey = $$new_props.valueKey);
+    		if ('input$use' in $$props) $$invalidate('input$use', input$use = $$new_props.input$use);
+    		if ('input$class' in $$props) $$invalidate('input$class', input$class = $$new_props.input$class);
+    		if ('element' in $$props) $$invalidate('element', element = $$new_props.element);
+    		if ('switchControl' in $$props) $$invalidate('switchControl', switchControl = $$new_props.switchControl);
+    		if ('formField' in $$props) formField = $$new_props.formField;
+    		if ('inputProps' in $$props) $$invalidate('inputProps', inputProps = $$new_props.inputProps);
+    		if ('setChecked' in $$props) $$invalidate('setChecked', setChecked = $$new_props.setChecked);
+    		if ('nativeChecked' in $$props) $$invalidate('nativeChecked', nativeChecked = $$new_props.nativeChecked);
+    		if ('previousChecked' in $$props) $$invalidate('previousChecked', previousChecked = $$new_props.previousChecked);
+    	};
+
+    	$$self.$$.update = ($$dirty = { checked: 1, uninitializedValue: 1, previousChecked: 1, nativeChecked: 1, setChecked: 1, switchControl: 1, group: 1, value: 1, disabled: 1, valueKey: 1 }) => {
+    		if ($$dirty.checked || $$dirty.uninitializedValue || $$dirty.previousChecked || $$dirty.nativeChecked) { if (checked !== uninitializedValue) {
+            if (checked === previousChecked) {
+              $$invalidate('checked', checked = nativeChecked);
+            } else if (nativeChecked !== checked) {
+              $$invalidate('nativeChecked', nativeChecked = checked);
+            }
+            $$invalidate('previousChecked', previousChecked = checked);
+          } }
+    		if ($$dirty.setChecked || $$dirty.nativeChecked) { if (setChecked) {
+            setChecked(nativeChecked);
+          } }
+    		if ($$dirty.switchControl || $$dirty.group || $$dirty.uninitializedValue || $$dirty.value || $$dirty.checked) { if (switchControl) {
+            if (group !== uninitializedValue) {
+              const isChecked = group.indexOf(value) !== -1;
+              if (switchControl.checked !== isChecked) {
+                $$invalidate('switchControl', switchControl.checked = isChecked, switchControl);
+              }
+            } else if (checked !== uninitializedValue && switchControl.checked !== checked) {
+              $$invalidate('switchControl', switchControl.checked = checked, switchControl);
+            }
+          } }
+    		if ($$dirty.switchControl || $$dirty.disabled) { if (switchControl && switchControl.disabled !== disabled) {
+            $$invalidate('switchControl', switchControl.disabled = disabled, switchControl);
+          } }
+    		if ($$dirty.switchControl || $$dirty.valueKey || $$dirty.uninitializedValue || $$dirty.value) { if (switchControl && valueKey === uninitializedValue && switchControl.value !== value) {
+            $$invalidate('switchControl', switchControl.value = value, switchControl);
+          } }
+    		if ($$dirty.switchControl || $$dirty.valueKey || $$dirty.uninitializedValue) { if (switchControl && valueKey !== uninitializedValue && switchControl.value !== valueKey) {
+            $$invalidate('switchControl', switchControl.value = valueKey, switchControl);
+          } }
+    	};
+
+    	return {
+    		forwardEvents,
+    		uninitializedValue,
+    		use,
+    		className,
+    		disabled,
+    		group,
+    		checked,
+    		value,
+    		valueKey,
+    		input$use,
+    		input$class,
+    		element,
+    		inputProps,
+    		nativeChecked,
+    		handleChange,
+    		getId,
+    		$$props,
+    		change_handler,
+    		input_handler,
+    		input_change_handler,
+    		div3_binding,
+    		$$props: $$props = exclude_internal_props($$props)
+    	};
+    }
+
+    class Switch extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$3, create_fragment$3, safe_not_equal, ["use", "class", "disabled", "group", "checked", "value", "valueKey", "input$use", "input$class", "getId"]);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Switch", options, id: create_fragment$3.name });
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+    		if (ctx.getId === undefined && !('getId' in props)) {
+    			console.warn("<Switch> was created without expected prop 'getId'");
+    		}
+    	}
+
+    	get use() {
+    		throw new Error("<Switch>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set use(value) {
+    		throw new Error("<Switch>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get class() {
+    		throw new Error("<Switch>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set class(value) {
+    		throw new Error("<Switch>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get disabled() {
+    		throw new Error("<Switch>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set disabled(value) {
+    		throw new Error("<Switch>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get group() {
+    		throw new Error("<Switch>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set group(value) {
+    		throw new Error("<Switch>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get checked() {
+    		throw new Error("<Switch>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set checked(value) {
+    		throw new Error("<Switch>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get value() {
+    		throw new Error("<Switch>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set value(value) {
+    		throw new Error("<Switch>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get valueKey() {
+    		throw new Error("<Switch>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set valueKey(value) {
+    		throw new Error("<Switch>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get input$use() {
+    		throw new Error("<Switch>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set input$use(value) {
+    		throw new Error("<Switch>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get input$class() {
+    		throw new Error("<Switch>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set input$class(value) {
+    		throw new Error("<Switch>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get getId() {
+    		return this.$$.ctx.getId;
+    	}
+
+    	set getId(value) {
+    		throw new Error("<Switch>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/components/charts/chart-controls.svelte generated by Svelte v3.12.1 */
+
+    const file$4 = "src/components/charts/chart-controls.svelte";
+
+    function create_fragment$4(ctx) {
+    	var section, current;
+
+    	const default_slot_template = ctx.$$slots.default;
+    	const default_slot = create_slot(default_slot_template, ctx, null);
+
+    	const block = {
+    		c: function create() {
+    			section = element("section");
+
+    			if (default_slot) default_slot.c();
+
+    			attr_dev(section, "class", "optionGroup svelte-cyg75r");
+    			add_location(section, file$4, 33, 0, 720);
+    		},
+
+    		l: function claim(nodes) {
+    			if (default_slot) default_slot.l(section_nodes);
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, section, anchor);
+
+    			if (default_slot) {
+    				default_slot.m(section, null);
+    			}
+
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (default_slot && default_slot.p && changed.$$scope) {
+    				default_slot.p(
+    					get_slot_changes(default_slot_template, ctx, changed, null),
+    					get_slot_context(default_slot_template, ctx, null)
+    				);
+    			}
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(default_slot, local);
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(default_slot, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(section);
+    			}
+
+    			if (default_slot) default_slot.d(detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$4.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$4($$self, $$props, $$invalidate) {
+    	let { $$slots = {}, $$scope } = $$props;
+
+    	$$self.$set = $$props => {
+    		if ('$$scope' in $$props) $$invalidate('$$scope', $$scope = $$props.$$scope);
+    	};
+
+    	$$self.$capture_state = () => {
+    		return {};
+    	};
+
+    	$$self.$inject_state = $$props => {};
+
+    	return { $$slots, $$scope };
+    }
+
+    class Chart_controls extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$4, create_fragment$4, safe_not_equal, []);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Chart_controls", options, id: create_fragment$4.name });
+    	}
+    }
+
+    /* src/components/charts/controls/popularity.svelte generated by Svelte v3.12.1 */
+
+    const file$5 = "src/components/charts/controls/popularity.svelte";
+
+    function create_fragment$5(ctx) {
+    	var article, div0, t1, div1, t2, t3, t4, t5, div2, updating_value, current;
+
+    	function slider_value_binding(value) {
+    		ctx.slider_value_binding.call(null, value);
+    		updating_value = true;
+    		add_flush_callback(() => updating_value = false);
+    	}
+
+    	let slider_props = {
+    		color: "secondary",
+    		min: 0,
+    		max: 30,
+    		discrete: true
+    	};
+    	if (ctx.$minPopularity !== void 0) {
+    		slider_props.value = ctx.$minPopularity;
+    	}
+    	var slider = new Slider({ props: slider_props, $$inline: true });
+
+    	binding_callbacks.push(() => bind(slider, 'value', slider_value_binding));
+
+    	const block = {
+    		c: function create() {
+    			article = element("article");
+    			div0 = element("div");
+    			div0.textContent = "popularity";
+    			t1 = space();
+    			div1 = element("div");
+    			t2 = text("≥ ");
+    			t3 = text(ctx.$minPopularity);
+    			t4 = text("%");
+    			t5 = space();
+    			div2 = element("div");
+    			slider.$$.fragment.c();
+    			attr_dev(div0, "class", "name");
+    			add_location(div0, file$5, 6, 2, 132);
+    			attr_dev(div1, "class", "value");
+    			add_location(div1, file$5, 7, 2, 169);
+    			attr_dev(div2, "class", "slider");
+    			add_location(div2, file$5, 8, 2, 216);
+    			attr_dev(article, "class", "item");
+    			add_location(article, file$5, 5, 0, 107);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, article, anchor);
+    			append_dev(article, div0);
+    			append_dev(article, t1);
+    			append_dev(article, div1);
+    			append_dev(div1, t2);
+    			append_dev(div1, t3);
+    			append_dev(div1, t4);
+    			append_dev(article, t5);
+    			append_dev(article, div2);
+    			mount_component(slider, div2, null);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (!current || changed.$minPopularity) {
+    				set_data_dev(t3, ctx.$minPopularity);
+    			}
+
+    			var slider_changes = {};
+    			if (!updating_value && changed.$minPopularity) {
+    				slider_changes.value = ctx.$minPopularity;
+    			}
+    			slider.$set(slider_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(slider.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(slider.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(article);
+    			}
+
+    			destroy_component(slider);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$5.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$5($$self, $$props, $$invalidate) {
+    	let $minPopularity;
+
+    	validate_store(minPopularity, 'minPopularity');
+    	component_subscribe($$self, minPopularity, $$value => { $minPopularity = $$value; $$invalidate('$minPopularity', $minPopularity); });
+
+    	function slider_value_binding(value) {
+    		$minPopularity = value;
+    		minPopularity.set($minPopularity);
+    	}
+
+    	$$self.$capture_state = () => {
+    		return {};
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ('$minPopularity' in $$props) minPopularity.set($minPopularity);
+    	};
+
+    	return { $minPopularity, slider_value_binding };
+    }
+
+    class Popularity extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$5, create_fragment$5, safe_not_equal, []);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Popularity", options, id: create_fragment$5.name });
+    	}
+    }
+
+    /* src/components/charts/controls/max-heroes.svelte generated by Svelte v3.12.1 */
+
+    const file$6 = "src/components/charts/controls/max-heroes.svelte";
+
+    function create_fragment$6(ctx) {
+    	var article, div0, t1, div1, t2, t3, div2, updating_value, current;
+
+    	function slider_value_binding(value) {
+    		ctx.slider_value_binding.call(null, value);
+    		updating_value = true;
+    		add_flush_callback(() => updating_value = false);
+    	}
+
+    	let slider_props = {
+    		min: 8,
+    		max: 30,
+    		discrete: true
+    	};
+    	if (ctx.$maxHeroes !== void 0) {
+    		slider_props.value = ctx.$maxHeroes;
+    	}
+    	var slider = new Slider({ props: slider_props, $$inline: true });
+
+    	binding_callbacks.push(() => bind(slider, 'value', slider_value_binding));
+
+    	const block = {
+    		c: function create() {
+    			article = element("article");
+    			div0 = element("div");
+    			div0.textContent = "heroes";
+    			t1 = space();
+    			div1 = element("div");
+    			t2 = text(ctx.$maxHeroes);
+    			t3 = space();
+    			div2 = element("div");
+    			slider.$$.fragment.c();
+    			attr_dev(div0, "class", "name");
+    			add_location(div0, file$6, 6, 2, 128);
+    			attr_dev(div1, "class", "value");
+    			add_location(div1, file$6, 7, 2, 161);
+    			attr_dev(div2, "class", "slider");
+    			add_location(div2, file$6, 8, 2, 201);
+    			attr_dev(article, "class", "item");
+    			add_location(article, file$6, 5, 0, 103);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, article, anchor);
+    			append_dev(article, div0);
+    			append_dev(article, t1);
+    			append_dev(article, div1);
+    			append_dev(div1, t2);
+    			append_dev(article, t3);
+    			append_dev(article, div2);
+    			mount_component(slider, div2, null);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (!current || changed.$maxHeroes) {
+    				set_data_dev(t2, ctx.$maxHeroes);
+    			}
+
+    			var slider_changes = {};
+    			if (!updating_value && changed.$maxHeroes) {
+    				slider_changes.value = ctx.$maxHeroes;
+    			}
+    			slider.$set(slider_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(slider.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(slider.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(article);
+    			}
+
+    			destroy_component(slider);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$6.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$6($$self, $$props, $$invalidate) {
+    	let $maxHeroes;
+
+    	validate_store(maxHeroes, 'maxHeroes');
+    	component_subscribe($$self, maxHeroes, $$value => { $maxHeroes = $$value; $$invalidate('$maxHeroes', $maxHeroes); });
+
+    	function slider_value_binding(value) {
+    		$maxHeroes = value;
+    		maxHeroes.set($maxHeroes);
+    	}
+
+    	$$self.$capture_state = () => {
+    		return {};
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ('$maxHeroes' in $$props) maxHeroes.set($maxHeroes);
+    	};
+
+    	return { $maxHeroes, slider_value_binding };
+    }
+
+    class Max_heroes extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$6, create_fragment$6, safe_not_equal, []);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Max_heroes", options, id: create_fragment$6.name });
+    	}
+    }
+
+    /* src/components/charts/controls/bottom.svelte generated by Svelte v3.12.1 */
+
+    const file$7 = "src/components/charts/controls/bottom.svelte";
+
+    // (10:4) <span slot="label">
+    function create_label_slot(ctx) {
+    	var span;
+
+    	const block = {
+    		c: function create() {
+    			span = element("span");
+    			span.textContent = "bottom";
+    			attr_dev(span, "slot", "label");
+    			add_location(span, file$7, 9, 4, 231);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, span, anchor);
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(span);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_label_slot.name, type: "slot", source: "(10:4) <span slot=\"label\">", ctx });
+    	return block;
+    }
+
+    // (8:2) <FormField>
+    function create_default_slot(ctx) {
+    	var updating_checked, t, current;
+
+    	function switch_1_checked_binding(value) {
+    		ctx.switch_1_checked_binding.call(null, value);
+    		updating_checked = true;
+    		add_flush_callback(() => updating_checked = false);
+    	}
+
+    	let switch_1_props = {};
+    	if (ctx.$isAtBottom !== void 0) {
+    		switch_1_props.checked = ctx.$isAtBottom;
+    	}
+    	var switch_1 = new Switch({ props: switch_1_props, $$inline: true });
+
+    	binding_callbacks.push(() => bind(switch_1, 'checked', switch_1_checked_binding));
+
+    	const block = {
+    		c: function create() {
+    			switch_1.$$.fragment.c();
+    			t = space();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(switch_1, target, anchor);
+    			insert_dev(target, t, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var switch_1_changes = {};
+    			if (!updating_checked && changed.$isAtBottom) {
+    				switch_1_changes.checked = ctx.$isAtBottom;
+    			}
+    			switch_1.$set(switch_1_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(switch_1.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(switch_1.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(switch_1, detaching);
+
+    			if (detaching) {
+    				detach_dev(t);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_default_slot.name, type: "slot", source: "(8:2) <FormField>", ctx });
+    	return block;
+    }
+
+    function create_fragment$7(ctx) {
+    	var article, current;
+
+    	var formfield = new FormField({
+    		props: {
+    		$$slots: {
+    		default: [create_default_slot],
+    		label: [create_label_slot]
+    	},
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	const block = {
+    		c: function create() {
+    			article = element("article");
+    			formfield.$$.fragment.c();
+    			attr_dev(article, "class", "item");
+    			add_location(article, file$7, 6, 0, 148);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, article, anchor);
+    			mount_component(formfield, article, null);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var formfield_changes = {};
+    			if (changed.$$scope || changed.$isAtBottom) formfield_changes.$$scope = { changed, ctx };
+    			formfield.$set(formfield_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(formfield.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(formfield.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(article);
+    			}
+
+    			destroy_component(formfield);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$7.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$7($$self, $$props, $$invalidate) {
+    	let $isAtBottom;
+
+    	validate_store(isAtBottom, 'isAtBottom');
+    	component_subscribe($$self, isAtBottom, $$value => { $isAtBottom = $$value; $$invalidate('$isAtBottom', $isAtBottom); });
+
+    	function switch_1_checked_binding(value) {
+    		$isAtBottom = value;
+    		isAtBottom.set($isAtBottom);
+    	}
+
+    	$$self.$capture_state = () => {
+    		return {};
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ('$isAtBottom' in $$props) isAtBottom.set($isAtBottom);
+    	};
+
+    	return { $isAtBottom, switch_1_checked_binding };
+    }
+
+    class Bottom extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$7, create_fragment$7, safe_not_equal, []);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Bottom", options, id: create_fragment$7.name });
+    	}
+    }
+
+    /* src/components/charts/winrate-charts.svelte generated by Svelte v3.12.1 */
+
+    // (77:0) <ChartControls>
+    function create_default_slot$1(ctx) {
+    	var t0, t1, current;
+
+    	var popularityslider = new Popularity({ $$inline: true });
+
+    	var maxheroesslider = new Max_heroes({ $$inline: true });
+
+    	var showbottomswitcher = new Bottom({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			popularityslider.$$.fragment.c();
+    			t0 = space();
+    			maxheroesslider.$$.fragment.c();
+    			t1 = space();
+    			showbottomswitcher.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(popularityslider, target, anchor);
+    			insert_dev(target, t0, anchor);
+    			mount_component(maxheroesslider, target, anchor);
+    			insert_dev(target, t1, anchor);
+    			mount_component(showbottomswitcher, target, anchor);
+    			current = true;
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(popularityslider.$$.fragment, local);
+
+    			transition_in(maxheroesslider.$$.fragment, local);
+
+    			transition_in(showbottomswitcher.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(popularityslider.$$.fragment, local);
+    			transition_out(maxheroesslider.$$.fragment, local);
+    			transition_out(showbottomswitcher.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(popularityslider, detaching);
+
+    			if (detaching) {
+    				detach_dev(t0);
+    			}
+
+    			destroy_component(maxheroesslider, detaching);
+
+    			if (detaching) {
+    				detach_dev(t1);
+    			}
+
+    			destroy_component(showbottomswitcher, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_default_slot$1.name, type: "slot", source: "(77:0) <ChartControls>", ctx });
+    	return block;
+    }
+
+    function create_fragment$8(ctx) {
+    	var t, current;
+
+    	var chartcontrols = new Chart_controls({
+    		props: {
+    		$$slots: { default: [create_default_slot$1] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	var chartcontainer = new Chart_container({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			chartcontrols.$$.fragment.c();
+    			t = space();
+    			chartcontainer.$$.fragment.c();
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(chartcontrols, target, anchor);
+    			insert_dev(target, t, anchor);
+    			mount_component(chartcontainer, target, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var chartcontrols_changes = {};
+    			if (changed.$$scope) chartcontrols_changes.$$scope = { changed, ctx };
+    			chartcontrols.$set(chartcontrols_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(chartcontrols.$$.fragment, local);
+
+    			transition_in(chartcontainer.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(chartcontrols.$$.fragment, local);
+    			transition_out(chartcontainer.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(chartcontrols, detaching);
+
+    			if (detaching) {
+    				detach_dev(t);
+    			}
+
+    			destroy_component(chartcontainer, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$8.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$8($$self, $$props, $$invalidate) {
+    	let $isPlaying, $rankedData, $minPopularity, $isAtBottom, $maxHeroes;
+
+    	validate_store(isPlaying, 'isPlaying');
+    	component_subscribe($$self, isPlaying, $$value => { $isPlaying = $$value; $$invalidate('$isPlaying', $isPlaying); });
+    	validate_store(rankedData, 'rankedData');
+    	component_subscribe($$self, rankedData, $$value => { $rankedData = $$value; $$invalidate('$rankedData', $rankedData); });
+    	validate_store(minPopularity, 'minPopularity');
+    	component_subscribe($$self, minPopularity, $$value => { $minPopularity = $$value; $$invalidate('$minPopularity', $minPopularity); });
+    	validate_store(isAtBottom, 'isAtBottom');
+    	component_subscribe($$self, isAtBottom, $$value => { $isAtBottom = $$value; $$invalidate('$isAtBottom', $isAtBottom); });
+    	validate_store(maxHeroes, 'maxHeroes');
+    	component_subscribe($$self, maxHeroes, $$value => { $maxHeroes = $$value; $$invalidate('$maxHeroes', $maxHeroes); });
+
+    	
+
+      const xValue = d => d.winrate;
+      const x2Value = d => d.popularity;
+      const onPlayingEnd = () => (set_store_value(isPlaying, $isPlaying = false));
+      const charts = new DoubleBarsHeroesChart({
+        // data: $rankedData.data,
+        xValue,
+        x2Value,
+        onPlayingEnd,
+        xInterpolate: interpolate
+      });
+
+      onMount(() => {
+        charts.mount();
+      });
+
+      afterUpdate(() => {
+        const { data } = $rankedData;
+        if (data) {
+          const chartData = data.map(d => {
+            const result = {};
+            result.version = d.version;
+            result.data = d.data.filter(hero => hero.popularity >= $minPopularity);
+            if ($isAtBottom) {
+              result.data = result.data.slice(result.data.length - $maxHeroes);
+            } else {
+              result.data = result.data.slice(0, $maxHeroes);
+            }
+
+            return result;
+          });
+          const flatWinrates = chartData.flatMap(ver =>
+            ver.data.filter(d => d.popularity >= $minPopularity).map(d => d.winrate)
+          );
+          const [lOffset, rOffset] = $isAtBottom ? [2, 8] : [8, 2];
+          const xDomain = [
+            min(flatWinrates) - lOffset,
+            max(flatWinrates) + rOffset
+          ];
+          const x2Domain = [0, 100];
+
+          charts.update({
+            data: chartData,
+            xDomain,
+            x2Domain,
+            isPlaying: $isPlaying,
+            isReversed: $isAtBottom
+          });
+        }
+      });
+
+      onDestroy(() => {
+        charts.clearInterval();
+      });
+
+    	$$self.$capture_state = () => {
+    		return {};
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ('$isPlaying' in $$props) isPlaying.set($isPlaying);
+    		if ('$rankedData' in $$props) rankedData.set($rankedData);
+    		if ('$minPopularity' in $$props) minPopularity.set($minPopularity);
+    		if ('$isAtBottom' in $$props) isAtBottom.set($isAtBottom);
+    		if ('$maxHeroes' in $$props) maxHeroes.set($maxHeroes);
+    	};
+
+    	return {};
+    }
+
+    class Winrate_charts extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$8, create_fragment$8, safe_not_equal, []);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Winrate_charts", options, id: create_fragment$8.name });
+    	}
+    }
+
+    function Ripple(node, [ripple, props = {unbounded: false, color: null}]) {
+      let instance = null;
+
+      function handleProps(ripple, props) {
+        if (ripple && !instance) {
+          instance = new MDCRipple(node);
+        } else if (instance && !ripple) {
+          instance.destroy();
+          instance = null;
+        }
+        if (ripple) {
+          instance.unbounded = !!props.unbounded;
+          switch (props.color) {
+            case 'surface':
+              node.classList.add('mdc-ripple-surface');
+              node.classList.remove('mdc-ripple-surface--primary');
+              node.classList.remove('mdc-ripple-surface--accent');
+              return;
+            case 'primary':
+              node.classList.add('mdc-ripple-surface');
+              node.classList.add('mdc-ripple-surface--primary');
+              node.classList.remove('mdc-ripple-surface--accent');
+              return;
+            case 'secondary':
+              node.classList.add('mdc-ripple-surface');
+              node.classList.remove('mdc-ripple-surface--primary');
+              node.classList.add('mdc-ripple-surface--accent');
+              return;
+          }
+        }
+        node.classList.remove('mdc-ripple-surface');
+        node.classList.remove('mdc-ripple-surface--primary');
+        node.classList.remove('mdc-ripple-surface--accent');
+      }
+
+      if (ripple) {
+        handleProps(ripple, props);
+      }
+
+      return {
+        update([ripple, props = {unbounded: false, color: null}]) {
+          handleProps(ripple, props);
+        },
+
+        destroy() {
+          if (instance) {
+            instance.destroy();
+            instance = null;
+            node.classList.remove('mdc-ripple-surface');
+            node.classList.remove('mdc-ripple-surface--primary');
+            node.classList.remove('mdc-ripple-surface--accent');
+          }
+        }
+      }
+    }
+
+    /* node_modules/@smui/button/Button.svelte generated by Svelte v3.12.1 */
+
+    const file$8 = "node_modules/@smui/button/Button.svelte";
+
+    // (23:0) {:else}
+    function create_else_block(ctx) {
+    	var button, useActions_action, forwardEvents_action, Ripple_action, current;
+
+    	const default_slot_template = ctx.$$slots.default;
+    	const default_slot = create_slot(default_slot_template, ctx, null);
+
+    	var button_levels = [
+    		{ class: "mdc-button " + ctx.className },
+    		ctx.actionProp,
+    		ctx.defaultProp,
+    		ctx.props
+    	];
+
+    	var button_data = {};
+    	for (var i = 0; i < button_levels.length; i += 1) {
+    		button_data = assign(button_data, button_levels[i]);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			button = element("button");
+
+    			if (default_slot) default_slot.c();
+
+    			set_attributes(button, button_data);
+    			toggle_class(button, "mdc-button--raised", ctx.variant === 'raised');
+    			toggle_class(button, "mdc-button--unelevated", ctx.variant === 'unelevated');
+    			toggle_class(button, "mdc-button--outlined", ctx.variant === 'outlined');
+    			toggle_class(button, "mdc-button--dense", ctx.dense);
+    			toggle_class(button, "smui-button--color-secondary", ctx.color === 'secondary');
+    			toggle_class(button, "mdc-card__action", ctx.context === 'card:action');
+    			toggle_class(button, "mdc-card__action--button", ctx.context === 'card:action');
+    			toggle_class(button, "mdc-dialog__button", ctx.context === 'dialog:action');
+    			toggle_class(button, "mdc-top-app-bar__navigation-icon", ctx.context === 'top-app-bar:navigation');
+    			toggle_class(button, "mdc-top-app-bar__action-item", ctx.context === 'top-app-bar:action');
+    			toggle_class(button, "mdc-snackbar__action", ctx.context === 'snackbar');
+    			add_location(button, file$8, 23, 2, 898);
+    		},
+
+    		l: function claim(nodes) {
+    			if (default_slot) default_slot.l(button_nodes);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, button, anchor);
+
+    			if (default_slot) {
+    				default_slot.m(button, null);
+    			}
+
+    			useActions_action = useActions.call(null, button, ctx.use) || {};
+    			forwardEvents_action = ctx.forwardEvents.call(null, button) || {};
+    			Ripple_action = Ripple.call(null, button, [ctx.ripple, {unbounded: false}]) || {};
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (default_slot && default_slot.p && changed.$$scope) {
+    				default_slot.p(
+    					get_slot_changes(default_slot_template, ctx, changed, null),
+    					get_slot_context(default_slot_template, ctx, null)
+    				);
+    			}
+
+    			set_attributes(button, get_spread_update(button_levels, [
+    				(changed.className) && { class: "mdc-button " + ctx.className },
+    				(changed.actionProp) && ctx.actionProp,
+    				(changed.defaultProp) && ctx.defaultProp,
+    				(changed.props) && ctx.props
+    			]));
+
+    			if (typeof useActions_action.update === 'function' && changed.use) {
+    				useActions_action.update.call(null, ctx.use);
+    			}
+
+    			if (typeof Ripple_action.update === 'function' && changed.ripple) {
+    				Ripple_action.update.call(null, [ctx.ripple, {unbounded: false}]);
+    			}
+
+    			if ((changed.className || changed.variant)) {
+    				toggle_class(button, "mdc-button--raised", ctx.variant === 'raised');
+    				toggle_class(button, "mdc-button--unelevated", ctx.variant === 'unelevated');
+    				toggle_class(button, "mdc-button--outlined", ctx.variant === 'outlined');
+    			}
+
+    			if ((changed.className || changed.dense)) {
+    				toggle_class(button, "mdc-button--dense", ctx.dense);
+    			}
+
+    			if ((changed.className || changed.color)) {
+    				toggle_class(button, "smui-button--color-secondary", ctx.color === 'secondary');
+    			}
+
+    			if ((changed.className || changed.context)) {
+    				toggle_class(button, "mdc-card__action", ctx.context === 'card:action');
+    				toggle_class(button, "mdc-card__action--button", ctx.context === 'card:action');
+    				toggle_class(button, "mdc-dialog__button", ctx.context === 'dialog:action');
+    				toggle_class(button, "mdc-top-app-bar__navigation-icon", ctx.context === 'top-app-bar:navigation');
+    				toggle_class(button, "mdc-top-app-bar__action-item", ctx.context === 'top-app-bar:action');
+    				toggle_class(button, "mdc-snackbar__action", ctx.context === 'snackbar');
+    			}
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(default_slot, local);
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(default_slot, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(button);
+    			}
+
+    			if (default_slot) default_slot.d(detaching);
+    			if (useActions_action && typeof useActions_action.destroy === 'function') useActions_action.destroy();
+    			if (forwardEvents_action && typeof forwardEvents_action.destroy === 'function') forwardEvents_action.destroy();
+    			if (Ripple_action && typeof Ripple_action.destroy === 'function') Ripple_action.destroy();
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_else_block.name, type: "else", source: "(23:0) {:else}", ctx });
+    	return block;
+    }
+
+    // (1:0) {#if href}
+    function create_if_block$1(ctx) {
+    	var a, useActions_action, forwardEvents_action, Ripple_action, current;
+
+    	const default_slot_template = ctx.$$slots.default;
+    	const default_slot = create_slot(default_slot_template, ctx, null);
+
+    	var a_levels = [
+    		{ class: "mdc-button " + ctx.className },
+    		{ href: ctx.href },
+    		ctx.actionProp,
+    		ctx.defaultProp,
+    		ctx.props
+    	];
+
+    	var a_data = {};
+    	for (var i = 0; i < a_levels.length; i += 1) {
+    		a_data = assign(a_data, a_levels[i]);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			a = element("a");
+
+    			if (default_slot) default_slot.c();
+
+    			set_attributes(a, a_data);
+    			toggle_class(a, "mdc-button--raised", ctx.variant === 'raised');
+    			toggle_class(a, "mdc-button--unelevated", ctx.variant === 'unelevated');
+    			toggle_class(a, "mdc-button--outlined", ctx.variant === 'outlined');
+    			toggle_class(a, "mdc-button--dense", ctx.dense);
+    			toggle_class(a, "smui-button--color-secondary", ctx.color === 'secondary');
+    			toggle_class(a, "mdc-card__action", ctx.context === 'card:action');
+    			toggle_class(a, "mdc-card__action--button", ctx.context === 'card:action');
+    			toggle_class(a, "mdc-dialog__button", ctx.context === 'dialog:action');
+    			toggle_class(a, "mdc-top-app-bar__navigation-icon", ctx.context === 'top-app-bar:navigation');
+    			toggle_class(a, "mdc-top-app-bar__action-item", ctx.context === 'top-app-bar:action');
+    			toggle_class(a, "mdc-snackbar__action", ctx.context === 'snackbar');
+    			add_location(a, file$8, 1, 2, 13);
+    		},
+
+    		l: function claim(nodes) {
+    			if (default_slot) default_slot.l(a_nodes);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, a, anchor);
+
+    			if (default_slot) {
+    				default_slot.m(a, null);
+    			}
+
+    			useActions_action = useActions.call(null, a, ctx.use) || {};
+    			forwardEvents_action = ctx.forwardEvents.call(null, a) || {};
+    			Ripple_action = Ripple.call(null, a, [ctx.ripple, {unbounded: false}]) || {};
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (default_slot && default_slot.p && changed.$$scope) {
+    				default_slot.p(
+    					get_slot_changes(default_slot_template, ctx, changed, null),
+    					get_slot_context(default_slot_template, ctx, null)
+    				);
+    			}
+
+    			set_attributes(a, get_spread_update(a_levels, [
+    				(changed.className) && { class: "mdc-button " + ctx.className },
+    				(changed.href) && { href: ctx.href },
+    				(changed.actionProp) && ctx.actionProp,
+    				(changed.defaultProp) && ctx.defaultProp,
+    				(changed.props) && ctx.props
+    			]));
+
+    			if (typeof useActions_action.update === 'function' && changed.use) {
+    				useActions_action.update.call(null, ctx.use);
+    			}
+
+    			if (typeof Ripple_action.update === 'function' && changed.ripple) {
+    				Ripple_action.update.call(null, [ctx.ripple, {unbounded: false}]);
+    			}
+
+    			if ((changed.className || changed.variant)) {
+    				toggle_class(a, "mdc-button--raised", ctx.variant === 'raised');
+    				toggle_class(a, "mdc-button--unelevated", ctx.variant === 'unelevated');
+    				toggle_class(a, "mdc-button--outlined", ctx.variant === 'outlined');
+    			}
+
+    			if ((changed.className || changed.dense)) {
+    				toggle_class(a, "mdc-button--dense", ctx.dense);
+    			}
+
+    			if ((changed.className || changed.color)) {
+    				toggle_class(a, "smui-button--color-secondary", ctx.color === 'secondary');
+    			}
+
+    			if ((changed.className || changed.context)) {
+    				toggle_class(a, "mdc-card__action", ctx.context === 'card:action');
+    				toggle_class(a, "mdc-card__action--button", ctx.context === 'card:action');
+    				toggle_class(a, "mdc-dialog__button", ctx.context === 'dialog:action');
+    				toggle_class(a, "mdc-top-app-bar__navigation-icon", ctx.context === 'top-app-bar:navigation');
+    				toggle_class(a, "mdc-top-app-bar__action-item", ctx.context === 'top-app-bar:action');
+    				toggle_class(a, "mdc-snackbar__action", ctx.context === 'snackbar');
+    			}
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(default_slot, local);
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(default_slot, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(a);
+    			}
+
+    			if (default_slot) default_slot.d(detaching);
+    			if (useActions_action && typeof useActions_action.destroy === 'function') useActions_action.destroy();
+    			if (forwardEvents_action && typeof forwardEvents_action.destroy === 'function') forwardEvents_action.destroy();
+    			if (Ripple_action && typeof Ripple_action.destroy === 'function') Ripple_action.destroy();
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_if_block$1.name, type: "if", source: "(1:0) {#if href}", ctx });
+    	return block;
+    }
+
+    function create_fragment$9(ctx) {
+    	var current_block_type_index, if_block, if_block_anchor, current;
+
+    	var if_block_creators = [
+    		create_if_block$1,
+    		create_else_block
+    	];
+
+    	var if_blocks = [];
+
+    	function select_block_type(changed, ctx) {
+    		if (ctx.href) return 0;
+    		return 1;
+    	}
+
+    	current_block_type_index = select_block_type(null, ctx);
+    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+
+    	const block = {
+    		c: function create() {
+    			if_block.c();
+    			if_block_anchor = empty();
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			if_blocks[current_block_type_index].m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var previous_block_index = current_block_type_index;
+    			current_block_type_index = select_block_type(changed, ctx);
+    			if (current_block_type_index === previous_block_index) {
+    				if_blocks[current_block_type_index].p(changed, ctx);
+    			} else {
+    				group_outros();
+    				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+    					if_blocks[previous_block_index] = null;
+    				});
+    				check_outros();
+
+    				if_block = if_blocks[current_block_type_index];
+    				if (!if_block) {
+    					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    					if_block.c();
+    				}
+    				transition_in(if_block, 1);
+    				if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    			}
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if_blocks[current_block_type_index].d(detaching);
+
+    			if (detaching) {
+    				detach_dev(if_block_anchor);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$9.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$9($$self, $$props, $$invalidate) {
+    	
+
+      const forwardEvents = forwardEventsBuilder(current_component);
+
+      let { use = [], class: className = '', ripple = true, color = 'primary', variant = 'text', dense = false, href = null, action = 'close', default: defaultAction = false } = $$props;
+
+      let context = getContext('SMUI:button:context');
+
+      setContext('SMUI:label:context', 'button');
+      setContext('SMUI:icon:context', 'button');
+
+    	let { $$slots = {}, $$scope } = $$props;
+
+    	$$self.$set = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('use' in $$new_props) $$invalidate('use', use = $$new_props.use);
+    		if ('class' in $$new_props) $$invalidate('className', className = $$new_props.class);
+    		if ('ripple' in $$new_props) $$invalidate('ripple', ripple = $$new_props.ripple);
+    		if ('color' in $$new_props) $$invalidate('color', color = $$new_props.color);
+    		if ('variant' in $$new_props) $$invalidate('variant', variant = $$new_props.variant);
+    		if ('dense' in $$new_props) $$invalidate('dense', dense = $$new_props.dense);
+    		if ('href' in $$new_props) $$invalidate('href', href = $$new_props.href);
+    		if ('action' in $$new_props) $$invalidate('action', action = $$new_props.action);
+    		if ('default' in $$new_props) $$invalidate('defaultAction', defaultAction = $$new_props.default);
+    		if ('$$scope' in $$new_props) $$invalidate('$$scope', $$scope = $$new_props.$$scope);
+    	};
+
+    	$$self.$capture_state = () => {
+    		return { use, className, ripple, color, variant, dense, href, action, defaultAction, context, dialogExcludes, props, actionProp, defaultProp };
+    	};
+
+    	$$self.$inject_state = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('use' in $$props) $$invalidate('use', use = $$new_props.use);
+    		if ('className' in $$props) $$invalidate('className', className = $$new_props.className);
+    		if ('ripple' in $$props) $$invalidate('ripple', ripple = $$new_props.ripple);
+    		if ('color' in $$props) $$invalidate('color', color = $$new_props.color);
+    		if ('variant' in $$props) $$invalidate('variant', variant = $$new_props.variant);
+    		if ('dense' in $$props) $$invalidate('dense', dense = $$new_props.dense);
+    		if ('href' in $$props) $$invalidate('href', href = $$new_props.href);
+    		if ('action' in $$props) $$invalidate('action', action = $$new_props.action);
+    		if ('defaultAction' in $$props) $$invalidate('defaultAction', defaultAction = $$new_props.defaultAction);
+    		if ('context' in $$props) $$invalidate('context', context = $$new_props.context);
+    		if ('dialogExcludes' in $$props) $$invalidate('dialogExcludes', dialogExcludes = $$new_props.dialogExcludes);
+    		if ('props' in $$props) $$invalidate('props', props = $$new_props.props);
+    		if ('actionProp' in $$props) $$invalidate('actionProp', actionProp = $$new_props.actionProp);
+    		if ('defaultProp' in $$props) $$invalidate('defaultProp', defaultProp = $$new_props.defaultProp);
+    	};
+
+    	let dialogExcludes, props, actionProp, defaultProp;
+
+    	$$self.$$.update = ($$dirty = { context: 1, $$props: 1, dialogExcludes: 1, action: 1, defaultAction: 1 }) => {
+    		if ($$dirty.context) { $$invalidate('dialogExcludes', dialogExcludes = (context === 'dialog:action') ? ['action', 'default'] : []); }
+    		$$invalidate('props', props = exclude($$props, ['use', 'class', 'ripple', 'color', 'variant', 'dense', 'href', ...dialogExcludes]));
+    		if ($$dirty.context || $$dirty.action) { $$invalidate('actionProp', actionProp = (context === 'dialog:action' && action !== null) ? {'data-mdc-dialog-action': action} : {}); }
+    		if ($$dirty.context || $$dirty.defaultAction) { $$invalidate('defaultProp', defaultProp = (context === 'dialog:action' && defaultAction) ? {'data-mdc-dialog-button-default': ''} : {}); }
+    	};
+
+    	return {
+    		forwardEvents,
+    		use,
+    		className,
+    		ripple,
+    		color,
+    		variant,
+    		dense,
+    		href,
+    		action,
+    		defaultAction,
+    		context,
+    		props,
+    		actionProp,
+    		defaultProp,
+    		$$props: $$props = exclude_internal_props($$props),
+    		$$slots,
+    		$$scope
+    	};
+    }
+
+    class Button extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$9, create_fragment$9, safe_not_equal, ["use", "class", "ripple", "color", "variant", "dense", "href", "action", "default"]);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Button", options, id: create_fragment$9.name });
+    	}
+
+    	get use() {
+    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set use(value) {
+    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get class() {
+    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set class(value) {
+    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get ripple() {
+    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set ripple(value) {
+    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get color() {
+    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set color(value) {
+    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get variant() {
+    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set variant(value) {
+    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get dense() {
+    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set dense(value) {
+    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get href() {
+    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set href(value) {
+    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get action() {
+    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set action(value) {
+    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get default() {
+    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set default(value) {
+    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* node_modules/@smui/common/Label.svelte generated by Svelte v3.12.1 */
+
+    const file$9 = "node_modules/@smui/common/Label.svelte";
+
+    function create_fragment$a(ctx) {
+    	var span, useActions_action, forwardEvents_action, current;
+
+    	const default_slot_template = ctx.$$slots.default;
+    	const default_slot = create_slot(default_slot_template, ctx, null);
+
+    	var span_levels = [
+    		{ class: ctx.className },
+    		ctx.snackbarProps,
+    		exclude(ctx.$$props, ['use', 'class'])
+    	];
+
+    	var span_data = {};
+    	for (var i = 0; i < span_levels.length; i += 1) {
+    		span_data = assign(span_data, span_levels[i]);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			span = element("span");
+
+    			if (default_slot) default_slot.c();
+
+    			set_attributes(span, span_data);
+    			toggle_class(span, "mdc-button__label", ctx.context === 'button');
+    			toggle_class(span, "mdc-fab__label", ctx.context === 'fab');
+    			toggle_class(span, "mdc-chip__text", ctx.context === 'chip');
+    			toggle_class(span, "mdc-tab__text-label", ctx.context === 'tab');
+    			toggle_class(span, "mdc-image-list__label", ctx.context === 'image-list');
+    			toggle_class(span, "mdc-snackbar__label", ctx.context === 'snackbar');
+    			add_location(span, file$9, 0, 0, 0);
+    		},
+
+    		l: function claim(nodes) {
+    			if (default_slot) default_slot.l(span_nodes);
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, span, anchor);
+
+    			if (default_slot) {
+    				default_slot.m(span, null);
+    			}
+
+    			useActions_action = useActions.call(null, span, ctx.use) || {};
+    			forwardEvents_action = ctx.forwardEvents.call(null, span) || {};
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (default_slot && default_slot.p && changed.$$scope) {
+    				default_slot.p(
+    					get_slot_changes(default_slot_template, ctx, changed, null),
+    					get_slot_context(default_slot_template, ctx, null)
+    				);
+    			}
+
+    			set_attributes(span, get_spread_update(span_levels, [
+    				(changed.className) && { class: ctx.className },
+    				(changed.snackbarProps) && ctx.snackbarProps,
+    				(changed.exclude || changed.$$props) && exclude(ctx.$$props, ['use', 'class'])
+    			]));
+
+    			if (typeof useActions_action.update === 'function' && changed.use) {
+    				useActions_action.update.call(null, ctx.use);
+    			}
+
+    			if ((changed.className || changed.context)) {
+    				toggle_class(span, "mdc-button__label", ctx.context === 'button');
+    				toggle_class(span, "mdc-fab__label", ctx.context === 'fab');
+    				toggle_class(span, "mdc-chip__text", ctx.context === 'chip');
+    				toggle_class(span, "mdc-tab__text-label", ctx.context === 'tab');
+    				toggle_class(span, "mdc-image-list__label", ctx.context === 'image-list');
+    				toggle_class(span, "mdc-snackbar__label", ctx.context === 'snackbar');
+    			}
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(default_slot, local);
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(default_slot, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(span);
+    			}
+
+    			if (default_slot) default_slot.d(detaching);
+    			if (useActions_action && typeof useActions_action.destroy === 'function') useActions_action.destroy();
+    			if (forwardEvents_action && typeof forwardEvents_action.destroy === 'function') forwardEvents_action.destroy();
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$a.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$a($$self, $$props, $$invalidate) {
+    	
+
+      const forwardEvents = forwardEventsBuilder(current_component);
+
+      let { use = [], class: className = '' } = $$props;
+
+      const context = getContext('SMUI:label:context');
+
+    	let { $$slots = {}, $$scope } = $$props;
+
+    	$$self.$set = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('use' in $$new_props) $$invalidate('use', use = $$new_props.use);
+    		if ('class' in $$new_props) $$invalidate('className', className = $$new_props.class);
+    		if ('$$scope' in $$new_props) $$invalidate('$$scope', $$scope = $$new_props.$$scope);
+    	};
+
+    	$$self.$capture_state = () => {
+    		return { use, className, snackbarProps };
+    	};
+
+    	$$self.$inject_state = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('use' in $$props) $$invalidate('use', use = $$new_props.use);
+    		if ('className' in $$props) $$invalidate('className', className = $$new_props.className);
+    		if ('snackbarProps' in $$props) $$invalidate('snackbarProps', snackbarProps = $$new_props.snackbarProps);
+    	};
+
+    	let snackbarProps;
+
+    	$$invalidate('snackbarProps', snackbarProps = (context === 'snackbar') ? {role: 'status', 'aria-live': 'polite'} : {});
+
+    	return {
+    		forwardEvents,
+    		use,
+    		className,
+    		context,
+    		snackbarProps,
+    		$$props,
+    		$$props: $$props = exclude_internal_props($$props),
+    		$$slots,
+    		$$scope
+    	};
+    }
+
+    class Label extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$a, create_fragment$a, safe_not_equal, ["use", "class"]);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Label", options, id: create_fragment$a.name });
+    	}
+
+    	get use() {
+    		throw new Error("<Label>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set use(value) {
+    		throw new Error("<Label>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get class() {
+    		throw new Error("<Label>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set class(value) {
+    		throw new Error("<Label>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/components/charts/play-button.svelte generated by Svelte v3.12.1 */
+
+    // (13:0) {:else}
+    function create_else_block$1(ctx) {
+    	var current;
+
+    	var button = new Button({
+    		props: {
+    		variant: "raised",
+    		$$slots: { default: [create_default_slot_2] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+    	button.$on("click", ctx.click_handler_1);
+
+    	const block = {
+    		c: function create() {
+    			button.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(button, target, anchor);
+    			current = true;
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(button.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(button.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(button, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_else_block$1.name, type: "else", source: "(13:0) {:else}", ctx });
+    	return block;
+    }
+
+    // (6:0) {#if $isPlaying}
+    function create_if_block$2(ctx) {
+    	var current;
+
+    	var button = new Button({
+    		props: {
+    		color: "secondary",
+    		variant: "raised",
+    		$$slots: { default: [create_default_slot$2] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+    	button.$on("click", ctx.click_handler);
+
+    	const block = {
+    		c: function create() {
+    			button.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(button, target, anchor);
+    			current = true;
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(button.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(button.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(button, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_if_block$2.name, type: "if", source: "(6:0) {#if $isPlaying}", ctx });
+    	return block;
+    }
+
+    // (15:4) <Label>
+    function create_default_slot_3(ctx) {
+    	var t;
+
+    	const block = {
+    		c: function create() {
+    			t = text("Play");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(t);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_default_slot_3.name, type: "slot", source: "(15:4) <Label>", ctx });
+    	return block;
+    }
+
+    // (14:2) <Button on:click={() => ($isPlaying = true)} variant="raised">
+    function create_default_slot_2(ctx) {
+    	var current;
+
+    	var label = new Label({
+    		props: {
+    		$$slots: { default: [create_default_slot_3] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	const block = {
+    		c: function create() {
+    			label.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(label, target, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var label_changes = {};
+    			if (changed.$$scope) label_changes.$$scope = { changed, ctx };
+    			label.$set(label_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(label.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(label.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(label, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_default_slot_2.name, type: "slot", source: "(14:2) <Button on:click={() => ($isPlaying = true)} variant=\"raised\">", ctx });
+    	return block;
+    }
+
+    // (11:4) <Label>
+    function create_default_slot_1(ctx) {
+    	var t;
+
+    	const block = {
+    		c: function create() {
+    			t = text("Stop");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(t);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_default_slot_1.name, type: "slot", source: "(11:4) <Label>", ctx });
+    	return block;
+    }
+
+    // (7:2) <Button     color="secondary"     on:click={() => ($isPlaying = false)}     variant="raised">
+    function create_default_slot$2(ctx) {
+    	var current;
+
+    	var label = new Label({
+    		props: {
+    		$$slots: { default: [create_default_slot_1] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	const block = {
+    		c: function create() {
+    			label.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(label, target, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var label_changes = {};
+    			if (changed.$$scope) label_changes.$$scope = { changed, ctx };
+    			label.$set(label_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(label.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(label.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(label, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_default_slot$2.name, type: "slot", source: "(7:2) <Button     color=\"secondary\"     on:click={() => ($isPlaying = false)}     variant=\"raised\">", ctx });
+    	return block;
+    }
+
+    function create_fragment$b(ctx) {
+    	var current_block_type_index, if_block, if_block_anchor, current;
+
+    	var if_block_creators = [
+    		create_if_block$2,
+    		create_else_block$1
+    	];
+
+    	var if_blocks = [];
+
+    	function select_block_type(changed, ctx) {
+    		if (ctx.$isPlaying) return 0;
+    		return 1;
+    	}
+
+    	current_block_type_index = select_block_type(null, ctx);
+    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+
+    	const block = {
+    		c: function create() {
+    			if_block.c();
+    			if_block_anchor = empty();
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			if_blocks[current_block_type_index].m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var previous_block_index = current_block_type_index;
+    			current_block_type_index = select_block_type(changed, ctx);
+    			if (current_block_type_index !== previous_block_index) {
+    				group_outros();
+    				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+    					if_blocks[previous_block_index] = null;
+    				});
+    				check_outros();
+
+    				if_block = if_blocks[current_block_type_index];
+    				if (!if_block) {
+    					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    					if_block.c();
+    				}
+    				transition_in(if_block, 1);
+    				if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    			}
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if_blocks[current_block_type_index].d(detaching);
+
+    			if (detaching) {
+    				detach_dev(if_block_anchor);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$b.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$b($$self, $$props, $$invalidate) {
+    	let $isPlaying;
+
+    	validate_store(isPlaying, 'isPlaying');
+    	component_subscribe($$self, isPlaying, $$value => { $isPlaying = $$value; $$invalidate('$isPlaying', $isPlaying); });
+
+    	const click_handler = () => (set_store_value(isPlaying, $isPlaying = false));
+
+    	const click_handler_1 = () => (set_store_value(isPlaying, $isPlaying = true));
+
+    	$$self.$capture_state = () => {
+    		return {};
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ('$isPlaying' in $$props) isPlaying.set($isPlaying);
+    	};
+
+    	return {
+    		$isPlaying,
+    		click_handler,
+    		click_handler_1
+    	};
+    }
+
+    class Play_button extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$b, create_fragment$b, safe_not_equal, []);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Play_button", options, id: create_fragment$b.name });
+    	}
+    }
+
+    /* src/components/page.svelte generated by Svelte v3.12.1 */
+
+    const file$a = "src/components/page.svelte";
+
+    function create_fragment$c(ctx) {
+    	var div, t, current;
+
+    	const default_slot_template = ctx.$$slots.default;
+    	const default_slot = create_slot(default_slot_template, ctx, null);
+
+    	var playbutton = new Play_button({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+
+    			if (default_slot) default_slot.c();
+    			t = space();
+    			playbutton.$$.fragment.c();
+
+    			attr_dev(div, "class", "pageContainer svelte-rwyvhq");
+    			add_location(div, file$a, 14, 0, 240);
+    		},
+
+    		l: function claim(nodes) {
+    			if (default_slot) default_slot.l(div_nodes);
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+
+    			if (default_slot) {
+    				default_slot.m(div, null);
+    			}
+
+    			append_dev(div, t);
+    			mount_component(playbutton, div, null);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (default_slot && default_slot.p && changed.$$scope) {
+    				default_slot.p(
+    					get_slot_changes(default_slot_template, ctx, changed, null),
+    					get_slot_context(default_slot_template, ctx, null)
+    				);
+    			}
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(default_slot, local);
+
+    			transition_in(playbutton.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(default_slot, local);
+    			transition_out(playbutton.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(div);
+    			}
+
+    			if (default_slot) default_slot.d(detaching);
+
+    			destroy_component(playbutton);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$c.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$c($$self, $$props, $$invalidate) {
+    	let { $$slots = {}, $$scope } = $$props;
+
+    	$$self.$set = $$props => {
+    		if ('$$scope' in $$props) $$invalidate('$$scope', $$scope = $$props.$$scope);
+    	};
+
+    	$$self.$capture_state = () => {
+    		return {};
+    	};
+
+    	$$self.$inject_state = $$props => {};
+
+    	return { $$slots, $$scope };
+    }
+
+    class Page extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$c, create_fragment$c, safe_not_equal, []);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Page", options, id: create_fragment$c.name });
+    	}
+    }
+
+    /* src/pages/ranked-wr.svelte generated by Svelte v3.12.1 */
+
+    // (10:0) <Page>
+    function create_default_slot$3(ctx) {
+    	var current;
+
+    	var winratecharts = new Winrate_charts({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			winratecharts.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(winratecharts, target, anchor);
+    			current = true;
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(winratecharts.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(winratecharts.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(winratecharts, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_default_slot$3.name, type: "slot", source: "(10:0) <Page>", ctx });
+    	return block;
+    }
+
+    function create_fragment$d(ctx) {
+    	var current;
+
+    	var page = new Page({
+    		props: {
+    		$$slots: { default: [create_default_slot$3] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	const block = {
+    		c: function create() {
+    			page.$$.fragment.c();
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(page, target, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var page_changes = {};
+    			if (changed.$$scope) page_changes.$$scope = { changed, ctx };
+    			page.$set(page_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(page.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(page.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(page, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$d.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    class Ranked_wr extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, null, create_fragment$d, safe_not_equal, []);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Ranked_wr", options, id: create_fragment$d.name });
+    	}
+    }
+
+    /* src/components/charts/controls/without-bans.svelte generated by Svelte v3.12.1 */
+
+    const file$b = "src/components/charts/controls/without-bans.svelte";
+
+    // (10:4) <span slot="label">
+    function create_label_slot$1(ctx) {
+    	var span;
+
+    	const block = {
+    		c: function create() {
+    			span = element("span");
+    			span.textContent = "without bans";
+    			attr_dev(span, "slot", "label");
+    			add_location(span, file$b, 9, 4, 233);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, span, anchor);
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(span);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_label_slot$1.name, type: "slot", source: "(10:4) <span slot=\"label\">", ctx });
+    	return block;
+    }
+
+    // (8:2) <FormField>
+    function create_default_slot$4(ctx) {
+    	var updating_checked, t, current;
+
+    	function switch_1_checked_binding(value) {
+    		ctx.switch_1_checked_binding.call(null, value);
+    		updating_checked = true;
+    		add_flush_callback(() => updating_checked = false);
+    	}
+
+    	let switch_1_props = {};
+    	if (ctx.$withoutBans !== void 0) {
+    		switch_1_props.checked = ctx.$withoutBans;
+    	}
+    	var switch_1 = new Switch({ props: switch_1_props, $$inline: true });
+
+    	binding_callbacks.push(() => bind(switch_1, 'checked', switch_1_checked_binding));
+
+    	const block = {
+    		c: function create() {
+    			switch_1.$$.fragment.c();
+    			t = space();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(switch_1, target, anchor);
+    			insert_dev(target, t, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var switch_1_changes = {};
+    			if (!updating_checked && changed.$withoutBans) {
+    				switch_1_changes.checked = ctx.$withoutBans;
+    			}
+    			switch_1.$set(switch_1_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(switch_1.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(switch_1.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(switch_1, detaching);
+
+    			if (detaching) {
+    				detach_dev(t);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_default_slot$4.name, type: "slot", source: "(8:2) <FormField>", ctx });
+    	return block;
+    }
+
+    function create_fragment$e(ctx) {
+    	var article, current;
+
+    	var formfield = new FormField({
+    		props: {
+    		$$slots: {
+    		default: [create_default_slot$4],
+    		label: [create_label_slot$1]
+    	},
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	const block = {
+    		c: function create() {
+    			article = element("article");
+    			formfield.$$.fragment.c();
+    			attr_dev(article, "class", "item");
+    			add_location(article, file$b, 6, 0, 149);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, article, anchor);
+    			mount_component(formfield, article, null);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var formfield_changes = {};
+    			if (changed.$$scope || changed.$withoutBans) formfield_changes.$$scope = { changed, ctx };
+    			formfield.$set(formfield_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(formfield.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(formfield.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(article);
+    			}
+
+    			destroy_component(formfield);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$e.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$d($$self, $$props, $$invalidate) {
+    	let $withoutBans;
+
+    	validate_store(withoutBans, 'withoutBans');
+    	component_subscribe($$self, withoutBans, $$value => { $withoutBans = $$value; $$invalidate('$withoutBans', $withoutBans); });
+
+    	function switch_1_checked_binding(value) {
+    		$withoutBans = value;
+    		withoutBans.set($withoutBans);
+    	}
+
+    	$$self.$capture_state = () => {
+    		return {};
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ('$withoutBans' in $$props) withoutBans.set($withoutBans);
+    	};
+
+    	return { $withoutBans, switch_1_checked_binding };
+    }
+
+    class Without_bans extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$d, create_fragment$e, safe_not_equal, []);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Without_bans", options, id: create_fragment$e.name });
+    	}
+    }
+
+    /* src/components/charts/popularity-charts.svelte generated by Svelte v3.12.1 */
+
+    // (83:0) <ChartControls>
+    function create_default_slot$5(ctx) {
+    	var t0, t1, current;
+
+    	var maxheroesslider = new Max_heroes({ $$inline: true });
+
+    	var withoutbansslider = new Without_bans({ $$inline: true });
+
+    	var showbottomswitcher = new Bottom({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			maxheroesslider.$$.fragment.c();
+    			t0 = space();
+    			withoutbansslider.$$.fragment.c();
+    			t1 = space();
+    			showbottomswitcher.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(maxheroesslider, target, anchor);
+    			insert_dev(target, t0, anchor);
+    			mount_component(withoutbansslider, target, anchor);
+    			insert_dev(target, t1, anchor);
+    			mount_component(showbottomswitcher, target, anchor);
+    			current = true;
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(maxheroesslider.$$.fragment, local);
+
+    			transition_in(withoutbansslider.$$.fragment, local);
+
+    			transition_in(showbottomswitcher.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(maxheroesslider.$$.fragment, local);
+    			transition_out(withoutbansslider.$$.fragment, local);
+    			transition_out(showbottomswitcher.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(maxheroesslider, detaching);
+
+    			if (detaching) {
+    				detach_dev(t0);
+    			}
+
+    			destroy_component(withoutbansslider, detaching);
+
+    			if (detaching) {
+    				detach_dev(t1);
+    			}
+
+    			destroy_component(showbottomswitcher, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_default_slot$5.name, type: "slot", source: "(83:0) <ChartControls>", ctx });
+    	return block;
+    }
+
+    function create_fragment$f(ctx) {
+    	var t, current;
+
+    	var chartcontrols = new Chart_controls({
+    		props: {
+    		$$slots: { default: [create_default_slot$5] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	var chartcontainer = new Chart_container({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			chartcontrols.$$.fragment.c();
+    			t = space();
+    			chartcontainer.$$.fragment.c();
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(chartcontrols, target, anchor);
+    			insert_dev(target, t, anchor);
+    			mount_component(chartcontainer, target, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var chartcontrols_changes = {};
+    			if (changed.$$scope) chartcontrols_changes.$$scope = { changed, ctx };
+    			chartcontrols.$set(chartcontrols_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(chartcontrols.$$.fragment, local);
+
+    			transition_in(chartcontainer.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(chartcontrols.$$.fragment, local);
+    			transition_out(chartcontainer.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(chartcontrols, detaching);
+
+    			if (detaching) {
+    				detach_dev(t);
+    			}
+
+    			destroy_component(chartcontainer, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$f.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$e($$self, $$props, $$invalidate) {
+    	let $isPlaying, $rankedData, $withoutBans, $isAtBottom, $maxHeroes;
+
+    	validate_store(isPlaying, 'isPlaying');
+    	component_subscribe($$self, isPlaying, $$value => { $isPlaying = $$value; $$invalidate('$isPlaying', $isPlaying); });
+    	validate_store(rankedData, 'rankedData');
+    	component_subscribe($$self, rankedData, $$value => { $rankedData = $$value; $$invalidate('$rankedData', $rankedData); });
+    	validate_store(withoutBans, 'withoutBans');
+    	component_subscribe($$self, withoutBans, $$value => { $withoutBans = $$value; $$invalidate('$withoutBans', $withoutBans); });
+    	validate_store(isAtBottom, 'isAtBottom');
+    	component_subscribe($$self, isAtBottom, $$value => { $isAtBottom = $$value; $$invalidate('$isAtBottom', $isAtBottom); });
+    	validate_store(maxHeroes, 'maxHeroes');
+    	component_subscribe($$self, maxHeroes, $$value => { $maxHeroes = $$value; $$invalidate('$maxHeroes', $maxHeroes); });
+
+    	
+
+      const xValue = d => d.popularity;
+      const x2Value = d => d.winrate;
+      const onPlayingEnd = () => (set_store_value(isPlaying, $isPlaying = false));
+      const charts = new DoubleBarsHeroesChart({
+        xValue,
+        x2Value,
+        onPlayingEnd
+      });
+
+      onMount(() => {
+        charts.mount();
+      });
+
+      afterUpdate(() => {
+        const { data } = $rankedData;
+        if (data) {
+          const chartData = data.map(d => {
+            const result = {};
+            const { totalGames } = d;
+            result.version = d.version;
+            if ($withoutBans) {
+              result.data = d.data.map(s => ({
+                ...s,
+                popularity: ((s.win + s.lose) / totalGames) * 100
+              }));
+            } else {
+              result.data = d.data.slice();
+            }
+
+            result.data.sort((a, b) => xValue(b) - xValue(a));
+            if ($isAtBottom) {
+              result.data = result.data.slice(result.data.length - $maxHeroes);
+            } else {
+              result.data = result.data.slice(0, $maxHeroes);
+            }
+
+            return result;
+          });
+          const flatValues = chartData.flatMap(ver => ver.data.map(xValue));
+          const xDomain = $isAtBottom
+            ? [min(flatValues) - 2, max(flatValues)]
+            : [min(flatValues) - 10, max(flatValues)];
+          const x2Domain = [0, 100];
+
+          charts.update({
+            data: chartData,
+            xDomain,
+            x2Domain,
+            isPlaying: $isPlaying,
+            isReversed: $isAtBottom
+          });
+        }
+      });
+
+      onDestroy(() => {
+        charts.clearInterval();
+      });
+
+    	$$self.$capture_state = () => {
+    		return {};
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ('$isPlaying' in $$props) isPlaying.set($isPlaying);
+    		if ('$rankedData' in $$props) rankedData.set($rankedData);
+    		if ('$withoutBans' in $$props) withoutBans.set($withoutBans);
+    		if ('$isAtBottom' in $$props) isAtBottom.set($isAtBottom);
+    		if ('$maxHeroes' in $$props) maxHeroes.set($maxHeroes);
+    	};
+
+    	return {};
+    }
+
+    class Popularity_charts extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$e, create_fragment$f, safe_not_equal, []);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Popularity_charts", options, id: create_fragment$f.name });
+    	}
+    }
+
+    /* src/pages/ranked-popularity.svelte generated by Svelte v3.12.1 */
+
+    // (10:0) <Page>
+    function create_default_slot$6(ctx) {
+    	var current;
+
+    	var popcharts = new Popularity_charts({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			popcharts.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(popcharts, target, anchor);
+    			current = true;
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(popcharts.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(popcharts.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(popcharts, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_default_slot$6.name, type: "slot", source: "(10:0) <Page>", ctx });
+    	return block;
+    }
+
+    function create_fragment$g(ctx) {
+    	var current;
+
+    	var page = new Page({
+    		props: {
+    		$$slots: { default: [create_default_slot$6] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	const block = {
+    		c: function create() {
+    			page.$$.fragment.c();
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(page, target, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var page_changes = {};
+    			if (changed.$$scope) page_changes.$$scope = { changed, ctx };
+    			page.$set(page_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(page.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(page.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(page, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$g.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    class Ranked_popularity extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, null, create_fragment$g, safe_not_equal, []);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Ranked_popularity", options, id: create_fragment$g.name });
+    	}
+    }
+
+    /* src/components/charts/banrate-charts.svelte generated by Svelte v3.12.1 */
+
+    // (80:0) <ChartControls>
+    function create_default_slot$7(ctx) {
+    	var t, current;
+
+    	var maxheroesslider = new Max_heroes({ $$inline: true });
+
+    	var showbottomswitcher = new Bottom({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			maxheroesslider.$$.fragment.c();
+    			t = space();
+    			showbottomswitcher.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(maxheroesslider, target, anchor);
+    			insert_dev(target, t, anchor);
+    			mount_component(showbottomswitcher, target, anchor);
+    			current = true;
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(maxheroesslider.$$.fragment, local);
+
+    			transition_in(showbottomswitcher.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(maxheroesslider.$$.fragment, local);
+    			transition_out(showbottomswitcher.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(maxheroesslider, detaching);
+
+    			if (detaching) {
+    				detach_dev(t);
+    			}
+
+    			destroy_component(showbottomswitcher, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_default_slot$7.name, type: "slot", source: "(80:0) <ChartControls>", ctx });
+    	return block;
+    }
+
+    function create_fragment$h(ctx) {
+    	var t, current;
+
+    	var chartcontrols = new Chart_controls({
+    		props: {
+    		$$slots: { default: [create_default_slot$7] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	var chartcontainer = new Chart_container({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			chartcontrols.$$.fragment.c();
+    			t = space();
+    			chartcontainer.$$.fragment.c();
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(chartcontrols, target, anchor);
+    			insert_dev(target, t, anchor);
+    			mount_component(chartcontainer, target, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var chartcontrols_changes = {};
+    			if (changed.$$scope) chartcontrols_changes.$$scope = { changed, ctx };
+    			chartcontrols.$set(chartcontrols_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(chartcontrols.$$.fragment, local);
+
+    			transition_in(chartcontainer.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(chartcontrols.$$.fragment, local);
+    			transition_out(chartcontainer.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(chartcontrols, detaching);
+
+    			if (detaching) {
+    				detach_dev(t);
+    			}
+
+    			destroy_component(chartcontainer, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$h.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$f($$self, $$props, $$invalidate) {
+    	let $isPlaying, $rankedData, $isAtBottom, $maxHeroes;
+
+    	validate_store(isPlaying, 'isPlaying');
+    	component_subscribe($$self, isPlaying, $$value => { $isPlaying = $$value; $$invalidate('$isPlaying', $isPlaying); });
+    	validate_store(rankedData, 'rankedData');
+    	component_subscribe($$self, rankedData, $$value => { $rankedData = $$value; $$invalidate('$rankedData', $rankedData); });
+    	validate_store(isAtBottom, 'isAtBottom');
+    	component_subscribe($$self, isAtBottom, $$value => { $isAtBottom = $$value; $$invalidate('$isAtBottom', $isAtBottom); });
+    	validate_store(maxHeroes, 'maxHeroes');
+    	component_subscribe($$self, maxHeroes, $$value => { $maxHeroes = $$value; $$invalidate('$maxHeroes', $maxHeroes); });
+
+    	
+
+      const xValue = d => d.banrate;
+      const x2Value = d => d.winrate;
+      const onPlayingEnd = () => (set_store_value(isPlaying, $isPlaying = false));
+      const charts = new DoubleBarsHeroesChart({
+        xValue,
+        x2Value,
+        onPlayingEnd
+        // xFormat: format(".3"),
+        // xInterpolate: interpolate
+      });
+
+      onMount(() => {
+        charts.mount();
+      });
+
+      afterUpdate(() => {
+        const { data } = $rankedData;
+        if (data) {
+          const chartData = data.map(d => {
+            const result = {};
+            const { totalGames } = d;
+            result.version = d.version;
+            result.data = d.data.map(s => ({
+              ...s,
+              banrate: (s.ban / totalGames) * 100
+            }));
+
+            result.data.sort((a, b) => xValue(b) - xValue(a));
+            if ($isAtBottom) {
+              result.data = result.data.slice(result.data.length - $maxHeroes);
+            } else {
+              result.data = result.data.slice(0, $maxHeroes);
+            }
+
+            return result;
+          });
+          const flatValues = chartData.flatMap(ver => ver.data.map(xValue));
+          const xDomain = $isAtBottom
+            ? [min(flatValues) - 1, max(flatValues) + 2]
+            : [min(flatValues) - 10, max(flatValues)];
+          const x2Domain = [0, 100];
+
+          charts.update({
+            data: chartData,
+            xDomain,
+            x2Domain,
+            isPlaying: $isPlaying,
+            isReversed: $isAtBottom
+          });
+        }
+      });
+
+      onDestroy(() => {
+        charts.clearInterval();
+      });
+
+    	$$self.$capture_state = () => {
+    		return {};
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ('$isPlaying' in $$props) isPlaying.set($isPlaying);
+    		if ('$rankedData' in $$props) rankedData.set($rankedData);
+    		if ('$isAtBottom' in $$props) isAtBottom.set($isAtBottom);
+    		if ('$maxHeroes' in $$props) maxHeroes.set($maxHeroes);
+    	};
+
+    	return {};
+    }
+
+    class Banrate_charts extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$f, create_fragment$h, safe_not_equal, []);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Banrate_charts", options, id: create_fragment$h.name });
+    	}
+    }
+
+    /* src/pages/banrate.svelte generated by Svelte v3.12.1 */
+
+    // (10:0) <Page>
+    function create_default_slot$8(ctx) {
+    	var current;
+
+    	var banratecharts = new Banrate_charts({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			banratecharts.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(banratecharts, target, anchor);
+    			current = true;
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(banratecharts.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(banratecharts.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(banratecharts, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_default_slot$8.name, type: "slot", source: "(10:0) <Page>", ctx });
+    	return block;
+    }
+
+    function create_fragment$i(ctx) {
+    	var current;
+
+    	var page = new Page({
+    		props: {
+    		$$slots: { default: [create_default_slot$8] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	const block = {
+    		c: function create() {
+    			page.$$.fragment.c();
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(page, target, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var page_changes = {};
+    			if (changed.$$scope) page_changes.$$scope = { changed, ctx };
+    			page.$set(page_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(page.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(page.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(page, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$i.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    class Banrate extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, null, create_fragment$i, safe_not_equal, []);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Banrate", options, id: create_fragment$i.name });
+    	}
+    }
+
+    var router = [
+      {
+        path: '#ranked_wr',
+        component: Ranked_wr
+      },
+      {
+        path: '#ranked_popularity',
+        component: Ranked_popularity
+      },
+      {
+        path: '#banrate',
+        component: Banrate
+      }
+    ];
+
+    /* src/router/route.svelte generated by Svelte v3.12.1 */
+
+    function create_fragment$j(ctx) {
+    	var switch_instance_anchor, current;
+
+    	var switch_value = ctx.component;
+
+    	function switch_props(ctx) {
+    		return { $$inline: true };
+    	}
+
+    	if (switch_value) {
+    		var switch_instance = new switch_value(switch_props());
+    	}
+
+    	const block = {
+    		c: function create() {
+    			if (switch_instance) switch_instance.$$.fragment.c();
+    			switch_instance_anchor = empty();
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			if (switch_instance) {
+    				mount_component(switch_instance, target, anchor);
+    			}
+
+    			insert_dev(target, switch_instance_anchor, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (switch_value !== (switch_value = ctx.component)) {
+    				if (switch_instance) {
+    					group_outros();
+    					const old_component = switch_instance;
+    					transition_out(old_component.$$.fragment, 1, 0, () => {
+    						destroy_component(old_component, 1);
+    					});
+    					check_outros();
+    				}
+
+    				if (switch_value) {
+    					switch_instance = new switch_value(switch_props());
+
+    					switch_instance.$$.fragment.c();
+    					transition_in(switch_instance.$$.fragment, 1);
+    					mount_component(switch_instance, switch_instance_anchor.parentNode, switch_instance_anchor);
+    				} else {
+    					switch_instance = null;
+    				}
+    			}
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			if (switch_instance) transition_in(switch_instance.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			if (switch_instance) transition_out(switch_instance.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(switch_instance_anchor);
+    			}
+
+    			if (switch_instance) destroy_component(switch_instance, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$j.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$g($$self, $$props, $$invalidate) {
+    	let $curRoute;
+
+    	validate_store(curRoute, 'curRoute');
+    	component_subscribe($$self, curRoute, $$value => { $curRoute = $$value; $$invalidate('$curRoute', $curRoute); });
+
+    	
+
+      let component;
+      const unsubscribe = curRoute.subscribe(value => {
+        const curr = router.filter(r => r.path === $curRoute);
+        $$invalidate('component', component = curr.length ? curr[0].component : router[0].component);
+      });
+
+      onDestroy(unsubscribe);
+
+    	$$self.$capture_state = () => {
+    		return {};
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ('component' in $$props) $$invalidate('component', component = $$props.component);
+    		if ('$curRoute' in $$props) curRoute.set($curRoute);
+    	};
+
+    	return { component };
+    }
+
+    class Route extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$g, create_fragment$j, safe_not_equal, []);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Route", options, id: create_fragment$j.name });
+    	}
+    }
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var cssClasses$4 = {
+        ACTIVE: 'mdc-tab-indicator--active',
+        FADE: 'mdc-tab-indicator--fade',
+        NO_TRANSITION: 'mdc-tab-indicator--no-transition',
+    };
+    var strings$4 = {
+        CONTENT_SELECTOR: '.mdc-tab-indicator__content',
+    };
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var MDCTabIndicatorFoundation = /** @class */ (function (_super) {
+        __extends(MDCTabIndicatorFoundation, _super);
+        function MDCTabIndicatorFoundation(adapter) {
+            return _super.call(this, __assign({}, MDCTabIndicatorFoundation.defaultAdapter, adapter)) || this;
+        }
+        Object.defineProperty(MDCTabIndicatorFoundation, "cssClasses", {
+            get: function () {
+                return cssClasses$4;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCTabIndicatorFoundation, "strings", {
+            get: function () {
+                return strings$4;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCTabIndicatorFoundation, "defaultAdapter", {
+            get: function () {
+                // tslint:disable:object-literal-sort-keys Methods should be in the same order as the adapter interface.
+                return {
+                    addClass: function () { return undefined; },
+                    removeClass: function () { return undefined; },
+                    computeContentClientRect: function () { return ({ top: 0, right: 0, bottom: 0, left: 0, width: 0, height: 0 }); },
+                    setContentStyleProperty: function () { return undefined; },
+                };
+                // tslint:enable:object-literal-sort-keys
+            },
+            enumerable: true,
+            configurable: true
+        });
+        MDCTabIndicatorFoundation.prototype.computeContentClientRect = function () {
+            return this.adapter_.computeContentClientRect();
+        };
+        return MDCTabIndicatorFoundation;
+    }(MDCFoundation));
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    /* istanbul ignore next: subclass is not a branch statement */
+    var MDCFadingTabIndicatorFoundation = /** @class */ (function (_super) {
+        __extends(MDCFadingTabIndicatorFoundation, _super);
+        function MDCFadingTabIndicatorFoundation() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        MDCFadingTabIndicatorFoundation.prototype.activate = function () {
+            this.adapter_.addClass(MDCTabIndicatorFoundation.cssClasses.ACTIVE);
+        };
+        MDCFadingTabIndicatorFoundation.prototype.deactivate = function () {
+            this.adapter_.removeClass(MDCTabIndicatorFoundation.cssClasses.ACTIVE);
+        };
+        return MDCFadingTabIndicatorFoundation;
+    }(MDCTabIndicatorFoundation));
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    /* istanbul ignore next: subclass is not a branch statement */
+    var MDCSlidingTabIndicatorFoundation = /** @class */ (function (_super) {
+        __extends(MDCSlidingTabIndicatorFoundation, _super);
+        function MDCSlidingTabIndicatorFoundation() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        MDCSlidingTabIndicatorFoundation.prototype.activate = function (previousIndicatorClientRect) {
+            // Early exit if no indicator is present to handle cases where an indicator
+            // may be activated without a prior indicator state
+            if (!previousIndicatorClientRect) {
+                this.adapter_.addClass(MDCTabIndicatorFoundation.cssClasses.ACTIVE);
+                return;
+            }
+            // This animation uses the FLIP approach. You can read more about it at the link below:
+            // https://aerotwist.com/blog/flip-your-animations/
+            // Calculate the dimensions based on the dimensions of the previous indicator
+            var currentClientRect = this.computeContentClientRect();
+            var widthDelta = previousIndicatorClientRect.width / currentClientRect.width;
+            var xPosition = previousIndicatorClientRect.left - currentClientRect.left;
+            this.adapter_.addClass(MDCTabIndicatorFoundation.cssClasses.NO_TRANSITION);
+            this.adapter_.setContentStyleProperty('transform', "translateX(" + xPosition + "px) scaleX(" + widthDelta + ")");
+            // Force repaint before updating classes and transform to ensure the transform properly takes effect
+            this.computeContentClientRect();
+            this.adapter_.removeClass(MDCTabIndicatorFoundation.cssClasses.NO_TRANSITION);
+            this.adapter_.addClass(MDCTabIndicatorFoundation.cssClasses.ACTIVE);
+            this.adapter_.setContentStyleProperty('transform', '');
+        };
+        MDCSlidingTabIndicatorFoundation.prototype.deactivate = function () {
+            this.adapter_.removeClass(MDCTabIndicatorFoundation.cssClasses.ACTIVE);
+        };
+        return MDCSlidingTabIndicatorFoundation;
+    }(MDCTabIndicatorFoundation));
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var MDCTabIndicator = /** @class */ (function (_super) {
+        __extends(MDCTabIndicator, _super);
+        function MDCTabIndicator() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        MDCTabIndicator.attachTo = function (root) {
+            return new MDCTabIndicator(root);
+        };
+        MDCTabIndicator.prototype.initialize = function () {
+            this.content_ = this.root_.querySelector(MDCTabIndicatorFoundation.strings.CONTENT_SELECTOR);
+        };
+        MDCTabIndicator.prototype.computeContentClientRect = function () {
+            return this.foundation_.computeContentClientRect();
+        };
+        MDCTabIndicator.prototype.getDefaultFoundation = function () {
+            var _this = this;
+            // DO NOT INLINE this variable. For backward compatibility, foundations take a Partial<MDCFooAdapter>.
+            // To ensure we don't accidentally omit any methods, we need a separate, strongly typed adapter variable.
+            // tslint:disable:object-literal-sort-keys Methods should be in the same order as the adapter interface.
+            var adapter = {
+                addClass: function (className) { return _this.root_.classList.add(className); },
+                removeClass: function (className) { return _this.root_.classList.remove(className); },
+                computeContentClientRect: function () { return _this.content_.getBoundingClientRect(); },
+                setContentStyleProperty: function (prop, value) { return _this.content_.style.setProperty(prop, value); },
+            };
+            // tslint:enable:object-literal-sort-keys
+            if (this.root_.classList.contains(MDCTabIndicatorFoundation.cssClasses.FADE)) {
+                return new MDCFadingTabIndicatorFoundation(adapter);
+            }
+            // Default to the sliding indicator
+            return new MDCSlidingTabIndicatorFoundation(adapter);
+        };
+        MDCTabIndicator.prototype.activate = function (previousIndicatorClientRect) {
+            this.foundation_.activate(previousIndicatorClientRect);
+        };
+        MDCTabIndicator.prototype.deactivate = function () {
+            this.foundation_.deactivate();
+        };
+        return MDCTabIndicator;
+    }(MDCComponent));
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var cssClasses$5 = {
+        ACTIVE: 'mdc-tab--active',
+    };
+    var strings$5 = {
+        ARIA_SELECTED: 'aria-selected',
+        CONTENT_SELECTOR: '.mdc-tab__content',
+        INTERACTED_EVENT: 'MDCTab:interacted',
+        RIPPLE_SELECTOR: '.mdc-tab__ripple',
+        TABINDEX: 'tabIndex',
+        TAB_INDICATOR_SELECTOR: '.mdc-tab-indicator',
+    };
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var MDCTabFoundation = /** @class */ (function (_super) {
+        __extends(MDCTabFoundation, _super);
+        function MDCTabFoundation(adapter) {
+            var _this = _super.call(this, __assign({}, MDCTabFoundation.defaultAdapter, adapter)) || this;
+            _this.focusOnActivate_ = true;
+            return _this;
+        }
+        Object.defineProperty(MDCTabFoundation, "cssClasses", {
+            get: function () {
+                return cssClasses$5;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCTabFoundation, "strings", {
+            get: function () {
+                return strings$5;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCTabFoundation, "defaultAdapter", {
+            get: function () {
+                // tslint:disable:object-literal-sort-keys Methods should be in the same order as the adapter interface.
+                return {
+                    addClass: function () { return undefined; },
+                    removeClass: function () { return undefined; },
+                    hasClass: function () { return false; },
+                    setAttr: function () { return undefined; },
+                    activateIndicator: function () { return undefined; },
+                    deactivateIndicator: function () { return undefined; },
+                    notifyInteracted: function () { return undefined; },
+                    getOffsetLeft: function () { return 0; },
+                    getOffsetWidth: function () { return 0; },
+                    getContentOffsetLeft: function () { return 0; },
+                    getContentOffsetWidth: function () { return 0; },
+                    focus: function () { return undefined; },
+                };
+                // tslint:enable:object-literal-sort-keys
+            },
+            enumerable: true,
+            configurable: true
+        });
+        MDCTabFoundation.prototype.handleClick = function () {
+            // It's up to the parent component to keep track of the active Tab and
+            // ensure we don't activate a Tab that's already active.
+            this.adapter_.notifyInteracted();
+        };
+        MDCTabFoundation.prototype.isActive = function () {
+            return this.adapter_.hasClass(cssClasses$5.ACTIVE);
+        };
+        /**
+         * Sets whether the tab should focus itself when activated
+         */
+        MDCTabFoundation.prototype.setFocusOnActivate = function (focusOnActivate) {
+            this.focusOnActivate_ = focusOnActivate;
+        };
+        /**
+         * Activates the Tab
+         */
+        MDCTabFoundation.prototype.activate = function (previousIndicatorClientRect) {
+            this.adapter_.addClass(cssClasses$5.ACTIVE);
+            this.adapter_.setAttr(strings$5.ARIA_SELECTED, 'true');
+            this.adapter_.setAttr(strings$5.TABINDEX, '0');
+            this.adapter_.activateIndicator(previousIndicatorClientRect);
+            if (this.focusOnActivate_) {
+                this.adapter_.focus();
+            }
+        };
+        /**
+         * Deactivates the Tab
+         */
+        MDCTabFoundation.prototype.deactivate = function () {
+            // Early exit
+            if (!this.isActive()) {
+                return;
+            }
+            this.adapter_.removeClass(cssClasses$5.ACTIVE);
+            this.adapter_.setAttr(strings$5.ARIA_SELECTED, 'false');
+            this.adapter_.setAttr(strings$5.TABINDEX, '-1');
+            this.adapter_.deactivateIndicator();
+        };
+        /**
+         * Returns the dimensions of the Tab
+         */
+        MDCTabFoundation.prototype.computeDimensions = function () {
+            var rootWidth = this.adapter_.getOffsetWidth();
+            var rootLeft = this.adapter_.getOffsetLeft();
+            var contentWidth = this.adapter_.getContentOffsetWidth();
+            var contentLeft = this.adapter_.getContentOffsetLeft();
+            return {
+                contentLeft: rootLeft + contentLeft,
+                contentRight: rootLeft + contentLeft + contentWidth,
+                rootLeft: rootLeft,
+                rootRight: rootLeft + rootWidth,
+            };
+        };
+        return MDCTabFoundation;
+    }(MDCFoundation));
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var MDCTab = /** @class */ (function (_super) {
+        __extends(MDCTab, _super);
+        function MDCTab() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        MDCTab.attachTo = function (root) {
+            return new MDCTab(root);
+        };
+        MDCTab.prototype.initialize = function (rippleFactory, tabIndicatorFactory) {
+            if (rippleFactory === void 0) { rippleFactory = function (el, foundation) { return new MDCRipple(el, foundation); }; }
+            if (tabIndicatorFactory === void 0) { tabIndicatorFactory = function (el) { return new MDCTabIndicator(el); }; }
+            this.id = this.root_.id;
+            var rippleSurface = this.root_.querySelector(MDCTabFoundation.strings.RIPPLE_SELECTOR);
+            var rippleAdapter = __assign({}, MDCRipple.createAdapter(this), { addClass: function (className) { return rippleSurface.classList.add(className); }, removeClass: function (className) { return rippleSurface.classList.remove(className); }, updateCssVariable: function (varName, value) { return rippleSurface.style.setProperty(varName, value); } });
+            var rippleFoundation = new MDCRippleFoundation(rippleAdapter);
+            this.ripple_ = rippleFactory(this.root_, rippleFoundation);
+            var tabIndicatorElement = this.root_.querySelector(MDCTabFoundation.strings.TAB_INDICATOR_SELECTOR);
+            this.tabIndicator_ = tabIndicatorFactory(tabIndicatorElement);
+            this.content_ = this.root_.querySelector(MDCTabFoundation.strings.CONTENT_SELECTOR);
+        };
+        MDCTab.prototype.initialSyncWithDOM = function () {
+            var _this = this;
+            this.handleClick_ = function () { return _this.foundation_.handleClick(); };
+            this.listen('click', this.handleClick_);
+        };
+        MDCTab.prototype.destroy = function () {
+            this.unlisten('click', this.handleClick_);
+            this.ripple_.destroy();
+            _super.prototype.destroy.call(this);
+        };
+        MDCTab.prototype.getDefaultFoundation = function () {
+            var _this = this;
+            // DO NOT INLINE this variable. For backward compatibility, foundations take a Partial<MDCFooAdapter>.
+            // To ensure we don't accidentally omit any methods, we need a separate, strongly typed adapter variable.
+            // tslint:disable:object-literal-sort-keys Methods should be in the same order as the adapter interface.
+            var adapter = {
+                setAttr: function (attr, value) { return _this.root_.setAttribute(attr, value); },
+                addClass: function (className) { return _this.root_.classList.add(className); },
+                removeClass: function (className) { return _this.root_.classList.remove(className); },
+                hasClass: function (className) { return _this.root_.classList.contains(className); },
+                activateIndicator: function (previousIndicatorClientRect) { return _this.tabIndicator_.activate(previousIndicatorClientRect); },
+                deactivateIndicator: function () { return _this.tabIndicator_.deactivate(); },
+                notifyInteracted: function () { return _this.emit(MDCTabFoundation.strings.INTERACTED_EVENT, { tabId: _this.id }, true /* bubble */); },
+                getOffsetLeft: function () { return _this.root_.offsetLeft; },
+                getOffsetWidth: function () { return _this.root_.offsetWidth; },
+                getContentOffsetLeft: function () { return _this.content_.offsetLeft; },
+                getContentOffsetWidth: function () { return _this.content_.offsetWidth; },
+                focus: function () { return _this.root_.focus(); },
+            };
+            // tslint:enable:object-literal-sort-keys
+            return new MDCTabFoundation(adapter);
+        };
+        Object.defineProperty(MDCTab.prototype, "active", {
+            /**
+             * Getter for the active state of the tab
+             */
+            get: function () {
+                return this.foundation_.isActive();
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCTab.prototype, "focusOnActivate", {
+            set: function (focusOnActivate) {
+                this.foundation_.setFocusOnActivate(focusOnActivate);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /**
+         * Activates the tab
+         */
+        MDCTab.prototype.activate = function (computeIndicatorClientRect) {
+            this.foundation_.activate(computeIndicatorClientRect);
+        };
+        /**
+         * Deactivates the tab
+         */
+        MDCTab.prototype.deactivate = function () {
+            this.foundation_.deactivate();
+        };
+        /**
+         * Returns the indicator's client rect
+         */
+        MDCTab.prototype.computeIndicatorClientRect = function () {
+            return this.tabIndicator_.computeContentClientRect();
+        };
+        MDCTab.prototype.computeDimensions = function () {
+            return this.foundation_.computeDimensions();
+        };
+        /**
+         * Focuses the tab
+         */
+        MDCTab.prototype.focus = function () {
+            this.root_.focus();
+        };
+        return MDCTab;
+    }(MDCComponent));
+
+    /* node_modules/@smui/tab-indicator/TabIndicator.svelte generated by Svelte v3.12.1 */
+
+    const file$c = "node_modules/@smui/tab-indicator/TabIndicator.svelte";
+
+    function create_fragment$k(ctx) {
+    	var span1, span0, useActions_action, useActions_action_1, forwardEvents_action, current;
+
+    	const default_slot_template = ctx.$$slots.default;
+    	const default_slot = create_slot(default_slot_template, ctx, null);
+
+    	var span0_levels = [
+    		{ class: "mdc-tab-indicator__content " + ctx.content$class },
+    		{ "aria-hidden": ctx.type === 'icon' },
+    		exclude(prefixFilter(ctx.$$props, 'content$'), ['use', 'class'])
+    	];
+
+    	var span0_data = {};
+    	for (var i = 0; i < span0_levels.length; i += 1) {
+    		span0_data = assign(span0_data, span0_levels[i]);
+    	}
+
+    	var span1_levels = [
+    		{ class: "mdc-tab-indicator " + ctx.className },
+    		exclude(ctx.$$props, ['use', 'class', 'active', 'type', 'transition', 'content$'])
+    	];
+
+    	var span1_data = {};
+    	for (var i = 0; i < span1_levels.length; i += 1) {
+    		span1_data = assign(span1_data, span1_levels[i]);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			span1 = element("span");
+    			span0 = element("span");
+
+    			if (default_slot) default_slot.c();
+
+    			set_attributes(span0, span0_data);
+    			toggle_class(span0, "mdc-tab-indicator__content--underline", ctx.type === 'underline');
+    			toggle_class(span0, "mdc-tab-indicator__content--icon", ctx.type === 'icon');
+    			add_location(span0, file$c, 9, 2, 300);
+    			set_attributes(span1, span1_data);
+    			toggle_class(span1, "mdc-tab-indicator--active", ctx.active);
+    			toggle_class(span1, "mdc-tab-indicator--fade", ctx.transition === 'fade');
+    			add_location(span1, file$c, 0, 0, 0);
+    		},
+
+    		l: function claim(nodes) {
+    			if (default_slot) default_slot.l(span0_nodes);
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, span1, anchor);
+    			append_dev(span1, span0);
+
+    			if (default_slot) {
+    				default_slot.m(span0, null);
+    			}
+
+    			useActions_action = useActions.call(null, span0, ctx.content$use) || {};
+    			ctx.span1_binding(span1);
+    			useActions_action_1 = useActions.call(null, span1, ctx.use) || {};
+    			forwardEvents_action = ctx.forwardEvents.call(null, span1) || {};
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (default_slot && default_slot.p && changed.$$scope) {
+    				default_slot.p(
+    					get_slot_changes(default_slot_template, ctx, changed, null),
+    					get_slot_context(default_slot_template, ctx, null)
+    				);
+    			}
+
+    			set_attributes(span0, get_spread_update(span0_levels, [
+    				(changed.content$class) && { class: "mdc-tab-indicator__content " + ctx.content$class },
+    				(changed.type) && { "aria-hidden": ctx.type === 'icon' },
+    				(changed.exclude || changed.prefixFilter || changed.$$props) && exclude(prefixFilter(ctx.$$props, 'content$'), ['use', 'class'])
+    			]));
+
+    			if (typeof useActions_action.update === 'function' && changed.content$use) {
+    				useActions_action.update.call(null, ctx.content$use);
+    			}
+
+    			if ((changed.content$class || changed.type)) {
+    				toggle_class(span0, "mdc-tab-indicator__content--underline", ctx.type === 'underline');
+    				toggle_class(span0, "mdc-tab-indicator__content--icon", ctx.type === 'icon');
+    			}
+
+    			set_attributes(span1, get_spread_update(span1_levels, [
+    				(changed.className) && { class: "mdc-tab-indicator " + ctx.className },
+    				(changed.exclude || changed.$$props) && exclude(ctx.$$props, ['use', 'class', 'active', 'type', 'transition', 'content$'])
+    			]));
+
+    			if (typeof useActions_action_1.update === 'function' && changed.use) {
+    				useActions_action_1.update.call(null, ctx.use);
+    			}
+
+    			if ((changed.className || changed.active)) {
+    				toggle_class(span1, "mdc-tab-indicator--active", ctx.active);
+    			}
+
+    			if ((changed.className || changed.transition)) {
+    				toggle_class(span1, "mdc-tab-indicator--fade", ctx.transition === 'fade');
+    			}
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(default_slot, local);
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(default_slot, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(span1);
+    			}
+
+    			if (default_slot) default_slot.d(detaching);
+    			if (useActions_action && typeof useActions_action.destroy === 'function') useActions_action.destroy();
+    			ctx.span1_binding(null);
+    			if (useActions_action_1 && typeof useActions_action_1.destroy === 'function') useActions_action_1.destroy();
+    			if (forwardEvents_action && typeof forwardEvents_action.destroy === 'function') forwardEvents_action.destroy();
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$k.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$h($$self, $$props, $$invalidate) {
+    	
+
+      const forwardEvents = forwardEventsBuilder(current_component);
+
+      let { use = [], class: className = '', active = false, type = 'underline', transition = 'slide', content$use = [], content$class = '' } = $$props;
+
+      let element;
+      let tabIndicator;
+      let instantiate = getContext('SMUI:tab-indicator:instantiate');
+      let getInstance = getContext('SMUI:tab-indicator:getInstance');
+
+      onMount(async () => {
+        if (instantiate !== false) {
+          tabIndicator = new MDCTabIndicator(element);
+        } else {
+          tabIndicator = await getInstance();
+        }
+      });
+
+      onDestroy(() => {
+        tabIndicator && tabIndicator.destroy();
+      });
+
+      function activate(...args) {
+        return tabIndicator.activate(...args);
+      }
+
+      function deactivate(...args) {
+        return tabIndicator.deactivate(...args);
+      }
+
+      function computeContentClientRect(...args) {
+        return tabIndicator.computeContentClientRect(...args);
+      }
+
+    	let { $$slots = {}, $$scope } = $$props;
+
+    	function span1_binding($$value) {
+    		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+    			$$invalidate('element', element = $$value);
+    		});
+    	}
+
+    	$$self.$set = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('use' in $$new_props) $$invalidate('use', use = $$new_props.use);
+    		if ('class' in $$new_props) $$invalidate('className', className = $$new_props.class);
+    		if ('active' in $$new_props) $$invalidate('active', active = $$new_props.active);
+    		if ('type' in $$new_props) $$invalidate('type', type = $$new_props.type);
+    		if ('transition' in $$new_props) $$invalidate('transition', transition = $$new_props.transition);
+    		if ('content$use' in $$new_props) $$invalidate('content$use', content$use = $$new_props.content$use);
+    		if ('content$class' in $$new_props) $$invalidate('content$class', content$class = $$new_props.content$class);
+    		if ('$$scope' in $$new_props) $$invalidate('$$scope', $$scope = $$new_props.$$scope);
+    	};
+
+    	$$self.$capture_state = () => {
+    		return { use, className, active, type, transition, content$use, content$class, element, tabIndicator, instantiate, getInstance };
+    	};
+
+    	$$self.$inject_state = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('use' in $$props) $$invalidate('use', use = $$new_props.use);
+    		if ('className' in $$props) $$invalidate('className', className = $$new_props.className);
+    		if ('active' in $$props) $$invalidate('active', active = $$new_props.active);
+    		if ('type' in $$props) $$invalidate('type', type = $$new_props.type);
+    		if ('transition' in $$props) $$invalidate('transition', transition = $$new_props.transition);
+    		if ('content$use' in $$props) $$invalidate('content$use', content$use = $$new_props.content$use);
+    		if ('content$class' in $$props) $$invalidate('content$class', content$class = $$new_props.content$class);
+    		if ('element' in $$props) $$invalidate('element', element = $$new_props.element);
+    		if ('tabIndicator' in $$props) tabIndicator = $$new_props.tabIndicator;
+    		if ('instantiate' in $$props) instantiate = $$new_props.instantiate;
+    		if ('getInstance' in $$props) getInstance = $$new_props.getInstance;
+    	};
+
+    	return {
+    		forwardEvents,
+    		use,
+    		className,
+    		active,
+    		type,
+    		transition,
+    		content$use,
+    		content$class,
+    		element,
+    		activate,
+    		deactivate,
+    		computeContentClientRect,
+    		$$props,
+    		span1_binding,
+    		$$props: $$props = exclude_internal_props($$props),
+    		$$slots,
+    		$$scope
+    	};
+    }
+
+    class TabIndicator extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$h, create_fragment$k, safe_not_equal, ["use", "class", "active", "type", "transition", "content$use", "content$class", "activate", "deactivate", "computeContentClientRect"]);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "TabIndicator", options, id: create_fragment$k.name });
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+    		if (ctx.activate === undefined && !('activate' in props)) {
+    			console.warn("<TabIndicator> was created without expected prop 'activate'");
+    		}
+    		if (ctx.deactivate === undefined && !('deactivate' in props)) {
+    			console.warn("<TabIndicator> was created without expected prop 'deactivate'");
+    		}
+    		if (ctx.computeContentClientRect === undefined && !('computeContentClientRect' in props)) {
+    			console.warn("<TabIndicator> was created without expected prop 'computeContentClientRect'");
+    		}
+    	}
+
+    	get use() {
+    		throw new Error("<TabIndicator>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set use(value) {
+    		throw new Error("<TabIndicator>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get class() {
+    		throw new Error("<TabIndicator>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set class(value) {
+    		throw new Error("<TabIndicator>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get active() {
+    		throw new Error("<TabIndicator>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set active(value) {
+    		throw new Error("<TabIndicator>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get type() {
+    		throw new Error("<TabIndicator>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set type(value) {
+    		throw new Error("<TabIndicator>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get transition() {
+    		throw new Error("<TabIndicator>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set transition(value) {
+    		throw new Error("<TabIndicator>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get content$use() {
+    		throw new Error("<TabIndicator>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set content$use(value) {
+    		throw new Error("<TabIndicator>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get content$class() {
+    		throw new Error("<TabIndicator>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set content$class(value) {
+    		throw new Error("<TabIndicator>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get activate() {
+    		return this.$$.ctx.activate;
+    	}
+
+    	set activate(value) {
+    		throw new Error("<TabIndicator>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get deactivate() {
+    		return this.$$.ctx.deactivate;
+    	}
+
+    	set deactivate(value) {
+    		throw new Error("<TabIndicator>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get computeContentClientRect() {
+    		return this.$$.ctx.computeContentClientRect;
+    	}
+
+    	set computeContentClientRect(value) {
+    		throw new Error("<TabIndicator>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* node_modules/@smui/tab/Tab.svelte generated by Svelte v3.12.1 */
+    const { Error: Error_1 } = globals;
+
+    const file$d = "node_modules/@smui/tab/Tab.svelte";
+
+    const get_tab_indicator_slot_changes_1 = () => ({});
+    const get_tab_indicator_slot_context_1 = () => ({});
+
+    const get_tab_indicator_slot_changes = () => ({});
+    const get_tab_indicator_slot_context = () => ({});
+
+    // (21:4) {#if indicatorSpanOnlyContent}
+    function create_if_block_2(ctx) {
+    	var current;
+
+    	var tabindicator_spread_levels = [
+    		{ active: ctx.active },
+    		prefixFilter(ctx.$$props, 'tabIndicator$')
+    	];
+
+    	let tabindicator_props = {
+    		$$slots: { default: [create_default_slot_1$1] },
+    		$$scope: { ctx }
+    	};
+    	for (var i = 0; i < tabindicator_spread_levels.length; i += 1) {
+    		tabindicator_props = assign(tabindicator_props, tabindicator_spread_levels[i]);
+    	}
+    	var tabindicator = new TabIndicator({
+    		props: tabindicator_props,
+    		$$inline: true
+    	});
+
+    	const block = {
+    		c: function create() {
+    			tabindicator.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(tabindicator, target, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var tabindicator_changes = (changed.active || changed.prefixFilter || changed.$$props) ? get_spread_update(tabindicator_spread_levels, [
+    									(changed.active) && { active: ctx.active },
+    			(changed.prefixFilter || changed.$$props) && get_spread_object(prefixFilter(ctx.$$props, 'tabIndicator$'))
+    								]) : {};
+    			if (changed.$$scope) tabindicator_changes.$$scope = { changed, ctx };
+    			tabindicator.$set(tabindicator_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(tabindicator.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(tabindicator.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(tabindicator, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_if_block_2.name, type: "if", source: "(21:4) {#if indicatorSpanOnlyContent}", ctx });
+    	return block;
+    }
+
+    // (22:6) <TabIndicator         {active}         {...prefixFilter($$props, 'tabIndicator$')}       >
+    function create_default_slot_1$1(ctx) {
+    	var current;
+
+    	const tab_indicator_slot_template = ctx.$$slots["tab-indicator"];
+    	const tab_indicator_slot = create_slot(tab_indicator_slot_template, ctx, get_tab_indicator_slot_context);
+
+    	const block = {
+    		c: function create() {
+    			if (tab_indicator_slot) tab_indicator_slot.c();
+    		},
+
+    		l: function claim(nodes) {
+    			if (tab_indicator_slot) tab_indicator_slot.l(nodes);
+    		},
+
+    		m: function mount(target, anchor) {
+    			if (tab_indicator_slot) {
+    				tab_indicator_slot.m(target, anchor);
+    			}
+
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (tab_indicator_slot && tab_indicator_slot.p && changed.$$scope) {
+    				tab_indicator_slot.p(
+    					get_slot_changes(tab_indicator_slot_template, ctx, changed, get_tab_indicator_slot_changes),
+    					get_slot_context(tab_indicator_slot_template, ctx, get_tab_indicator_slot_context)
+    				);
+    			}
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(tab_indicator_slot, local);
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(tab_indicator_slot, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (tab_indicator_slot) tab_indicator_slot.d(detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_default_slot_1$1.name, type: "slot", source: "(22:6) <TabIndicator         {active}         {...prefixFilter($$props, 'tabIndicator$')}       >", ctx });
+    	return block;
+    }
+
+    // (28:2) {#if !indicatorSpanOnlyContent}
+    function create_if_block_1$1(ctx) {
+    	var current;
+
+    	var tabindicator_spread_levels = [
+    		{ active: ctx.active },
+    		prefixFilter(ctx.$$props, 'tabIndicator$')
+    	];
+
+    	let tabindicator_props = {
+    		$$slots: { default: [create_default_slot$9] },
+    		$$scope: { ctx }
+    	};
+    	for (var i = 0; i < tabindicator_spread_levels.length; i += 1) {
+    		tabindicator_props = assign(tabindicator_props, tabindicator_spread_levels[i]);
+    	}
+    	var tabindicator = new TabIndicator({
+    		props: tabindicator_props,
+    		$$inline: true
+    	});
+
+    	const block = {
+    		c: function create() {
+    			tabindicator.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(tabindicator, target, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var tabindicator_changes = (changed.active || changed.prefixFilter || changed.$$props) ? get_spread_update(tabindicator_spread_levels, [
+    									(changed.active) && { active: ctx.active },
+    			(changed.prefixFilter || changed.$$props) && get_spread_object(prefixFilter(ctx.$$props, 'tabIndicator$'))
+    								]) : {};
+    			if (changed.$$scope) tabindicator_changes.$$scope = { changed, ctx };
+    			tabindicator.$set(tabindicator_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(tabindicator.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(tabindicator.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(tabindicator, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_if_block_1$1.name, type: "if", source: "(28:2) {#if !indicatorSpanOnlyContent}", ctx });
+    	return block;
+    }
+
+    // (29:4) <TabIndicator       {active}       {...prefixFilter($$props, 'tabIndicator$')}     >
+    function create_default_slot$9(ctx) {
+    	var current;
+
+    	const tab_indicator_slot_template = ctx.$$slots["tab-indicator"];
+    	const tab_indicator_slot = create_slot(tab_indicator_slot_template, ctx, get_tab_indicator_slot_context_1);
+
+    	const block = {
+    		c: function create() {
+    			if (tab_indicator_slot) tab_indicator_slot.c();
+    		},
+
+    		l: function claim(nodes) {
+    			if (tab_indicator_slot) tab_indicator_slot.l(nodes);
+    		},
+
+    		m: function mount(target, anchor) {
+    			if (tab_indicator_slot) {
+    				tab_indicator_slot.m(target, anchor);
+    			}
+
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (tab_indicator_slot && tab_indicator_slot.p && changed.$$scope) {
+    				tab_indicator_slot.p(
+    					get_slot_changes(tab_indicator_slot_template, ctx, changed, get_tab_indicator_slot_changes_1),
+    					get_slot_context(tab_indicator_slot_template, ctx, get_tab_indicator_slot_context_1)
+    				);
+    			}
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(tab_indicator_slot, local);
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(tab_indicator_slot, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (tab_indicator_slot) tab_indicator_slot.d(detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_default_slot$9.name, type: "slot", source: "(29:4) <TabIndicator       {active}       {...prefixFilter($$props, 'tabIndicator$')}     >", ctx });
+    	return block;
+    }
+
+    // (34:2) {#if ripple}
+    function create_if_block$3(ctx) {
+    	var span;
+
+    	const block = {
+    		c: function create() {
+    			span = element("span");
+    			attr_dev(span, "class", "mdc-tab__ripple");
+    			add_location(span, file$d, 34, 4, 1066);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, span, anchor);
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(span);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_if_block$3.name, type: "if", source: "(34:2) {#if ripple}", ctx });
+    	return block;
+    }
+
+    function create_fragment$l(ctx) {
+    	var button, span, t0, useActions_action, t1, t2, useActions_action_1, forwardEvents_action, current, dispose;
+
+    	const default_slot_template = ctx.$$slots.default;
+    	const default_slot = create_slot(default_slot_template, ctx, null);
+
+    	var if_block0 = (ctx.indicatorSpanOnlyContent) && create_if_block_2(ctx);
+
+    	var span_levels = [
+    		{ class: "mdc-tab__content " + ctx.content$class },
+    		exclude(prefixFilter(ctx.$$props, 'content$'), ['use', 'class'])
+    	];
+
+    	var span_data = {};
+    	for (var i = 0; i < span_levels.length; i += 1) {
+    		span_data = assign(span_data, span_levels[i]);
+    	}
+
+    	var if_block1 = (!ctx.indicatorSpanOnlyContent) && create_if_block_1$1(ctx);
+
+    	var if_block2 = (ctx.ripple) && create_if_block$3(ctx);
+
+    	var button_levels = [
+    		{ class: "mdc-tab " + ctx.className },
+    		{ role: "tab" },
+    		{ "aria-selected": ctx.active },
+    		{ tabindex: ctx.active ? '0' : '-1' },
+    		exclude(ctx.$$props, ['use', 'class', 'ripple', 'active', 'stacked', 'minWidth', 'indicatorSpanOnlyContent', 'focusOnActivate', 'content$', 'tabIndicator$'])
+    	];
+
+    	var button_data = {};
+    	for (var i = 0; i < button_levels.length; i += 1) {
+    		button_data = assign(button_data, button_levels[i]);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			button = element("button");
+    			span = element("span");
+
+    			if (default_slot) default_slot.c();
+    			t0 = space();
+    			if (if_block0) if_block0.c();
+    			t1 = space();
+    			if (if_block1) if_block1.c();
+    			t2 = space();
+    			if (if_block2) if_block2.c();
+
+    			set_attributes(span, span_data);
+    			add_location(span, file$d, 14, 2, 490);
+    			set_attributes(button, button_data);
+    			toggle_class(button, "mdc-tab--active", ctx.active);
+    			toggle_class(button, "mdc-tab--stacked", ctx.stacked);
+    			toggle_class(button, "mdc-tab--min-width", ctx.minWidth);
+    			add_location(button, file$d, 0, 0, 0);
+    			dispose = listen_dev(button, "MDCTab:interacted", ctx.interactedHandler);
+    		},
+
+    		l: function claim(nodes) {
+    			if (default_slot) default_slot.l(span_nodes);
+    			throw new Error_1("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, button, anchor);
+    			append_dev(button, span);
+
+    			if (default_slot) {
+    				default_slot.m(span, null);
+    			}
+
+    			append_dev(span, t0);
+    			if (if_block0) if_block0.m(span, null);
+    			useActions_action = useActions.call(null, span, ctx.content$use) || {};
+    			append_dev(button, t1);
+    			if (if_block1) if_block1.m(button, null);
+    			append_dev(button, t2);
+    			if (if_block2) if_block2.m(button, null);
+    			ctx.button_binding(button);
+    			useActions_action_1 = useActions.call(null, button, ctx.use) || {};
+    			forwardEvents_action = ctx.forwardEvents.call(null, button) || {};
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (default_slot && default_slot.p && changed.$$scope) {
+    				default_slot.p(
+    					get_slot_changes(default_slot_template, ctx, changed, null),
+    					get_slot_context(default_slot_template, ctx, null)
+    				);
+    			}
+
+    			if (ctx.indicatorSpanOnlyContent) {
+    				if (if_block0) {
+    					if_block0.p(changed, ctx);
+    					transition_in(if_block0, 1);
+    				} else {
+    					if_block0 = create_if_block_2(ctx);
+    					if_block0.c();
+    					transition_in(if_block0, 1);
+    					if_block0.m(span, null);
+    				}
+    			} else if (if_block0) {
+    				group_outros();
+    				transition_out(if_block0, 1, 1, () => {
+    					if_block0 = null;
+    				});
+    				check_outros();
+    			}
+
+    			set_attributes(span, get_spread_update(span_levels, [
+    				(changed.content$class) && { class: "mdc-tab__content " + ctx.content$class },
+    				(changed.exclude || changed.prefixFilter || changed.$$props) && exclude(prefixFilter(ctx.$$props, 'content$'), ['use', 'class'])
+    			]));
+
+    			if (typeof useActions_action.update === 'function' && changed.content$use) {
+    				useActions_action.update.call(null, ctx.content$use);
+    			}
+
+    			if (!ctx.indicatorSpanOnlyContent) {
+    				if (if_block1) {
+    					if_block1.p(changed, ctx);
+    					transition_in(if_block1, 1);
+    				} else {
+    					if_block1 = create_if_block_1$1(ctx);
+    					if_block1.c();
+    					transition_in(if_block1, 1);
+    					if_block1.m(button, t2);
+    				}
+    			} else if (if_block1) {
+    				group_outros();
+    				transition_out(if_block1, 1, 1, () => {
+    					if_block1 = null;
+    				});
+    				check_outros();
+    			}
+
+    			if (ctx.ripple) {
+    				if (!if_block2) {
+    					if_block2 = create_if_block$3(ctx);
+    					if_block2.c();
+    					if_block2.m(button, null);
+    				}
+    			} else if (if_block2) {
+    				if_block2.d(1);
+    				if_block2 = null;
+    			}
+
+    			set_attributes(button, get_spread_update(button_levels, [
+    				(changed.className) && { class: "mdc-tab " + ctx.className },
+    				{ role: "tab" },
+    				(changed.active) && { "aria-selected": ctx.active },
+    				(changed.active) && { tabindex: ctx.active ? '0' : '-1' },
+    				(changed.exclude || changed.$$props) && exclude(ctx.$$props, ['use', 'class', 'ripple', 'active', 'stacked', 'minWidth', 'indicatorSpanOnlyContent', 'focusOnActivate', 'content$', 'tabIndicator$'])
+    			]));
+
+    			if (typeof useActions_action_1.update === 'function' && changed.use) {
+    				useActions_action_1.update.call(null, ctx.use);
+    			}
+
+    			if ((changed.className || changed.active)) {
+    				toggle_class(button, "mdc-tab--active", ctx.active);
+    			}
+
+    			if ((changed.className || changed.stacked)) {
+    				toggle_class(button, "mdc-tab--stacked", ctx.stacked);
+    			}
+
+    			if ((changed.className || changed.minWidth)) {
+    				toggle_class(button, "mdc-tab--min-width", ctx.minWidth);
+    			}
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(default_slot, local);
+    			transition_in(if_block0);
+    			transition_in(if_block1);
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(default_slot, local);
+    			transition_out(if_block0);
+    			transition_out(if_block1);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(button);
+    			}
+
+    			if (default_slot) default_slot.d(detaching);
+    			if (if_block0) if_block0.d();
+    			if (useActions_action && typeof useActions_action.destroy === 'function') useActions_action.destroy();
+    			if (if_block1) if_block1.d();
+    			if (if_block2) if_block2.d();
+    			ctx.button_binding(null);
+    			if (useActions_action_1 && typeof useActions_action_1.destroy === 'function') useActions_action_1.destroy();
+    			if (forwardEvents_action && typeof forwardEvents_action.destroy === 'function') forwardEvents_action.destroy();
+    			dispose();
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$l.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$i($$self, $$props, $$invalidate) {
+    	
+
+      const forwardEvents = forwardEventsBuilder(current_component, ['MDCTab:interacted']);
+      let activeEntry = getContext('SMUI:tab:active');
+
+      let { use = [], class: className = '', tab: tabEntry, ripple = true, active = tabEntry === activeEntry, stacked = false, minWidth = false, indicatorSpanOnlyContent = false, focusOnActivate = true, content$use = [], content$class = '' } = $$props;
+
+      let element;
+      let tab;
+      let instantiate = getContext('SMUI:tab:instantiate');
+      let getInstance = getContext('SMUI:tab:getInstance');
+      let tabIndicatorPromiseResolve;
+      let tabIndicatorPromise = new Promise(resolve => tabIndicatorPromiseResolve = resolve);
+
+      setContext('SMUI:tab-indicator:instantiate', false);
+      setContext('SMUI:tab-indicator:getInstance', getTabIndicatorInstancePromise);
+      setContext('SMUI:label:context', 'tab');
+      setContext('SMUI:icon:context', 'tab');
+
+      if (!tabEntry) {
+        throw new Error('The tab property is required! It should be passed down from the TabBar to the Tab.');
+      }
+
+      onMount(async () => {
+        if (instantiate !== false) {
+          $$invalidate('tab', tab = new MDCTab(element));
+        } else {
+          $$invalidate('tab', tab = await getInstance(tabEntry));
+        }
+        tabIndicatorPromiseResolve(tab.tabIndicator_);
+        if (!ripple) {
+          tab.ripple_ && tab.ripple_.destroy();
+        }
+      });
+
+      onDestroy(() => {
+        tab && tab.destroy();
+      });
+
+      function getTabIndicatorInstancePromise() {
+        return tabIndicatorPromise;
+      }
+
+      function interactedHandler() {
+        $$invalidate('active', active = tab.active);
+      }
+
+      function activate(...args) {
+        $$invalidate('active', active = true);
+        return tab.activate(...args);
+      }
+
+      function deactivate(...args) {
+        $$invalidate('active', active = false);
+        return tab.deactivate(...args);
+      }
+
+      function focus(...args) {
+        return tab.focus(...args);
+      }
+
+      function computeIndicatorClientRect(...args) {
+        return tab.computeIndicatorClientRect(...args);
+      }
+
+      function computeDimensions(...args) {
+        return tab.computeDimensions(...args);
+      }
+
+    	let { $$slots = {}, $$scope } = $$props;
+
+    	function button_binding($$value) {
+    		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+    			$$invalidate('element', element = $$value);
+    		});
+    	}
+
+    	$$self.$set = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('use' in $$new_props) $$invalidate('use', use = $$new_props.use);
+    		if ('class' in $$new_props) $$invalidate('className', className = $$new_props.class);
+    		if ('tab' in $$new_props) $$invalidate('tabEntry', tabEntry = $$new_props.tab);
+    		if ('ripple' in $$new_props) $$invalidate('ripple', ripple = $$new_props.ripple);
+    		if ('active' in $$new_props) $$invalidate('active', active = $$new_props.active);
+    		if ('stacked' in $$new_props) $$invalidate('stacked', stacked = $$new_props.stacked);
+    		if ('minWidth' in $$new_props) $$invalidate('minWidth', minWidth = $$new_props.minWidth);
+    		if ('indicatorSpanOnlyContent' in $$new_props) $$invalidate('indicatorSpanOnlyContent', indicatorSpanOnlyContent = $$new_props.indicatorSpanOnlyContent);
+    		if ('focusOnActivate' in $$new_props) $$invalidate('focusOnActivate', focusOnActivate = $$new_props.focusOnActivate);
+    		if ('content$use' in $$new_props) $$invalidate('content$use', content$use = $$new_props.content$use);
+    		if ('content$class' in $$new_props) $$invalidate('content$class', content$class = $$new_props.content$class);
+    		if ('$$scope' in $$new_props) $$invalidate('$$scope', $$scope = $$new_props.$$scope);
+    	};
+
+    	$$self.$capture_state = () => {
+    		return { activeEntry, use, className, tabEntry, ripple, active, stacked, minWidth, indicatorSpanOnlyContent, focusOnActivate, content$use, content$class, element, tab, instantiate, getInstance, tabIndicatorPromiseResolve, tabIndicatorPromise };
+    	};
+
+    	$$self.$inject_state = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('activeEntry' in $$props) activeEntry = $$new_props.activeEntry;
+    		if ('use' in $$props) $$invalidate('use', use = $$new_props.use);
+    		if ('className' in $$props) $$invalidate('className', className = $$new_props.className);
+    		if ('tabEntry' in $$props) $$invalidate('tabEntry', tabEntry = $$new_props.tabEntry);
+    		if ('ripple' in $$props) $$invalidate('ripple', ripple = $$new_props.ripple);
+    		if ('active' in $$props) $$invalidate('active', active = $$new_props.active);
+    		if ('stacked' in $$props) $$invalidate('stacked', stacked = $$new_props.stacked);
+    		if ('minWidth' in $$props) $$invalidate('minWidth', minWidth = $$new_props.minWidth);
+    		if ('indicatorSpanOnlyContent' in $$props) $$invalidate('indicatorSpanOnlyContent', indicatorSpanOnlyContent = $$new_props.indicatorSpanOnlyContent);
+    		if ('focusOnActivate' in $$props) $$invalidate('focusOnActivate', focusOnActivate = $$new_props.focusOnActivate);
+    		if ('content$use' in $$props) $$invalidate('content$use', content$use = $$new_props.content$use);
+    		if ('content$class' in $$props) $$invalidate('content$class', content$class = $$new_props.content$class);
+    		if ('element' in $$props) $$invalidate('element', element = $$new_props.element);
+    		if ('tab' in $$props) $$invalidate('tab', tab = $$new_props.tab);
+    		if ('instantiate' in $$props) instantiate = $$new_props.instantiate;
+    		if ('getInstance' in $$props) getInstance = $$new_props.getInstance;
+    		if ('tabIndicatorPromiseResolve' in $$props) tabIndicatorPromiseResolve = $$new_props.tabIndicatorPromiseResolve;
+    		if ('tabIndicatorPromise' in $$props) tabIndicatorPromise = $$new_props.tabIndicatorPromise;
+    	};
+
+    	$$self.$$.update = ($$dirty = { tab: 1, focusOnActivate: 1, active: 1 }) => {
+    		if ($$dirty.tab || $$dirty.focusOnActivate) { if (tab) {
+            $$invalidate('tab', tab.focusOnActivate = focusOnActivate, tab);
+          } }
+    		if ($$dirty.tab || $$dirty.active) { if (tab && tab.active !== active) {
+            $$invalidate('active', active = tab.active);
+          } }
+    	};
+
+    	return {
+    		forwardEvents,
+    		use,
+    		className,
+    		tabEntry,
+    		ripple,
+    		active,
+    		stacked,
+    		minWidth,
+    		indicatorSpanOnlyContent,
+    		focusOnActivate,
+    		content$use,
+    		content$class,
+    		element,
+    		interactedHandler,
+    		activate,
+    		deactivate,
+    		focus,
+    		computeIndicatorClientRect,
+    		computeDimensions,
+    		$$props,
+    		button_binding,
+    		$$props: $$props = exclude_internal_props($$props),
+    		$$slots,
+    		$$scope
+    	};
+    }
+
+    class Tab extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$i, create_fragment$l, safe_not_equal, ["use", "class", "tab", "ripple", "active", "stacked", "minWidth", "indicatorSpanOnlyContent", "focusOnActivate", "content$use", "content$class", "activate", "deactivate", "focus", "computeIndicatorClientRect", "computeDimensions"]);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Tab", options, id: create_fragment$l.name });
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+    		if (ctx.tabEntry === undefined && !('tab' in props)) {
+    			console.warn("<Tab> was created without expected prop 'tab'");
+    		}
+    		if (ctx.activate === undefined && !('activate' in props)) {
+    			console.warn("<Tab> was created without expected prop 'activate'");
+    		}
+    		if (ctx.deactivate === undefined && !('deactivate' in props)) {
+    			console.warn("<Tab> was created without expected prop 'deactivate'");
+    		}
+    		if (ctx.focus === undefined && !('focus' in props)) {
+    			console.warn("<Tab> was created without expected prop 'focus'");
+    		}
+    		if (ctx.computeIndicatorClientRect === undefined && !('computeIndicatorClientRect' in props)) {
+    			console.warn("<Tab> was created without expected prop 'computeIndicatorClientRect'");
+    		}
+    		if (ctx.computeDimensions === undefined && !('computeDimensions' in props)) {
+    			console.warn("<Tab> was created without expected prop 'computeDimensions'");
+    		}
+    	}
+
+    	get use() {
+    		throw new Error_1("<Tab>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set use(value) {
+    		throw new Error_1("<Tab>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get class() {
+    		throw new Error_1("<Tab>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set class(value) {
+    		throw new Error_1("<Tab>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get tab() {
+    		throw new Error_1("<Tab>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set tab(value) {
+    		throw new Error_1("<Tab>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get ripple() {
+    		throw new Error_1("<Tab>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set ripple(value) {
+    		throw new Error_1("<Tab>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get active() {
+    		throw new Error_1("<Tab>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set active(value) {
+    		throw new Error_1("<Tab>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get stacked() {
+    		throw new Error_1("<Tab>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set stacked(value) {
+    		throw new Error_1("<Tab>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get minWidth() {
+    		throw new Error_1("<Tab>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set minWidth(value) {
+    		throw new Error_1("<Tab>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get indicatorSpanOnlyContent() {
+    		throw new Error_1("<Tab>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set indicatorSpanOnlyContent(value) {
+    		throw new Error_1("<Tab>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get focusOnActivate() {
+    		throw new Error_1("<Tab>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set focusOnActivate(value) {
+    		throw new Error_1("<Tab>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get content$use() {
+    		throw new Error_1("<Tab>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set content$use(value) {
+    		throw new Error_1("<Tab>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get content$class() {
+    		throw new Error_1("<Tab>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set content$class(value) {
+    		throw new Error_1("<Tab>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get activate() {
+    		return this.$$.ctx.activate;
+    	}
+
+    	set activate(value) {
+    		throw new Error_1("<Tab>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get deactivate() {
+    		return this.$$.ctx.deactivate;
+    	}
+
+    	set deactivate(value) {
+    		throw new Error_1("<Tab>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get focus() {
+    		return this.$$.ctx.focus;
+    	}
+
+    	set focus(value) {
+    		throw new Error_1("<Tab>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get computeIndicatorClientRect() {
+    		return this.$$.ctx.computeIndicatorClientRect;
+    	}
+
+    	set computeIndicatorClientRect(value) {
+    		throw new Error_1("<Tab>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get computeDimensions() {
+    		return this.$$.ctx.computeDimensions;
+    	}
+
+    	set computeDimensions(value) {
+    		throw new Error_1("<Tab>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var cssClasses$6 = {
+        ANIMATING: 'mdc-tab-scroller--animating',
+        SCROLL_AREA_SCROLL: 'mdc-tab-scroller__scroll-area--scroll',
+        SCROLL_TEST: 'mdc-tab-scroller__test',
+    };
+    var strings$6 = {
+        AREA_SELECTOR: '.mdc-tab-scroller__scroll-area',
+        CONTENT_SELECTOR: '.mdc-tab-scroller__scroll-content',
+    };
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var MDCTabScrollerRTL = /** @class */ (function () {
+        function MDCTabScrollerRTL(adapter) {
+            this.adapter_ = adapter;
+        }
+        return MDCTabScrollerRTL;
+    }());
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var MDCTabScrollerRTLDefault = /** @class */ (function (_super) {
+        __extends(MDCTabScrollerRTLDefault, _super);
+        function MDCTabScrollerRTLDefault() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        MDCTabScrollerRTLDefault.prototype.getScrollPositionRTL = function () {
+            var currentScrollLeft = this.adapter_.getScrollAreaScrollLeft();
+            var right = this.calculateScrollEdges_().right;
+            // Scroll values on most browsers are ints instead of floats so we round
+            return Math.round(right - currentScrollLeft);
+        };
+        MDCTabScrollerRTLDefault.prototype.scrollToRTL = function (scrollX) {
+            var edges = this.calculateScrollEdges_();
+            var currentScrollLeft = this.adapter_.getScrollAreaScrollLeft();
+            var clampedScrollLeft = this.clampScrollValue_(edges.right - scrollX);
+            return {
+                finalScrollPosition: clampedScrollLeft,
+                scrollDelta: clampedScrollLeft - currentScrollLeft,
+            };
+        };
+        MDCTabScrollerRTLDefault.prototype.incrementScrollRTL = function (scrollX) {
+            var currentScrollLeft = this.adapter_.getScrollAreaScrollLeft();
+            var clampedScrollLeft = this.clampScrollValue_(currentScrollLeft - scrollX);
+            return {
+                finalScrollPosition: clampedScrollLeft,
+                scrollDelta: clampedScrollLeft - currentScrollLeft,
+            };
+        };
+        MDCTabScrollerRTLDefault.prototype.getAnimatingScrollPosition = function (scrollX) {
+            return scrollX;
+        };
+        MDCTabScrollerRTLDefault.prototype.calculateScrollEdges_ = function () {
+            var contentWidth = this.adapter_.getScrollContentOffsetWidth();
+            var rootWidth = this.adapter_.getScrollAreaOffsetWidth();
+            return {
+                left: 0,
+                right: contentWidth - rootWidth,
+            };
+        };
+        MDCTabScrollerRTLDefault.prototype.clampScrollValue_ = function (scrollX) {
+            var edges = this.calculateScrollEdges_();
+            return Math.min(Math.max(edges.left, scrollX), edges.right);
+        };
+        return MDCTabScrollerRTLDefault;
+    }(MDCTabScrollerRTL));
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var MDCTabScrollerRTLNegative = /** @class */ (function (_super) {
+        __extends(MDCTabScrollerRTLNegative, _super);
+        function MDCTabScrollerRTLNegative() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        MDCTabScrollerRTLNegative.prototype.getScrollPositionRTL = function (translateX) {
+            var currentScrollLeft = this.adapter_.getScrollAreaScrollLeft();
+            return Math.round(translateX - currentScrollLeft);
+        };
+        MDCTabScrollerRTLNegative.prototype.scrollToRTL = function (scrollX) {
+            var currentScrollLeft = this.adapter_.getScrollAreaScrollLeft();
+            var clampedScrollLeft = this.clampScrollValue_(-scrollX);
+            return {
+                finalScrollPosition: clampedScrollLeft,
+                scrollDelta: clampedScrollLeft - currentScrollLeft,
+            };
+        };
+        MDCTabScrollerRTLNegative.prototype.incrementScrollRTL = function (scrollX) {
+            var currentScrollLeft = this.adapter_.getScrollAreaScrollLeft();
+            var clampedScrollLeft = this.clampScrollValue_(currentScrollLeft - scrollX);
+            return {
+                finalScrollPosition: clampedScrollLeft,
+                scrollDelta: clampedScrollLeft - currentScrollLeft,
+            };
+        };
+        MDCTabScrollerRTLNegative.prototype.getAnimatingScrollPosition = function (scrollX, translateX) {
+            return scrollX - translateX;
+        };
+        MDCTabScrollerRTLNegative.prototype.calculateScrollEdges_ = function () {
+            var contentWidth = this.adapter_.getScrollContentOffsetWidth();
+            var rootWidth = this.adapter_.getScrollAreaOffsetWidth();
+            return {
+                left: rootWidth - contentWidth,
+                right: 0,
+            };
+        };
+        MDCTabScrollerRTLNegative.prototype.clampScrollValue_ = function (scrollX) {
+            var edges = this.calculateScrollEdges_();
+            return Math.max(Math.min(edges.right, scrollX), edges.left);
+        };
+        return MDCTabScrollerRTLNegative;
+    }(MDCTabScrollerRTL));
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var MDCTabScrollerRTLReverse = /** @class */ (function (_super) {
+        __extends(MDCTabScrollerRTLReverse, _super);
+        function MDCTabScrollerRTLReverse() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        MDCTabScrollerRTLReverse.prototype.getScrollPositionRTL = function (translateX) {
+            var currentScrollLeft = this.adapter_.getScrollAreaScrollLeft();
+            // Scroll values on most browsers are ints instead of floats so we round
+            return Math.round(currentScrollLeft - translateX);
+        };
+        MDCTabScrollerRTLReverse.prototype.scrollToRTL = function (scrollX) {
+            var currentScrollLeft = this.adapter_.getScrollAreaScrollLeft();
+            var clampedScrollLeft = this.clampScrollValue_(scrollX);
+            return {
+                finalScrollPosition: clampedScrollLeft,
+                scrollDelta: currentScrollLeft - clampedScrollLeft,
+            };
+        };
+        MDCTabScrollerRTLReverse.prototype.incrementScrollRTL = function (scrollX) {
+            var currentScrollLeft = this.adapter_.getScrollAreaScrollLeft();
+            var clampedScrollLeft = this.clampScrollValue_(currentScrollLeft + scrollX);
+            return {
+                finalScrollPosition: clampedScrollLeft,
+                scrollDelta: currentScrollLeft - clampedScrollLeft,
+            };
+        };
+        MDCTabScrollerRTLReverse.prototype.getAnimatingScrollPosition = function (scrollX, translateX) {
+            return scrollX + translateX;
+        };
+        MDCTabScrollerRTLReverse.prototype.calculateScrollEdges_ = function () {
+            var contentWidth = this.adapter_.getScrollContentOffsetWidth();
+            var rootWidth = this.adapter_.getScrollAreaOffsetWidth();
+            return {
+                left: contentWidth - rootWidth,
+                right: 0,
+            };
+        };
+        MDCTabScrollerRTLReverse.prototype.clampScrollValue_ = function (scrollX) {
+            var edges = this.calculateScrollEdges_();
+            return Math.min(Math.max(edges.right, scrollX), edges.left);
+        };
+        return MDCTabScrollerRTLReverse;
+    }(MDCTabScrollerRTL));
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var MDCTabScrollerFoundation = /** @class */ (function (_super) {
+        __extends(MDCTabScrollerFoundation, _super);
+        function MDCTabScrollerFoundation(adapter) {
+            var _this = _super.call(this, __assign({}, MDCTabScrollerFoundation.defaultAdapter, adapter)) || this;
+            /**
+             * Controls whether we should handle the transitionend and interaction events during the animation.
+             */
+            _this.isAnimating_ = false;
+            return _this;
+        }
+        Object.defineProperty(MDCTabScrollerFoundation, "cssClasses", {
+            get: function () {
+                return cssClasses$6;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCTabScrollerFoundation, "strings", {
+            get: function () {
+                return strings$6;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCTabScrollerFoundation, "defaultAdapter", {
+            get: function () {
+                // tslint:disable:object-literal-sort-keys Methods should be in the same order as the adapter interface.
+                return {
+                    eventTargetMatchesSelector: function () { return false; },
+                    addClass: function () { return undefined; },
+                    removeClass: function () { return undefined; },
+                    addScrollAreaClass: function () { return undefined; },
+                    setScrollAreaStyleProperty: function () { return undefined; },
+                    setScrollContentStyleProperty: function () { return undefined; },
+                    getScrollContentStyleValue: function () { return ''; },
+                    setScrollAreaScrollLeft: function () { return undefined; },
+                    getScrollAreaScrollLeft: function () { return 0; },
+                    getScrollContentOffsetWidth: function () { return 0; },
+                    getScrollAreaOffsetWidth: function () { return 0; },
+                    computeScrollAreaClientRect: function () { return ({ top: 0, right: 0, bottom: 0, left: 0, width: 0, height: 0 }); },
+                    computeScrollContentClientRect: function () { return ({ top: 0, right: 0, bottom: 0, left: 0, width: 0, height: 0 }); },
+                    computeHorizontalScrollbarHeight: function () { return 0; },
+                };
+                // tslint:enable:object-literal-sort-keys
+            },
+            enumerable: true,
+            configurable: true
+        });
+        MDCTabScrollerFoundation.prototype.init = function () {
+            // Compute horizontal scrollbar height on scroller with overflow initially hidden, then update overflow to scroll
+            // and immediately adjust bottom margin to avoid the scrollbar initially appearing before JS runs.
+            var horizontalScrollbarHeight = this.adapter_.computeHorizontalScrollbarHeight();
+            this.adapter_.setScrollAreaStyleProperty('margin-bottom', -horizontalScrollbarHeight + 'px');
+            this.adapter_.addScrollAreaClass(MDCTabScrollerFoundation.cssClasses.SCROLL_AREA_SCROLL);
+        };
+        /**
+         * Computes the current visual scroll position
+         */
+        MDCTabScrollerFoundation.prototype.getScrollPosition = function () {
+            if (this.isRTL_()) {
+                return this.computeCurrentScrollPositionRTL_();
+            }
+            var currentTranslateX = this.calculateCurrentTranslateX_();
+            var scrollLeft = this.adapter_.getScrollAreaScrollLeft();
+            return scrollLeft - currentTranslateX;
+        };
+        /**
+         * Handles interaction events that occur during transition
+         */
+        MDCTabScrollerFoundation.prototype.handleInteraction = function () {
+            // Early exit if we aren't animating
+            if (!this.isAnimating_) {
+                return;
+            }
+            // Prevent other event listeners from handling this event
+            this.stopScrollAnimation_();
+        };
+        /**
+         * Handles the transitionend event
+         */
+        MDCTabScrollerFoundation.prototype.handleTransitionEnd = function (evt) {
+            // Early exit if we aren't animating or the event was triggered by a different element.
+            var evtTarget = evt.target;
+            if (!this.isAnimating_ ||
+                !this.adapter_.eventTargetMatchesSelector(evtTarget, MDCTabScrollerFoundation.strings.CONTENT_SELECTOR)) {
+                return;
+            }
+            this.isAnimating_ = false;
+            this.adapter_.removeClass(MDCTabScrollerFoundation.cssClasses.ANIMATING);
+        };
+        /**
+         * Increment the scroll value by the scrollXIncrement
+         * @param scrollXIncrement The value by which to increment the scroll position
+         */
+        MDCTabScrollerFoundation.prototype.incrementScroll = function (scrollXIncrement) {
+            // Early exit for non-operational increment values
+            if (scrollXIncrement === 0) {
+                return;
+            }
+            if (this.isRTL_()) {
+                return this.incrementScrollRTL_(scrollXIncrement);
+            }
+            this.incrementScroll_(scrollXIncrement);
+        };
+        /**
+         * Scrolls to the given scrollX value
+         */
+        MDCTabScrollerFoundation.prototype.scrollTo = function (scrollX) {
+            if (this.isRTL_()) {
+                return this.scrollToRTL_(scrollX);
+            }
+            this.scrollTo_(scrollX);
+        };
+        /**
+         * @return Browser-specific {@link MDCTabScrollerRTL} instance.
+         */
+        MDCTabScrollerFoundation.prototype.getRTLScroller = function () {
+            if (!this.rtlScrollerInstance_) {
+                this.rtlScrollerInstance_ = this.rtlScrollerFactory_();
+            }
+            return this.rtlScrollerInstance_;
+        };
+        /**
+         * @return translateX value from a CSS matrix transform function string.
+         */
+        MDCTabScrollerFoundation.prototype.calculateCurrentTranslateX_ = function () {
+            var transformValue = this.adapter_.getScrollContentStyleValue('transform');
+            // Early exit if no transform is present
+            if (transformValue === 'none') {
+                return 0;
+            }
+            // The transform value comes back as a matrix transformation in the form
+            // of `matrix(a, b, c, d, tx, ty)`. We only care about tx (translateX) so
+            // we're going to grab all the parenthesized values, strip out tx, and
+            // parse it.
+            var match = /\((.+?)\)/.exec(transformValue);
+            if (!match) {
+                return 0;
+            }
+            var matrixParams = match[1];
+            // tslint:disable-next-line:ban-ts-ignore "Unused vars" should be a linter warning, not a compiler error.
+            // @ts-ignore These unused variables should retain their semantic names for clarity.
+            var _a = __read(matrixParams.split(','), 6), a = _a[0], b = _a[1], c = _a[2], d = _a[3], tx = _a[4], ty = _a[5];
+            return parseFloat(tx); // tslint:disable-line:ban
+        };
+        /**
+         * Calculates a safe scroll value that is > 0 and < the max scroll value
+         * @param scrollX The distance to scroll
+         */
+        MDCTabScrollerFoundation.prototype.clampScrollValue_ = function (scrollX) {
+            var edges = this.calculateScrollEdges_();
+            return Math.min(Math.max(edges.left, scrollX), edges.right);
+        };
+        MDCTabScrollerFoundation.prototype.computeCurrentScrollPositionRTL_ = function () {
+            var translateX = this.calculateCurrentTranslateX_();
+            return this.getRTLScroller().getScrollPositionRTL(translateX);
+        };
+        MDCTabScrollerFoundation.prototype.calculateScrollEdges_ = function () {
+            var contentWidth = this.adapter_.getScrollContentOffsetWidth();
+            var rootWidth = this.adapter_.getScrollAreaOffsetWidth();
+            return {
+                left: 0,
+                right: contentWidth - rootWidth,
+            };
+        };
+        /**
+         * Internal scroll method
+         * @param scrollX The new scroll position
+         */
+        MDCTabScrollerFoundation.prototype.scrollTo_ = function (scrollX) {
+            var currentScrollX = this.getScrollPosition();
+            var safeScrollX = this.clampScrollValue_(scrollX);
+            var scrollDelta = safeScrollX - currentScrollX;
+            this.animate_({
+                finalScrollPosition: safeScrollX,
+                scrollDelta: scrollDelta,
+            });
+        };
+        /**
+         * Internal RTL scroll method
+         * @param scrollX The new scroll position
+         */
+        MDCTabScrollerFoundation.prototype.scrollToRTL_ = function (scrollX) {
+            var animation = this.getRTLScroller().scrollToRTL(scrollX);
+            this.animate_(animation);
+        };
+        /**
+         * Internal increment scroll method
+         * @param scrollX The new scroll position increment
+         */
+        MDCTabScrollerFoundation.prototype.incrementScroll_ = function (scrollX) {
+            var currentScrollX = this.getScrollPosition();
+            var targetScrollX = scrollX + currentScrollX;
+            var safeScrollX = this.clampScrollValue_(targetScrollX);
+            var scrollDelta = safeScrollX - currentScrollX;
+            this.animate_({
+                finalScrollPosition: safeScrollX,
+                scrollDelta: scrollDelta,
+            });
+        };
+        /**
+         * Internal increment scroll RTL method
+         * @param scrollX The new scroll position RTL increment
+         */
+        MDCTabScrollerFoundation.prototype.incrementScrollRTL_ = function (scrollX) {
+            var animation = this.getRTLScroller().incrementScrollRTL(scrollX);
+            this.animate_(animation);
+        };
+        /**
+         * Animates the tab scrolling
+         * @param animation The animation to apply
+         */
+        MDCTabScrollerFoundation.prototype.animate_ = function (animation) {
+            var _this = this;
+            // Early exit if translateX is 0, which means there's no animation to perform
+            if (animation.scrollDelta === 0) {
+                return;
+            }
+            this.stopScrollAnimation_();
+            // This animation uses the FLIP approach.
+            // Read more here: https://aerotwist.com/blog/flip-your-animations/
+            this.adapter_.setScrollAreaScrollLeft(animation.finalScrollPosition);
+            this.adapter_.setScrollContentStyleProperty('transform', "translateX(" + animation.scrollDelta + "px)");
+            // Force repaint
+            this.adapter_.computeScrollAreaClientRect();
+            requestAnimationFrame(function () {
+                _this.adapter_.addClass(MDCTabScrollerFoundation.cssClasses.ANIMATING);
+                _this.adapter_.setScrollContentStyleProperty('transform', 'none');
+            });
+            this.isAnimating_ = true;
+        };
+        /**
+         * Stops scroll animation
+         */
+        MDCTabScrollerFoundation.prototype.stopScrollAnimation_ = function () {
+            this.isAnimating_ = false;
+            var currentScrollPosition = this.getAnimatingScrollPosition_();
+            this.adapter_.removeClass(MDCTabScrollerFoundation.cssClasses.ANIMATING);
+            this.adapter_.setScrollContentStyleProperty('transform', 'translateX(0px)');
+            this.adapter_.setScrollAreaScrollLeft(currentScrollPosition);
+        };
+        /**
+         * Gets the current scroll position during animation
+         */
+        MDCTabScrollerFoundation.prototype.getAnimatingScrollPosition_ = function () {
+            var currentTranslateX = this.calculateCurrentTranslateX_();
+            var scrollLeft = this.adapter_.getScrollAreaScrollLeft();
+            if (this.isRTL_()) {
+                return this.getRTLScroller().getAnimatingScrollPosition(scrollLeft, currentTranslateX);
+            }
+            return scrollLeft - currentTranslateX;
+        };
+        /**
+         * Determines the RTL Scroller to use
+         */
+        MDCTabScrollerFoundation.prototype.rtlScrollerFactory_ = function () {
+            // Browsers have three different implementations of scrollLeft in RTL mode,
+            // dependent on the browser. The behavior is based off the max LTR
+            // scrollLeft value and 0.
+            //
+            // * Default scrolling in RTL *
+            //    - Left-most value: 0
+            //    - Right-most value: Max LTR scrollLeft value
+            //
+            // * Negative scrolling in RTL *
+            //    - Left-most value: Negated max LTR scrollLeft value
+            //    - Right-most value: 0
+            //
+            // * Reverse scrolling in RTL *
+            //    - Left-most value: Max LTR scrollLeft value
+            //    - Right-most value: 0
+            //
+            // We use those principles below to determine which RTL scrollLeft
+            // behavior is implemented in the current browser.
+            var initialScrollLeft = this.adapter_.getScrollAreaScrollLeft();
+            this.adapter_.setScrollAreaScrollLeft(initialScrollLeft - 1);
+            var newScrollLeft = this.adapter_.getScrollAreaScrollLeft();
+            // If the newScrollLeft value is negative,then we know that the browser has
+            // implemented negative RTL scrolling, since all other implementations have
+            // only positive values.
+            if (newScrollLeft < 0) {
+                // Undo the scrollLeft test check
+                this.adapter_.setScrollAreaScrollLeft(initialScrollLeft);
+                return new MDCTabScrollerRTLNegative(this.adapter_);
+            }
+            var rootClientRect = this.adapter_.computeScrollAreaClientRect();
+            var contentClientRect = this.adapter_.computeScrollContentClientRect();
+            var rightEdgeDelta = Math.round(contentClientRect.right - rootClientRect.right);
+            // Undo the scrollLeft test check
+            this.adapter_.setScrollAreaScrollLeft(initialScrollLeft);
+            // By calculating the clientRect of the root element and the clientRect of
+            // the content element, we can determine how much the scroll value changed
+            // when we performed the scrollLeft subtraction above.
+            if (rightEdgeDelta === newScrollLeft) {
+                return new MDCTabScrollerRTLReverse(this.adapter_);
+            }
+            return new MDCTabScrollerRTLDefault(this.adapter_);
+        };
+        MDCTabScrollerFoundation.prototype.isRTL_ = function () {
+            return this.adapter_.getScrollContentStyleValue('direction') === 'rtl';
+        };
+        return MDCTabScrollerFoundation;
+    }(MDCFoundation));
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    /**
+     * Stores result from computeHorizontalScrollbarHeight to avoid redundant processing.
+     */
+    var horizontalScrollbarHeight_;
+    /**
+     * Computes the height of browser-rendered horizontal scrollbars using a self-created test element.
+     * May return 0 (e.g. on OS X browsers under default configuration).
+     */
+    function computeHorizontalScrollbarHeight(documentObj, shouldCacheResult) {
+        if (shouldCacheResult === void 0) { shouldCacheResult = true; }
+        if (shouldCacheResult && typeof horizontalScrollbarHeight_ !== 'undefined') {
+            return horizontalScrollbarHeight_;
+        }
+        var el = documentObj.createElement('div');
+        el.classList.add(cssClasses$6.SCROLL_TEST);
+        documentObj.body.appendChild(el);
+        var horizontalScrollbarHeight = el.offsetHeight - el.clientHeight;
+        documentObj.body.removeChild(el);
+        if (shouldCacheResult) {
+            horizontalScrollbarHeight_ = horizontalScrollbarHeight;
+        }
+        return horizontalScrollbarHeight;
+    }
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var MDCTabScroller = /** @class */ (function (_super) {
+        __extends(MDCTabScroller, _super);
+        function MDCTabScroller() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        MDCTabScroller.attachTo = function (root) {
+            return new MDCTabScroller(root);
+        };
+        MDCTabScroller.prototype.initialize = function () {
+            this.area_ = this.root_.querySelector(MDCTabScrollerFoundation.strings.AREA_SELECTOR);
+            this.content_ = this.root_.querySelector(MDCTabScrollerFoundation.strings.CONTENT_SELECTOR);
+        };
+        MDCTabScroller.prototype.initialSyncWithDOM = function () {
+            var _this = this;
+            this.handleInteraction_ = function () { return _this.foundation_.handleInteraction(); };
+            this.handleTransitionEnd_ = function (evt) { return _this.foundation_.handleTransitionEnd(evt); };
+            this.area_.addEventListener('wheel', this.handleInteraction_, applyPassive());
+            this.area_.addEventListener('touchstart', this.handleInteraction_, applyPassive());
+            this.area_.addEventListener('pointerdown', this.handleInteraction_, applyPassive());
+            this.area_.addEventListener('mousedown', this.handleInteraction_, applyPassive());
+            this.area_.addEventListener('keydown', this.handleInteraction_, applyPassive());
+            this.content_.addEventListener('transitionend', this.handleTransitionEnd_);
+        };
+        MDCTabScroller.prototype.destroy = function () {
+            _super.prototype.destroy.call(this);
+            this.area_.removeEventListener('wheel', this.handleInteraction_, applyPassive());
+            this.area_.removeEventListener('touchstart', this.handleInteraction_, applyPassive());
+            this.area_.removeEventListener('pointerdown', this.handleInteraction_, applyPassive());
+            this.area_.removeEventListener('mousedown', this.handleInteraction_, applyPassive());
+            this.area_.removeEventListener('keydown', this.handleInteraction_, applyPassive());
+            this.content_.removeEventListener('transitionend', this.handleTransitionEnd_);
+        };
+        MDCTabScroller.prototype.getDefaultFoundation = function () {
+            var _this = this;
+            // DO NOT INLINE this variable. For backward compatibility, foundations take a Partial<MDCFooAdapter>.
+            // To ensure we don't accidentally omit any methods, we need a separate, strongly typed adapter variable.
+            // tslint:disable:object-literal-sort-keys Methods should be in the same order as the adapter interface.
+            var adapter = {
+                eventTargetMatchesSelector: function (evtTarget, selector) { return matches(evtTarget, selector); },
+                addClass: function (className) { return _this.root_.classList.add(className); },
+                removeClass: function (className) { return _this.root_.classList.remove(className); },
+                addScrollAreaClass: function (className) { return _this.area_.classList.add(className); },
+                setScrollAreaStyleProperty: function (prop, value) { return _this.area_.style.setProperty(prop, value); },
+                setScrollContentStyleProperty: function (prop, value) { return _this.content_.style.setProperty(prop, value); },
+                getScrollContentStyleValue: function (propName) { return window.getComputedStyle(_this.content_).getPropertyValue(propName); },
+                setScrollAreaScrollLeft: function (scrollX) { return _this.area_.scrollLeft = scrollX; },
+                getScrollAreaScrollLeft: function () { return _this.area_.scrollLeft; },
+                getScrollContentOffsetWidth: function () { return _this.content_.offsetWidth; },
+                getScrollAreaOffsetWidth: function () { return _this.area_.offsetWidth; },
+                computeScrollAreaClientRect: function () { return _this.area_.getBoundingClientRect(); },
+                computeScrollContentClientRect: function () { return _this.content_.getBoundingClientRect(); },
+                computeHorizontalScrollbarHeight: function () { return computeHorizontalScrollbarHeight(document); },
+            };
+            // tslint:enable:object-literal-sort-keys
+            return new MDCTabScrollerFoundation(adapter);
+        };
+        /**
+         * Returns the current visual scroll position
+         */
+        MDCTabScroller.prototype.getScrollPosition = function () {
+            return this.foundation_.getScrollPosition();
+        };
+        /**
+         * Returns the width of the scroll content
+         */
+        MDCTabScroller.prototype.getScrollContentWidth = function () {
+            return this.content_.offsetWidth;
+        };
+        /**
+         * Increments the scroll value by the given amount
+         * @param scrollXIncrement The pixel value by which to increment the scroll value
+         */
+        MDCTabScroller.prototype.incrementScroll = function (scrollXIncrement) {
+            this.foundation_.incrementScroll(scrollXIncrement);
+        };
+        /**
+         * Scrolls to the given pixel position
+         * @param scrollX The pixel value to scroll to
+         */
+        MDCTabScroller.prototype.scrollTo = function (scrollX) {
+            this.foundation_.scrollTo(scrollX);
+        };
+        return MDCTabScroller;
+    }(MDCComponent));
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var strings$7 = {
+        ARROW_LEFT_KEY: 'ArrowLeft',
+        ARROW_RIGHT_KEY: 'ArrowRight',
+        END_KEY: 'End',
+        ENTER_KEY: 'Enter',
+        HOME_KEY: 'Home',
+        SPACE_KEY: 'Space',
+        TAB_ACTIVATED_EVENT: 'MDCTabBar:activated',
+        TAB_SCROLLER_SELECTOR: '.mdc-tab-scroller',
+        TAB_SELECTOR: '.mdc-tab',
+    };
+    var numbers$2 = {
+        ARROW_LEFT_KEYCODE: 37,
+        ARROW_RIGHT_KEYCODE: 39,
+        END_KEYCODE: 35,
+        ENTER_KEYCODE: 13,
+        EXTRA_SCROLL_AMOUNT: 20,
+        HOME_KEYCODE: 36,
+        SPACE_KEYCODE: 32,
+    };
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var ACCEPTABLE_KEYS = new Set();
+    // IE11 has no support for new Set with iterable so we need to initialize this by hand
+    ACCEPTABLE_KEYS.add(strings$7.ARROW_LEFT_KEY);
+    ACCEPTABLE_KEYS.add(strings$7.ARROW_RIGHT_KEY);
+    ACCEPTABLE_KEYS.add(strings$7.END_KEY);
+    ACCEPTABLE_KEYS.add(strings$7.HOME_KEY);
+    ACCEPTABLE_KEYS.add(strings$7.ENTER_KEY);
+    ACCEPTABLE_KEYS.add(strings$7.SPACE_KEY);
+    var KEYCODE_MAP = new Map();
+    // IE11 has no support for new Map with iterable so we need to initialize this by hand
+    KEYCODE_MAP.set(numbers$2.ARROW_LEFT_KEYCODE, strings$7.ARROW_LEFT_KEY);
+    KEYCODE_MAP.set(numbers$2.ARROW_RIGHT_KEYCODE, strings$7.ARROW_RIGHT_KEY);
+    KEYCODE_MAP.set(numbers$2.END_KEYCODE, strings$7.END_KEY);
+    KEYCODE_MAP.set(numbers$2.HOME_KEYCODE, strings$7.HOME_KEY);
+    KEYCODE_MAP.set(numbers$2.ENTER_KEYCODE, strings$7.ENTER_KEY);
+    KEYCODE_MAP.set(numbers$2.SPACE_KEYCODE, strings$7.SPACE_KEY);
+    var MDCTabBarFoundation = /** @class */ (function (_super) {
+        __extends(MDCTabBarFoundation, _super);
+        function MDCTabBarFoundation(adapter) {
+            var _this = _super.call(this, __assign({}, MDCTabBarFoundation.defaultAdapter, adapter)) || this;
+            _this.useAutomaticActivation_ = false;
+            return _this;
+        }
+        Object.defineProperty(MDCTabBarFoundation, "strings", {
+            get: function () {
+                return strings$7;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCTabBarFoundation, "numbers", {
+            get: function () {
+                return numbers$2;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCTabBarFoundation, "defaultAdapter", {
+            get: function () {
+                // tslint:disable:object-literal-sort-keys Methods should be in the same order as the adapter interface.
+                return {
+                    scrollTo: function () { return undefined; },
+                    incrementScroll: function () { return undefined; },
+                    getScrollPosition: function () { return 0; },
+                    getScrollContentWidth: function () { return 0; },
+                    getOffsetWidth: function () { return 0; },
+                    isRTL: function () { return false; },
+                    setActiveTab: function () { return undefined; },
+                    activateTabAtIndex: function () { return undefined; },
+                    deactivateTabAtIndex: function () { return undefined; },
+                    focusTabAtIndex: function () { return undefined; },
+                    getTabIndicatorClientRectAtIndex: function () { return ({ top: 0, right: 0, bottom: 0, left: 0, width: 0, height: 0 }); },
+                    getTabDimensionsAtIndex: function () { return ({ rootLeft: 0, rootRight: 0, contentLeft: 0, contentRight: 0 }); },
+                    getPreviousActiveTabIndex: function () { return -1; },
+                    getFocusedTabIndex: function () { return -1; },
+                    getIndexOfTabById: function () { return -1; },
+                    getTabListLength: function () { return 0; },
+                    notifyTabActivated: function () { return undefined; },
+                };
+                // tslint:enable:object-literal-sort-keys
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /**
+         * Switches between automatic and manual activation modes.
+         * See https://www.w3.org/TR/wai-aria-practices/#tabpanel for examples.
+         */
+        MDCTabBarFoundation.prototype.setUseAutomaticActivation = function (useAutomaticActivation) {
+            this.useAutomaticActivation_ = useAutomaticActivation;
+        };
+        MDCTabBarFoundation.prototype.activateTab = function (index) {
+            var previousActiveIndex = this.adapter_.getPreviousActiveTabIndex();
+            if (!this.indexIsInRange_(index) || index === previousActiveIndex) {
+                return;
+            }
+            var previousClientRect;
+            if (previousActiveIndex !== -1) {
+                this.adapter_.deactivateTabAtIndex(previousActiveIndex);
+                previousClientRect = this.adapter_.getTabIndicatorClientRectAtIndex(previousActiveIndex);
+            }
+            this.adapter_.activateTabAtIndex(index, previousClientRect);
+            this.scrollIntoView(index);
+            this.adapter_.notifyTabActivated(index);
+        };
+        MDCTabBarFoundation.prototype.handleKeyDown = function (evt) {
+            // Get the key from the event
+            var key = this.getKeyFromEvent_(evt);
+            // Early exit if the event key isn't one of the keyboard navigation keys
+            if (key === undefined) {
+                return;
+            }
+            // Prevent default behavior for movement keys, but not for activation keys, since :active is used to apply ripple
+            if (!this.isActivationKey_(key)) {
+                evt.preventDefault();
+            }
+            if (this.useAutomaticActivation_) {
+                if (this.isActivationKey_(key)) {
+                    return;
+                }
+                var index = this.determineTargetFromKey_(this.adapter_.getPreviousActiveTabIndex(), key);
+                this.adapter_.setActiveTab(index);
+                this.scrollIntoView(index);
+            }
+            else {
+                var focusedTabIndex = this.adapter_.getFocusedTabIndex();
+                if (this.isActivationKey_(key)) {
+                    this.adapter_.setActiveTab(focusedTabIndex);
+                }
+                else {
+                    var index = this.determineTargetFromKey_(focusedTabIndex, key);
+                    this.adapter_.focusTabAtIndex(index);
+                    this.scrollIntoView(index);
+                }
+            }
+        };
+        /**
+         * Handles the MDCTab:interacted event
+         */
+        MDCTabBarFoundation.prototype.handleTabInteraction = function (evt) {
+            this.adapter_.setActiveTab(this.adapter_.getIndexOfTabById(evt.detail.tabId));
+        };
+        /**
+         * Scrolls the tab at the given index into view
+         * @param index The tab index to make visible
+         */
+        MDCTabBarFoundation.prototype.scrollIntoView = function (index) {
+            // Early exit if the index is out of range
+            if (!this.indexIsInRange_(index)) {
+                return;
+            }
+            // Always scroll to 0 if scrolling to the 0th index
+            if (index === 0) {
+                return this.adapter_.scrollTo(0);
+            }
+            // Always scroll to the max value if scrolling to the Nth index
+            // MDCTabScroller.scrollTo() will never scroll past the max possible value
+            if (index === this.adapter_.getTabListLength() - 1) {
+                return this.adapter_.scrollTo(this.adapter_.getScrollContentWidth());
+            }
+            if (this.isRTL_()) {
+                return this.scrollIntoViewRTL_(index);
+            }
+            this.scrollIntoView_(index);
+        };
+        /**
+         * Private method for determining the index of the destination tab based on what key was pressed
+         * @param origin The original index from which to determine the destination
+         * @param key The name of the key
+         */
+        MDCTabBarFoundation.prototype.determineTargetFromKey_ = function (origin, key) {
+            var isRTL = this.isRTL_();
+            var maxIndex = this.adapter_.getTabListLength() - 1;
+            var shouldGoToEnd = key === strings$7.END_KEY;
+            var shouldDecrement = key === strings$7.ARROW_LEFT_KEY && !isRTL || key === strings$7.ARROW_RIGHT_KEY && isRTL;
+            var shouldIncrement = key === strings$7.ARROW_RIGHT_KEY && !isRTL || key === strings$7.ARROW_LEFT_KEY && isRTL;
+            var index = origin;
+            if (shouldGoToEnd) {
+                index = maxIndex;
+            }
+            else if (shouldDecrement) {
+                index -= 1;
+            }
+            else if (shouldIncrement) {
+                index += 1;
+            }
+            else {
+                index = 0;
+            }
+            if (index < 0) {
+                index = maxIndex;
+            }
+            else if (index > maxIndex) {
+                index = 0;
+            }
+            return index;
+        };
+        /**
+         * Calculates the scroll increment that will make the tab at the given index visible
+         * @param index The index of the tab
+         * @param nextIndex The index of the next tab
+         * @param scrollPosition The current scroll position
+         * @param barWidth The width of the Tab Bar
+         */
+        MDCTabBarFoundation.prototype.calculateScrollIncrement_ = function (index, nextIndex, scrollPosition, barWidth) {
+            var nextTabDimensions = this.adapter_.getTabDimensionsAtIndex(nextIndex);
+            var relativeContentLeft = nextTabDimensions.contentLeft - scrollPosition - barWidth;
+            var relativeContentRight = nextTabDimensions.contentRight - scrollPosition;
+            var leftIncrement = relativeContentRight - numbers$2.EXTRA_SCROLL_AMOUNT;
+            var rightIncrement = relativeContentLeft + numbers$2.EXTRA_SCROLL_AMOUNT;
+            if (nextIndex < index) {
+                return Math.min(leftIncrement, 0);
+            }
+            return Math.max(rightIncrement, 0);
+        };
+        /**
+         * Calculates the scroll increment that will make the tab at the given index visible in RTL
+         * @param index The index of the tab
+         * @param nextIndex The index of the next tab
+         * @param scrollPosition The current scroll position
+         * @param barWidth The width of the Tab Bar
+         * @param scrollContentWidth The width of the scroll content
+         */
+        MDCTabBarFoundation.prototype.calculateScrollIncrementRTL_ = function (index, nextIndex, scrollPosition, barWidth, scrollContentWidth) {
+            var nextTabDimensions = this.adapter_.getTabDimensionsAtIndex(nextIndex);
+            var relativeContentLeft = scrollContentWidth - nextTabDimensions.contentLeft - scrollPosition;
+            var relativeContentRight = scrollContentWidth - nextTabDimensions.contentRight - scrollPosition - barWidth;
+            var leftIncrement = relativeContentRight + numbers$2.EXTRA_SCROLL_AMOUNT;
+            var rightIncrement = relativeContentLeft - numbers$2.EXTRA_SCROLL_AMOUNT;
+            if (nextIndex > index) {
+                return Math.max(leftIncrement, 0);
+            }
+            return Math.min(rightIncrement, 0);
+        };
+        /**
+         * Determines the index of the adjacent tab closest to either edge of the Tab Bar
+         * @param index The index of the tab
+         * @param tabDimensions The dimensions of the tab
+         * @param scrollPosition The current scroll position
+         * @param barWidth The width of the tab bar
+         */
+        MDCTabBarFoundation.prototype.findAdjacentTabIndexClosestToEdge_ = function (index, tabDimensions, scrollPosition, barWidth) {
+            /**
+             * Tabs are laid out in the Tab Scroller like this:
+             *
+             *    Scroll Position
+             *    +---+
+             *    |   |   Bar Width
+             *    |   +-----------------------------------+
+             *    |   |                                   |
+             *    |   V                                   V
+             *    |   +-----------------------------------+
+             *    V   |             Tab Scroller          |
+             *    +------------+--------------+-------------------+
+             *    |    Tab     |      Tab     |        Tab        |
+             *    +------------+--------------+-------------------+
+             *        |                                   |
+             *        +-----------------------------------+
+             *
+             * To determine the next adjacent index, we look at the Tab root left and
+             * Tab root right, both relative to the scroll position. If the Tab root
+             * left is less than 0, then we know it's out of view to the left. If the
+             * Tab root right minus the bar width is greater than 0, we know the Tab is
+             * out of view to the right. From there, we either increment or decrement
+             * the index.
+             */
+            var relativeRootLeft = tabDimensions.rootLeft - scrollPosition;
+            var relativeRootRight = tabDimensions.rootRight - scrollPosition - barWidth;
+            var relativeRootDelta = relativeRootLeft + relativeRootRight;
+            var leftEdgeIsCloser = relativeRootLeft < 0 || relativeRootDelta < 0;
+            var rightEdgeIsCloser = relativeRootRight > 0 || relativeRootDelta > 0;
+            if (leftEdgeIsCloser) {
+                return index - 1;
+            }
+            if (rightEdgeIsCloser) {
+                return index + 1;
+            }
+            return -1;
+        };
+        /**
+         * Determines the index of the adjacent tab closest to either edge of the Tab Bar in RTL
+         * @param index The index of the tab
+         * @param tabDimensions The dimensions of the tab
+         * @param scrollPosition The current scroll position
+         * @param barWidth The width of the tab bar
+         * @param scrollContentWidth The width of the scroller content
+         */
+        MDCTabBarFoundation.prototype.findAdjacentTabIndexClosestToEdgeRTL_ = function (index, tabDimensions, scrollPosition, barWidth, scrollContentWidth) {
+            var rootLeft = scrollContentWidth - tabDimensions.rootLeft - barWidth - scrollPosition;
+            var rootRight = scrollContentWidth - tabDimensions.rootRight - scrollPosition;
+            var rootDelta = rootLeft + rootRight;
+            var leftEdgeIsCloser = rootLeft > 0 || rootDelta > 0;
+            var rightEdgeIsCloser = rootRight < 0 || rootDelta < 0;
+            if (leftEdgeIsCloser) {
+                return index + 1;
+            }
+            if (rightEdgeIsCloser) {
+                return index - 1;
+            }
+            return -1;
+        };
+        /**
+         * Returns the key associated with a keydown event
+         * @param evt The keydown event
+         */
+        MDCTabBarFoundation.prototype.getKeyFromEvent_ = function (evt) {
+            if (ACCEPTABLE_KEYS.has(evt.key)) {
+                return evt.key;
+            }
+            return KEYCODE_MAP.get(evt.keyCode);
+        };
+        MDCTabBarFoundation.prototype.isActivationKey_ = function (key) {
+            return key === strings$7.SPACE_KEY || key === strings$7.ENTER_KEY;
+        };
+        /**
+         * Returns whether a given index is inclusively between the ends
+         * @param index The index to test
+         */
+        MDCTabBarFoundation.prototype.indexIsInRange_ = function (index) {
+            return index >= 0 && index < this.adapter_.getTabListLength();
+        };
+        /**
+         * Returns the view's RTL property
+         */
+        MDCTabBarFoundation.prototype.isRTL_ = function () {
+            return this.adapter_.isRTL();
+        };
+        /**
+         * Scrolls the tab at the given index into view for left-to-right user agents.
+         * @param index The index of the tab to scroll into view
+         */
+        MDCTabBarFoundation.prototype.scrollIntoView_ = function (index) {
+            var scrollPosition = this.adapter_.getScrollPosition();
+            var barWidth = this.adapter_.getOffsetWidth();
+            var tabDimensions = this.adapter_.getTabDimensionsAtIndex(index);
+            var nextIndex = this.findAdjacentTabIndexClosestToEdge_(index, tabDimensions, scrollPosition, barWidth);
+            if (!this.indexIsInRange_(nextIndex)) {
+                return;
+            }
+            var scrollIncrement = this.calculateScrollIncrement_(index, nextIndex, scrollPosition, barWidth);
+            this.adapter_.incrementScroll(scrollIncrement);
+        };
+        /**
+         * Scrolls the tab at the given index into view in RTL
+         * @param index The tab index to make visible
+         */
+        MDCTabBarFoundation.prototype.scrollIntoViewRTL_ = function (index) {
+            var scrollPosition = this.adapter_.getScrollPosition();
+            var barWidth = this.adapter_.getOffsetWidth();
+            var tabDimensions = this.adapter_.getTabDimensionsAtIndex(index);
+            var scrollWidth = this.adapter_.getScrollContentWidth();
+            var nextIndex = this.findAdjacentTabIndexClosestToEdgeRTL_(index, tabDimensions, scrollPosition, barWidth, scrollWidth);
+            if (!this.indexIsInRange_(nextIndex)) {
+                return;
+            }
+            var scrollIncrement = this.calculateScrollIncrementRTL_(index, nextIndex, scrollPosition, barWidth, scrollWidth);
+            this.adapter_.incrementScroll(scrollIncrement);
+        };
+        return MDCTabBarFoundation;
+    }(MDCFoundation));
+
+    /**
+     * @license
+     * Copyright 2018 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    var strings$8 = MDCTabBarFoundation.strings;
+    var tabIdCounter = 0;
+    var MDCTabBar = /** @class */ (function (_super) {
+        __extends(MDCTabBar, _super);
+        function MDCTabBar() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        MDCTabBar.attachTo = function (root) {
+            return new MDCTabBar(root);
+        };
+        Object.defineProperty(MDCTabBar.prototype, "focusOnActivate", {
+            set: function (focusOnActivate) {
+                this.tabList_.forEach(function (tab) { return tab.focusOnActivate = focusOnActivate; });
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCTabBar.prototype, "useAutomaticActivation", {
+            set: function (useAutomaticActivation) {
+                this.foundation_.setUseAutomaticActivation(useAutomaticActivation);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        MDCTabBar.prototype.initialize = function (tabFactory, tabScrollerFactory) {
+            if (tabFactory === void 0) { tabFactory = function (el) { return new MDCTab(el); }; }
+            if (tabScrollerFactory === void 0) { tabScrollerFactory = function (el) { return new MDCTabScroller(el); }; }
+            this.tabList_ = this.instantiateTabs_(tabFactory);
+            this.tabScroller_ = this.instantiateTabScroller_(tabScrollerFactory);
+        };
+        MDCTabBar.prototype.initialSyncWithDOM = function () {
+            var _this = this;
+            this.handleTabInteraction_ = function (evt) { return _this.foundation_.handleTabInteraction(evt); };
+            this.handleKeyDown_ = function (evt) { return _this.foundation_.handleKeyDown(evt); };
+            this.listen(MDCTabFoundation.strings.INTERACTED_EVENT, this.handleTabInteraction_);
+            this.listen('keydown', this.handleKeyDown_);
+            for (var i = 0; i < this.tabList_.length; i++) {
+                if (this.tabList_[i].active) {
+                    this.scrollIntoView(i);
+                    break;
+                }
+            }
+        };
+        MDCTabBar.prototype.destroy = function () {
+            _super.prototype.destroy.call(this);
+            this.unlisten(MDCTabFoundation.strings.INTERACTED_EVENT, this.handleTabInteraction_);
+            this.unlisten('keydown', this.handleKeyDown_);
+            this.tabList_.forEach(function (tab) { return tab.destroy(); });
+            if (this.tabScroller_) {
+                this.tabScroller_.destroy();
+            }
+        };
+        MDCTabBar.prototype.getDefaultFoundation = function () {
+            var _this = this;
+            // DO NOT INLINE this variable. For backward compatibility, foundations take a Partial<MDCFooAdapter>.
+            // To ensure we don't accidentally omit any methods, we need a separate, strongly typed adapter variable.
+            // tslint:disable:object-literal-sort-keys Methods should be in the same order as the adapter interface.
+            var adapter = {
+                scrollTo: function (scrollX) { return _this.tabScroller_.scrollTo(scrollX); },
+                incrementScroll: function (scrollXIncrement) { return _this.tabScroller_.incrementScroll(scrollXIncrement); },
+                getScrollPosition: function () { return _this.tabScroller_.getScrollPosition(); },
+                getScrollContentWidth: function () { return _this.tabScroller_.getScrollContentWidth(); },
+                getOffsetWidth: function () { return _this.root_.offsetWidth; },
+                isRTL: function () { return window.getComputedStyle(_this.root_).getPropertyValue('direction') === 'rtl'; },
+                setActiveTab: function (index) { return _this.foundation_.activateTab(index); },
+                activateTabAtIndex: function (index, clientRect) { return _this.tabList_[index].activate(clientRect); },
+                deactivateTabAtIndex: function (index) { return _this.tabList_[index].deactivate(); },
+                focusTabAtIndex: function (index) { return _this.tabList_[index].focus(); },
+                getTabIndicatorClientRectAtIndex: function (index) { return _this.tabList_[index].computeIndicatorClientRect(); },
+                getTabDimensionsAtIndex: function (index) { return _this.tabList_[index].computeDimensions(); },
+                getPreviousActiveTabIndex: function () {
+                    for (var i = 0; i < _this.tabList_.length; i++) {
+                        if (_this.tabList_[i].active) {
+                            return i;
+                        }
+                    }
+                    return -1;
+                },
+                getFocusedTabIndex: function () {
+                    var tabElements = _this.getTabElements_();
+                    var activeElement = document.activeElement;
+                    return tabElements.indexOf(activeElement);
+                },
+                getIndexOfTabById: function (id) {
+                    for (var i = 0; i < _this.tabList_.length; i++) {
+                        if (_this.tabList_[i].id === id) {
+                            return i;
+                        }
+                    }
+                    return -1;
+                },
+                getTabListLength: function () { return _this.tabList_.length; },
+                notifyTabActivated: function (index) {
+                    return _this.emit(strings$8.TAB_ACTIVATED_EVENT, { index: index }, true);
+                },
+            };
+            // tslint:enable:object-literal-sort-keys
+            return new MDCTabBarFoundation(adapter);
+        };
+        /**
+         * Activates the tab at the given index
+         * @param index The index of the tab
+         */
+        MDCTabBar.prototype.activateTab = function (index) {
+            this.foundation_.activateTab(index);
+        };
+        /**
+         * Scrolls the tab at the given index into view
+         * @param index THe index of the tab
+         */
+        MDCTabBar.prototype.scrollIntoView = function (index) {
+            this.foundation_.scrollIntoView(index);
+        };
+        /**
+         * Returns all the tab elements in a nice clean array
+         */
+        MDCTabBar.prototype.getTabElements_ = function () {
+            return [].slice.call(this.root_.querySelectorAll(strings$8.TAB_SELECTOR));
+        };
+        /**
+         * Instantiates tab components on all child tab elements
+         */
+        MDCTabBar.prototype.instantiateTabs_ = function (tabFactory) {
+            return this.getTabElements_().map(function (el) {
+                el.id = el.id || "mdc-tab-" + ++tabIdCounter;
+                return tabFactory(el);
+            });
+        };
+        /**
+         * Instantiates tab scroller component on the child tab scroller element
+         */
+        MDCTabBar.prototype.instantiateTabScroller_ = function (tabScrollerFactory) {
+            var tabScrollerElement = this.root_.querySelector(strings$8.TAB_SCROLLER_SELECTOR);
+            if (tabScrollerElement) {
+                return tabScrollerFactory(tabScrollerElement);
+            }
+            return null;
+        };
+        return MDCTabBar;
+    }(MDCComponent));
+
+    /* node_modules/@smui/tab-scroller/TabScroller.svelte generated by Svelte v3.12.1 */
+
+    const file$e = "node_modules/@smui/tab-scroller/TabScroller.svelte";
+
+    function create_fragment$m(ctx) {
+    	var div2, div1, div0, useActions_action, useActions_action_1, useActions_action_2, forwardEvents_action, current;
+
+    	const default_slot_template = ctx.$$slots.default;
+    	const default_slot = create_slot(default_slot_template, ctx, null);
+
+    	var div0_levels = [
+    		{ class: "mdc-tab-scroller__scroll-content " + ctx.scrollContent$class },
+    		exclude(prefixFilter(ctx.$$props, 'scrollContent$'), ['use', 'class'])
+    	];
+
+    	var div0_data = {};
+    	for (var i = 0; i < div0_levels.length; i += 1) {
+    		div0_data = assign(div0_data, div0_levels[i]);
+    	}
+
+    	var div1_levels = [
+    		{ class: "mdc-tab-scroller__scroll-area " + ctx.scrollArea$class },
+    		exclude(prefixFilter(ctx.$$props, 'scrollArea$'), ['use', 'class'])
+    	];
+
+    	var div1_data = {};
+    	for (var i = 0; i < div1_levels.length; i += 1) {
+    		div1_data = assign(div1_data, div1_levels[i]);
+    	}
+
+    	var div2_levels = [
+    		{ class: "mdc-tab-scroller " + ctx.className },
+    		exclude(ctx.$$props, ['use', 'class', 'scrollArea$', 'scrollContent$'])
+    	];
+
+    	var div2_data = {};
+    	for (var i = 0; i < div2_levels.length; i += 1) {
+    		div2_data = assign(div2_data, div2_levels[i]);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div2 = element("div");
+    			div1 = element("div");
+    			div0 = element("div");
+
+    			if (default_slot) default_slot.c();
+
+    			set_attributes(div0, div0_data);
+    			add_location(div0, file$e, 12, 4, 371);
+    			set_attributes(div1, div1_data);
+    			add_location(div1, file$e, 7, 2, 188);
+    			set_attributes(div2, div2_data);
+    			add_location(div2, file$e, 0, 0, 0);
+    		},
+
+    		l: function claim(nodes) {
+    			if (default_slot) default_slot.l(div0_nodes);
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div2, anchor);
+    			append_dev(div2, div1);
+    			append_dev(div1, div0);
+
+    			if (default_slot) {
+    				default_slot.m(div0, null);
+    			}
+
+    			useActions_action = useActions.call(null, div0, ctx.scrollContent$use) || {};
+    			useActions_action_1 = useActions.call(null, div1, ctx.scrollArea$use) || {};
+    			ctx.div2_binding(div2);
+    			useActions_action_2 = useActions.call(null, div2, ctx.use) || {};
+    			forwardEvents_action = ctx.forwardEvents.call(null, div2) || {};
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (default_slot && default_slot.p && changed.$$scope) {
+    				default_slot.p(
+    					get_slot_changes(default_slot_template, ctx, changed, null),
+    					get_slot_context(default_slot_template, ctx, null)
+    				);
+    			}
+
+    			set_attributes(div0, get_spread_update(div0_levels, [
+    				(changed.scrollContent$class) && { class: "mdc-tab-scroller__scroll-content " + ctx.scrollContent$class },
+    				(changed.exclude || changed.prefixFilter || changed.$$props) && exclude(prefixFilter(ctx.$$props, 'scrollContent$'), ['use', 'class'])
+    			]));
+
+    			if (typeof useActions_action.update === 'function' && changed.scrollContent$use) {
+    				useActions_action.update.call(null, ctx.scrollContent$use);
+    			}
+
+    			set_attributes(div1, get_spread_update(div1_levels, [
+    				(changed.scrollArea$class) && { class: "mdc-tab-scroller__scroll-area " + ctx.scrollArea$class },
+    				(changed.exclude || changed.prefixFilter || changed.$$props) && exclude(prefixFilter(ctx.$$props, 'scrollArea$'), ['use', 'class'])
+    			]));
+
+    			if (typeof useActions_action_1.update === 'function' && changed.scrollArea$use) {
+    				useActions_action_1.update.call(null, ctx.scrollArea$use);
+    			}
+
+    			set_attributes(div2, get_spread_update(div2_levels, [
+    				(changed.className) && { class: "mdc-tab-scroller " + ctx.className },
+    				(changed.exclude || changed.$$props) && exclude(ctx.$$props, ['use', 'class', 'scrollArea$', 'scrollContent$'])
+    			]));
+
+    			if (typeof useActions_action_2.update === 'function' && changed.use) {
+    				useActions_action_2.update.call(null, ctx.use);
+    			}
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(default_slot, local);
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(default_slot, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(div2);
+    			}
+
+    			if (default_slot) default_slot.d(detaching);
+    			if (useActions_action && typeof useActions_action.destroy === 'function') useActions_action.destroy();
+    			if (useActions_action_1 && typeof useActions_action_1.destroy === 'function') useActions_action_1.destroy();
+    			ctx.div2_binding(null);
+    			if (useActions_action_2 && typeof useActions_action_2.destroy === 'function') useActions_action_2.destroy();
+    			if (forwardEvents_action && typeof forwardEvents_action.destroy === 'function') forwardEvents_action.destroy();
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$m.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$j($$self, $$props, $$invalidate) {
+    	
+
+      const forwardEvents = forwardEventsBuilder(current_component);
+
+      let { use = [], class: className = '', scrollArea$use = [], scrollArea$class = '', scrollContent$use = [], scrollContent$class = '' } = $$props;
+
+      let element;
+      let tabScroller;
+      let instantiate = getContext('SMUI:tab-scroller:instantiate');
+      let getInstance = getContext('SMUI:tab-scroller:getInstance');
+
+      onMount(async () => {
+        if (instantiate !== false) {
+          tabScroller = new MDCTabScroller(element);
+        } else {
+          tabScroller = await getInstance();
+        }
+      });
+
+      onDestroy(() => {
+        tabScroller && tabScroller.destroy();
+      });
+
+      function scrollTo(...args) {
+        return tabScroller.scrollTo(...args);
+      }
+
+      function incrementScroll(...args) {
+        return tabScroller.incrementScroll(...args);
+      }
+
+      function getScrollPosition(...args) {
+        return tabScroller.getScrollPosition(...args);
+      }
+
+      function getScrollContentWidth(...args) {
+        return tabScroller.getScrollContentWidth(...args);
+      }
+
+    	let { $$slots = {}, $$scope } = $$props;
+
+    	function div2_binding($$value) {
+    		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+    			$$invalidate('element', element = $$value);
+    		});
+    	}
+
+    	$$self.$set = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('use' in $$new_props) $$invalidate('use', use = $$new_props.use);
+    		if ('class' in $$new_props) $$invalidate('className', className = $$new_props.class);
+    		if ('scrollArea$use' in $$new_props) $$invalidate('scrollArea$use', scrollArea$use = $$new_props.scrollArea$use);
+    		if ('scrollArea$class' in $$new_props) $$invalidate('scrollArea$class', scrollArea$class = $$new_props.scrollArea$class);
+    		if ('scrollContent$use' in $$new_props) $$invalidate('scrollContent$use', scrollContent$use = $$new_props.scrollContent$use);
+    		if ('scrollContent$class' in $$new_props) $$invalidate('scrollContent$class', scrollContent$class = $$new_props.scrollContent$class);
+    		if ('$$scope' in $$new_props) $$invalidate('$$scope', $$scope = $$new_props.$$scope);
+    	};
+
+    	$$self.$capture_state = () => {
+    		return { use, className, scrollArea$use, scrollArea$class, scrollContent$use, scrollContent$class, element, tabScroller, instantiate, getInstance };
+    	};
+
+    	$$self.$inject_state = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('use' in $$props) $$invalidate('use', use = $$new_props.use);
+    		if ('className' in $$props) $$invalidate('className', className = $$new_props.className);
+    		if ('scrollArea$use' in $$props) $$invalidate('scrollArea$use', scrollArea$use = $$new_props.scrollArea$use);
+    		if ('scrollArea$class' in $$props) $$invalidate('scrollArea$class', scrollArea$class = $$new_props.scrollArea$class);
+    		if ('scrollContent$use' in $$props) $$invalidate('scrollContent$use', scrollContent$use = $$new_props.scrollContent$use);
+    		if ('scrollContent$class' in $$props) $$invalidate('scrollContent$class', scrollContent$class = $$new_props.scrollContent$class);
+    		if ('element' in $$props) $$invalidate('element', element = $$new_props.element);
+    		if ('tabScroller' in $$props) tabScroller = $$new_props.tabScroller;
+    		if ('instantiate' in $$props) instantiate = $$new_props.instantiate;
+    		if ('getInstance' in $$props) getInstance = $$new_props.getInstance;
+    	};
+
+    	return {
+    		forwardEvents,
+    		use,
+    		className,
+    		scrollArea$use,
+    		scrollArea$class,
+    		scrollContent$use,
+    		scrollContent$class,
+    		element,
+    		scrollTo,
+    		incrementScroll,
+    		getScrollPosition,
+    		getScrollContentWidth,
+    		$$props,
+    		div2_binding,
+    		$$props: $$props = exclude_internal_props($$props),
+    		$$slots,
+    		$$scope
+    	};
+    }
+
+    class TabScroller extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$j, create_fragment$m, safe_not_equal, ["use", "class", "scrollArea$use", "scrollArea$class", "scrollContent$use", "scrollContent$class", "scrollTo", "incrementScroll", "getScrollPosition", "getScrollContentWidth"]);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "TabScroller", options, id: create_fragment$m.name });
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+    		if (ctx.scrollTo === undefined && !('scrollTo' in props)) {
+    			console.warn("<TabScroller> was created without expected prop 'scrollTo'");
+    		}
+    		if (ctx.incrementScroll === undefined && !('incrementScroll' in props)) {
+    			console.warn("<TabScroller> was created without expected prop 'incrementScroll'");
+    		}
+    		if (ctx.getScrollPosition === undefined && !('getScrollPosition' in props)) {
+    			console.warn("<TabScroller> was created without expected prop 'getScrollPosition'");
+    		}
+    		if (ctx.getScrollContentWidth === undefined && !('getScrollContentWidth' in props)) {
+    			console.warn("<TabScroller> was created without expected prop 'getScrollContentWidth'");
+    		}
+    	}
+
+    	get use() {
+    		throw new Error("<TabScroller>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set use(value) {
+    		throw new Error("<TabScroller>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get class() {
+    		throw new Error("<TabScroller>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set class(value) {
+    		throw new Error("<TabScroller>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get scrollArea$use() {
+    		throw new Error("<TabScroller>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set scrollArea$use(value) {
+    		throw new Error("<TabScroller>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get scrollArea$class() {
+    		throw new Error("<TabScroller>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set scrollArea$class(value) {
+    		throw new Error("<TabScroller>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get scrollContent$use() {
+    		throw new Error("<TabScroller>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set scrollContent$use(value) {
+    		throw new Error("<TabScroller>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get scrollContent$class() {
+    		throw new Error("<TabScroller>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set scrollContent$class(value) {
+    		throw new Error("<TabScroller>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get scrollTo() {
+    		return this.$$.ctx.scrollTo;
+    	}
+
+    	set scrollTo(value) {
+    		throw new Error("<TabScroller>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get incrementScroll() {
+    		return this.$$.ctx.incrementScroll;
+    	}
+
+    	set incrementScroll(value) {
+    		throw new Error("<TabScroller>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get getScrollPosition() {
+    		return this.$$.ctx.getScrollPosition;
+    	}
+
+    	set getScrollPosition(value) {
+    		throw new Error("<TabScroller>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get getScrollContentWidth() {
+    		return this.$$.ctx.getScrollContentWidth;
+    	}
+
+    	set getScrollContentWidth(value) {
+    		throw new Error("<TabScroller>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* node_modules/@smui/tab-bar/TabBar.svelte generated by Svelte v3.12.1 */
+
+    const file$f = "node_modules/@smui/tab-bar/TabBar.svelte";
+
+    const get_default_slot_changes = ({ tab, tabs }) => ({ tab: tabs });
+    const get_default_slot_context = ({ tab, tabs }) => ({ tab: tab });
+
+    function get_each_context(ctx, list, i) {
+    	const child_ctx = Object.create(ctx);
+    	child_ctx.tab = list[i];
+    	child_ctx.i = i;
+    	return child_ctx;
+    }
+
+    // (13:4) {#each tabs as tab, i (key(tab))}
+    function create_each_block(key_2, ctx) {
+    	var first, current;
+
+    	const default_slot_template = ctx.$$slots.default;
+    	const default_slot = create_slot(default_slot_template, ctx, get_default_slot_context);
+
+    	const block = {
+    		key: key_2,
+
+    		first: null,
+
+    		c: function create() {
+    			first = empty();
+
+    			if (default_slot) default_slot.c();
+
+    			this.first = first;
+    		},
+
+    		l: function claim(nodes) {
+    			if (default_slot) default_slot.l(nodes);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, first, anchor);
+
+    			if (default_slot) {
+    				default_slot.m(target, anchor);
+    			}
+
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (default_slot && default_slot.p && (changed.$$scope || changed.tabs)) {
+    				default_slot.p(
+    					get_slot_changes(default_slot_template, ctx, changed, get_default_slot_changes),
+    					get_slot_context(default_slot_template, ctx, get_default_slot_context)
+    				);
+    			}
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(default_slot, local);
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(default_slot, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(first);
+    			}
+
+    			if (default_slot) default_slot.d(detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_each_block.name, type: "each", source: "(13:4) {#each tabs as tab, i (key(tab))}", ctx });
+    	return block;
+    }
+
+    // (10:2) <TabScroller     {...prefixFilter($$props, 'tabScroller$')}   >
+    function create_default_slot$a(ctx) {
+    	var each_blocks = [], each_1_lookup = new Map(), each_1_anchor, current;
+
+    	let each_value = ctx.tabs;
+
+    	const get_key = ctx => ctx.key(ctx.tab);
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		let child_ctx = get_each_context(ctx, each_value, i);
+    		let key = get_key(child_ctx);
+    		each_1_lookup.set(key, each_blocks[i] = create_each_block(key, child_ctx));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			each_1_anchor = empty();
+    		},
+
+    		m: function mount(target, anchor) {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(target, anchor);
+    			}
+
+    			insert_dev(target, each_1_anchor, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			const each_value = ctx.tabs;
+
+    			group_outros();
+    			each_blocks = update_keyed_each(each_blocks, changed, get_key, 1, ctx, each_value, each_1_lookup, each_1_anchor.parentNode, outro_and_destroy_block, create_each_block, each_1_anchor, get_each_context);
+    			check_outros();
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			for (let i = 0; i < each_value.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].d(detaching);
+    			}
+
+    			if (detaching) {
+    				detach_dev(each_1_anchor);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_default_slot$a.name, type: "slot", source: "(10:2) <TabScroller     {...prefixFilter($$props, 'tabScroller$')}   >", ctx });
+    	return block;
+    }
+
+    function create_fragment$n(ctx) {
+    	var div, useActions_action, forwardEvents_action, current, dispose;
+
+    	var tabscroller_spread_levels = [
+    		prefixFilter(ctx.$$props, 'tabScroller$')
+    	];
+
+    	let tabscroller_props = {
+    		$$slots: { default: [create_default_slot$a] },
+    		$$scope: { ctx }
+    	};
+    	for (var i = 0; i < tabscroller_spread_levels.length; i += 1) {
+    		tabscroller_props = assign(tabscroller_props, tabscroller_spread_levels[i]);
+    	}
+    	var tabscroller = new TabScroller({ props: tabscroller_props, $$inline: true });
+
+    	var div_levels = [
+    		{ class: "mdc-tab-bar " + ctx.className },
+    		{ role: "tablist" },
+    		exclude(ctx.$$props, ['use', 'class', 'tabs', 'key', 'focusOnActivate', 'useAutomaticActivation', 'activeIndex', 'tabScroller$'])
+    	];
+
+    	var div_data = {};
+    	for (var i = 0; i < div_levels.length; i += 1) {
+    		div_data = assign(div_data, div_levels[i]);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			tabscroller.$$.fragment.c();
+    			set_attributes(div, div_data);
+    			add_location(div, file$f, 0, 0, 0);
+    			dispose = listen_dev(div, "MDCTabBar:activated", ctx.activatedHandler);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(tabscroller, div, null);
+    			ctx.div_binding(div);
+    			useActions_action = useActions.call(null, div, ctx.use) || {};
+    			forwardEvents_action = ctx.forwardEvents.call(null, div) || {};
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var tabscroller_changes = (changed.prefixFilter || changed.$$props) ? get_spread_update(tabscroller_spread_levels, [
+    									get_spread_object(prefixFilter(ctx.$$props, 'tabScroller$'))
+    								]) : {};
+    			if (changed.$$scope || changed.tabs) tabscroller_changes.$$scope = { changed, ctx };
+    			tabscroller.$set(tabscroller_changes);
+
+    			set_attributes(div, get_spread_update(div_levels, [
+    				(changed.className) && { class: "mdc-tab-bar " + ctx.className },
+    				{ role: "tablist" },
+    				(changed.exclude || changed.$$props) && exclude(ctx.$$props, ['use', 'class', 'tabs', 'key', 'focusOnActivate', 'useAutomaticActivation', 'activeIndex', 'tabScroller$'])
+    			]));
+
+    			if (typeof useActions_action.update === 'function' && changed.use) {
+    				useActions_action.update.call(null, ctx.use);
+    			}
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(tabscroller.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(tabscroller.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(div);
+    			}
+
+    			destroy_component(tabscroller);
+
+    			ctx.div_binding(null);
+    			if (useActions_action && typeof useActions_action.destroy === 'function') useActions_action.destroy();
+    			if (forwardEvents_action && typeof forwardEvents_action.destroy === 'function') forwardEvents_action.destroy();
+    			dispose();
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$n.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$k($$self, $$props, $$invalidate) {
+    	
+
+      const forwardEvents = forwardEventsBuilder(current_component, ['MDCTabBar:activated']);
+      let uninitializedValue = () => {};
+
+      let { use = [], class: className = '', tabs = [], key = tab => tab } = $$props;
+      let { focusOnActivate = true, useAutomaticActivation = true, activeIndex = uninitializedValue, active = uninitializedValue } = $$props;
+
+      if (activeIndex === uninitializedValue && active === uninitializedValue) {
+        $$invalidate('activeIndex', activeIndex = 0);
+        $$invalidate('active', active = tabs[0]);
+      } else if (activeIndex === uninitializedValue) {
+        $$invalidate('activeIndex', activeIndex = tabs.indexOf(active));
+      } else if (active === uninitializedValue) {
+        $$invalidate('active', active = tabs[activeIndex]);
+      }
+
+      let element;
+      let tabBar;
+      let tabScrollerPromiseResolve;
+      let tabScrollerPromise = new Promise(resolve => tabScrollerPromiseResolve = resolve);
+      let tabPromiseResolve = [];
+      let tabPromise = tabs.map((tab, i) => new Promise(resolve => tabPromiseResolve[i] = resolve));
+
+      setContext('SMUI:tab-scroller:instantiate', false);
+      setContext('SMUI:tab-scroller:getInstance', getTabScrollerInstancePromise);
+      setContext('SMUI:tab:instantiate', false);
+      setContext('SMUI:tab:getInstance', getTabInstancePromise);
+      setContext('SMUI:tab:active', active);
+
+      let previousActiveIndex = activeIndex;
+
+      let previousActive = active;
+
+      onMount(() => {
+        $$invalidate('tabBar', tabBar = new MDCTabBar(element));
+        tabScrollerPromiseResolve(tabBar.tabScroller_);
+        for (let i = 0; i < tabs.length; i++) {
+          tabPromiseResolve[i](tabBar.tabList_[i]);
+        }
+      });
+
+      onDestroy(() => {
+        tabBar && tabBar.destroy();
+      });
+
+      function getTabScrollerInstancePromise() {
+        return tabScrollerPromise;
+      }
+
+      function getTabInstancePromise(tabEntry) {
+        return tabPromise[tabs.indexOf(tabEntry)];
+      }
+
+      function updateIndexAfterActivate(index) {
+        $$invalidate('activeIndex', activeIndex = index);
+        $$invalidate('previousActiveIndex', previousActiveIndex = index);
+        $$invalidate('active', active = tabs[index]);
+        $$invalidate('previousActive', previousActive = tabs[index]);
+      }
+
+      function activatedHandler(e) {
+        updateIndexAfterActivate(e.detail.index);
+      }
+
+      function activateTab(index, ...args) {
+        updateIndexAfterActivate(index);
+        return tabBar.activateTab(index, ...args);
+      }
+
+      function scrollIntoView(...args) {
+        return tabBar.scrollIntoView(...args);
+      }
+
+    	let { $$slots = {}, $$scope } = $$props;
+
+    	function div_binding($$value) {
+    		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+    			$$invalidate('element', element = $$value);
+    		});
+    	}
+
+    	$$self.$set = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('use' in $$new_props) $$invalidate('use', use = $$new_props.use);
+    		if ('class' in $$new_props) $$invalidate('className', className = $$new_props.class);
+    		if ('tabs' in $$new_props) $$invalidate('tabs', tabs = $$new_props.tabs);
+    		if ('key' in $$new_props) $$invalidate('key', key = $$new_props.key);
+    		if ('focusOnActivate' in $$new_props) $$invalidate('focusOnActivate', focusOnActivate = $$new_props.focusOnActivate);
+    		if ('useAutomaticActivation' in $$new_props) $$invalidate('useAutomaticActivation', useAutomaticActivation = $$new_props.useAutomaticActivation);
+    		if ('activeIndex' in $$new_props) $$invalidate('activeIndex', activeIndex = $$new_props.activeIndex);
+    		if ('active' in $$new_props) $$invalidate('active', active = $$new_props.active);
+    		if ('$$scope' in $$new_props) $$invalidate('$$scope', $$scope = $$new_props.$$scope);
+    	};
+
+    	$$self.$capture_state = () => {
+    		return { uninitializedValue, use, className, tabs, key, focusOnActivate, useAutomaticActivation, activeIndex, active, element, tabBar, tabScrollerPromiseResolve, tabScrollerPromise, tabPromiseResolve, tabPromise, previousActiveIndex, previousActive };
+    	};
+
+    	$$self.$inject_state = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('uninitializedValue' in $$props) uninitializedValue = $$new_props.uninitializedValue;
+    		if ('use' in $$props) $$invalidate('use', use = $$new_props.use);
+    		if ('className' in $$props) $$invalidate('className', className = $$new_props.className);
+    		if ('tabs' in $$props) $$invalidate('tabs', tabs = $$new_props.tabs);
+    		if ('key' in $$props) $$invalidate('key', key = $$new_props.key);
+    		if ('focusOnActivate' in $$props) $$invalidate('focusOnActivate', focusOnActivate = $$new_props.focusOnActivate);
+    		if ('useAutomaticActivation' in $$props) $$invalidate('useAutomaticActivation', useAutomaticActivation = $$new_props.useAutomaticActivation);
+    		if ('activeIndex' in $$props) $$invalidate('activeIndex', activeIndex = $$new_props.activeIndex);
+    		if ('active' in $$props) $$invalidate('active', active = $$new_props.active);
+    		if ('element' in $$props) $$invalidate('element', element = $$new_props.element);
+    		if ('tabBar' in $$props) $$invalidate('tabBar', tabBar = $$new_props.tabBar);
+    		if ('tabScrollerPromiseResolve' in $$props) tabScrollerPromiseResolve = $$new_props.tabScrollerPromiseResolve;
+    		if ('tabScrollerPromise' in $$props) tabScrollerPromise = $$new_props.tabScrollerPromise;
+    		if ('tabPromiseResolve' in $$props) tabPromiseResolve = $$new_props.tabPromiseResolve;
+    		if ('tabPromise' in $$props) tabPromise = $$new_props.tabPromise;
+    		if ('previousActiveIndex' in $$props) $$invalidate('previousActiveIndex', previousActiveIndex = $$new_props.previousActiveIndex);
+    		if ('previousActive' in $$props) $$invalidate('previousActive', previousActive = $$new_props.previousActive);
+    	};
+
+    	$$self.$$.update = ($$dirty = { tabBar: 1, focusOnActivate: 1, useAutomaticActivation: 1, tabs: 1, activeIndex: 1, previousActiveIndex: 1, previousActive: 1, active: 1 }) => {
+    		if ($$dirty.tabBar || $$dirty.focusOnActivate) { if (tabBar) {
+            $$invalidate('tabBar', tabBar.focusOnActivate = focusOnActivate, tabBar);
+          } }
+    		if ($$dirty.tabBar || $$dirty.useAutomaticActivation) { if (tabBar) {
+            $$invalidate('tabBar', tabBar.useAutomaticActivation = useAutomaticActivation, tabBar);
+          } }
+    		if ($$dirty.tabBar || $$dirty.tabs || $$dirty.activeIndex) { if (tabBar) {
+            $$invalidate('active', active = tabs[activeIndex]);
+          } }
+    		if ($$dirty.tabBar || $$dirty.previousActiveIndex || $$dirty.activeIndex) { if (tabBar && previousActiveIndex !== activeIndex) {
+            activateTab(activeIndex);
+          } }
+    		if ($$dirty.tabBar || $$dirty.previousActive || $$dirty.active || $$dirty.tabs) { if (tabBar && previousActive !== active) {
+            activateTab(tabs.indexOf(active));
+          } }
+    	};
+
+    	return {
+    		forwardEvents,
+    		use,
+    		className,
+    		tabs,
+    		key,
+    		focusOnActivate,
+    		useAutomaticActivation,
+    		activeIndex,
+    		active,
+    		element,
+    		activatedHandler,
+    		activateTab,
+    		scrollIntoView,
+    		$$props,
+    		div_binding,
+    		$$props: $$props = exclude_internal_props($$props),
+    		$$slots,
+    		$$scope
+    	};
+    }
+
+    class TabBar extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$k, create_fragment$n, safe_not_equal, ["use", "class", "tabs", "key", "focusOnActivate", "useAutomaticActivation", "activeIndex", "active", "activateTab", "scrollIntoView"]);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "TabBar", options, id: create_fragment$n.name });
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+    		if (ctx.activateTab === undefined && !('activateTab' in props)) {
+    			console.warn("<TabBar> was created without expected prop 'activateTab'");
+    		}
+    		if (ctx.scrollIntoView === undefined && !('scrollIntoView' in props)) {
+    			console.warn("<TabBar> was created without expected prop 'scrollIntoView'");
+    		}
+    	}
+
+    	get use() {
+    		throw new Error("<TabBar>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set use(value) {
+    		throw new Error("<TabBar>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get class() {
+    		throw new Error("<TabBar>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set class(value) {
+    		throw new Error("<TabBar>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get tabs() {
+    		throw new Error("<TabBar>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set tabs(value) {
+    		throw new Error("<TabBar>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get key() {
+    		throw new Error("<TabBar>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set key(value) {
+    		throw new Error("<TabBar>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get focusOnActivate() {
+    		throw new Error("<TabBar>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set focusOnActivate(value) {
+    		throw new Error("<TabBar>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get useAutomaticActivation() {
+    		throw new Error("<TabBar>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set useAutomaticActivation(value) {
+    		throw new Error("<TabBar>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get activeIndex() {
+    		throw new Error("<TabBar>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set activeIndex(value) {
+    		throw new Error("<TabBar>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get active() {
+    		throw new Error("<TabBar>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set active(value) {
+    		throw new Error("<TabBar>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get activateTab() {
+    		return this.$$.ctx.activateTab;
+    	}
+
+    	set activateTab(value) {
+    		throw new Error("<TabBar>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get scrollIntoView() {
+    		return this.$$.ctx.scrollIntoView;
+    	}
+
+    	set scrollIntoView(value) {
+    		throw new Error("<TabBar>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    var redirect = (path) => {
+      curRoute.set(path);
+      window.history.pushState({ path }, '', `${window.location.origin}${window.location.pathname}${path}`);
+    };
+
+    /* src/components/navbar.svelte generated by Svelte v3.12.1 */
+
+    const file$g = "src/components/navbar.svelte";
+
+    // (20:6) <Label>
+    function create_default_slot_2$1(ctx) {
+    	var t_value = ctx.tab.label + "", t;
+
+    	const block = {
+    		c: function create() {
+    			t = text(t_value);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+
+    		p: function update(changed, ctx) {
+    			if ((changed.tab) && t_value !== (t_value = ctx.tab.label + "")) {
+    				set_data_dev(t, t_value);
+    			}
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(t);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_default_slot_2$1.name, type: "slot", source: "(20:6) <Label>", ctx });
+    	return block;
+    }
+
+    // (19:4) <Tab {tab} minWidth>
+    function create_default_slot_1$2(ctx) {
+    	var current;
+
+    	var label = new Label({
+    		props: {
+    		$$slots: { default: [create_default_slot_2$1] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	const block = {
+    		c: function create() {
+    			label.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(label, target, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var label_changes = {};
+    			if (changed.$$scope) label_changes.$$scope = { changed, ctx };
+    			label.$set(label_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(label.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(label.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(label, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_default_slot_1$2.name, type: "slot", source: "(19:4) <Tab {tab} minWidth>", ctx });
+    	return block;
+    }
+
+    // (18:2) <TabBar {tabs} let:tab key={tab => tab.key} bind:active={activeTab}>
+    function create_default_slot$b(ctx) {
+    	var current;
+
+    	var tab = new Tab({
+    		props: {
+    		tab: ctx.tab,
+    		minWidth: true,
+    		$$slots: { default: [create_default_slot_1$2] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	const block = {
+    		c: function create() {
+    			tab.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(tab, target, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var tab_changes = {};
+    			if (changed.tab) tab_changes.tab = ctx.tab;
+    			if (changed.$$scope) tab_changes.$$scope = { changed, ctx };
+    			tab.$set(tab_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(tab.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(tab.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(tab, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_default_slot$b.name, type: "slot", source: "(18:2) <TabBar {tabs} let:tab key={tab => tab.key} bind:active={activeTab}>", ctx });
+    	return block;
+    }
+
+    function create_fragment$o(ctx) {
+    	var nav, updating_active, current;
+
+    	function tabbar_active_binding(value) {
+    		ctx.tabbar_active_binding.call(null, value);
+    		updating_active = true;
+    		add_flush_callback(() => updating_active = false);
+    	}
+
+    	let tabbar_props = {
+    		tabs: ctx.tabs,
+    		key: func,
+    		$$slots: {
+    		default: [create_default_slot$b, ({ tab }) => ({ tab })]
+    	},
+    		$$scope: { ctx }
+    	};
+    	if (ctx.activeTab !== void 0) {
+    		tabbar_props.active = ctx.activeTab;
+    	}
+    	var tabbar = new TabBar({ props: tabbar_props, $$inline: true });
+
+    	binding_callbacks.push(() => bind(tabbar, 'active', tabbar_active_binding));
+
+    	const block = {
+    		c: function create() {
+    			nav = element("nav");
+    			tabbar.$$.fragment.c();
+    			add_location(nav, file$g, 16, 0, 489);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, nav, anchor);
+    			mount_component(tabbar, nav, null);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var tabbar_changes = {};
+    			if (changed.$$scope) tabbar_changes.$$scope = { changed, ctx };
+    			if (!updating_active && changed.activeTab) {
+    				tabbar_changes.active = ctx.activeTab;
+    			}
+    			tabbar.$set(tabbar_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(tabbar.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(tabbar.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(nav);
+    			}
+
+    			destroy_component(tabbar);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$o.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    const func = (tab) => tab.key;
+
+    function instance$l($$self, $$props, $$invalidate) {
+    	let $curRoute;
+
+    	validate_store(curRoute, 'curRoute');
+    	component_subscribe($$self, curRoute, $$value => { $curRoute = $$value; $$invalidate('$curRoute', $curRoute); });
+
+    	
+      let tabs = [
+        { label: "Winrate", key: "#ranked_wr" },
+        { label: "Popularity", key: "#ranked_popularity" },
+        { label: "Banrate", key: "#banrate" }
+      ];
+      let activeTab = tabs.find(t => t.key === $curRoute) || tabs[0];
+
+    	function tabbar_active_binding(value) {
+    		activeTab = value;
+    		$$invalidate('activeTab', activeTab);
+    	}
+
+    	$$self.$capture_state = () => {
+    		return {};
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ('tabs' in $$props) $$invalidate('tabs', tabs = $$props.tabs);
+    		if ('activeTab' in $$props) $$invalidate('activeTab', activeTab = $$props.activeTab);
+    		if ('$curRoute' in $$props) curRoute.set($curRoute);
+    	};
+
+    	$$self.$$.update = ($$dirty = { $curRoute: 1, activeTab: 1 }) => {
+    		if ($$dirty.$curRoute || $$dirty.activeTab) { if ($curRoute !== activeTab.key) {
+            redirect(activeTab.key);
+          } }
+    	};
+
+    	return { tabs, activeTab, tabbar_active_binding };
+    }
+
+    class Navbar extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$l, create_fragment$o, safe_not_equal, []);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "Navbar", options, id: create_fragment$o.name });
+    	}
+    }
+
+    /* src/app.svelte generated by Svelte v3.12.1 */
+
+    const file$h = "src/app.svelte";
+
+    // (32:0) {:else}
+    function create_else_block$2(ctx) {
+    	var current;
+
+    	var route = new Route({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			route.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(route, target, anchor);
+    			current = true;
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(route.$$.fragment, local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(route.$$.fragment, local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(route, detaching);
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_else_block$2.name, type: "else", source: "(32:0) {:else}", ctx });
+    	return block;
+    }
+
+    // (30:0) {#if $rankedData.isLoading}
+    function create_if_block$4(ctx) {
+    	var p;
+
+    	const block = {
+    		c: function create() {
+    			p = element("p");
+    			p.textContent = "Loading...";
+    			add_location(p, file$h, 30, 2, 702);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert_dev(target, p, anchor);
+    		},
+
+    		i: noop,
+    		o: noop,
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach_dev(p);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_if_block$4.name, type: "if", source: "(30:0) {#if $rankedData.isLoading}", ctx });
+    	return block;
+    }
+
+    function create_fragment$p(ctx) {
+    	var t, current_block_type_index, if_block, if_block_anchor, current;
+
+    	var navbar = new Navbar({ $$inline: true });
+
+    	var if_block_creators = [
+    		create_if_block$4,
+    		create_else_block$2
+    	];
+
+    	var if_blocks = [];
+
+    	function select_block_type(changed, ctx) {
+    		if (ctx.$rankedData.isLoading) return 0;
+    		return 1;
+    	}
+
+    	current_block_type_index = select_block_type(null, ctx);
+    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+
+    	const block = {
+    		c: function create() {
+    			navbar.$$.fragment.c();
+    			t = space();
+    			if_block.c();
+    			if_block_anchor = empty();
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(navbar, target, anchor);
+    			insert_dev(target, t, anchor);
+    			if_blocks[current_block_type_index].m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var previous_block_index = current_block_type_index;
+    			current_block_type_index = select_block_type(changed, ctx);
+    			if (current_block_type_index !== previous_block_index) {
+    				group_outros();
+    				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+    					if_blocks[previous_block_index] = null;
+    				});
+    				check_outros();
+
+    				if_block = if_blocks[current_block_type_index];
+    				if (!if_block) {
+    					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    					if_block.c();
+    				}
+    				transition_in(if_block, 1);
+    				if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    			}
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(navbar.$$.fragment, local);
+
+    			transition_in(if_block);
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			transition_out(navbar.$$.fragment, local);
+    			transition_out(if_block);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			destroy_component(navbar, detaching);
+
+    			if (detaching) {
+    				detach_dev(t);
+    			}
+
+    			if_blocks[current_block_type_index].d(detaching);
+
+    			if (detaching) {
+    				detach_dev(if_block_anchor);
+    			}
+    		}
+    	};
+    	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$p.name, type: "component", source: "", ctx });
+    	return block;
+    }
+
+    function instance$m($$self, $$props, $$invalidate) {
+    	let $rankedData;
+
+    	validate_store(rankedData, 'rankedData');
+    	component_subscribe($$self, rankedData, $$value => { $rankedData = $$value; $$invalidate('$rankedData', $rankedData); });
+
+    	
+
+      const loadData = async () => {
+        const resp = await json("stats/ranked-stats.json");
+        const data = resp
+          .filter(d => d.totalGames > 1000)
+          .map(d => {
+            d.version = d.version
+              .split(".")
+              .slice(0, 3)
+              .join(".");
+            return d;
+          });
+
+        set_store_value(rankedData, $rankedData = { data, isLoading: false });
+      };
+
+      set_store_value(rankedData, $rankedData = { ...rankedData, isLoading: true });
+      onMount(() => {
+        loadData();
+      });
+
+    	$$self.$capture_state = () => {
+    		return {};
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ('$rankedData' in $$props) rankedData.set($rankedData);
+    	};
+
+    	return { $rankedData };
+    }
+
+    class App extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$m, create_fragment$p, safe_not_equal, []);
+    		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "App", options, id: create_fragment$p.name });
+    	}
+    }
+
+    const app = new App({
+      target: document.body,
+      props: {}
+    });
+
+    return app;
+
+}());
 //# sourceMappingURL=bundle.js.map
