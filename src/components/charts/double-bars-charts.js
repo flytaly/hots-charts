@@ -8,12 +8,15 @@ const margin = {
 const getHeroColor = (n) => `hsl(${(n - 71) * 3.6}, 30%, 90%)`
 
 export default class DoubleBarsHeroesChart {
-  constructor ({ data, xValue, x2Value, onPlayingEnd }) {
+  constructor ({ data, xValue, x2Value, onPlayingEnd, xInterpolate, xFormat }) {
     this.data = data
 
     this.xValue = xValue
     this.x2Value = x2Value
     this.yValue = (d) => d.name
+
+    this.format = xFormat || d3.format('.3')
+    this.interpolate = xInterpolate || d3.interpolateRound
 
     this.dataOffset = 0
     this.tDuration = 1000
@@ -217,14 +220,14 @@ export default class DoubleBarsHeroesChart {
       .attr('font-size', this.yScale.bandwidth() * 0.4)
       .call((selection) => {
         if (withTransitions) {
-          const { xValue, isReversed } = this
+          const { xValue, format, interpolate, isReversed } = this
           selection = selection.transition().duration(this.tDuration).ease(this.tEase)
             .tween('text', function (d) {
               const startValue = isReversed ? xValue(d) + 3 : xValue(d) - 3
-              const i = d3.interpolate(this.textContent || startValue, xValue(d))
-              return function (t) { this.textContent = d3.format('.1f')(i(t)) }
+              const i = interpolate(this.textContent || startValue, xValue(d))
+              return function (t) { this.textContent = format(i(t)) }
             })
-        } else { selection = selection.interrupt().text(d => d3.format('.1f')(this.xValue(d))) }
+        } else { selection = selection.interrupt().text(d => this.format(this.xValue(d))) }
 
         selection
           .attr('x', (d) => this.xScale(this.xValue(d)) + 5)
@@ -246,10 +249,10 @@ export default class DoubleBarsHeroesChart {
           selection = selection.transition().duration(this.tDuration).ease(this.tEase)
             .tween('text', function (d) {
               const i = d3.interpolateRound(this.textContent || x2Value(d), x2Value(d))
-              return function (t) { this.textContent = i(t) }
+              return function (t) { this.textContent = d3.format('d')(i(t)) }
             })
         } else {
-          selection = selection.interrupt().text(this.x2Value)
+          selection = selection.interrupt().text((d) => d3.format('d')(this.x2Value(d)))
         }
 
         selection
