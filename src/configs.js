@@ -3,7 +3,7 @@ const fs = require('fs')
 
 const dataDir = path.join(__dirname, '../data')
 const versionsDir = path.join(dataDir, 'versions')
-const statsOutputDir = path.join(dataDir, '../stats')
+const statsOutputDir = path.join(dataDir, '../data/stats')
 
 if (!fs.existsSync(versionsDir)) { fs.mkdirSync(versionsDir) }
 if (!fs.existsSync(statsOutputDir)) { fs.mkdirSync(statsOutputDir) }

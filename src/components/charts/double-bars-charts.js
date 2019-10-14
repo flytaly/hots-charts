@@ -262,7 +262,7 @@ export default class DoubleBarsHeroesChart {
 
     images.enter().append('image')
       .attr('class', 'barImg')
-      .attr('xlink:href', (d) => `/assets/images/${d.shortName}.png`)
+      .attr('xlink:href', (d) => `assets/images/${d.shortName}.png`)
       .attr('y', yStart)
       .merge(images)
       .attr('width', this.yScale.bandwidth())

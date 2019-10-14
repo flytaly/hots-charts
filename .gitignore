@@ -3,5 +3,5 @@ node_modules/
 .vscode
 data/db-dumps/
 data/versions/
-stats/archive
+data/stats/archive
 public/dist

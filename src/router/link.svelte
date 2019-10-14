@@ -5,7 +5,11 @@
   function redirectTo(event) {
     curRoute.set(event.target.hash);
     const { path } = page;
-    window.history.pushState({ path }, "", window.location.origin + path);
+    window.history.pushState(
+      { path },
+      "",
+      `${window.location.origin}${window.location.pathname}${path}`
+    );
   }
 </script>
 
