@@ -286,13 +286,29 @@ export default class DoubleBarsHeroesChart {
       images.exit().remove()
     }
 
-    this.g.select('text.patchNumber').remove()
-    this.g
+    this.g.select('g.patchBlock').remove()
+    const patchG = this.g
+      .append('g')
+      .attr('class', 'patchBlock')
+      .attr('transform', `translate(${this.innerWidth}, ${this.innerHeight - this.yScale.bandwidth() - 30})`)
+
+    patchG
       .append('text')
-      .attr('class', 'patchNumber')
-      .attr('x', this.innerWidth)
-      .attr('y', this.innerHeight - 10)
+      .attr('y', this.yScale.bandwidth() + 20)
       .attr('text-anchor', 'end')
-      .text(d => `Patch: ${version}`)
+      .text(`Patch: ${version}`)
+
+    const { prevHero } = patchInfo[version] ? patchInfo[version] : {}
+    if (prevHero) {
+      patchG
+        .append('image')
+        .attr('xlink:href', (d) => `assets/images/${prevHero}.png`)
+        .attr('x', -this.yScale.bandwidth())
+        .attr('width', this.yScale.bandwidth())
+        .attr('height', this.yScale.bandwidth())
+        .attr('title', 'text')
+        .append('title')
+        .text('The last released hero')
+    }
   }
 }
