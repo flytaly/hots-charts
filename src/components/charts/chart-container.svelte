@@ -41,6 +41,18 @@
   .chartContainer {
     max-width: 100%;
   }
+  .chartDescription {
+    margin-left: 15px;
+  }
+  .chartWithDescription {
+    max-width: 100%;
+    width: 610px;
+  }
 </style>
 
-<svg class="chartContainer" {width} viewBox="0 0 {width} {height}" />
+<div class="chartWithDescription">
+  <section class="chartDescription">
+    <slot name="description" />
+  </section>
+  <svg class="chartContainer" {width} viewBox="0 0 {width} {height}" />
+</div>

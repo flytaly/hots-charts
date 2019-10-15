@@ -80,4 +80,11 @@
   <ShowBottomSwitcher />
 </ChartControls>
 
-<ChartContainer />
+<ChartContainer>
+  <span slot="description">
+    <b>{$isAtBottom ? 'Bottom' : 'Top'} {$maxHeroes}</b>
+    heroes by winrate with
+    <b>≥ {$minPopularity}% popularity</b>
+    (bar 1 - winrate; bar 2 - popularity)
+  </span>
+</ChartContainer>
