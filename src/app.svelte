@@ -4,6 +4,7 @@
   import { rankedData } from "./store";
   import { json } from "d3";
   import { onMount } from "svelte";
+  import Footer from "./components/footer.svelte";
 
   const loadData = async () => {
     const resp = await json("stats/ranked-stats.json");
@@ -32,3 +33,4 @@
 {:else}
   <Route />
 {/if}
+<Footer />
