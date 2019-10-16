@@ -5,12 +5,11 @@ const fs = require('fs')
 const { statsOutputDir } = require('../configs')
 const { heroesNormalizedByName: heroesInfo } = require('./heroes')
 
-const oldDataFile = path.join(statsOutputDir, 'archive', 'ranked-stats_0-18062266.json')
+const oldDataFile = path.join(statsOutputDir, 'archive', 'ranked-stats_0-19102346.json')
 const newFetchedDataFiles = [
-  path.join(statsOutputDir, 'archive', 'ranked-stats_18062266-18618170.json'),
-  path.join(statsOutputDir, 'archive', 'ranked-stats_18618170-19102346.json')
+  path.join(statsOutputDir, 'archive', 'ranked-stats_19102346-19310394.json')
 ]
-const outFile = path.join(statsOutputDir, 'ranked-stats.json')
+const outFile = path.join(statsOutputDir, 'archive', 'ranked-stats_0-19310394.json')
 
 const newData = newFetchedDataFiles.map(fPath => require(fPath))
 

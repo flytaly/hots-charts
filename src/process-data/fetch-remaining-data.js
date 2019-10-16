@@ -4,8 +4,7 @@ const path = require('path')
 const fs = require('fs')
 const readline = require('readline')
 
-const startWithParsedId = null
-
+const startWithParsedId = 19102346
 const maxParsedId = startWithParsedId || +fs.readFileSync(dataFiles.maxParsedId).toString()
 const rankedStatsFile = path.join(statsOutputDir, `ranked-stats_${maxParsedId}.json`)
 const qmStatsFile = path.join(statsOutputDir, `qm-stats_${maxParsedId}.json`)

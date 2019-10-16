@@ -10,7 +10,7 @@
     flex-wrap: wrap;
     align-items: center;
   }
-  @media (min-width: 800px) {
+  @media (min-width: 820px) {
     .head {
       flex-direction: row;
       justify-content: space-around;

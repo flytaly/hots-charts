@@ -1,4 +1,5 @@
 {
+    "2.48.2": { "date": "2019-10-15", "type": "balance", "prevHero": "qhira" },
     "2.48.1": { "date": "2019-09-25", "type": "hotfix", "prevHero": "qhira" },
     "2.48.0": { "date": "2019-09-24", "type": "patch", "prevHero": "qhira" },
     "2.47.3": { "date": "2019-09-05", "type": "hotfix", "prevHero": "qhira" },
