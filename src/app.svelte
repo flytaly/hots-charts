@@ -1,9 +1,9 @@
 <script>
   import Route from "./router/route.svelte";
-  import NavBar from "./components/navbar.svelte";
   import { rankedData } from "./store";
   import { json } from "d3";
   import { onMount } from "svelte";
+  import Header from "./components/header.svelte";
   import Footer from "./components/footer.svelte";
 
   const loadData = async () => {
@@ -27,7 +27,7 @@
   });
 </script>
 
-<NavBar />
+<Header />
 {#if $rankedData.isLoading}
   <p>Loading...</p>
 {:else}
