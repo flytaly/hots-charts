@@ -1,4 +1,8 @@
 <style>
+  footer {
+    font-size: 0.95em;
+    padding-bottom: 10px;
+  }
   .pushToBottom {
     flex: 1 0 1em;
   }
@@ -6,6 +10,8 @@
 
 <div class="pushToBottom" />
 <footer>
-  Data source:
-  <a href="http://hotsapi.net">HotsApi</a>
+  Data from
+  <a href="http://hotsapi.net">HotsApi.</a>
+  Source code on
+  <a href="https://github.com/flytaly/hots-charts">GitHub.</a>
 </footer>

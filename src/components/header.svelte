@@ -10,10 +10,16 @@
     flex-wrap: wrap;
     align-items: center;
   }
+  .github {
+    display: none;
+  }
   @media (min-width: 820px) {
     .head {
       flex-direction: row;
       justify-content: space-around;
+    }
+    .github {
+      display: block;
     }
   }
   aside {
@@ -34,5 +40,9 @@
   <span>
     <NavBar />
   </span>
-  <aside />
+  <aside class="github">
+    <a href="https://github.com/flytaly/hots-charts">
+      <img src="github-icon-32px.png" width="16" alt="github" />
+    </a>
+  </aside>
 </div>
