@@ -117,7 +117,7 @@
     "0.21.2": { "date": "2016-11-10", "type": "balance", "prevHero": "samuro" },
     "0.21.1": { "date": "2016-10-25", "type": "balance", "prevHero": "samuro" },
     "0.21.0": { "date": "2016-10-18", "type": "hero", "prevHero": "samuro" },
-    "0.20.6": { "date": "2016-10-12", "type": "balance", "prevHero": "zarya" },
+    "0.20.5": { "date": "2016-10-12", "type": "balance", "prevHero": "zarya" },
     "0.20.4": { "date": "2016-09-30", "type": "hotfix", "prevHero": "zarya" },
     "0.20.3": { "date": "2016-09-29", "type": "hotfix", "prevHero": "zarya" },
     "0.20.2": { "date": "2016-09-27", "type": "hero", "prevHero": "zarya" },
