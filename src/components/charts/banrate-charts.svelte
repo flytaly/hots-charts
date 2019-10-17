@@ -84,6 +84,7 @@
 <ChartContainer>
   <span slot="description">
     <b>{$isAtBottom ? 'Bottom' : 'Top'} {$maxHeroes}</b>
-    heroes by banrate (bar 1 - banrate; bar 2 - winrate)
+    heroes by banrate in Hero League / Storm League (bar 1 - banrate; bar 2 -
+    winrate)
   </span>
 </ChartContainer>

@@ -85,6 +85,6 @@
     <b>{$isAtBottom ? 'Bottom' : 'Top'} {$maxHeroes}</b>
     heroes by winrate with
     <b>≥ {$minPopularity}% popularity</b>
-    (bar 1 - winrate; bar 2 - popularity)
+    in Hero League / Storm League (bar 1 - winrate; bar 2 - popularity)
   </span>
 </ChartContainer>

@@ -88,7 +88,7 @@
 <ChartContainer>
   <span slot="description">
     <b>{$isAtBottom ? 'Bottom' : 'Top'} {$maxHeroes}</b>
-    heroes by popularity (bar 1 - popularity {$withoutBans ? 'without' : 'with'}
+    heroes by popularity in Hero League / Storm League (bar 1 - popularity {$withoutBans ? 'without' : 'with'}
     bans; bar 2 - winrate)
   </span>
 </ChartContainer>
