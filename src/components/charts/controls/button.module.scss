@@ -1,0 +1,19 @@
+@import '../../../../theme/smui-theme';
+
+.svgButton {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    g {
+        fill: $mdc-theme-secondary;
+    }
+    &.active g {
+        fill: $mdc-theme-primary;
+    }
+}
+
+.svgButton:hover:not(:active) {
+    background-color: rgba($mdc-theme-primary, 0.1);
+}

@@ -1,6 +1,8 @@
 <script>
-  import PopCharts from "../components/charts/popularity-charts.svelte";
   import Page from "../components/page.svelte";
+  import PopCharts from "../components/charts/popularity-bar-charts.svelte";
+  import PopScatter from "../components/charts/popularity-scatter-plot.svelte";
+  import { chartType, chartTypes } from "../store";
 </script>
 
 <style>
@@ -8,5 +10,9 @@
 </style>
 
 <Page>
-  <PopCharts />
+  {#if $chartType === chartTypes.bar}
+    <PopCharts />
+  {:else}
+    <PopScatter />
+  {/if}
 </Page>

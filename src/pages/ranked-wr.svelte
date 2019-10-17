@@ -1,6 +1,8 @@
 <script>
-  import WinrateCharts from "../components/charts/winrate-charts.svelte";
   import Page from "../components/page.svelte";
+  import WinrateBarCharts from "../components/charts/winrate-bar-charts.svelte";
+  import WinrateScatter from "../components/charts/winrate-scatter-plot.svelte";
+  import { chartType, chartTypes } from "../store";
 </script>
 
 <style>
@@ -8,5 +10,9 @@
 </style>
 
 <Page>
-  <WinrateCharts />
+  {#if $chartType === chartTypes.bar}
+    <WinrateBarCharts />
+  {:else}
+    <WinrateScatter />
+  {/if}
 </Page>

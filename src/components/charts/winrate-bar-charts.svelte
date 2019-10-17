@@ -14,6 +14,7 @@
   import PopularitySlider from "./controls/popularity.svelte";
   import MaxHeroesSlider from "./controls/max-heroes.svelte";
   import ShowBottomSwitcher from "./controls/bottom.svelte";
+  import ChartsSelectors from "./controls/charts-selectors.svelte";
 
   const xValue = d => d.winrate;
   const x2Value = d => d.popularity;
@@ -75,6 +76,7 @@
 </style>
 
 <ChartControls>
+  <ChartsSelectors />
   <PopularitySlider />
   <MaxHeroesSlider />
   <ShowBottomSwitcher />

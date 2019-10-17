@@ -11,6 +11,7 @@
   import DoubleBarsHeroesChart from "./double-bars-charts.js";
   import ChartContainer from "./chart-container.svelte";
   import ChartControls from "./chart-controls.svelte";
+  import ChartsSelectors from "./controls/charts-selectors.svelte";
 
   import PopularitySlider from "./controls/popularity.svelte";
   import MaxHeroesSlider from "./controls/max-heroes.svelte";
@@ -78,6 +79,7 @@
 </style>
 
 <ChartControls>
+  <ChartsSelectors />
   <MaxHeroesSlider />
   <ShowBottomSwitcher />
 </ChartControls>
