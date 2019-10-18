@@ -19,7 +19,8 @@
   const scatterPlot = new ScatterPlot({
     xValue,
     yValue,
-    onPlayingEnd
+    onPlayingEnd,
+    highlightMid: true
   });
 
   onMount(() => {
@@ -57,4 +58,6 @@
   <PopularitySlider />
   <RescaleAxisSwitcher />
 </ChartControls>
-<ChartContainer width="1100" height="700" />
+<ChartContainer width="1100" height="700">
+  <span slot="description">Hero League / Storm League</span>
+</ChartContainer>

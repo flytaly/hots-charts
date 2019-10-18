@@ -7,7 +7,7 @@ const margin = {
 }
 
 export default class HeroesScatterPlot {
-  constructor ({ data, xValue, yValue, onPlayingEnd }) {
+  constructor ({ data, xValue, yValue, onPlayingEnd, highlightMid = false }) {
     this.data = data
 
     this.xValue = xValue
@@ -22,6 +22,7 @@ export default class HeroesScatterPlot {
     this.isPlaying = true
     this.rescaleAxis = false
     this.onPlayingEnd = onPlayingEnd
+    this.highlightMid = highlightMid
   }
 
   mount () {
@@ -50,10 +51,12 @@ export default class HeroesScatterPlot {
       .attr('cy', this.circleRadius)
       .attr('r', this.circleRadius)
 
-    this.midBackground = this.g.append('rect')
-      .attr('fill', 'lightblue')
-      .attr('fill-opacity', '0.3')
-      .attr('height', this.innerHeight)
+    if (this.highlightMid) {
+      this.midBackground = this.g.append('rect')
+        .attr('fill', 'lightblue')
+        .attr('fill-opacity', '0.3')
+        .attr('height', this.innerHeight)
+    }
   }
 
   update ({ data, xDomain, yDomain, isPlaying = true, rescaleAxis = false }) {
@@ -142,22 +145,24 @@ export default class HeroesScatterPlot {
     const { version, data: heroData } = patchData
     if (this.rescaleAxis) this.zoomXAxis(heroData)
 
-    const { xValue, yValue, xScale, yScale, circleRadius } = this
+    const { xValue, yValue, circleRadius } = this
 
     const circle = this.g.selectAll('image.heroCircle').data(heroData, this.key)
     circle.exit().remove()
 
-    const translate = (d) => `translate(${xScale(xValue(d)) - circleRadius},${yScale(yValue(d)) - circleRadius})`
-    const scale = (d, x = 1.3) => `translate(${xScale(xValue(d)) - circleRadius * x},${yScale(yValue(d)) - circleRadius * x}) scale(${x},${x})`
+    // It's important to call xScale from instance (this.xScale) so it won't save old value in closure.
+    // Or otherwise mouse events should be added on every update not only on enter.
+    const translate = (d) => `translate(${this.xScale(xValue(d)) - circleRadius},${this.yScale(yValue(d)) - circleRadius})`
+    const scale = (d, x = 1.3) => `translate(${this.xScale(xValue(d)) - circleRadius * x},${this.yScale(yValue(d)) - circleRadius * x}) scale(${x},${x})`
 
-    this.midBackground
+    this.midBackground && this.midBackground
       .transition(this.tEase)
       .duration(withTransitions ? this.tDuration / 2 : 0)
-      .attr('x', xScale(45))
+      .attr('x', this.xScale(45))
       .attr('y', 0)
-      .attr('width', xScale(55) - xScale(45))
+      .attr('width', this.xScale(55) - this.xScale(45))
 
-    const heroCircle = circle
+    const heroCircleEnter = circle
       .enter().append('image')
       .attr('class', 'heroCircle')
       .attr('xlink:href', (d) => `assets/images/${d.shortName}.png`)
@@ -166,16 +171,16 @@ export default class HeroesScatterPlot {
       .on('mouseover', (d, i, elems) => d3.select(elems[i]).attr('transform', scale(d)))
       .on('mouseout', (d, i, elems) => d3.select(elems[i]).attr('transform', translate(d)))
       .attr('clip-path', 'url(#clipObj)')
-    heroCircle.append('title').text((d) => d.name)
+    heroCircleEnter.append('title').text((d) => d.name)
 
-    if (withTransitions) {
-      heroCircle
+    if (false/* withTransitions */) {
+      heroCircleEnter
         .attr('transform', d => scale(d, 3))
         .transition(this.tEase)
         .duration(this.tDuration / 2)
         .attr('transform', translate)
     } else {
-      heroCircle.attr('transform', translate)
+      heroCircleEnter.attr('transform', translate)
     }
 
     circle

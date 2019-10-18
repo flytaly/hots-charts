@@ -9,7 +9,7 @@
   .optionGroup {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 15px 10px 15px;
+    margin: 5px 15px 10px 15px;
   }
   :global(.optionGroup .item) {
     display: flex;
