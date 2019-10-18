@@ -3,26 +3,30 @@ import dateSlider from './date-slider'
 import patchInfo from '../../patches.json'
 
 const margin = {
-  top: 20, right: 30, bottom: 130, left: 50
+  top: 20, right: 30, bottom: 130, left: 60
 }
 
 export default class HeroesScatterPlot {
-  constructor ({ data, xValue, yValue, onPlayingEnd, highlightMid = false }) {
+  constructor ({ data, xValue, yValue, xAxisLabel, yAxisLabel, onPlayingEnd, highlightXMid = false, highlightYMid = false }) {
     this.data = data
 
     this.xValue = xValue
     this.yValue = yValue
     this.key = (d) => d && d.name
+    this.xAxisLabel = xAxisLabel
+    this.yAxisLabel = yAxisLabel
 
     this.circleRadius = 15
 
     this.dataOffset = 0
     this.tDuration = 1000
     this.tEase = d3.easeSinOut
+    this.intervalDuration = 2700
     this.isPlaying = true
     this.rescaleAxis = false
     this.onPlayingEnd = onPlayingEnd
-    this.highlightMid = highlightMid
+    this.highlightXMid = highlightXMid
+    this.highlightYMid = highlightYMid
   }
 
   mount () {
@@ -35,8 +39,32 @@ export default class HeroesScatterPlot {
       .attr('transform', `translate(${margin.left},${margin.top})`)
 
     // Axis
-    this.g.append('g').attr('class', 'xAxis').attr('transform', `translate(0, ${this.innerHeight})`)
-    this.g.append('g').attr('class', 'yAxis').attr('transform', 'translate(0, 0)')
+    this.xAxisG = this.g.append('g')
+      .attr('class', 'xAxis')
+      .style('font-size', '14px')
+      .attr('transform', `translate(0, ${this.innerHeight})`)
+    this.yAxisG = this.g.append('g')
+      .attr('class', 'yAxis')
+      .style('font-size', '14px')
+      .attr('transform', 'translate(0, 0)')
+
+    // Axis Labels
+    this.xAxisG
+      .append('text')
+      .attr('class', 'axis-label')
+      .attr('y', 45)
+      .attr('x', this.innerWidth / 2)
+      .attr('fill', 'black')
+      .text(this.xAxisLabel)
+    this.yAxisG
+      .append('text')
+      .attr('class', 'axis-label')
+      .attr('y', -45)
+      .attr('x', -this.innerHeight / 2)
+      .attr('fill', 'black')
+      .attr('transform', 'rotate(-90)')
+      .style('text-anchor', 'middle')
+      .text(this.yAxisLabel)
 
     // Date slider
     const sliderG = this.g.append('g')
@@ -51,11 +79,23 @@ export default class HeroesScatterPlot {
       .attr('cy', this.circleRadius)
       .attr('r', this.circleRadius)
 
-    if (this.highlightMid) {
-      this.midBackground = this.g.append('rect')
+    if (this.highlightXMid) {
+      this.xMidBackground = this.g.append('rect')
         .attr('fill', 'lightblue')
         .attr('fill-opacity', '0.3')
         .attr('height', this.innerHeight)
+        .attr('x', this.innerWidth / 2)
+        .attr('y', 0)
+        .attr('width', 0)
+    }
+    if (this.highlightYMid) {
+      this.yMidBackground = this.g.append('rect')
+        .attr('fill', 'lightblue')
+        .attr('fill-opacity', '0.3')
+        .attr('width', this.innerWidth)
+        .attr('x', 0)
+        .attr('y', this.innerHeight / 2)
+        .attr('height', 0)
     }
   }
 
@@ -71,8 +111,8 @@ export default class HeroesScatterPlot {
     this.xAxis = d3.axisBottom(this.xScale).tickFormat(n => `${n}%`)
     this.yAxis = d3.axisLeft(this.yScale).tickFormat(n => `${n}%`)
 
-    this.g.select('.xAxis').transition(this.tEase).duration(this.tDuration / 2).call(this.xAxis)
-    this.g.select('.yAxis').transition(this.tEase).duration(this.tDuration / 2).call(this.yAxis)
+    this.xAxisG.transition(this.tEase).duration(this.tDuration / 2).call(this.xAxis)
+    this.yAxisG.transition(this.tEase).duration(this.tDuration / 2).call(this.yAxis)
 
     this.render()
     this.runInterval()
@@ -96,7 +136,7 @@ export default class HeroesScatterPlot {
         const date = patchInfo[v] && patchInfo[v].date && new Date(patchInfo[v].date)
         if (date) { this.updateDateSlider(date) }
       }
-    }, 2700)
+    }, this.intervalDuration)
   }
 
   clearInterval () {
@@ -155,12 +195,17 @@ export default class HeroesScatterPlot {
     const translate = (d) => `translate(${this.xScale(xValue(d)) - circleRadius},${this.yScale(yValue(d)) - circleRadius})`
     const scale = (d, x = 1.3) => `translate(${this.xScale(xValue(d)) - circleRadius * x},${this.yScale(yValue(d)) - circleRadius * x}) scale(${x},${x})`
 
-    this.midBackground && this.midBackground
+    this.xMidBackground && this.xMidBackground
       .transition(this.tEase)
       .duration(withTransitions ? this.tDuration / 2 : 0)
       .attr('x', this.xScale(45))
-      .attr('y', 0)
       .attr('width', this.xScale(55) - this.xScale(45))
+
+    this.yMidBackground && this.yMidBackground
+      .transition(this.tEase)
+      .duration(withTransitions ? this.tDuration / 2 : 0)
+      .attr('y', this.yScale(55))
+      .attr('height', this.yScale(45) - this.yScale(55))
 
     const heroCircleEnter = circle
       .enter().append('image')
@@ -173,7 +218,7 @@ export default class HeroesScatterPlot {
       .attr('clip-path', 'url(#clipObj)')
     heroCircleEnter.append('title').text((d) => d.name)
 
-    if (false/* withTransitions */) {
+    if (withTransitions) {
       heroCircleEnter
         .attr('transform', d => scale(d, 3))
         .transition(this.tEase)

@@ -14,7 +14,10 @@
   const scatterPlot = new ScatterPlot({
     xValue,
     yValue,
-    onPlayingEnd
+    xAxisLabel: "POPULARITY",
+    yAxisLabel: "WIN RATE",
+    onPlayingEnd,
+    highlightYMid: true
   });
 
   onMount(() => {
