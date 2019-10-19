@@ -10,6 +10,7 @@
     display: flex;
     flex-wrap: wrap;
     margin: 5px 15px 10px 15px;
+    min-height: 50px;
   }
   :global(.optionGroup .item) {
     display: flex;

@@ -1,6 +1,7 @@
 <script>
   import styles from "./button.module.scss";
-  import { chartType, chartTypes } from "../../../store";
+  import { curRoute, chartTypes } from "../../../store";
+  import redirect from "../../../router/redirect.js";
   const { svgButton, active } = styles;
 </script>
 
@@ -13,8 +14,8 @@
 
 <article class="item">
   <button
-    class={`${svgButton} ${$chartType === chartTypes.bar ? active : ''}`}
-    on:click={() => ($chartType = chartTypes.bar)}
+    class={`${svgButton} ${$curRoute.subroute === chartTypes.bar ? active : ''}`}
+    on:click={() => redirect($curRoute.route, chartTypes.bar)}
     title="Bar chart">
     <svg
       style="transform: rotate(90deg)"
@@ -28,8 +29,8 @@
     </svg>
   </button>
   <button
-    class={`${svgButton} ${$chartType === chartTypes.scatter ? active : ''}`}
-    on:click={() => ($chartType = chartTypes.scatter)}
+    class={`${svgButton} ${$curRoute.subroute === chartTypes.scatter ? active : ''}`}
+    on:click={() => redirect($curRoute.route, chartTypes.scatter)}
     title="Scatter plot">
     <svg
       xmlns="http://www.w3.org/2000/svg"

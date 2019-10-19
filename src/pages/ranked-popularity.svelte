@@ -2,7 +2,7 @@
   import Page from "../components/page.svelte";
   import PopCharts from "../components/charts/popularity-bar-charts.svelte";
   import PopScatter from "../components/charts/popularity-scatter-plot.svelte";
-  import { chartType, chartTypes } from "../store";
+  import { curRoute, chartTypes } from "../store";
 </script>
 
 <style>
@@ -10,7 +10,7 @@
 </style>
 
 <Page>
-  {#if $chartType === chartTypes.bar}
+  {#if $curRoute.subroute === chartTypes.bar}
     <PopCharts />
   {:else}
     <PopScatter />
