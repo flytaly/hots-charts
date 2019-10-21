@@ -216,7 +216,12 @@ export default class HeroesScatterPlot {
       .on('mouseover', (d, i, elems) => d3.select(elems[i]).attr('transform', scale(d)))
       .on('mouseout', (d, i, elems) => d3.select(elems[i]).attr('transform', translate(d)))
       .attr('clip-path', 'url(#clipObj)')
-    heroCircleEnter.append('title').text((d) => d.name)
+
+    const formatX = (d) => d3.format('.3')(this.xValue(d))
+    const formatY = (d) => d3.format('.3')(this.yValue(d))
+    heroCircleEnter.append('title')
+    heroCircleEnter.merge(circle).select('title').text((d) => `${d.name} ${
+      this.xAxisLabel}: ${formatX(d)} ${this.yAxisLabel}: ${formatY(d)}`)
 
     if (withTransitions) {
       heroCircleEnter
