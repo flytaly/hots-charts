@@ -24,7 +24,7 @@
         "@smui/switch": "^1.0.0-beta.16",
         "@smui/tab": "^1.0.0-beta.16",
         "@smui/tab-bar": "^1.0.0-beta.16",
-        "axios": "^0.19.0",
+        "axios": "^0.21.1",
         "csv-string": "^3.1.6",
         "d3": "^5.12.0",
         "gh-pages": "^2.1.1",
